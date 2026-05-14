@@ -12,21 +12,21 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; }
-    .hero-bg { background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,244,255,0.95)); }
     .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.5); }
-    .soft-shadow { box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05); }
-    .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .hover-float:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(15, 23, 42, 0.1); }
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    video { border-radius: 2rem; width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+    .hover-float:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12); }
+    
+    /* 現代數據區風格 */
+    .modern-stats-bg { background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); position: relative; overflow: hidden; }
+    .neon-glow { text-shadow: 0 0 25px rgba(99, 102, 241, 0.8); color: #fff; }
+    .stat-item { border-left: 1px solid rgba(255,255,255,0.1); }
+    @media (max-width: 1024px) { .stat-item { border-left: none; } }
 
-    /* 至頂按鈕顯示邏輯 */
-    #backToTop.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    #backToTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    video { border-radius: 2rem; width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   </style>
 </head>
 
@@ -36,283 +36,251 @@
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200">
-          <i class="fa-solid fa-house"></i>
-        </div>
+        <div class="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
         <div>
           <h1 class="font-bold text-lg text-slate-800 leading-tight">呂氏家庭資訊網<span class="text-indigo-600 text-sm ml-1">3.0</span></h1>
           <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Family Hub</p>
         </div>
       </div>
-      
       <div class="hidden md:flex items-center gap-6 text-sm font-bold">
         <a href="#home" class="text-slate-500 hover:text-indigo-600 transition-colors">首頁</a>
+        <a href="#activity" class="text-slate-500 hover:text-indigo-600 transition-colors">活動回顧</a>
+        <a href="#dashboard" class="text-slate-500 hover:text-indigo-600 transition-colors">動態看板</a>
         <a href="#members" class="text-slate-500 hover:text-indigo-600 transition-colors">幕僚團隊</a>
-        <a href="#location" class="text-slate-500 hover:text-indigo-600 transition-colors">家族分布</a>
-        <a href="#notice" class="text-slate-500 hover:text-indigo-600 transition-colors">公告與活動</a>
-        <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-indigo-100">
-          <i class="fa-solid fa-clock-rotate-left"></i> 歷史回顧
+        <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-md font-black">
+          <i class="fa-solid fa-bullhorn"></i> 消息中心
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- 首頁視覺區 -->
-  <section id="home" class="hero-bg min-h-[85vh] flex items-center overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-16 items-center">
+  <!-- 1. 首頁區 -->
+  <section id="home" class="py-20 flex items-center">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
       <div data-aos="fade-right">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold mb-6 border border-indigo-100">
-          <i class="fa-solid fa-heart-pulse"></i> 溫馨家族數位空間
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-xs font-black mb-6 border border-indigo-100 uppercase tracking-widest">
+          <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span></span>
+          System Online 2026
         </div>
-        <h2 class="text-5xl md:text-7xl font-black leading-[1.1] text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
-        <p class="mt-8 text-lg leading-relaxed text-slate-500 max-w-lg">呂氏家族 16 位成員的溫馨港灣，紀錄平凡生活中的不平凡。</p>
+        <h2 class="text-6xl font-black leading-tight text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
+        <p class="mt-8 text-lg text-slate-500 max-w-md font-medium">呂氏家族 16 位成員的專屬空間，紀錄平凡日子裡的每一份暖心回顧。</p>
       </div>
-      <div class="relative" data-aos="fade-left">
-        <div class="glass-card rounded-[40px] p-10 soft-shadow border-white text-center max-w-sm mx-auto">
-           <div class="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-6 shadow-inner">
-             <i class="fa-solid fa-shield-heart text-3xl text-emerald-500"></i>
-           </div>
-           <h3 class="text-2xl font-black text-slate-800 tracking-tight">LU FAMILY 3.0</h3>
-           <p class="text-slate-400 mt-2 font-bold uppercase tracking-widest text-xs">版本 2026.05 正式上線</p>
+      <div class="relative flex justify-center" data-aos="fade-left">
+        <div class="glass-card rounded-[40px] p-12 shadow-2xl border-white text-center hover-float">
+          <div class="w-20 h-20 rounded-full bg-indigo-50 flex items-center justify-center mx-auto mb-6 shadow-inner"><i class="fa-solid fa-shield-heart text-3xl text-indigo-500"></i></div>
+          <h3 class="text-3xl font-black text-slate-800 tracking-tight uppercase">LU FAMILY</h3>
+          <p class="text-slate-400 mt-2 font-bold uppercase tracking-[0.3em] text-[10px]">Family Network 3.0</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 近期活動 -->
-  <section class="py-24 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-aos="fade-up">
+  <!-- 2. 現代風格數據區 (向心力 100%) -->
+  <section id="stats" class="py-24 modern-stats-bg text-white">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+        <div class="text-center px-4" data-aos="fade-up">
+          <div class="text-5xl md:text-6xl font-black neon-glow mb-4 tracking-tighter"><span class="counter" data-target="16">0</span></div>
+          <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">家族成員總數</p>
+        </div>
+        <div class="text-center px-4 stat-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-5xl md:text-6xl font-black neon-glow mb-4 tracking-tighter"><span class="counter" data-target="3">0</span></div>
+          <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">分佈核心城市</p>
+        </div>
+        <div class="text-center px-4 stat-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-5xl md:text-6xl font-black neon-glow mb-4 tracking-tighter"><span class="counter" data-target="100">0</span><span class="text-2xl text-indigo-400 font-black ml-1">%</span></div>
+          <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">家族向心力</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 近期活動回顧 -->
+  <section id="activity" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-16" data-aos="fade-up">
         <h2 class="text-4xl font-black text-slate-800">近期活動回顧</h2>
         <div class="w-16 h-1.5 bg-pink-500 mx-auto mt-4 rounded-full"></div>
-      </div>
-      
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
+    </div>
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-6" data-aos="fade-right">
-          <div class="rounded-[3rem] overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 border-8 border-white">
-            <img src="S__23732244.jpg" alt="2026母親節活動合照" class="w-full h-auto">
-          </div>
-          <p class="mt-6 text-center text-slate-400 font-bold italic tracking-wide">2026母親節活動合照</p>
+          <div class="rounded-[3rem] overflow-hidden shadow-2xl hover-float border-8 border-white"><img src="S__23732244.jpg" class="w-full h-auto"></div>
+          <p class="mt-6 text-center text-slate-400 font-bold italic">2026 母親節活動家族合照</p>
         </div>
-        
         <div class="lg:col-span-6" data-aos="fade-left">
-          <div class="glass-card p-8 rounded-[3.5rem] shadow-xl border-white">
-            <video controls poster="video_poster.jpg">
-              <source src="母親節MV.mp4" type="video/mp4">
-            </video>
+          <div class="glass-card p-8 rounded-[3.5rem] shadow-xl border-white hover-float">
+            <video controls poster="video_poster.jpg"><source src="母親節MV.mp4" type="video/mp4"></video>
             <div class="mt-8 px-2 text-center lg:text-left">
-              <h4 class="text-2xl font-black text-slate-800">2026 溫馨母親節慶生活動</h4>
-              <p class="text-slate-500 mt-3 font-medium leading-relaxed">紀錄與家人相聚的每一刻喜悅與感人歌聲，愛在呂氏。</p>
+              <h4 class="text-2xl font-black text-slate-800">2026 溫馨母親節慶祝活動</h4>
+              <p class="text-slate-500 mt-3 font-bold leading-relaxed font-bold">紀錄與家人相聚的每一刻喜悅與感人歌聲。</p>
             </div>
           </div>
         </div>
+    </div>
+  </section>
+
+  <!-- 4. 家族動態看板 -->
+  <section id="dashboard" class="py-24 bg-slate-50/50">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-8">
+      <div class="glass-card rounded-[45px] p-10 hover-float border-white shadow-sm flex flex-col justify-between" data-aos="fade-up">
+        <div><div class="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg mb-6"><i class="fa-solid fa-calendar-day text-2xl"></i></div><h3 class="text-2xl font-black text-slate-800">家族日曆</h3><p class="text-slate-400 font-bold mt-2 uppercase text-xs" id="currentDateText">Today</p></div>
+        <div class="mt-8"><div class="text-6xl font-black text-indigo-600" id="dayNumber">15</div><div class="text-slate-800 font-black text-xl" id="monthYear">May, 2026</div></div>
+      </div>
+      <div class="glass-card rounded-[45px] p-10 hover-float border-white shadow-sm bg-gradient-to-br from-white to-pink-50/30" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-14 h-14 rounded-2xl bg-pink-500 text-white flex items-center justify-center shadow-lg mb-6"><i class="fa-solid fa-cake-candles text-2xl"></i></div><h3 class="text-2xl font-black text-slate-800">本月壽星</h3>
+        <div class="mt-10 flex items-center gap-6 p-6 rounded-[30px] bg-white shadow-sm">
+          <div class="w-16 h-16 rounded-2xl bg-pink-100 text-pink-500 flex items-center justify-center text-3xl"><i class="fa-solid fa-gift"></i></div><div><h4 class="text-xl font-black text-slate-800" id="birthdayName">載入中...</h4><p class="text-slate-400 text-xs font-bold">送上祝福！</p></div>
+        </div>
+      </div>
+      <div class="glass-card rounded-[45px] p-10 hover-float bg-slate-900 text-white shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-14 h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center shadow-lg mb-6"><i class="fa-solid fa-hourglass-start text-2xl"></i></div><h3 class="text-2xl font-black text-amber-500">中秋烤肉倒數</h3>
+        <div class="mt-10 grid grid-cols-2 gap-4 text-center">
+          <div class="bg-white/10 p-4 rounded-2xl"><div class="text-3xl font-black" id="cdDays">00</div><div class="text-[10px] text-white/50 uppercase">Days</div></div>
+          <div class="bg-white/10 p-4 rounded-2xl"><div class="text-3xl font-black" id="cdHours">00</div><div class="text-[10px] text-white/50 uppercase">Hours</div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 幕僚團隊 -->
-  <section id="members" class="py-24 bg-slate-50">
+  <!-- 5. 最新公告 (消息發布保留) -->
+  <section id="notice" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
+      <div data-aos="fade-right">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-bullhorn text-xl"></i></div>
+          <h2 class="text-3xl font-black text-slate-800">最新公告</h2>
+        </div>
+        <div class="bg-slate-50 rounded-[40px] p-10 hover-float border border-slate-100 shadow-sm" onclick="openHistoryModal()">
+          <div class="flex justify-between mb-6">
+            <span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>
+            <span class="text-xs font-bold text-slate-400 italic">2026-05-15</span>
+          </div>
+          <h3 class="text-2xl font-black text-slate-800">114年度所得稅開始申報</h3>
+          <p class="mt-4 text-slate-500 font-medium leading-relaxed font-bold">請成員儘早申報，申報期至 2026/06/01 止。</p>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-list-check text-xl"></i></div>
+          <h2 class="text-3xl font-black text-slate-800">活動進度</h2>
+        </div>
+        <div class="bg-slate-50 rounded-[40px] p-10 hover-float border border-slate-100 space-y-8 shadow-sm">
+          <div class="flex items-center gap-5"><div class="w-4 h-4 rounded-full bg-slate-300"></div><p class="text-lg font-black text-slate-800">母親節晚宴 <span class="text-slate-400 font-bold ml-3 text-sm px-2 py-1 bg-white rounded">已結束</span></p></div>
+          <div class="flex items-center gap-5"><div class="w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-50"></div><p class="text-lg font-black text-slate-800 italic">中秋家族烤肉 <span class="text-indigo-500 font-bold ml-3 text-sm">規劃中</span></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 幕僚團隊 -->
+  <section id="members" class="py-24 bg-slate-50/50">
     <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="mb-20" data-aos="fade-up">
-        <h2 class="text-4xl font-black text-slate-800">幕僚團隊</h2>
-        <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
-        <p class="text-slate-400 mt-4 font-bold italic text-sm">點擊成員卡片查看詳細介紹</p>
-      </div>
-
+      <div class="mb-20" data-aos="fade-up"><h2 class="text-4xl font-black text-slate-800">幕僚團隊</h2><div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div></div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div onclick="openMemberModal('member1')" class="glass-card rounded-[35px] p-8 hover-float soft-shadow group cursor-pointer border-2 border-transparent hover:border-indigo-200">
-          <div class="w-24 h-24 rounded-3xl bg-slate-200 flex items-center justify-center text-slate-400 text-4xl mb-6 mx-auto group-hover:bg-indigo-50 group-hover:text-indigo-400 transition-colors">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">呂陳英妹</h3>
-          <p class="text-indigo-600 font-bold text-sm mb-4">家庭長/老大</p>
+        <div onclick="openMemberModal('member1')" class="glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-indigo-200">
+          <div class="w-24 h-24 rounded-3xl bg-slate-200 flex items-center justify-center text-slate-400 text-4xl mb-6 mx-auto group-hover:bg-indigo-50 transition-all"><i class="fa-solid fa-user"></i></div>
+          <h3 class="text-2xl font-black text-slate-800">呂陳英妹</h3><p class="text-indigo-600 font-bold text-sm">家庭長</p>
         </div>
-
-        <div onclick="openMemberModal('member2')" class="glass-card rounded-[35px] p-8 hover-float soft-shadow group cursor-pointer border-2 border-transparent hover:border-emerald-200">
-          <div class="w-24 h-24 rounded-3xl bg-emerald-50 mb-6 overflow-hidden shadow-md mx-auto border-4 border-white group-hover:scale-105 transition-transform">
-            <img src="110417006.jpg" class="w-full h-full object-cover" alt="呂佳寯">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">呂佳寯</h3>
-          <p class="text-emerald-600 font-bold text-sm mb-4">行政管理</p>
+        <div onclick="openMemberModal('member2')" class="glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-emerald-200">
+          <div class="w-24 h-24 rounded-3xl bg-emerald-50 mb-6 overflow-hidden shadow-md mx-auto border-4 border-white"><img src="110417006.jpg" class="w-full h-full object-cover"></div>
+          <h3 class="text-2xl font-black text-slate-800">呂佳寯</h3><p class="text-emerald-600 font-bold text-sm">行政管理</p>
         </div>
-
-        <div onclick="openMemberModal('member3')" class="glass-card rounded-[35px] p-8 hover-float soft-shadow group cursor-pointer border-2 border-transparent hover:border-pink-200">
-          <div class="w-24 h-24 rounded-3xl bg-slate-200 flex items-center justify-center text-slate-400 text-4xl mb-6 mx-auto group-hover:bg-pink-50 group-hover:text-pink-400 transition-colors">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">呂佳芯</h3>
-          <p class="text-pink-600 font-bold text-sm mb-4">分隊長</p>
+        <div onclick="openMemberModal('member3')" class="glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-pink-200">
+          <div class="w-24 h-24 rounded-3xl bg-slate-200 flex items-center justify-center text-slate-400 text-4xl mb-6 mx-auto group-hover:bg-pink-50 transition-all"><i class="fa-solid fa-user"></i></div>
+          <h3 class="text-2xl font-black text-slate-800">呂佳芯</h3><p class="text-pink-600 font-bold text-sm">分隊長</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 家庭地區分布統計 -->
+  <!-- 7. 家族足跡分佈 (保留不變) -->
   <section id="location" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16" data-aos="fade-up">
         <h2 class="text-4xl font-black text-slate-800">家族足跡分佈</h2>
         <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
-        <p class="text-slate-400 mt-4 font-bold">呂氏家族 16 位成員主要居住城市</p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-card rounded-[40px] p-10 text-center hover-float soft-shadow border-b-4 border-indigo-500" data-aos="fade-up">
-          <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
-            <i class="fa-solid fa-city"></i>
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">新北板橋</h3>
-          <p class="text-indigo-600 font-bold text-lg mt-2">核心據點(總部)/人數最多</p>
-          <div class="mt-6 pt-6 border-t border-slate-100">
-            <span class="text-slate-400 text-sm font-medium">包含家庭長與主要行政團隊/共7名</span>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-indigo-500 shadow-sm" data-aos="fade-up">
+          <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6"><i class="fa-solid fa-city"></i></div>
+          <h3 class="text-2xl font-black text-slate-800">新北板橋</h3><p class="text-indigo-600 font-bold text-lg mt-2">核心據點(總部)</p><div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm">共 7 名成員</div>
         </div>
-
-        <div class="glass-card rounded-[40px] p-10 text-center hover-float soft-shadow border-b-4 border-emerald-500" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
-            <i class="fa-solid fa-tree"></i>
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">臺中市</h3>
-          <p class="text-emerald-600 font-bold text-lg mt-2">第一分支</p>
-          <div class="mt-6 pt-6 border-t border-slate-100">
-            <span class="text-slate-400 text-sm font-medium">第二人數最多/共6名</span>
-          </div>
+        <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-emerald-500 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6"><i class="fa-solid fa-tree"></i></div>
+          <h3 class="text-2xl font-black text-slate-800">臺中北區、中區</h3><p class="text-emerald-600 font-bold text-lg mt-2">第一分支</p><div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm">人數第二多及區域單位共 6 名成員</div>
         </div>
-
-        <div class="glass-card rounded-[40px] p-10 text-center hover-float soft-shadow border-b-4 border-orange-500" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-16 h-16 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
-            <i class="fa-solid fa-plane-up"></i>
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">桃園市</h3>
-          <p class="text-orange-600 font-bold text-lg mt-2">第二分支</p>
-          <div class="mt-6 pt-6 border-t border-slate-100">
-            <span class="text-slate-400 text-sm font-medium">交通便利/共3名</span>
-          </div>
+        <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-orange-500 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6"><i class="fa-solid fa-plane-up"></i></div>
+          <h3 class="text-2xl font-black text-slate-800">桃園平鎮</h3><p class="text-orange-600 font-bold text-lg mt-2">第二分支</p><div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm">交通便利/共 3 名成員</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 公告與活動進度 -->
-  <section id="notice" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
-      <div data-aos="fade-up">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-bullhorn text-xl"></i></div>
-          <h2 class="text-3xl font-black text-slate-800">最新公告</h2>
-        </div>
-        <div class="bg-slate-50 rounded-[40px] p-10 soft-shadow border border-white">
-          <div class="flex justify-between mb-4">
-            <span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Urgent</span>
-            <span class="text-xs font-bold text-slate-400 italic">2026-05-15</span>
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">114年度所得稅開始申報</h3>
-          <p class="mt-4 text-slate-500 font-medium leading-relaxed">請成員儘早申報，申報期至 2026/06/01 止。</p>
-        </div>
-      </div>
-
-      <div data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-calendar-check text-xl"></i></div>
-          <h2 class="text-3xl font-black text-slate-800">活動進度</h2>
-        </div>
-        <div class="bg-slate-50 rounded-[40px] p-10 soft-shadow border border-white space-y-8">
-          <div class="flex items-center gap-5">
-            <div class="w-4 h-4 rounded-full bg-slate-300"></div>
-            <p class="text-lg font-black text-slate-800">母親節晚宴慶祝 <span class="text-slate-400 font-bold ml-3 text-sm">已結束</span></p>
-          </div>
-          <div class="flex items-center gap-5">
-            <div class="w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-50"></div>
-            <p class="text-lg font-black text-slate-800 italic">中秋家族烤肉大會 <span class="text-indigo-500 font-bold ml-3 text-sm">規劃中</span></p>
+  <!-- Modals (消息中心與成員介紹保持原樣) -->
+  <div id="historyModal" class="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-md hidden" onclick="closeHistoryModal()">
+    <div class="bg-white rounded-[50px] w-full max-w-xl shadow-2xl transition-all scale-95 opacity-0 duration-300 overflow-hidden" id="historyModalContainer" onclick="event.stopPropagation()">
+      <div class="p-10 text-left">
+        <div class="flex justify-between items-center mb-10"><div><h3 class="text-3xl font-black text-slate-800">消息中心</h3><p class="text-slate-400 font-bold text-xs uppercase tracking-[0.3em] mt-1">Information Feed</p></div><button onclick="closeHistoryModal()" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-red-500 transition-all"><i class="fa-solid fa-xmark"></i></button></div>
+        <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
+          <div class="group p-6 rounded-[35px] bg-slate-50 border border-slate-100 hover:bg-white transition-all duration-300">
+            <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-black uppercase">公告</span><span class="text-xs font-bold text-slate-300 italic">Today</span></div>
+            <h4 class="font-black text-slate-800 text-lg">114年度所得稅已開始申報</h4><p class="text-slate-500 text-sm mt-2">請成員於 2026/06/01 前完成申報。</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 歷史回顧 Modal -->
-  <div id="historyModal" class="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeHistoryModal()">
-    <div class="bg-white rounded-[40px] w-full max-w-xl shadow-2xl transition-all scale-95 opacity-0 duration-300" id="historyModalContainer" onclick="event.stopPropagation()">
-      <div class="p-10 text-center">
-        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-inner">
-          <i class="fa-solid fa-clock-rotate-left"></i>
-        </div>
-        <h3 class="text-3xl font-black text-slate-800 mb-8 tracking-tight">歷史訊息回顧</h3>
-        <div class="space-y-4 max-h-[40vh] overflow-y-auto pr-2 no-scrollbar text-left">
-          <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Archive | 2026.05.15</span>
-            <h4 class="font-bold text-slate-800 mt-1">114年度所得稅已開始申報，請成員儘早申報，申報期至 2026/06/01 止。</h4>
-          </div>
-          <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Archive | 2026.05.15</span>
-            <h4 class="font-bold text-slate-800 mt-1">本單位 3.0 網頁已正式上線</h4>
-          </div>
-        </div>
-        <button onclick="closeHistoryModal()" class="mt-10 px-10 py-3 rounded-2xl bg-indigo-600 text-white font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">關閉視窗</button>
+        <button onclick="closeHistoryModal()" class="mt-10 w-full py-4 rounded-2xl bg-indigo-600 text-white font-black hover:bg-indigo-700 transition shadow-lg">確認並關閉</button>
       </div>
     </div>
   </div>
 
-  <!-- 成員詳細資料 Modal -->
   <div id="memberModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeModal()">
     <div class="bg-white rounded-[50px] w-full max-w-md shadow-2xl transition-all scale-95 opacity-0 duration-300 overflow-hidden" id="modalContainer" onclick="event.stopPropagation()">
       <div class="relative h-32 bg-slate-100" id="modalTheme"></div>
       <div class="px-10 pb-10 text-center relative">
         <div id="modalAvatarBox" class="w-28 h-28 rounded-3xl mx-auto -mt-14 mb-6 overflow-hidden flex items-center justify-center text-4xl shadow-xl border-4 border-white bg-white"></div>
-        <h3 id="modalName" class="text-3xl font-black text-slate-800 tracking-tight"></h3>
-        <p id="modalNick" class="text-slate-400 font-bold text-sm mt-1 mb-6"></p>
-        
+        <h3 id="modalName" class="text-3xl font-black text-slate-800 tracking-tight"></h3><p id="modalNick" class="text-slate-400 font-bold text-sm mt-1 mb-6"></p>
         <div class="bg-slate-50 rounded-3xl p-6 text-left border border-slate-100">
-          <div class="mb-4">
-            <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">職稱 Position</span>
-            <p id="modalTitle" class="font-black text-slate-700 mt-1"></p>
-          </div>
-          <div>
-            <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">想要說什麼</span>
-            <p id="modalBusiness" class="text-slate-500 text-sm font-medium leading-relaxed mt-1"></p>
-          </div>
+          <div class="mb-4"><span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Position</span><p id="modalTitle" class="font-black text-slate-700 mt-1"></p></div>
+          <div><span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">想要說什麼</span><p id="modalBusiness" class="text-slate-500 text-sm font-medium mt-1"></p></div>
         </div>
-        
-        <button onclick="closeModal()" class="mt-8 w-full py-4 rounded-2xl bg-white border-2 border-slate-100 font-black text-slate-400 hover:bg-slate-50 hover:text-slate-800 transition-all">關閉詳細資訊</button>
+        <button onclick="closeModal()" class="mt-8 w-full py-4 rounded-2xl bg-white border-2 border-slate-100 font-black text-slate-400 hover:text-slate-800 transition-all text-sm uppercase">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- 新增：右下角至頂懸浮按鈕 -->
-  <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all duration-300 z-[100] hover:bg-indigo-700 hover:-translate-y-2 active:scale-90 border-2 border-white/50 pointer-events-none">
-    <i class="fa-solid fa-chevron-up text-xl"></i>
-  </button>
+  <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all z-[100] pointer-events-none hover:bg-indigo-700"><i class="fa-solid fa-chevron-up text-xl"></i></button>
 
-  <footer class="bg-white py-12 text-center border-t border-slate-100">
-    <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">© 2026 LU FAMILY. ALL RIGHTS RESERVED.</p>
-  </footer>
+  <footer class="bg-white py-12 text-center border-t border-slate-100"><p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">© 2026 LU FAMILY. ALL RIGHTS RESERVED.</p></footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true, easing: 'ease-out-quint' });
+    AOS.init({ duration: 1000, once: true });
 
-    // 至頂按鈕邏輯
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        backToTopBtn.classList.add('show');
-      } else {
-        backToTopBtn.classList.remove('show');
-      }
-    });
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // 數據計數器
+    function startCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const inc = target / 50;
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 25);
+          } else { counter.innerText = target; }
+        };
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) { updateCount(); observer.unobserve(counter); }
+        }, { threshold: 0.5 });
+        observer.observe(counter);
+      });
+    }
 
-    // 歷史 Modal 邏輯
+    // Modal 控制
     function openHistoryModal() {
       const modal = document.getElementById('historyModal');
       const container = document.getElementById('historyModalContainer');
       modal.classList.remove('hidden');
-      setTimeout(() => { 
-        container.classList.remove('scale-95', 'opacity-0'); 
-        container.classList.add('scale-100', 'opacity-100'); 
-      }, 10);
+      setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 10);
     }
     function closeHistoryModal() {
       const modal = document.getElementById('historyModal');
@@ -321,64 +289,56 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    // 成員數據庫
     const memberData = {
-      member1: { 
-        name: "呂陳英妹", 
-        nick: "家族最強指揮官", 
-        title: "家庭長", 
-        business: "雖然是家族最強指揮官，但很多事還是會問其他主管。", 
-        theme: "bg-indigo-500", 
-        isPhoto: false, 
-        icon: "fa-crown" 
-      },
-      member2: { 
-        name: "呂佳寯", 
-        nick: "國防和政戰是我的專業", 
-        title: "行政管理", 
-        business: "雖然是負責單位行政，但主要專業是政戰。",
-        theme: "bg-emerald-500", 
-        isPhoto: true, 
-        photo: "110417006.jpg" 
-      },
-      member3: { 
-        name: "呂佳芯", 
-        nick: "氣氛製造機", 
-        title: "分隊長", 
-        business: "突然就被叫來擔任。", 
-        theme: "bg-pink-500", 
-        isPhoto: false, 
-        icon: "fa-wand-magic-sparkles" 
-      }
+      member1: { name: "呂陳英妹", nick: "家族最強指揮官", title: "家庭長", business: "雖然是最強指揮官，但很多事還是會問其他主管。", theme: "bg-indigo-500", isPhoto: false, icon: "fa-crown" },
+      member2: { name: "呂佳寯", nick: "國防和政戰是我的專業", title: "行政管理", business: "雖然負責行政，但專業主要在政戰。", theme: "bg-emerald-500", isPhoto: true, photo: "110417006.jpg" },
+      member3: { name: "呂佳芯", nick: "氣氛製造機", title: "分隊長", business: "突然就被叫來擔任。", theme: "bg-pink-500", isPhoto: false, icon: "fa-wand-magic-sparkles" }
     };
 
     function openMemberModal(id) {
       const data = memberData[id];
       const modal = document.getElementById('memberModal');
       const container = document.getElementById('modalContainer');
-      const avatarBox = document.getElementById('modalAvatarBox');
-      
       document.getElementById('modalTheme').className = `h-32 ${data.theme} opacity-20`;
       document.getElementById('modalName').innerText = data.name;
       document.getElementById('modalNick').innerText = `「 ${data.nick} 」`;
       document.getElementById('modalTitle').innerText = data.title;
       document.getElementById('modalBusiness').innerText = data.business;
-      
-      avatarBox.innerHTML = data.isPhoto ? `<img src="${data.photo}" class="w-full h-full object-cover">` : `<i class="fa-solid ${data.icon} ${data.theme.replace('bg-', 'text-')}"></i>`;
-      
+      document.getElementById('modalAvatarBox').innerHTML = data.isPhoto ? `<img src="${data.photo}" class="w-full h-full object-cover">` : `<i class="fa-solid ${data.icon} ${data.theme.replace('bg-', 'text-')}"></i>`;
       modal.classList.remove('hidden');
-      setTimeout(() => { 
-        container.classList.remove('scale-95', 'opacity-0'); 
-        container.classList.add('scale-100', 'opacity-100'); 
-      }, 10);
+      setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 10);
     }
-
     function closeModal() {
       const modal = document.getElementById('memberModal');
       const container = document.getElementById('modalContainer');
       container.classList.add('scale-95', 'opacity-0');
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
+
+    function updateFamilyDashboard() {
+      const now = new Date();
+      document.getElementById('dayNumber').innerText = now.getDate();
+      document.getElementById('monthYear').innerText = `${now.toLocaleString('en-US', {month: 'long'})}, ${now.getFullYear()}`;
+      document.getElementById('currentDateText').innerText = now.toLocaleDateString('zh-TW', { weekday: 'long' });
+      const birthdays = { 4: "呂佳寯 (行政管理)" };
+      document.getElementById('birthdayName').innerText = birthdays[now.getMonth()] || "本月無壽星";
+      const countdownDate = new Date("Sep 25, 2026 18:00:00").getTime();
+      setInterval(() => {
+        const distance = countdownDate - new Date().getTime();
+        document.getElementById("cdDays").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        document.getElementById("cdHours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      }, 1000);
+    }
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) backToTopBtn.classList.add('show');
+      else backToTopBtn.classList.remove('show');
+    });
+    backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    updateFamilyDashboard();
+    startCounters();
   </script>
 </body>
 </html>
