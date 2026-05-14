@@ -20,83 +20,69 @@
     .modern-stats-bg { background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
     .neon-glow { text-shadow: 0 0 25px rgba(99, 102, 241, 0.8); color: #fff; }
     
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     video { border-radius: 1.5rem; width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   </style>
 </head>
 
-<body class="text-slate-700">
+<body class="text-slate-700 text-sm md:text-base font-medium leading-relaxed">
 
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2 md:gap-3">
+        <div class="w-9 h-9 md:w-11 md:h-11 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg text-sm md:text-base"><i class="fa-solid fa-house"></i></div>
         <div>
-          <h1 class="font-bold text-base md:text-lg text-slate-800 leading-tight">呂氏家庭資訊網<span class="text-indigo-600 text-sm ml-1">3.0</span></h1>
-          <p class="text-[8px] md:text-[10px] uppercase tracking-widest text-slate-400 font-bold">Family Hub</p>
+          <h1 class="font-bold text-sm md:text-lg text-slate-800 leading-tight">呂氏家庭資訊網<span class="text-indigo-600 text-[10px] md:text-sm ml-1 font-black">3.0</span></h1>
+          <p class="text-[7px] md:text-[10px] uppercase tracking-widest text-slate-400 font-bold">Family Hub</p>
         </div>
       </div>
-      <div class="hidden md:flex items-center gap-6 text-sm font-bold">
-        <a href="#home" class="text-slate-500 hover:text-indigo-600 transition-colors">首頁</a>
-        <a href="#activity" class="text-slate-500 hover:text-indigo-600 transition-colors">活動回顧</a>
-        <a href="#dashboard" class="text-slate-500 hover:text-indigo-600 transition-colors">動態看板</a>
-        <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-md font-black">
-          <i class="fa-solid fa-bullhorn"></i> 消息中心
+      <div class="hidden md:flex items-center gap-6 text-sm font-black text-slate-500">
+        <a href="#home" class="hover:text-indigo-600 transition-colors">首頁</a>
+        <a href="#activity" class="hover:text-indigo-600 transition-colors">活動回顧</a>
+        <a href="#dashboard" class="hover:text-indigo-600 transition-colors">動態看板</a>
+        <button onclick="openHistoryModal()" class="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-md">
+          消息中心
         </button>
       </div>
-      <button onclick="openHistoryModal()" class="md:hidden w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-        <i class="fa-solid fa-bell"></i>
+      <button onclick="openHistoryModal()" class="md:hidden w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm">
+        <i class="fa-solid fa-bell text-lg"></i>
       </button>
     </div>
   </nav>
 
-  <section id="home" class="py-12 md:py-20 flex items-center">
+  <section id="home" class="py-10 md:py-20 flex items-center overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
       <div data-aos="fade-right">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-black mb-6 border border-indigo-100 uppercase tracking-widest">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-[10px] md:text-xs font-black mb-6 border border-indigo-100 uppercase tracking-widest">
           <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span></span>
           System Online 2026
         </div>
-        <h2 class="text-4xl md:text-6xl font-black leading-tight text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
-        <p class="mt-6 md:mt-8 text-base md:text-lg text-slate-500 max-w-md font-medium">呂氏家族 16 位成員的專屬空間，紀錄平凡日子裡的每一份暖心回顧。</p>
+        <h2 class="text-3xl md:text-6xl font-black leading-tight text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
+        <p class="mt-4 md:mt-8 text-sm md:text-lg text-slate-500 max-w-md font-bold leading-relaxed">呂氏家族 16 位成員的專屬空間，紀錄平凡日子裡的每一份暖心回顧。</p>
       </div>
       
       <div class="relative flex justify-center w-full" data-aos="zoom-in">
-        <div class="glass-card rounded-[40px] p-8 md:p-10 shadow-2xl border-white hover-float w-full max-w-lg">
-          <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="glass-card rounded-[35px] md:rounded-[40px] p-6 md:p-10 shadow-2xl border-white hover-float w-full max-w-lg border-2">
+          <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-8">
             <div class="flex-shrink-0 text-center">
-              <div class="w-20 h-20 rounded-3xl bg-indigo-50 flex items-center justify-center mx-auto mb-4 shadow-inner text-3xl text-indigo-500">
-                <i class="fa-solid fa-shield-heart"></i>
-              </div>
-              <h3 class="text-2xl font-black text-slate-800 tracking-tight">LU FAMILY</h3>
-              <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Network 3.0</p>
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-indigo-50 flex items-center justify-center mx-auto mb-3 shadow-inner text-2xl md:text-3xl text-indigo-500"><i class="fa-solid fa-shield-heart"></i></div>
+              <h3 class="text-lg md:text-xl font-black text-slate-800">LU FAMILY</h3>
+              <p class="text-slate-400 font-bold uppercase tracking-widest text-[9px]">Network 3.0</p>
             </div>
-
-            <div class="hidden md:block w-px h-24 bg-slate-200/50"></div>
-
-            <div class="flex-1 w-full space-y-6">
-              <div class="flex items-center gap-4">
-                <div class="text-5xl font-black text-indigo-600 leading-none" id="heroDay">15</div>
+            <div class="hidden sm:block w-px h-24 bg-slate-200/50"></div>
+            <div class="flex-1 w-full space-y-4 md:space-y-6 text-center sm:text-left">
+              <div class="flex items-center gap-4 justify-center sm:justify-start">
+                <div class="text-4xl md:text-5xl font-black text-indigo-600" id="heroDay">15</div>
                 <div>
-                  <div class="text-slate-800 font-black text-sm" id="heroMonthYear">May, 2026</div>
-                  <div class="text-slate-400 text-[10px] font-bold uppercase tracking-widest" id="heroDayName">Friday</div>
+                  <div class="text-xs md:text-base text-slate-800 font-black" id="heroMonthYear">May, 2026</div>
+                  <div class="text-slate-400 text-[8px] md:text-[10px] font-bold uppercase tracking-widest" id="heroDayName">Friday</div>
                 </div>
               </div>
-
-              <div class="grid grid-cols-3 gap-2">
-                <div class="text-center">
-                  <p class="text-[9px] text-slate-400 font-black mb-1">板橋</p>
-                  <p class="text-xs font-black text-sky-600">28° <i class="fa-solid fa-sun text-[8px]"></i></p>
-                </div>
-                <div class="text-center border-x border-slate-100">
-                  <p class="text-[9px] text-slate-400 font-black mb-1">臺中</p>
-                  <p class="text-xs font-black text-emerald-600">30° <i class="fa-solid fa-cloud-sun text-[8px]"></i></p>
-                </div>
-                <div class="text-center">
-                  <p class="text-[9px] text-slate-400 font-black mb-1">平鎮</p>
-                  <p class="text-xs font-black text-orange-600">27° <i class="fa-solid fa-cloud text-[8px]"></i></p>
-                </div>
+              <div class="grid grid-cols-3 gap-1 border-t border-slate-100 pt-4">
+                <div class="text-center"><p class="text-[8px] md:text-[10px] text-slate-400 font-bold mb-1">板橋</p><p class="text-[10px] md:text-xs font-black text-sky-600">28° <i class="fa-solid fa-sun text-[8px]"></i></p></div>
+                <div class="text-center border-x border-slate-100"><p class="text-[8px] md:text-[10px] text-slate-400 font-bold mb-1">臺中</p><p class="text-[10px] md:text-xs font-black text-emerald-600">30° <i class="fa-solid fa-cloud-sun text-[8px]"></i></p></div>
+                <div class="text-center"><p class="text-[8px] md:text-[10px] text-slate-400 font-bold mb-1">平鎮</p><p class="text-[10px] md:text-xs font-black text-orange-600">27° <i class="fa-solid fa-cloud text-[8px]"></i></p></div>
               </div>
             </div>
           </div>
@@ -105,19 +91,19 @@
     </div>
   </section>
 
-  <section id="stats" class="py-16 md:py-24 modern-stats-bg text-white">
+  <section id="stats" class="py-12 md:py-24 modern-stats-bg text-white">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-0">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-0">
         <div class="text-center px-4" data-aos="fade-up">
-          <div class="text-4xl md:text-6xl font-black neon-glow mb-4 tracking-tighter"><span class="counter" data-target="16">0</span></div>
-          <p class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">家族成員總數</p>
+          <div class="text-4xl md:text-6xl font-black neon-glow mb-2 md:mb-4 tracking-tighter"><span class="counter" data-target="16">0</span></div>
+          <p class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">成員總數</p>
         </div>
         <div class="text-center px-4 md:border-l md:border-white/10" data-aos="fade-up" data-aos-delay="100">
-          <div class="text-4xl md:text-6xl font-black neon-glow mb-4 tracking-tighter"><span class="counter" data-target="3">0</span></div>
-          <p class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">分佈核心城市</p>
+          <div class="text-4xl md:text-6xl font-black neon-glow mb-2 md:mb-4 tracking-tighter"><span class="counter" data-target="3">0</span></div>
+          <p class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">核心城市</p>
         </div>
-        <div class="text-center px-4 md:border-l md:border-white/10 col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-4xl md:text-6xl font-black neon-glow mb-4 tracking-tighter"><span class="counter" data-target="100">0</span><span class="text-xl md:text-2xl text-indigo-400 font-black ml-1">%</span></div>
+        <div class="text-center px-4 md:border-l md:border-white/10 col-span-2 md:col-span-1 border-t md:border-t-0 pt-8 md:pt-0" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-4xl md:text-6xl font-black neon-glow mb-2 md:mb-4 tracking-tighter"><span class="counter" data-target="100">0</span><span class="text-xl md:text-2xl text-indigo-400 font-black ml-1">%</span></div>
           <p class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">家族向心力</p>
         </div>
       </div>
@@ -125,21 +111,21 @@
   </section>
 
   <section id="activity" class="py-16 md:py-24 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 text-center mb-12 md:mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-black text-slate-800">近期活動回顧</h2>
-        <div class="w-16 h-1.5 bg-pink-500 mx-auto mt-4 rounded-full"></div>
+    <div class="max-w-7xl mx-auto px-6 text-center mb-10 md:mb-16" data-aos="fade-up">
+        <h2 class="text-2xl md:text-4xl font-black text-slate-800 tracking-tight">近期活動回顧</h2>
+        <div class="w-12 md:w-16 h-1.5 bg-pink-500 mx-auto mt-4 rounded-full"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10 md:gap-12 items-center">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
         <div class="lg:col-span-6 order-2 lg:order-1" data-aos="fade-right">
-          <div class="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl hover-float border-4 md:border-8 border-white"><img src="S__23732244.jpg" class="w-full h-auto"></div>
-          <p class="mt-6 text-center text-slate-400 font-bold italic text-sm">2026 母親節活動家族合照</p>
+          <div class="rounded-[2rem] overflow-hidden shadow-2xl border-4 md:border-8 border-white"><img src="S__23732244.jpg" class="w-full h-auto"></div>
+          <p class="mt-4 text-center text-slate-400 font-black italic text-[11px] md:text-sm">2026 母親節活動家族合照</p>
         </div>
         <div class="lg:col-span-6 order-1 lg:order-2" data-aos="fade-left">
-          <div class="glass-card p-6 md:p-8 rounded-[2.5rem] md:rounded-[3.5rem] shadow-xl border-white hover-float">
+          <div class="glass-card p-4 md:p-8 rounded-[2.5rem] md:rounded-[3.5rem] shadow-xl border-white hover-float">
             <video controls poster="video_poster.jpg" playsinline><source src="母親節MV.mp4" type="video/mp4"></video>
-            <div class="mt-8 px-2 text-center lg:text-left">
-              <h4 class="text-xl md:text-2xl font-black text-slate-800">2026 溫馨母親節慶祝活動</h4>
-              <p class="text-slate-500 mt-3 text-sm md:text-base font-bold leading-relaxed">紀錄與家人相聚的每一刻喜悅與感人歌聲。</p>
+            <div class="mt-6 md:mt-8 px-2 text-center lg:text-left">
+              <h4 class="text-lg md:text-2xl font-black text-slate-800 tracking-tight">2026 溫馨母親節慶祝活動</h4>
+              <p class="text-slate-500 mt-2 text-xs md:text-base font-black leading-relaxed">紀錄與家人相聚的每一刻喜悅與感人歌聲。</p>
             </div>
           </div>
         </div>
@@ -148,159 +134,167 @@
 
   <section id="dashboard" class="py-16 md:py-24 bg-slate-50/50">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-        
-        <div class="glass-card rounded-[40px] p-10 hover-float border-white shadow-sm bg-gradient-to-br from-white to-pink-50/20 flex items-center gap-8" data-aos="fade-up">
-          <div class="w-16 h-16 rounded-3xl bg-pink-500 text-white flex items-center justify-center shadow-lg text-3xl">
-            <i class="fa-solid fa-cake-candles"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-black text-slate-800 mb-2">本月壽星</h3>
-            <div class="p-4 rounded-2xl bg-white shadow-sm border border-pink-100 flex items-center gap-3">
-              <div class="text-pink-500 text-xl"><i class="fa-solid fa-gift"></i></div>
-              <h4 class="text-lg font-black text-slate-700" id="birthdayName">載入中...</h4>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
+        <div class="glass-card rounded-[35px] md:rounded-[40px] p-6 md:p-10 hover-float border-white shadow-sm bg-gradient-to-br from-white to-pink-50/20 flex flex-col sm:flex-row items-center gap-6" data-aos="fade-up">
+          <div class="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-pink-500 text-white flex items-center justify-center shadow-lg text-2xl md:text-4xl shrink-0"><i class="fa-solid fa-cake-candles"></i></div>
+          <div class="text-center sm:text-left flex-1">
+            <h3 class="text-lg md:text-2xl font-black text-slate-800 mb-2 md:mb-3 tracking-tight">本月壽星</h3>
+            <div class="p-3 md:p-5 rounded-2xl bg-white shadow-sm border border-pink-100 flex items-center justify-center sm:justify-start gap-4">
+              <div class="text-pink-500 text-lg md:text-2xl"><i class="fa-solid fa-gift"></i></div>
+              <h4 class="text-base md:text-2xl font-black text-slate-700 tracking-tight" id="birthdayName">載入中...</h4>
             </div>
           </div>
         </div>
-
-        <div class="glass-card rounded-[40px] p-10 hover-float bg-slate-900 text-white shadow-2xl flex items-center justify-between" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center gap-6">
-            <div class="w-16 h-16 rounded-3xl bg-amber-500 text-white flex items-center justify-center shadow-lg text-3xl">
-              <i class="fa-solid fa-hourglass-start"></i>
+        <div class="glass-card rounded-[35px] md:rounded-[40px] p-6 md:p-10 hover-float bg-slate-900 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center gap-4 md:gap-6 text-center sm:text-left">
+            <div class="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-amber-500 text-white flex items-center justify-center shadow-lg text-2xl md:text-4xl shrink-0"><i class="fa-solid fa-fire-burner"></i></div>
+            <div>
+                <h3 class="text-lg md:text-2xl font-black text-amber-500 mb-1 tracking-tight">中秋烤肉</h3>
+                <p class="text-slate-400 font-bold text-[8px] md:text-[10px] uppercase tracking-widest">Countdown</p>
             </div>
-            <h3 class="text-xl font-black text-amber-500">中秋烤肉倒數</h3>
           </div>
-          <div class="flex gap-4 text-center">
-            <div class="bg-white/10 p-4 min-w-[80px] rounded-2xl border border-white/5">
-              <div class="text-3xl font-black" id="cdDays">00</div>
-              <div class="text-[10px] opacity-50 uppercase tracking-widest">Days</div>
+          <div class="flex gap-4">
+            <div class="bg-white/10 p-3 min-w-[70px] md:p-5 md:min-w-[100px] rounded-2xl text-center border border-white/5">
+              <div class="text-xl md:text-4xl font-black" id="cdDays">00</div><div class="text-[7px] md:text-[10px] opacity-40 font-bold uppercase mt-1">Days</div>
             </div>
-            <div class="bg-white/10 p-4 min-w-[80px] rounded-2xl border border-white/5">
-              <div class="text-3xl font-black" id="cdHours">00</div>
-              <div class="text-[10px] opacity-50 uppercase tracking-widest">Hours</div>
+            <div class="bg-white/10 p-3 min-w-[70px] md:p-5 md:min-w-[100px] rounded-2xl text-center border border-white/5">
+              <div class="text-xl md:text-4xl font-black" id="cdHours">00</div><div class="text-[7px] md:text-[10px] opacity-40 font-bold uppercase mt-1">Hours</div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <section id="notice" class="py-16 md:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div data-aos="fade-right">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg text-xl"><i class="fa-solid fa-bullhorn"></i></div>
-          <h2 class="text-2xl md:text-3xl font-black text-slate-800">最新公告</h2>
+        <div class="flex items-center gap-4 mb-6 md:mb-8 text-slate-800">
+          <div class="w-10 h-10 md:w-11 h-11 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg text-lg md:text-xl"><i class="fa-solid fa-bullhorn"></i></div>
+          <h2 class="text-xl md:text-3xl font-black tracking-tight">最新公告</h2>
         </div>
-        <div class="bg-slate-50 rounded-[35px] md:rounded-[40px] p-8 md:p-10 hover-float border border-slate-100 shadow-sm" onclick="openHistoryModal()">
-          <div class="flex justify-between mb-6">
-            <span class="bg-red-500 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>
-            <span class="text-[10px] font-bold text-slate-400 italic">2026-05-15</span>
+        <div class="bg-slate-50 rounded-[30px] md:rounded-[40px] p-6 md:p-10 border border-slate-100 shadow-sm hover-float" onclick="openHistoryModal()">
+          <div class="flex justify-between mb-4 md:mb-6">
+            <span class="bg-red-500 text-white text-[7px] md:text-[9px] font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full uppercase animate-pulse">重要消息</span>
+            <span class="text-[9px] md:text-[10px] font-bold text-slate-400 italic">2026-05-15</span>
           </div>
-          <h3 class="text-xl md:text-2xl font-black text-slate-800">114年度所得稅開始申報</h3>
-          <p class="mt-4 text-slate-500 font-bold leading-relaxed">請成員儘早申報，申報期至 2026/06/01 止。</p>
+          <h3 class="text-lg md:text-2xl font-black text-slate-800 tracking-tight leading-tight">114年度所得稅開始申報</h3>
+          <p class="mt-3 md:mt-4 text-xs md:text-base text-slate-500 font-black leading-relaxed">請成員儘早申報，申報期至 2026/06/01 止。</p>
         </div>
       </div>
       <div data-aos="fade-left">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg text-xl"><i class="fa-solid fa-list-check"></i></div>
-          <h2 class="text-2xl md:text-3xl font-black text-slate-800">活動進度</h2>
+        <div class="flex items-center gap-4 mb-6 md:mb-8 text-slate-800">
+          <div class="w-10 h-10 md:w-11 h-11 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg text-lg md:text-xl"><i class="fa-solid fa-list-check"></i></div>
+          <h2 class="text-xl md:text-3xl font-black tracking-tight">活動進度</h2>
         </div>
-        <div class="bg-slate-50 rounded-[35px] md:rounded-[40px] p-8 md:p-10 hover-float border border-slate-100 space-y-6 shadow-sm">
-          <div class="flex items-center gap-5"><div class="w-4 h-4 rounded-full bg-slate-300"></div><p class="text-base md:text-lg font-black text-slate-800">母親節晚宴 <span class="text-slate-400 font-bold ml-3 text-xs px-2 py-1 bg-white rounded">已結束</span></p></div>
-          <div class="flex items-center gap-5"><div class="w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-50"></div><p class="text-base md:text-lg font-black text-slate-800 italic">中秋家族烤肉 <span class="text-indigo-500 font-bold ml-3 text-xs">規劃中</span></p></div>
+        <div class="bg-slate-50 rounded-[30px] md:rounded-[40px] p-6 md:p-10 border border-slate-100 space-y-5 md:space-y-6 shadow-sm font-black">
+          <div class="flex items-center gap-4 text-sm md:text-lg"><div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div><p>母親節晚宴 <span class="text-slate-400 text-[10px] md:text-xs px-2 py-1 bg-white rounded ml-2 uppercase font-bold tracking-widest">已結束</span></p></div>
+          <div class="flex items-center gap-4 text-sm md:text-lg text-indigo-600"><div class="w-2.5 h-2.5 rounded-full bg-indigo-600 ring-4 ring-indigo-50"></div><p class="italic">中秋家族烤肉 <span class="text-indigo-500 text-[10px] md:text-xs ml-2 font-bold uppercase tracking-widest bg-indigo-50 px-2 py-1 rounded">規劃中</span></p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="members" class="py-16 md:py-24 bg-slate-50/50">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="mb-12 md:mb-20" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-black text-slate-800">幕僚團隊</h2><div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div></div>
+  <section id="members" class="py-16 md:py-24 bg-slate-50/50 text-center">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 md:mb-16" data-aos="fade-up"><h2 class="text-2xl md:text-4xl font-black text-slate-800 tracking-tight">幕僚團隊</h2><div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div></div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-        <div onclick="openMemberModal('member1')" class="glass-card rounded-[30px] p-8 hover-float group border-2 border-transparent hover:border-indigo-200">
-          <div class="w-20 h-20 rounded-3xl bg-slate-200 flex items-center justify-center text-slate-400 text-3xl mb-6 mx-auto group-hover:bg-indigo-50 transition-all"><i class="fa-solid fa-user"></i></div>
-          <h3 class="text-xl font-black text-slate-800">呂陳英妹</h3><p class="text-indigo-600 font-bold text-xs">家庭長</p>
+        <div onclick="openMemberModal('member1')" class="glass-card rounded-[25px] md:rounded-[30px] p-6 md:p-10 hover-float group border-2 border-transparent hover:border-indigo-200">
+          <div class="w-14 h-14 md:w-24 md:h-24 rounded-2xl bg-slate-200 flex items-center justify-center text-slate-400 text-2xl md:text-4xl mb-4 md:mb-6 mx-auto group-hover:bg-indigo-50 transition-all shadow-sm"><i class="fa-solid fa-user"></i></div>
+          <h3 class="text-base md:text-2xl font-black text-slate-800 tracking-tight">呂陳英妹</h3>
+          <p class="text-indigo-600 font-black text-[9px] md:text-sm uppercase tracking-[0.2em] mt-3 pt-2 border-t border-indigo-100 inline-block">家庭長</p>
         </div>
-        <div onclick="openMemberModal('member2')" class="glass-card rounded-[30px] p-8 hover-float group border-2 border-transparent hover:border-emerald-200">
-          <div class="w-20 h-20 rounded-3xl bg-emerald-50 mb-6 overflow-hidden shadow-md mx-auto border-4 border-white"><img src="110417006.jpg" class="w-full h-full object-cover"></div>
-          <h3 class="text-xl font-black text-slate-800">呂佳寯</h3><p class="text-emerald-600 font-bold text-xs">行政管理</p>
+        <div onclick="openMemberModal('member2')" class="glass-card rounded-[25px] md:rounded-[30px] p-6 md:p-10 hover-float group border-2 border-transparent hover:border-emerald-200">
+          <div class="w-14 h-14 md:w-24 md:h-24 rounded-2xl bg-emerald-50 mb-4 md:mb-6 overflow-hidden shadow-md mx-auto border-2 border-white"><img src="110417006.jpg" class="w-full h-full object-cover"></div>
+          <h3 class="text-base md:text-2xl font-black text-slate-800 tracking-tight">呂佳寯</h3>
+          <p class="text-emerald-600 font-black text-[9px] md:text-sm uppercase tracking-[0.2em] mt-3 pt-2 border-t border-emerald-100 inline-block">行政管理</p>
         </div>
-        <div onclick="openMemberModal('member3')" class="glass-card rounded-[30px] p-8 hover-float group border-2 border-transparent hover:border-pink-200">
-          <div class="w-20 h-20 rounded-3xl bg-slate-200 flex items-center justify-center text-slate-400 text-3xl mb-6 mx-auto group-hover:bg-pink-50 transition-all"><i class="fa-solid fa-user"></i></div>
-          <h3 class="text-xl font-black text-slate-800">呂佳芯</h3><p class="text-pink-600 font-bold text-xs">分隊長</p>
+        <div onclick="openMemberModal('member3')" class="glass-card rounded-[25px] md:rounded-[30px] p-6 md:p-10 hover-float group border-2 border-transparent hover:border-pink-200">
+          <div class="w-14 h-14 md:w-24 md:h-24 rounded-2xl bg-slate-200 flex items-center justify-center text-slate-400 text-2xl md:text-4xl mb-4 md:mb-6 mx-auto group-hover:bg-pink-50 transition-all shadow-sm"><i class="fa-solid fa-user"></i></div>
+          <h3 class="text-base md:text-2xl font-black text-slate-800 tracking-tight">呂佳芯</h3>
+          <p class="text-pink-600 font-black text-[9px] md:text-sm uppercase tracking-[0.2em] mt-3 pt-2 border-t border-pink-100 inline-block">分隊長</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="location" class="py-16 md:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="mb-12" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-black text-slate-800">家族足跡分佈</h2><div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div></div>
+  <section id="location" class="py-16 md:py-24 bg-white text-center">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 md:mb-16" data-aos="fade-up"><h2 class="text-2xl md:text-4xl font-black text-slate-800 tracking-tight">家族足跡分佈</h2><div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div></div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <div class="glass-card rounded-[35px] p-8 border-b-4 border-indigo-500 shadow-sm" data-aos="fade-up">
-          <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-city"></i></div>
-          <h3 class="text-xl font-black text-slate-800">新北板橋</h3><p class="text-indigo-600 font-bold text-base mt-2">核心據點(總部)</p><div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-xs">大總部/共 7 名成員</div>
+        <div class="glass-card rounded-[25px] p-6 md:p-10 border-b-4 border-indigo-500 shadow-sm" data-aos="fade-up">
+          <div class="w-10 h-10 md:w-16 md:h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl md:text-3xl mx-auto mb-4 md:mb-6"><i class="fa-solid fa-city"></i></div>
+          <h3 class="text-lg md:text-2xl font-black text-slate-800 tracking-tight">新北板橋(大本營)</h3>
+          <p class="text-indigo-600 font-bold text-xs md:text-lg mt-1 md:mt-2 uppercase tracking-wide font-black">核心據點</p>
+          <div class="mt-4 md:mt-6 pt-4 border-t border-slate-100 text-slate-400 text-[9px] md:text-sm font-black tracking-tight">總部/共 7 名成員</div>
         </div>
-        <div class="glass-card rounded-[35px] p-8 border-b-4 border-emerald-500 shadow-sm" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-tree"></i></div>
-          <h3 class="text-xl font-black text-slate-800">臺中北區、中區</h3><p class="text-emerald-600 font-bold text-base mt-2">第一分支</p><div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-xs">人數第二多及分部最多單位/共 6 名成員</div>
+        <div class="glass-card rounded-[25px] p-6 md:p-10 border-b-4 border-emerald-500 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-10 h-10 md:w-16 md:h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl md:text-3xl mx-auto mb-4 md:mb-6"><i class="fa-solid fa-tree"></i></div>
+          <h3 class="text-lg md:text-2xl font-black text-slate-800 tracking-tight">臺中北區、中區</h3>
+          <p class="text-emerald-600 font-bold text-xs md:text-lg mt-1 md:mt-2 uppercase tracking-wide font-black">第一分支</p>
+          <div class="mt-4 md:mt-6 pt-4 border-t border-slate-100 text-slate-400 text-[9px] md:text-sm font-black tracking-tight">人數第二多及分支最多單位 / 共 6 名成員</div>
         </div>
-        <div class="glass-card rounded-[35px] p-8 border-b-4 border-orange-500 shadow-sm" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-plane-up"></i></div>
-          <h3 class="text-xl font-black text-slate-800">桃園平鎮</h3><p class="text-orange-600 font-bold text-base mt-2">第二分支</p><div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-xs">交通便利/共 3 名成員</div>
+        <div class="glass-card rounded-[25px] p-6 md:p-10 border-b-4 border-orange-500 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-10 h-10 md:w-16 md:h-16 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-xl md:text-3xl mx-auto mb-4 md:mb-6"><i class="fa-solid fa-plane-up"></i></div>
+          <h3 class="text-lg md:text-2xl font-black text-slate-800 tracking-tight">桃園平鎮</h3>
+          <p class="text-orange-600 font-bold text-xs md:text-lg mt-1 md:mt-2 uppercase tracking-wide font-black">第二分支</p>
+          <div class="mt-4 md:mt-6 pt-4 border-t border-slate-100 text-slate-400 text-[9px] md:text-sm font-black tracking-tight">交通便利/共 3 名成員</div>
         </div>
       </div>
     </div>
   </section>
 
-  <button onclick="showFamilySurprise()" class="fixed bottom-24 right-6 md:right-8 w-12 h-12 md:w-14 md:h-14 bg-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all z-[100] animate-bounce">
-    <i class="fa-solid fa-heart"></i>
-  </button>
+  <button onclick="showFamilySurprise()" class="fixed bottom-24 right-6 md:right-8 w-12 h-12 md:w-14 md:h-14 bg-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all z-[100] animate-bounce"><i class="fa-solid fa-heart text-sm md:text-lg"></i></button>
 
   <div id="surpriseModal" class="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-slate-900/40 backdrop-blur-sm hidden" onclick="closeSurprise()">
-    <div class="bg-white rounded-[40px] p-8 md:p-10 max-w-sm w-full text-center shadow-2xl border-4 border-pink-100" onclick="event.stopPropagation()">
-      <div class="text-pink-500 text-4xl mb-6"><i class="fa-solid fa-quote-left"></i></div>
-      <p id="surpriseText" class="text-xl md:text-2xl font-black text-slate-800 leading-relaxed mb-8"></p>
-      <p class="text-slate-400 font-bold mb-8 text-sm">— 呂氏家庭</p>
-      <button onclick="closeSurprise()" class="w-full py-4 rounded-2xl bg-pink-500 text-white font-black hover:bg-pink-600 transition shadow-lg">收到溫馨祝福</button>
+    <div class="bg-white rounded-[35px] md:rounded-[45px] p-8 md:p-12 max-w-sm w-full text-center shadow-2xl border-4 border-pink-100" onclick="event.stopPropagation()">
+      <div class="text-pink-500 text-3xl md:text-4xl mb-6"><i class="fa-solid fa-quote-left"></i></div>
+      <p id="surpriseText" class="text-xl md:text-2xl font-black text-slate-800 leading-relaxed mb-10 tracking-tight"></p>
+      <p class="text-slate-400 font-bold mb-10 text-[10px] md:text-xs tracking-widest uppercase">— Family Hub</p>
+      <button onclick="closeSurprise()" class="w-full py-4 rounded-2xl bg-pink-500 text-white font-black shadow-lg">收到溫馨祝福</button>
     </div>
   </div>
 
   <div id="historyModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="closeHistoryModal()">
-    <div class="bg-white rounded-[40px] w-full max-w-xl shadow-2xl transition-all scale-95 opacity-0 duration-300 overflow-hidden" id="historyModalContainer" onclick="event.stopPropagation()">
-      <div class="p-8 text-left">
-        <div class="flex justify-between items-center mb-8"><div><h3 class="text-2xl font-black text-slate-800">消息中心</h3><p class="text-slate-400 text-[10px] uppercase mt-1">Information Feed</p></div><button onclick="closeHistoryModal()" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-red-500 transition-all"><i class="fa-solid fa-xmark"></i></button></div>
-        <div class="space-y-4 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-          <div class="p-5 rounded-[25px] bg-slate-50 border border-slate-100">
-            <div class="flex items-center gap-2 mb-2"><span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-600 text-[8px] font-black">公告</span><span class="text-[10px] text-slate-300">Today</span></div>
-            <h4 class="font-black text-slate-800 text-base">114年度所得稅已開始申報</h4><p class="text-slate-500 text-xs mt-2">請成員於 2026/06/01 前完成申報。</p>
+    <div class="bg-white rounded-[35px] w-full max-w-xl shadow-2xl transition-all scale-95 opacity-0 duration-300 overflow-hidden" id="historyModalContainer" onclick="event.stopPropagation()">
+      <div class="p-8 text-left text-slate-800">
+        <div class="flex justify-between items-center mb-6"><div><h3 class="text-2xl font-black tracking-tight">消息中心</h3><p class="text-slate-400 text-[8px] md:text-[10px] uppercase font-bold mt-1 tracking-widest">Feed</p></div><button onclick="closeHistoryModal()" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-red-500 transition-all"><i class="fa-solid fa-xmark"></i></button></div>
+        <div class="space-y-4 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar font-black text-xs md:text-sm">
+          <div class="p-5 rounded-[20px] bg-slate-50 border border-slate-100">
+            <div class="flex items-center gap-2 mb-2"><span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-600 text-[8px] font-black uppercase">公告</span><span class="text-[9px] text-slate-300">2026-05-15</span></div>
+            <h4 class="text-base md:text-lg">114年度所得稅已開始申報</h4><p class="text-slate-500 text-[11px] md:text-xs mt-2 font-medium font-black">請成員於 2026/06/01 前完成申報。</p>
           </div>
         </div>
-        <button onclick="closeHistoryModal()" class="mt-8 w-full py-4 rounded-2xl bg-indigo-600 text-white font-black shadow-lg">我知道了</button>
+        <button onclick="closeHistoryModal()" class="mt-8 w-full py-4 rounded-2xl bg-indigo-600 text-white font-black shadow-lg">確認並關閉</button>
       </div>
     </div>
   </div>
 
-  <div id="memberModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeModal()">
-    <div class="bg-white rounded-[40px] w-full max-w-md shadow-2xl transition-all scale-95 opacity-0 duration-300 overflow-hidden" id="modalContainer" onclick="event.stopPropagation()">
-      <div class="relative h-28 bg-slate-100" id="modalTheme"></div>
-      <div class="px-8 pb-10 text-center relative">
-        <div id="modalAvatarBox" class="w-24 h-24 rounded-3xl mx-auto -mt-12 mb-4 overflow-hidden flex items-center justify-center text-3xl shadow-xl border-4 border-white bg-white"></div>
-        <h3 id="modalName" class="text-2xl font-black text-slate-800"></h3><p id="modalNick" class="text-slate-400 text-xs mt-1 mb-6"></p>
-        <div class="bg-slate-50 rounded-[25px] p-5 text-left border border-slate-100">
-          <div class="mb-4"><span class="text-[9px] font-black text-indigo-500 uppercase tracking-widest">Position</span><p id="modalTitle" class="font-black text-slate-700 mt-1"></p></div>
-          <div><span class="text-[9px] font-black text-indigo-500 uppercase tracking-widest">Message</span><p id="modalBusiness" class="text-slate-500 text-xs font-medium mt-1 leading-relaxed"></p></div>
+  <div id="memberModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeModal()">
+    <div class="bg-white rounded-[35px] md:rounded-[45px] w-full max-w-[95%] md:max-w-md shadow-2xl transition-all scale-95 opacity-0 duration-300 overflow-hidden" id="modalContainer" onclick="event.stopPropagation()">
+      <div class="relative h-20 md:h-28 bg-slate-100" id="modalTheme"></div>
+      <div class="px-6 md:px-10 pb-8 md:pb-12 text-center relative text-slate-800">
+        <div id="modalAvatarBox" class="w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl mx-auto -mt-10 md:mt-[-56px] mb-4 overflow-hidden flex items-center justify-center text-3xl md:text-5xl shadow-xl border-4 border-white bg-white"></div>
+        <h3 id="modalName" class="text-xl md:text-3xl font-black tracking-tight"></h3>
+        <p id="modalNick" class="text-slate-400 text-[9px] md:text-xs font-bold mt-1 mb-6 md:mb-8 uppercase tracking-[0.2em]"></p>
+        <div class="bg-slate-50 rounded-[20px] md:rounded-[30px] p-5 md:p-8 text-left border border-slate-100 font-black">
+          <div class="mb-4 md:mb-6">
+            <span class="text-[8px] md:text-[10px] text-indigo-500 uppercase tracking-widest font-black block mb-1">職位 / Position</span>
+            <p id="modalTitle" class="text-sm md:text-lg text-slate-700"></p>
+          </div>
+          <div>
+            <span class="text-[8px] md:text-[10px] text-indigo-500 uppercase tracking-widest font-black block mb-1">想要說什麼 / Message</span>
+            <p id="modalBusiness" class="text-[11px] md:text-base text-slate-500 font-medium leading-relaxed"></p>
+          </div>
         </div>
-        <button onclick="closeModal()" class="mt-6 w-full py-4 rounded-xl border-2 border-slate-100 font-black text-slate-400 hover:text-slate-800 transition-all text-xs">CLOSE</button>
+        <button onclick="closeModal()" class="mt-6 md:mt-8 w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-slate-100 font-black text-slate-400 hover:text-slate-800 hover:border-slate-300 transition-all text-[10px] md:text-xs uppercase tracking-widest">Close Window</button>
       </div>
     </div>
   </div>
 
-  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all z-[100] pointer-events-none hover:bg-indigo-700"><i class="fa-solid fa-chevron-up"></i></button>
+  <button id="backToTop" class="fixed bottom-6 right-6 w-11 h-11 md:w-12 md:h-12 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all z-[100] pointer-events-none hover:bg-indigo-700"><i class="fa-solid fa-chevron-up text-sm md:text-base"></i></button>
 
-  <footer class="bg-white py-10 text-center border-t border-slate-100"><p class="text-[8px] font-black text-slate-300 uppercase tracking-[0.4em]">© 2026 LU FAMILY. ALL RIGHTS RESERVED.</p></footer>
+  <footer class="bg-white py-10 text-center border-t border-slate-100"><p class="text-[7px] md:text-[8px] font-black text-slate-300 uppercase tracking-[0.4em]">© 2026 LU FAMILY. ALL RIGHTS RESERVED.</p></footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -352,21 +346,24 @@
     function closeSurprise() { document.getElementById('surpriseModal').classList.add('hidden'); }
 
     const memberData = {
-      member1: { name: "呂陳英妹", nick: "家族最強指揮官", title: "家庭長", business: "雖然是最強指揮官，但很多事還是會問其他主管。", theme: "bg-indigo-500", isPhoto: false, icon: "fa-crown" },
-      member2: { name: "呂佳寯", nick: "國防和政戰是我的專業", title: "行政管理", business: "雖然負責行政，但專業主要在政戰。", theme: "bg-emerald-500", isPhoto: true, photo: "110417006.jpg" },
-      member3: { name: "呂佳芯", nick: "氣氛製造機", title: "分隊長", business: "突然就被叫來擔任。", theme: "bg-pink-500", isPhoto: false, icon: "fa-wand-magic-sparkles" }
+      member1: { name: "呂陳英妹", nick: "號稱:最強指揮官", title: "家庭長", business: "雖然是最強指揮官，但很多事還是會問其他主管。", theme: "bg-indigo-500", isPhoto: false, icon: "fa-crown" },
+      member2: { name: "呂佳寯", nick: "沒有號稱，但國防和政戰是我專業", title: "行政管理", business: "負責行政規劃，帶我的專業是政戰。", theme: "bg-emerald-500", isPhoto: true, photo: "110417006.jpg" },
+      member3: { name: "呂佳芯", nick: "號稱:氣氛製造機", title: "分隊長", business: "雖然是被突然任命，但我會用熱情帶動大家！", theme: "bg-pink-500", isPhoto: false, icon: "fa-wand-magic-sparkles" }
     };
 
     function openMemberModal(id) {
       const data = memberData[id];
       const modal = document.getElementById('memberModal');
       const container = document.getElementById('modalContainer');
-      document.getElementById('modalTheme').className = `h-28 ${data.theme} opacity-20`;
+      const themeHeight = window.innerWidth < 768 ? 'h-20' : 'h-28';
+      document.getElementById('modalTheme').className = `relative ${themeHeight} ${data.theme} opacity-20 transition-all`;
       document.getElementById('modalName').innerText = data.name;
       document.getElementById('modalNick').innerText = `「 ${data.nick} 」`;
       document.getElementById('modalTitle').innerText = data.title;
       document.getElementById('modalBusiness').innerText = data.business;
-      document.getElementById('modalAvatarBox').innerHTML = data.isPhoto ? `<img src="${data.photo}" class="w-full h-full object-cover">` : `<i class="fa-solid ${data.icon} ${data.theme.replace('bg-', 'text-')}"></i>`;
+      const avatarBox = document.getElementById('modalAvatarBox');
+      const iconColor = data.theme.replace('bg-', 'text-');
+      avatarBox.innerHTML = data.isPhoto ? `<img src="${data.photo}" class="w-full h-full object-cover">` : `<i class="fa-solid ${data.icon} ${iconColor}"></i>`;
       modal.classList.remove('hidden');
       setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 10);
     }
@@ -383,10 +380,9 @@
       const monthYear = `${now.toLocaleString('en-US', {month: 'long'})}, ${now.getFullYear()}`;
       const dayName = now.toLocaleDateString('en-US', { weekday: 'long' });
 
-      // 更新首頁卡片
-      document.getElementById('heroDay').innerText = day;
-      document.getElementById('heroMonthYear').innerText = monthYear;
-      document.getElementById('heroDayName').innerText = dayName;
+      if(document.getElementById('heroDay')) document.getElementById('heroDay').innerText = day;
+      if(document.getElementById('heroMonthYear')) document.getElementById('heroMonthYear').innerText = monthYear;
+      if(document.getElementById('heroDayName')) document.getElementById('heroDayName').innerText = dayName;
 
       const birthdays = { 4: "呂佳寯 (行政管理)" };
       document.getElementById('birthdayName').innerText = birthdays[now.getMonth()] || "本月無壽星";
