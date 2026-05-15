@@ -14,11 +14,9 @@
     
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; }
     
-    /* 舊版大圖卡與懸浮特效 */
     .family-card { background: #ffffff; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,1); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
     .family-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(99, 102, 241, 0.08); }
     
-    /* 玻璃擬態圖卡 (分佈區域專用) */
     .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.6); border-radius: 40px; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
     .glass-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(0,0,0,0.06); }
 
@@ -335,7 +333,6 @@
   <script>
     AOS.init({ duration: 800, once: true });
 
-    // 互動視窗數據中心
     const db = {
       member1: { title: "呂陳英妹", sub: "家庭領袖", l1: "職稱", i1: "家庭長", l2: "對大家的話", i2: "向心力由大家共同創造，加油！", theme: "bg-indigo-500", icon: "fa-crown", isImg: false },
       member2: { title: "呂佳寯", sub: "行政參謀", l1: "職稱", i1: "政戰幹部兼行政管理", l2: "對大家的話", i2: "政戰才是我的專業，行政只是支援。", theme: "bg-emerald-500", icon: "img", isImg: true, src: "110417006.jpg" },
@@ -345,7 +342,6 @@
       loc3: { title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up", isImg: false }
     };
 
-    // 📋 最新公告數據庫
     const notices = [
       { id: 1, tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
       { id: 2, tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" }
@@ -357,10 +353,9 @@
       const moreBtn = document.getElementById('moreNoticeBtnContainer');
       if (!container) return; container.innerHTML = ''; if (modalList) modalList.innerHTML = '';
 
-      // 渲染首頁公告
       notices.slice(0, 3).forEach(n => {
         container.innerHTML += `
-          <div class="family-card p-6 cubic-bezier cursor-pointer" onclick="openHistoryModal()">
+          <div class="family-card p-6 cursor-pointer" onclick="openHistoryModal()">
             <div class="flex flex-wrap gap-2 items-center mb-3">
               <span class="${n.color} text-white text-[9px] font-black px-3 py-1 rounded-full">${n.tag}</span>
               <span class="text-slate-400 text-[10px] font-bold tracking-tight tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
@@ -370,7 +365,6 @@
           </div>`;
       });
 
-      // 渲染彈窗內的所有公告
       if (modalList) {
         notices.forEach(n => {
           modalList.innerHTML += `
@@ -384,28 +378,18 @@
             </div>`;
         });
       }
-      
       if (notices.length > 3 && moreBtn) moreBtn.classList.remove('hidden');
     }
 
-    // ❤️ 10句勵志名言小彩蛋
     function showSurprise() { 
-      const qs = [
-        "呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。",
-        "家人的陪伴，是歲月裡最暖、最珍過的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。",
-        "老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門。",
-        "今日的努力，是為了讓呂家未來更加繁盛。","風雨並肩，我們是彼此最重要的守護力量。",
-        "心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"
-      ]; 
+      const qs = ["呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。", "家人的陪伴，是歲月裡最暖、最珍過的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。","老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門。","今日的努力，是為了讓呂家未來更加繁盛。","風雨並肩，我們是彼此最重要的守護力量。","心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"]; 
       document.getElementById('surpriseText').innerText = qs[Math.floor(Math.random() * qs.length)]; 
       document.getElementById('surpriseModal').classList.remove('hidden'); 
     }
     function closeSurprise() { document.getElementById('surpriseModal').classList.add('hidden'); }
 
-    // 💬 留言數據中心
     let msgs = [];
 
-    // 🛠️ 已修復：修正變數清除 Bug (避免點擊當機)
     function postMsg() {
       const nEl = document.getElementById('guestName'); const mEl = document.getElementById('guestMsg');
       if (!nEl || !mEl) return; const n = nEl.value.trim(); const m = mEl.value.trim();
@@ -425,17 +409,15 @@
     }
     function toggleHistory() { document.getElementById('historyMessages').classList.toggle('hidden'); }
 
-    // 🌤️ 氣象同步模組
     function updateWeather() {
       const w = [{c:'板橋',t:28,i:'fa-sun',cl:'text-sky-600'},{c:'臺中',t:30,i:'fa-cloud-sun',cl:'text-emerald-600'},{c:'平鎮',t:27,i:'fa-cloud',cl:'text-orange-600'}];
       const now = new Date();
-      document.getElementById('weatherSyncText').innerText = `同步時間 ${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`;
-      document.getElementById('currentDate').innerText = `${now.getMonth()+1}月${now.getDate()}日`;
-      document.getElementById('mainTemp').innerText = `${w[0].t}°`;
-      document.getElementById('weatherGrid').innerHTML = w.map(x => `<div class="text-center font-black"><p class="text-[10px] md:text-sm text-slate-500 mb-1">${x.c}</p><p class="text-xl md:text-2xl font-black ${x.cl} tech-num mb-1">${x.t}°</p><i class="fa-solid ${x.i} ${x.cl} text-xs md:text-lg"></i></div>`).join('');
+      if(document.getElementById('weatherSyncText')) document.getElementById('weatherSyncText').innerText = `同步時間 ${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`;
+      if(document.getElementById('currentDate')) document.getElementById('currentDate').innerText = `${now.getMonth()+1}月${now.getDate()}日`;
+      if(document.getElementById('mainTemp')) document.getElementById('mainTemp').innerText = `${w[0].t}°`;
+      if(document.getElementById('weatherGrid')) document.getElementById('weatherGrid').innerHTML = w.map(x => `<div class="text-center font-black"><p class="text-[10px] md:text-sm text-slate-500 mb-1">${x.c}</p><p class="text-xl md:text-2xl font-black ${x.cl} tech-num mb-1">${x.t}°</p><i class="fa-solid ${x.i} ${x.cl} text-xs md:text-lg"></i></div>`).join('');
     }
 
-    // 🎛️ 視窗控制核心
     function openInteractiveModal(k) {
       const d = db[k]; document.getElementById('modalTop').className = `h-24 md:h-32 flex items-center justify-center ${d.theme} opacity-80`;
       document.getElementById('modalTitle').innerText = d.title; document.getElementById('modalSub').innerText = d.sub;
@@ -448,20 +430,17 @@
     function openHistoryModal() { document.getElementById('historyModal').classList.remove('hidden'); }
     function closeHistoryModal() { document.getElementById('historyModal').classList.add('hidden'); }
 
-    // 🎬 網頁生命週期載入點
     window.onload = () => {
       updateWeather(); renderMsgs(); initNotices();
       
-      // 倒數計時器
       setInterval(() => {
         const target = new Date("Sep 25, 2026 18:00:00").getTime(); const dist = target - new Date().getTime();
         if(dist > 0) {
-          document.getElementById("cdDays").innerText = Math.floor(dist / 86400000).toString().padStart(2, '0');
-          document.getElementById("cdHours").innerText = Math.floor((dist % 86400000) / 3600000).toString().padStart(2, '0');
+          if(document.getElementById("cdDays")) document.getElementById("cdDays").innerText = Math.floor(dist / 86400000).toString().padStart(2, '0');
+          if(document.getElementById("cdHours")) document.getElementById("cdHours").innerText = Math.floor((dist % 86400000) / 3600000).toString().padStart(2, '0');
         }
       }, 1000);
 
-      // 數據跳動動畫監聽
       const countObs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) {
           const cnt = e.target; const tg = +cnt.getAttribute('data-target');
@@ -471,16 +450,14 @@
       }, { threshold: 0.5 });
       document.querySelectorAll('.counter').forEach(c => countObs.observe(c));
 
-      // 進度條流體動畫監聽
       const barObs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) e.target.style.width = e.target.getAttribute('data-target-width'); });
       }, { threshold: 0.5 });
       document.querySelectorAll('.progress-bar-fill').forEach(b => barObs.observe(b));
 
-      document.getElementById('birthdayName').innerText = "呂佳寯";
+      if(document.getElementById('birthdayName')) document.getElementById('birthdayName').innerText = "呂佳寯";
     };
 
-    // 🚀 懸浮至頂核心機制
     const btt = document.getElementById('backToTop');
     window.onscroll = () => {
       if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) btt.classList.add('show');
