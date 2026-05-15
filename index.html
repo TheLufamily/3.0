@@ -221,7 +221,6 @@
               <span class="text-[9px] uppercase tracking-wider text-amber-600 font-black block mb-2"><i class="fa-solid fa-umbrella-beach mr-1"></i> 盛夏熱門活動</span>
               <ul class="text-xs text-slate-600 space-y-1 font-medium list-disc pl-4">
                 <li>2026中秋烤肉(規劃中)</li>
-                
               </ul>
             </div>
           </div>
@@ -346,7 +345,7 @@
       loc3: { title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up", isImg: false }
     };
 
-    // 📋 最新公告數據庫 (包含發布日期時間)
+    // 📋 最新公告數據庫
     const notices = [
       { id: 1, tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
       { id: 2, tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" }
@@ -358,7 +357,7 @@
       const moreBtn = document.getElementById('moreNoticeBtnContainer');
       if (!container) return; container.innerHTML = ''; if (modalList) modalList.innerHTML = '';
 
-      // 渲染首頁公告 (新增發布日期時間的視覺化標籤)
+      // 渲染首頁公告
       notices.slice(0, 3).forEach(n => {
         container.innerHTML += `
           <div class="family-card p-6 cubic-bezier cursor-pointer" onclick="openHistoryModal()">
@@ -403,10 +402,10 @@
     }
     function closeSurprise() { document.getElementById('surpriseModal').classList.add('hidden'); }
 
-    let msgs = [
-     
-    ];
+    // 💬 留言數據中心
+    let msgs = [];
 
+    // 🛠️ 已修復：修正變數清除 Bug (避免點擊當機)
     function postMsg() {
       const nEl = document.getElementById('guestName'); const mEl = document.getElementById('guestMsg');
       if (!nEl || !mEl) return; const n = nEl.value.trim(); const m = mEl.value.trim();
@@ -426,6 +425,7 @@
     }
     function toggleHistory() { document.getElementById('historyMessages').classList.toggle('hidden'); }
 
+    // 🌤️ 氣象同步模組
     function updateWeather() {
       const w = [{c:'板橋',t:28,i:'fa-sun',cl:'text-sky-600'},{c:'臺中',t:30,i:'fa-cloud-sun',cl:'text-emerald-600'},{c:'平鎮',t:27,i:'fa-cloud',cl:'text-orange-600'}];
       const now = new Date();
@@ -435,6 +435,7 @@
       document.getElementById('weatherGrid').innerHTML = w.map(x => `<div class="text-center font-black"><p class="text-[10px] md:text-sm text-slate-500 mb-1">${x.c}</p><p class="text-xl md:text-2xl font-black ${x.cl} tech-num mb-1">${x.t}°</p><i class="fa-solid ${x.i} ${x.cl} text-xs md:text-lg"></i></div>`).join('');
     }
 
+    // 🎛️ 視窗控制核心
     function openInteractiveModal(k) {
       const d = db[k]; document.getElementById('modalTop').className = `h-24 md:h-32 flex items-center justify-center ${d.theme} opacity-80`;
       document.getElementById('modalTitle').innerText = d.title; document.getElementById('modalSub').innerText = d.sub;
@@ -447,8 +448,11 @@
     function openHistoryModal() { document.getElementById('historyModal').classList.remove('hidden'); }
     function closeHistoryModal() { document.getElementById('historyModal').classList.add('hidden'); }
 
+    // 🎬 網頁生命週期載入點
     window.onload = () => {
       updateWeather(); renderMsgs(); initNotices();
+      
+      // 倒數計時器
       setInterval(() => {
         const target = new Date("Sep 25, 2026 18:00:00").getTime(); const dist = target - new Date().getTime();
         if(dist > 0) {
@@ -457,6 +461,7 @@
         }
       }, 1000);
 
+      // 數據跳動動畫監聽
       const countObs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) {
           const cnt = e.target; const tg = +cnt.getAttribute('data-target');
@@ -466,6 +471,7 @@
       }, { threshold: 0.5 });
       document.querySelectorAll('.counter').forEach(c => countObs.observe(c));
 
+      // 進度條流體動畫監聽
       const barObs = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) e.target.style.width = e.target.getAttribute('data-target-width'); });
       }, { threshold: 0.5 });
@@ -474,6 +480,7 @@
       document.getElementById('birthdayName').innerText = "呂佳寯";
     };
 
+    // 🚀 懸浮至頂核心機制
     const btt = document.getElementById('backToTop');
     window.onscroll = () => {
       if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) btt.classList.add('show');
