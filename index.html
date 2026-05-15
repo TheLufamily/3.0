@@ -168,7 +168,9 @@
       </div>
       <div class="flex items-center gap-3 md:gap-4 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-slate-500 font-bold overflow-x-auto whitespace-nowrap scrollbar-none py-1">
         <a href="#home" class="hover:text-indigo-600 transition-all px-1">首頁</a>
+        <a href="#stats-section" class="hover:text-indigo-600 transition-all px-1">數據</a>
         <a href="#events" class="hover:text-indigo-600 transition-all px-1">活動</a>
+        <a href="#countdown-section" class="hover:text-indigo-600 transition-all px-1">倒數</a>
         <a href="#notice" class="hover:text-indigo-600 transition-all px-1">公告</a>
         <a href="#mail-section" class="hover:text-indigo-600 transition-all px-1">信件</a>
         <a href="#members" class="hover:text-indigo-600 transition-all px-1">幹部</a>
@@ -209,33 +211,7 @@
     </div>
   </section>
 
-  <section class="py-6 md:py-10 bg-white">
-    <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <div class="modern-stats-bg rounded-[35px] md:rounded-[50px] p-6 md:p-16 shadow-2xl text-white relative">
-        <div class="grid lg:grid-cols-2 gap-12 relative z-10">
-          <div class="flex items-center gap-6 md:gap-10 lg:border-r border-white/10 lg:pr-16">
-            <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-pink-500 text-white flex items-center justify-center text-2xl md:text-4xl shadow-lg animate-pulse shrink-0"><i class="fa-solid fa-cake-candles"></i></div>
-            <div>
-              <p class="text-pink-400 font-bold text-[10px] uppercase tracking-widest mb-1 md:mb-2">本月壽星慶典</p>
-              <h4 class="text-2xl md:text-4xl font-black" id="birthdayName">載入中...</h4>
-            </div>
-          </div>
-          <div class="flex flex-col justify-center">
-            <div class="flex items-center gap-4 mb-4 md:mb-8">
-              <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg"><i class="fa-solid fa-fire-burner"></i></div>
-              <h4 class="text-lg md:text-2xl font-bold text-amber-500">中秋烤肉大會倒數</h4>
-            </div>
-            <div class="flex gap-3 md:gap-4 text-center">
-              <div class="bg-white/5 p-3 md:p-4 flex-1 rounded-2xl md:rounded-3xl border border-white/5"><div class="text-2xl md:text-5xl font-bold tech-num" id="cdDays">00</div><p class="text-[9px] opacity-40 uppercase mt-1">天數</p></div>
-              <div class="bg-white/5 p-3 md:p-4 flex-1 rounded-2xl md:rounded-3xl border border-white/5"><div class="text-2xl md:text-5xl font-bold tech-num" id="cdHours">00</div><p class="text-[9px] opacity-40 uppercase mt-1">小時</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-8 md:py-12 modern-stats-bg text-white overflow-hidden">
+  <section id="stats-section" class="py-8 md:py-12 modern-stats-bg text-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 relative">
       <div class="stat-item text-center">
         <div class="text-indigo-400 text-[10px] mb-2 tracking-widest opacity-60 uppercase">Member Count</div>
@@ -260,7 +236,7 @@
     </div>
   </section>
 
-  <section id="events" class="py-10 md:py-20 bg-white">
+  <section id="events" class="py-10 md:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <div class="text-center mb-8 md:mb-12">
         <h2 class="text-2xl md:text-4xl font-black text-slate-800 tracking-tight">近期活動回顧</h2>
@@ -278,6 +254,32 @@
           <div class="glass-card p-4 md:p-8 shadow-xl border-white border-2">
             <video controls playsinline class="rounded-2xl md:rounded-3xl shadow-lg w-full bg-black"><source src="母親節MV.mp4" type="video/mp4"></video>
             <h4 class="mt-4 text-lg md:text-xl font-bold text-slate-800 text-center">2026 母親節影片回顧-預告</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="countdown-section" class="py-6 md:py-10 bg-slate-50/50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="modern-stats-bg rounded-[35px] md:rounded-[50px] p-6 md:p-16 shadow-2xl text-white relative">
+        <div class="grid lg:grid-cols-2 gap-12 relative z-10">
+          <div class="flex items-center gap-6 md:gap-10 lg:border-r border-white/10 lg:pr-16">
+            <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-pink-500 text-white flex items-center justify-center text-2xl md:text-4xl shadow-lg animate-pulse shrink-0"><i class="fa-solid fa-cake-candles"></i></div>
+            <div>
+              <p class="text-pink-400 font-bold text-[10px] uppercase tracking-widest mb-1 md:mb-2">本月壽星慶典</p>
+              <h4 class="text-2xl md:text-4xl font-black" id="birthdayName">載入中...</h4>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center">
+            <div class="flex items-center gap-4 mb-4 md:mb-8">
+              <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg"><i class="fa-solid fa-fire-burner"></i></div>
+              <h4 class="text-lg md:text-2xl font-bold text-amber-500">中秋烤肉大會倒數</h4>
+            </div>
+            <div class="flex gap-3 md:gap-4 text-center">
+              <div class="bg-white/5 p-3 md:p-4 flex-1 rounded-2xl md:rounded-3xl border border-white/5"><div class="text-2xl md:text-5xl font-bold tech-num" id="cdDays">00</div><p class="text-[9px] opacity-40 uppercase mt-1">天數</p></div>
+              <div class="bg-white/5 p-3 md:p-4 flex-1 rounded-2xl md:rounded-3xl border border-white/5"><div class="text-2xl md:text-5xl font-bold tech-num" id="cdHours">00</div><p class="text-[9px] opacity-40 uppercase mt-1">小時</p></div>
+            </div>
           </div>
         </div>
       </div>
@@ -383,11 +385,21 @@
               <div class="p-4 grid grid-cols-4 gap-2 items-center text-center hover:bg-white/[0.02] transition-colors">
                 <div class="font-mono text-slate-400 text-[11px]">2026/05/15</div>
                 <div class="text-amber-400"><i class="fa-solid fa-box mr-1"></i>重要包裹</div>
-                <div class="text-white font-bold">呂陳英妹</div>
-                <div><span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-warehouse mr-1 text-[10px]"></i>本人簽收</span></div>
+                <div class="text-white font-bold">呂佳寯</div>
+                <div><span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-warehouse mr-1 text-[10px]"></i>管理室代收</span></div>
               </div>
               <div class="p-4 grid grid-cols-4 gap-2 items-center text-center hover:bg-white/[0.02] transition-colors">
-          
+                <div class="font-mono text-slate-400 text-[11px]">2026/05/14</div>
+                <div class="text-sky-400"><i class="fa-solid fa-envelope mr-1"></i>掛號信件</div>
+                <div class="text-white font-bold">呂陳英妹</div>
+                <div><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-[10px]"></i>本人已簽收</span></div>
+              </div>
+              <div class="p-4 grid grid-cols-4 gap-2 items-center text-center hover:bg-white/[0.02] transition-colors">
+                <div class="font-mono text-slate-400 text-[11px]">2026/05/12</div>
+                <div class="text-amber-400"><i class="fa-solid fa-box mr-1"></i>重要包裹</div>
+                <div class="text-white font-bold">呂佳芯</div>
+                <div><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-[10px]"></i>本人已簽收</span></div>
+              </div>
             </div>
           </div>
 
@@ -407,8 +419,8 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         
         <div onclick="openInteractiveModal('member1')" class="member-tech-card p-6 cursor-pointer relative overflow-hidden group">
-          <div class="w-24 h-24 md:w-28 md:h-28 rounded-3xl bg-slate-900 flex items-center justify-center text-indigo-400 text-4xl mx-auto mb-6 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-indigo-500/40 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
-            <i class="fa-solid fa-crown"></i>
+          <div class="w-24 h-24 md:w-28 md:h-28 rounded-3xl overflow-hidden mx-auto mb-6 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-indigo-500/40 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+            <img src="呂陳英妹.jpg" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150'">
           </div>
           <div class="flex justify-center items-center gap-2 mb-2">
             <h3 class="text-xl font-bold text-white">呂陳英妹</h3>
@@ -433,8 +445,8 @@
         </div>
 
         <div onclick="openInteractiveModal('member3')" class="member-tech-card p-6 cursor-pointer relative overflow-hidden group">
-          <div class="w-24 h-24 md:w-28 md:h-28 rounded-3xl bg-slate-900 flex items-center justify-center text-pink-400 text-4xl mx-auto mb-6 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.1)]">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <div class="w-24 h-24 md:w-28 md:h-28 rounded-3xl overflow-hidden mx-auto mb-6 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.1)]">
+            <img src="1709717928_2KZnL.png" class="w-full h-full object-cover bg-white" onerror="this.src='https://via.placeholder.com/150'">
           </div>
           <div class="flex justify-center items-center gap-2 mb-2">
             <h3 class="text-xl font-bold text-white">呂佳芯</h3>
@@ -480,6 +492,7 @@
         <div class="flex flex-col md:flex-row gap-3 md:gap-4">
           <input type="text" id="guestName" placeholder="稱呼" class="w-full md:w-1/4 bg-white rounded-xl px-5 py-3.5 border border-slate-200 outline-none focus:border-indigo-500 font-medium">
           <input type="text" id="guestMsg" placeholder="祝福心語..." class="w-full md:flex-1 bg-white rounded-xl px-5 py-3.5 border border-slate-200 outline-none focus:border-indigo-500 font-medium">
+          <input type="hidden" id="currentDateVal" value="2026-05-15">
           <button onclick="postMsg()" class="w-full md:w-auto bg-indigo-600 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-indigo-700 shadow-lg transition-all">傳送</button>
         </div>
       </div>
@@ -557,13 +570,23 @@
       console.log('AOS skipped');
     }
 
-    // 分流與彈窗型態資料庫
+    // ===== 彈窗資料庫：同步更新呂佳芯的頭貼與精細化啦啦隊數據規格 =====
     const db = {
       member1: { 
-        type: "member", name: "呂陳英妹", alias: "阿英 / 家族核心", number: "幹部", range: "雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。",
-        role: "家庭長", skill: "凝聚向心力", sign: "秘密", dob: "秘密",
-        isImg: false, icon: "fa-crown", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-star"],
-        bgImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600"
+        type: "member", 
+        name: "呂陳英妹", 
+        alias: "阿英 / 家族最高核心領袖", 
+        number: "#99 #01", 
+        range: "雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。",
+        role: "總體家庭長", 
+        skill: "頂級團體凝聚力 / 頂級廚藝傳承", 
+        sign: "金牛座", 
+        dob: "1949 / 05 / 07", 
+        isImg: true, 
+        src: "呂陳英妹.jpg", 
+        theme: "text-indigo-400", 
+        tags: ["fa-crown", "fa-heart", "fa-utensils"],
+        bgImg: "呂陳英妹.jpg"
       },
       member2: { 
         type: "member", name: "呂佳寯", alias: "寯哥 / 參謀長", number: "#幹部", range: "政戰才是我的專業，行政業務是支援",
@@ -572,10 +595,20 @@
         bgImg: "110417006.jpg"
       },
       member3: { 
-        type: "member", name: "呂佳芯", alias: "小孟孟 / 氛圍導師", number: "幹部", range: "突然被政戰幹部派選為分隊長",
-        role: "分隊長", skill: "團隊氛圍破冰", sign: "獅子座", dob: "2005/08/21",
-        isImg: false, icon: "fa-wand-magic-sparkles", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"],
-        bgImg: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600"
+        type: "member", 
+        name: "呂佳芯", 
+        alias: "小孟孟 / 氛圍導師", 
+        number: "#08 #21", 
+        range: "突然被政戰幹部派選為分隊長！今天也是充滿活力的一天✨",
+        role: "分隊長", 
+        skill: "團隊氛圍破冰 / 精準節奏控場", 
+        sign: "獅子座", 
+        dob: "2005 / 08 / 21", // 完美同步精緻五星數據規格
+        isImg: true, 
+        src: "1709717928_2KZnL.png", 
+        theme: "text-pink-400", 
+        tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"],
+        bgImg: "1709717928_2KZnL.png"
       },
       loc1: { type: "location", title: "新北板橋 (總部)", sub: "總部", l1: "人員情況", i1: "7 名", l2: "特色", i2: "大總部，有如指揮中心，年度慶典或決策基地。", theme: "bg-blue-600", icon: "fa-city" },
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree" },
@@ -607,7 +640,7 @@
             <p class="text-red-700 text-xs mt-1 leading-relaxed">請全體家庭成員注意，申報期期限截止日為 2026/06/01，逾期系統管道將關閉。</p>
           </div>
           <p class="text-slate-600 text-xs md:text-sm text-left leading-relaxed mb-4">
-            為維護本年度個人財務與稅務作業正常，請尚未進行網路報稅或試算確認的成員儘速抽空完成。如有申報、自然人憑證操作或試算單據疑問，可點選下方政府官網專區查詢。
+            為維護本年度個人財務與稅務作業正常，請尚未進行網路報稅 or 試算確認的成員儘速抽空完成。
           </p>
         `,
         linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-3 bg-red-600 text-white rounded-xl font-bold text-center text-sm shadow-md hover:bg-red-700 transition-all mb-2 block"><i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i>前往財政部電子申報繳稅服務網</a>`
@@ -620,7 +653,7 @@
             <p class="text-blue-700 text-xs mt-1 leading-relaxed">呂氏資訊網本期全面完成升級，優化行動端響應速度與深色HUD彈窗功能。</p>
           </div>
           <p class="text-slate-600 text-xs md:text-sm text-left leading-relaxed mb-4">
-            此次 3.0 正式版上線包含：更純粹的氣象數據三宮格排版、右下角獨立常駐「小彩蛋」浮動按鈕、以及全局多功能智慧公告分流詳細面板，旨在打造最極致的家庭生活資訊同步體驗。
+            此次 3.0 正式版上線優化了：氣象數據三宮格排版、右下角獨立常駐「小彩蛋」按鈕、以及多功能智慧公告面板。
           </p>
         `,
         linkHtml: `<a href="#home" onclick="closeInteractiveModal()" class="w-full py-3 bg-orange-500 text-white rounded-xl font-bold text-center text-sm shadow-md hover:bg-orange-600 transition-all mb-2 block"><i class="fa-solid fa-rotate-left mr-1.5"></i>返回頂部體驗主介面</a>`
@@ -633,7 +666,7 @@
             <p class="text-emerald-700 text-xs mt-1 leading-relaxed">預定於端午節假期召開南北據點大會師，進行各分支數據實體同步與物資交流。</p>
           </div>
           <p class="text-slate-600 text-xs md:text-sm text-left leading-relaxed mb-4">
-            為統計參與人數及南北粽訂購配額，請板橋總部、台中分支及平鎮分支的負責人於月底前將名單回傳行政管理部，以利後續運輸與宴席排定。
+            為統計參與人數，請板橋總部、台中分支及平鎮分支負責人於月底前將名單回傳。
           </p>
         `
       },
@@ -645,19 +678,17 @@
             <p class="text-amber-700 text-xs mt-1 leading-relaxed">請全體 16 位成員核對各自的通訊電話、常駐分支節點是否正確。</p>
           </div>
           <p class="text-slate-600 text-xs md:text-sm text-left leading-relaxed mb-4">
-            配合 3.0 系統升級，後台正進行全面通訊加密與重新彙整，請有更換聯絡方式或地址的成員主動洽詢行政管理人員修正，以防遺漏重要節慶通知。
+            配合 3.0 系統升級，後台正進行全面通訊加密，請有更換聯絡方式的成員主動洽詢行政管理人員。
           </p>
         `
       }
     };
 
-    // 最新公告清單資料庫（共 5 條）
     const notices = [
       { id: "mailNotice", tag: "服務新增", title: "新增信件包裹快報看板", content: "信件收發因伺服器時差問題，現已將最新收發動態直接顯示於專區看板中。", date: "2026/05/15", color: "bg-blue-500" },
       { id: "notice1", tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" },
-      { id: "notice3", tag: "節慶活動", title: "2026 端午佳節南北大會師籌備", content: "端午南北聚會預案擬定，相關粽子配額與人數統計開跑。", date: "2026/05/10", color: "bg-emerald-500" },
-      { id: "notice4", tag: "重要通知", title: "家族通訊錄 3.0 核心數據校對", content: "為配合核心加密傳輸，請全體成員校對個人通訊代碼是否正確。", date: "2026/05/08", color: "bg-red-500" }
+
     ];
 
     function initNotices() {
@@ -666,7 +697,6 @@
       const moreBtn = document.getElementById('moreNoticeBtnContainer');
       if (!container) return; container.innerHTML = ''; if (modalList) modalList.innerHTML = '';
 
-      // 限制首頁渲染只出現前3則消息
       notices.slice(0, showLimit).forEach(n => {
         container.innerHTML += `
           <div class="family-card p-5 md:p-6 cursor-pointer border hover:border-indigo-200 transition-all" onclick="openInteractiveModal('${n.id}')">
@@ -679,7 +709,6 @@
           </div>`;
       });
 
-      // 消息中心專區清單加載完整5則
       if (modalList) {
         notices.forEach(n => {
           modalList.innerHTML += `
@@ -763,7 +792,7 @@
         modalContent.innerHTML = `
           <div class="max-w-md mx-auto bg-[#161923] text-white rounded-[30px] overflow-hidden shadow-2xl border border-slate-800 font-sans tracking-wide relative">
             <div class="relative h-[360px] bg-slate-900 flex items-center justify-center overflow-hidden">
-              <img src="${d.bgImg}" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600'">
+              <img src="${d.bgImg}" class="w-full h-full object-cover object-center" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600'">
               ${!d.isImg ? `
                 <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center">
                   <i class="fa-solid ${d.icon} text-6xl ${d.theme} filter drop-shadow-[0_0_15px_rgba(99,102,241,0.6)] animate-pulse"></i>
@@ -781,7 +810,7 @@
                     <h3 class="text-2xl font-black tracking-tight text-white">${d.name}</h3>
                     <i class="fa-brands fa-instagram text-xl text-slate-400"></i>
                   </div>
-                  <p class="text-slate-400 text-[11px] mt-1 font-medium">綽號：${d.alias}</p>
+                  <p class="text-slate-400 text-[11px] mt-1 font-medium">職稱：${d.alias}</p>
                 </div>
                 <div class="bg-slate-900/60 border border-indigo-500/30 px-3 py-1.5 rounded-xl text-center shadow-inner">
                   <span class="font-mono text-pink-500 font-bold text-sm tracking-tighter">${d.number}</span>
@@ -793,10 +822,10 @@
                 <p class="text-pink-500 text-xs font-bold tracking-wide">${d.range}</p>
               </div>
               <div class="grid grid-cols-2 gap-px bg-slate-800 rounded-2xl overflow-hidden border border-slate-800">
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">職能 TYPE</span><p class="text-base font-black text-white">${d.role}</p></div>
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">專長 SKILL</span><p class="text-base font-black text-white">${d.skill}</p></div>
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">星座 SIGN</span><p class="text-base font-black text-white">${d.sign}</p></div>
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">出生日期 DOB</span><p class="text-base font-bold font-mono text-white tracking-tight">${d.dob}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">職能 TYPE</span><p class="text-xs md:text-sm font-black text-white">${d.role}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">主要專長 SKILL</span><p class="text-xs md:text-sm font-black text-white">${d.skill}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">星座 SIGN</span><p class="text-sm font-black text-white">${d.sign}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">出生日期 DOB</span><p class="text-sm font-bold font-mono text-white tracking-tight">${d.dob}</p></div>
               </div>
               <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-6 -mx-6 -mb-6"></div>
             </div>
