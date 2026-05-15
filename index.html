@@ -14,7 +14,7 @@
     
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; }
     
-    /* 舊版圖卡與懸浮特效 */
+    /* 舊版大圖卡與懸浮特效 */
     .family-card { background: #ffffff; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,1); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
     .family-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(99, 102, 241, 0.08); }
     
@@ -141,7 +141,7 @@
       </div>
       <div class="stat-item text-center border-l border-white/5 md:border-l-0" data-aos="fade-up" data-aos-delay="100">
         <div class="text-emerald-400 text-[10px] mb-3 font-black tracking-widest opacity-60 uppercase">Active Missions</div>
-        <div class="text-3xl md:text-5xl font-black tech-num mb-2 text-emerald-400"><span class="counter" data-target="12">0</span></div>
+        <div class="text-3xl md:text-5xl font-black tech-num mb-2 text-emerald-400"><span class="counter" data-target="2">0</span></div>
         <p class="text-[10px] text-slate-500 font-black tracking-widest font-black">累計執行活動</p>
       </div>
       <div class="stat-item text-center border-l border-white/5" data-aos="fade-up" data-aos-delay="200">
@@ -220,8 +220,8 @@
             <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-100/40">
               <span class="text-[9px] uppercase tracking-wider text-amber-600 font-black block mb-2"><i class="fa-solid fa-umbrella-beach mr-1"></i> 盛夏熱門活動</span>
               <ul class="text-xs text-slate-600 space-y-1 font-medium list-disc pl-4">
-                <li>2026中秋烤肉活動 (規劃中)</li>
-                <li></li>
+                <li>2026中秋烤肉(規劃中)</li>
+                
               </ul>
             </div>
           </div>
@@ -255,7 +255,7 @@
 
   <section id="location" class="py-16 md:py-24 text-center bg-slate-50 font-black">
     <div class="max-w-7xl mx-auto px-4 md:px-6 font-black">
-      <h2 class="text-3xl font-black text-slate-800 mb-4 tracking-tight">家族分布區域</h2>
+      <h2 class="text-3xl font-black text-slate-800 mb-4 tracking-tight">家庭分布區域</h2>
       <p class="italic text-slate-400 text-sm mb-12">「常駐三大核心據點 · 數據即時同步」</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         <div onclick="openInteractiveModal('loc1')" class="glass-card p-8 md:p-10 border-b-4 border-indigo-500 cursor-pointer">
@@ -265,7 +265,7 @@
         </div>
         <div onclick="openInteractiveModal('loc2')" class="glass-card p-8 md:p-10 border-b-4 border-emerald-500 cursor-pointer">
           <i class="fa-solid fa-tree text-3xl text-emerald-600 mb-6 block"></i>
-          <h3 class="text-xl font-black text-slate-800">臺中北、中區</h3>
+          <h3 class="text-xl font-black text-slate-800">臺中北區、中區</h3>
           <p class="text-emerald-600 text-xs mt-3">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i></p>
         </div>
         <div onclick="openInteractiveModal('loc3')" class="glass-card p-8 md:p-10 border-b-4 border-orange-500 cursor-pointer">
@@ -330,26 +330,27 @@
     </div>
   </div>
 
-  <button id="backToTop" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-12 h-12 md:w-14 md:h-14 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center border border-white/20 font-black"><i class="fa-solid fa-chevron-up text-lg"></i></button>
+  <button id="backToTop" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-12 h-12 md:w-14 md:h-14 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center border border-white/20 hover:bg-indigo-700 font-black"><i class="fa-solid fa-chevron-up text-lg"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
 
-    // 互動視窗數據中心 (配合舊版大圖卡欄位結構)
+    // 互動視窗數據中心
     const db = {
       member1: { title: "呂陳英妹", sub: "家庭領袖", l1: "職稱", i1: "家庭長", l2: "對大家的話", i2: "向心力由大家共同創造，加油！", theme: "bg-indigo-500", icon: "fa-crown", isImg: false },
       member2: { title: "呂佳寯", sub: "行政參謀", l1: "職稱", i1: "政戰幹部兼行政管理", l2: "對大家的話", i2: "政戰才是我的專業，行政只是支援。", theme: "bg-emerald-500", icon: "img", isImg: true, src: "110417006.jpg" },
       member3: { title: "呂佳芯", sub: "氛圍導師", l1: "職稱", i1: "分隊長", l2: "對大家的話", i2: "突然被政戰幹部派選分隊長，大家多關照！", theme: "bg-pink-500", icon: "fa-wand-magic-sparkles", isImg: false },
       loc1: { title: "新北板橋", sub: "總部", l1: "人員情況", i1: "7 名", l2: "特色", i2: "大總部，有如指揮中心，年度慶典或決策基地。", theme: "bg-blue-600", icon: "fa-city", isImg: false },
-      loc2: { title: "臺中市區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree", isImg: false },
-      loc3: { title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運直達。", theme: "bg-orange-500", icon: "fa-plane-up", isImg: false }
+      loc2: { title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree", isImg: false },
+      loc3: { title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up", isImg: false }
     };
 
+    // 📋 最新公告數據庫 (包含發布日期時間)
     const notices = [
       { id: 1, tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: 2, tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/13", color: "bg-indigo-500" },
-   
+      { id: 2, tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" }
+    ];
 
     function initNotices() {
       const container = document.getElementById('noticeContainer');
@@ -357,14 +358,34 @@
       const moreBtn = document.getElementById('moreNoticeBtnContainer');
       if (!container) return; container.innerHTML = ''; if (modalList) modalList.innerHTML = '';
 
+      // 渲染首頁公告 (新增發布日期時間的視覺化標籤)
       notices.slice(0, 3).forEach(n => {
-        container.innerHTML += `<div class="family-card p-6 cursor-pointer" onclick="openHistoryModal()"><span class="${n.color} text-white text-[9px] font-black px-3 py-1 rounded-full mb-3 inline-block">${n.tag}</span><h3 class="text-lg font-black mb-1 text-slate-800">${n.title}</h3><p class="text-slate-500 text-xs font-bold">${n.content}</p></div>`;
+        container.innerHTML += `
+          <div class="family-card p-6 cubic-bezier cursor-pointer" onclick="openHistoryModal()">
+            <div class="flex flex-wrap gap-2 items-center mb-3">
+              <span class="${n.color} text-white text-[9px] font-black px-3 py-1 rounded-full">${n.tag}</span>
+              <span class="text-slate-400 text-[10px] font-bold tracking-tight tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+            </div>
+            <h3 class="text-lg font-black mb-1 text-slate-800">${n.title}</h3>
+            <p class="text-slate-500 text-xs font-bold">${n.content}</p>
+          </div>`;
       });
+
+      // 渲染彈窗內的所有公告
       if (modalList) {
         notices.forEach(n => {
-          modalList.innerHTML += `<div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 text-left"><div class="flex justify-between items-center mb-2"><span class="${n.color} text-white text-[8px] font-black px-2 py-0.5 rounded-full">${n.tag}</span><span class="text-slate-400 text-[10px] tech-num">${n.date}</span></div><h4 class="font-black text-slate-800 text-base mb-1">${n.title}</h4><p class="text-slate-500 text-xs font-bold leading-relaxed">${n.content}</p></div>`;
+          modalList.innerHTML += `
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 text-left">
+              <div class="flex justify-between items-center mb-2">
+                <span class="${n.color} text-white text-[8px] font-black px-2 py-0.5 rounded-full">${n.tag}</span>
+                <span class="text-slate-400 text-[10px] tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+              </div>
+              <h4 class="font-black text-slate-800 text-base mb-1">${n.title}</h4>
+              <p class="text-slate-500 text-xs font-bold leading-relaxed">${n.content}</p>
+            </div>`;
         });
       }
+      
       if (notices.length > 3 && moreBtn) moreBtn.classList.remove('hidden');
     }
 
@@ -372,7 +393,7 @@
     function showSurprise() { 
       const qs = [
         "呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。",
-        "家人的陪伴，是歲月裡最暖、最珍貴的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。",
+        "家人的陪伴，是歲月裡最暖、最珍過的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。",
         "老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門。",
         "今日的努力，是為了讓呂家未來更加繁盛。","風雨並肩，我們是彼此最重要的守護力量。",
         "心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"
@@ -383,7 +404,7 @@
     function closeSurprise() { document.getElementById('surpriseModal').classList.add('hidden'); }
 
     let msgs = [
-
+     
     ];
 
     function postMsg() {
