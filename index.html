@@ -10,18 +10,81 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@400;700;900&display=swap');
     
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
     
-    /* 大圖卡與懸浮特效 */
+    /* ===== 科技風格歡迎幕專屬樣式 ===== */
+    .tech-welcome-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #1a1d29 0%, #0a0b10 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tech-hud-box {
+      background: rgba(22, 25, 35, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.05);
+      border-radius: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* 數碼矩陣裝飾線 */
+    .tech-hud-box::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px dashed rgba(255, 255, 255, 0.05);
+      border-radius: 32px;
+      pointer-events: none;
+    }
+    .glow-cyan {
+      font-family: 'Orbitron', "Noto Sans TC", sans-serif;
+      color: #00f2fe;
+      text-shadow: 0 0 15px rgba(0, 242, 254, 0.6), 0 0 30px rgba(0, 242, 254, 0.2);
+    }
+    .glow-pink {
+      font-family: 'Orbitron', "Noto Sans TC", sans-serif;
+      color: #f43f5e;
+      text-shadow: 0 0 15px rgba(244, 63, 94, 0.6), 0 0 30px rgba(244, 63, 94, 0.2);
+    }
+    /* 科技感按鈕 */
+    .tech-btn {
+      font-family: 'Orbitron', sans-serif;
+      background: rgba(0, 242, 254, 0.03);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      color: #00f2fe;
+      text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .tech-btn:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: #00f2fe;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+      transform: scale(1.05);
+    }
+    /* 脈衝雷達波動畫 */
+    .pulse-line { animation: techPulse 2s infinite alternate; }
+    @keyframes techPulse {
+      0% { opacity: 0.3; transform: scale(0.98); }
+      100% { opacity: 0.8; transform: scale(1.02); }
+    }
+
+    /* ===== 原有基礎卡片樣式 ===== */
     .family-card { background: #ffffff; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.03); border: 1px solid rgba(255,255,255,1); transition: all 0.3s ease; }
     @media (min-width: 768px) {
       .family-card { border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
       .family-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(99, 102, 241, 0.08); }
     }
     
-    /* 玻璃擬態圖卡 */
     .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.6); border-radius: 30px; transition: all 0.3s ease; }
     @media (min-width: 768px) {
       .glass-card { border-radius: 40px; }
@@ -41,7 +104,6 @@
     }
     @keyframes gradient-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
     
-    /* 懸浮按鈕基礎動畫 */
     #backToTop, #surpriseBtn { opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 1000; }
     #backToTop.show, #surpriseBtn.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
     #backToTop { box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3); }
@@ -50,9 +112,6 @@
     .modal-bounce { animation: modalBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
     @keyframes modalBounce { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     
-    .avatar-glow { box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1); }
-    
-    /* 幹部專屬應援風發光特效卡片 */
     .member-tech-card { background: #161923; border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     @media (min-width: 768px) {
       .member-tech-card:hover { transform: translateY(-8px); border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
@@ -61,7 +120,6 @@
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-    /* 永遠懸浮家庭生活散步大道軌道 */
     .walkway-container { 
       position: fixed; 
       bottom: 0; 
@@ -83,6 +141,30 @@
 </head>
 
 <body class="text-slate-700 text-sm md:text-base pb-[60px]">
+
+  <div id="welcomeOverlay" class="tech-welcome-overlay">
+    <div class="tech-hud-box max-w-xl w-[90%] p-8 md:p-12 text-center pulse-line">
+      <div class="text-[#00f2fe] text-4xl mb-6 filter drop-shadow-[0_0_15px_rgba(0,242,254,0.5)]">
+        <i class="fa-solid fa-circle-nodes animate-spin" style="animation-duration: 8s;"></i>
+      </div>
+      
+      <h2 class="text-sm md:text-base font-bold text-slate-400 uppercase tracking-[0.3em] mb-3 font-mono">SYSTEM INITIALIZATION</h2>
+      <h1 class="text-2xl md:text-4xl font-black tracking-wider mb-2 glow-cyan leading-tight">WELCOME TO</h1>
+      <h1 class="text-3xl md:text-5xl font-black tracking-widest mb-4 glow-pink leading-tight">LU FAMILY 3.0</h1>
+      <p class="text-xs md:text-sm font-medium tracking-[0.2em] text-[#00f2fe]/80 font-mono mb-8">LIFE INFORMATION NETWORK</p>
+      
+      <div class="w-16 h-px bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent mx-auto mb-8"></div>
+      
+      <p class="text-xs text-slate-500 tracking-widest font-medium mb-8 leading-relaxed">
+        — 網站上線慶典正式啟動 —<br>
+        <span class="font-mono text-[10px] text-slate-600 block mt-1">CORE DATA CHANNELS READY TO BEGIN...</span>
+      </p>
+      
+      <button onclick="dismissWelcome()" class="tech-btn px-10 py-3.5 rounded-xl font-bold uppercase tracking-[0.2em] text-sm font-mono">
+        <i class="fa-solid fa-terminal mr-2 text-xs"></i>ENTER SYSTEM
+      </button>
+    </div>
+  </div>
 
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 font-medium">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
@@ -117,7 +199,7 @@
       <div class="relative">
         
         <div class="family-card overflow-hidden border-2">
-          <div class="bg-[#ffffff] p-6 md:p-12">
+          <div class="p-6 md:p-12">
             <div class="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-8 gap-4 text-center sm:text-left">
               <div>
                 <p class="text-slate-400 text-[10px] mb-2" id="weatherSyncText">數據同步中...</p>
@@ -394,6 +476,19 @@
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
+    // 歡迎網頁淡出解除鎖定控制
+    function dismissWelcome() {
+      const overlay = document.getElementById('welcomeOverlay');
+      if (overlay) {
+        overlay.style.opacity = '0';
+        overlay.style.transform = 'scale(1.05)';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          document.body.style.overflow = 'auto'; // 恢復網頁滾動
+        }, 600);
+      }
+    }
+
     try {
       AOS.init({ duration: 800, once: true, disable: 'mobile' });
     } catch (e) {
@@ -465,7 +560,7 @@
     }
 
     function showSurprise() { 
-      const qs = ["呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。", "家人的陪伴，是歲月裡最暖、最珍過的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。","老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門。","今日的努力，是為了讓呂家未來更加繁盛.","風雨並肩，我們是彼此最重要的守護力量。","心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"]; 
+      const qs = ["呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。", "家人的陪伴，是歲月裡最暖、最珍過的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。","老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門。","今日的努力，是為了讓呂家未來更加繁盛。","風雨並肩，我們是彼此最重要的守護力量。","心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"]; 
       const target = document.getElementById('surpriseText');
       const modal = document.getElementById('surpriseModal');
       if(target && modal) {
@@ -614,6 +709,7 @@
     }
 
     window.onload = () => {
+      document.body.style.overflow = 'hidden'; // 初始化鎖定網頁滾動
       updateWeather(); renderMsgs(); initNotices(); updateCountdown();
       
       document.querySelectorAll('.progress-bar-fill').forEach(b => {
