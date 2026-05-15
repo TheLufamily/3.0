@@ -275,7 +275,7 @@
             <h3 class="text-xl font-bold text-white">呂陳英妹</h3>
             <span class="font-mono text-[10px] text-pink-500 border border-pink-500/30 px-1.5 py-0.5 rounded-md bg-pink-500/5">#01</span>
           </div>
-          <p class="text-slate-400 text-xs font-medium mb-4">代號：英妹 / 家族核心</p>
+          <p class="text-slate-400 text-xs font-medium mb-4">綽號：阿英 / 家族核心</p>
           <div class="inline-block bg-slate-900 border border-slate-800 text-indigo-400 text-[11px] px-4 py-1.5 rounded-full font-bold">家庭長</div>
           <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-6 -mx-6 -mb-6"></div>
         </div>
@@ -288,7 +288,7 @@
             <h3 class="text-xl font-bold text-white">呂佳寯</h3>
             <span class="font-mono text-[10px] text-pink-500 border border-pink-500/30 px-1.5 py-0.5 rounded-md bg-pink-500/5">#02</span>
           </div>
-          <p class="text-slate-400 text-xs font-medium mb-4">代號：佳寯 / 參謀長</p>
+          <p class="text-slate-400 text-xs font-medium mb-4">綽號：寯哥 / 參謀長</p>
           <div class="inline-block bg-slate-900 border border-slate-800 text-emerald-400 text-[11px] px-4 py-1.5 rounded-full font-bold">行政管理</div>
           <div class="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mt-6 -mx-6 -mb-6"></div>
         </div>
@@ -301,7 +301,7 @@
             <h3 class="text-xl font-bold text-white">呂佳芯</h3>
             <span class="font-mono text-[10px] text-pink-500 border border-pink-500/30 px-1.5 py-0.5 rounded-md bg-pink-500/5">#03</span>
           </div>
-          <p class="text-slate-400 text-xs font-medium mb-4">代號：佳芯 / 氛圍導師</p>
+          <p class="text-slate-400 text-xs font-medium mb-4">綽號：小孟孟 / 氛圍導師</p>
           <div class="inline-block bg-slate-900 border border-slate-800 text-pink-400 text-[11px] px-4 py-1.5 rounded-full font-bold">分隊長</div>
           <div class="h-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full mt-6 -mx-6 -mb-6"></div>
         </div>
@@ -401,20 +401,20 @@
     const db = {
       // ===== 核心幹部數據 =====
       member1: { 
-        type: "member", name: "呂陳英妹", alias: "英妹 / 家族核心", number: "#01 #HQ", range: "全域營運 / 家族向心力凝聚中心",
-        role: "家庭長", skill: "凝聚向心力", sign: "尊榮長青", dob: "核心領導人",
+        type: "member", name: "呂陳英妹", alias: "阿英 / 家族核心", number: "幹部", range: "全域營運 / 家族向心力凝聚中心",
+        role: "家庭長", skill: "凝聚向心力", sign: "秘密", dob: "秘密",
         isImg: false, icon: "fa-crown", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-star"],
         bgImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600"
       },
       member2: { 
-        type: "member", name: "呂佳寯", alias: "佳寯 / 參謀長", number: "#02 #OMD", range: "新北板橋總部 / 臺中北區分支 / 網頁維護",
-        role: "行政管理", skill: "政戰心理戰", sign: "金牛座", dob: "1999/05/07",
+        type: "member", name: "呂佳寯", alias: "寯哥 / 參謀長", number: "#幹部", range: "政戰才是我的專業，行政業務是支援",
+        role: "行政管理", skill: "政戰心理戰", sign: "金牛座", dob: "2002/05/01",
         isImg: true, src: "110417006.jpg", theme: "text-emerald-400", tags: ["fa-file-invoice", "fa-shield-halved", "fa-code"],
         bgImg: "110417006.jpg"
       },
       member3: { 
-        type: "member", name: "呂佳芯", alias: "佳芯 / 氛圍導師", number: "#03 #TEAM", range: "第一分隊營運 / 活動氛圍引導",
-        role: "分隊長", skill: "團隊氛圍破冰", sign: "雙子座", dob: "不詳（派選中）",
+        type: "member", name: "呂佳芯", alias: "佳芯 / 氛圍導師", number: "幹部", range: "同然被政戰幹部派選為分隊長",
+        role: "分隊長", skill: "團隊氛圍破冰", sign: "獅子座", dob: "2005/08/21",
         isImg: false, icon: "fa-wand-magic-sparkles", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"],
         bgImg: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600"
       },
@@ -554,14 +554,14 @@
               </div>
               <div class="border-t border-dashed border-slate-800 my-4"></div>
               <div class="mb-5 flex items-center gap-3">
-                <span class="text-slate-500 text-xs uppercase font-bold tracking-wider shrink-0">守備範圍</span>
+                <span class="text-slate-500 text-xs uppercase font-bold tracking-wider shrink-0">想要說什麼</span>
                 <p class="text-pink-500 text-xs font-bold tracking-wide">${d.range}</p>
               </div>
               <div class="grid grid-cols-2 gap-px bg-slate-800 rounded-2xl overflow-hidden border border-slate-800">
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">主要職能 TYPE</span><p class="text-base font-black text-white">${d.role}</p></div>
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">特用專長 SKILL</span><p class="text-base font-black text-white">${d.skill}</p></div>
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">特徵屬性 SIGN</span><p class="text-base font-black text-white">${d.sign}</p></div>
-                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">時序編碼 DOB</span><p class="text-base font-bold font-mono text-white tracking-tight">${d.dob}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">職能 TYPE</span><p class="text-base font-black text-white">${d.role}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">專長 SKILL</span><p class="text-base font-black text-white">${d.skill}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">星座 SIGN</span><p class="text-base font-black text-white">${d.sign}</p></div>
+                <div class="bg-[#1c1f2c] p-4 text-center"><span class="text-[10px] text-slate-500 font-bold block mb-1">出生日期 DOB</span><p class="text-base font-bold font-mono text-white tracking-tight">${d.dob}</p></div>
               </div>
               <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-6 -mx-6 -mb-6"></div>
             </div>
