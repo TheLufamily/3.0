@@ -168,7 +168,7 @@
       </div>
       <div class="flex items-center gap-3 md:gap-4 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-slate-500 font-bold overflow-x-auto whitespace-nowrap scrollbar-none py-1">
         <a href="#home" class="hover:text-indigo-600 transition-all px-1">首頁</a>
-               <a href="#events" class="hover:text-indigo-600 transition-all px-1">活動</a>
+        <a href="#events" class="hover:text-indigo-600 transition-all px-1">活動</a>
         <a href="#notice" class="hover:text-indigo-600 transition-all px-1">公告</a>
         <a href="#members" class="hover:text-indigo-600 transition-all px-1">幹部</a>
         <a href="#location" class="hover:text-indigo-600 transition-all px-1">分支</a>
@@ -251,32 +251,6 @@
           <div class="glass-card p-4 md:p-8 shadow-xl border-white border-2">
             <video controls playsinline class="rounded-2xl md:rounded-3xl shadow-lg w-full bg-black"><source src="母親節MV.mp4" type="video/mp4"></video>
             <h4 class="mt-4 text-lg md:text-xl font-bold text-slate-800 text-center">2026 母親節影片回顧-預告</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="countdown-section" class="py-6 md:py-10 bg-slate-50/50">
-    <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <div class="modern-stats-bg rounded-[35px] md:rounded-[50px] p-6 md:p-16 shadow-2xl text-white relative">
-        <div class="grid lg:grid-cols-2 gap-12 relative z-10">
-          <div class="flex items-center gap-6 md:gap-10 lg:border-r border-white/10 lg:pr-16">
-            <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-pink-500 text-white flex items-center justify-center text-2xl md:text-4xl shadow-lg animate-pulse shrink-0"><i class="fa-solid fa-cake-candles"></i></div>
-            <div>
-              <p class="text-pink-400 font-bold text-[10px] uppercase tracking-widest mb-1 md:mb-2">本月壽星慶典</p>
-              <h4 class="text-2xl md:text-4xl font-black" id="birthdayName">載入中...</h4>
-            </div>
-          </div>
-          <div class="flex flex-col justify-center">
-            <div class="flex items-center gap-4 mb-4 md:mb-8">
-              <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg"><i class="fa-solid fa-fire-burner"></i></div>
-              <h4 class="text-lg md:text-2xl font-bold text-amber-500">中秋烤肉大會倒數</h4>
-            </div>
-            <div class="flex gap-3 md:gap-4 text-center">
-              <div class="bg-white/5 p-3 md:p-4 flex-1 rounded-2xl md:rounded-3xl border border-white/5"><div class="text-2xl md:text-5xl font-bold tech-num" id="cdDays">00</div><p class="text-[9px] opacity-40 uppercase mt-1">天數</p></div>
-              <div class="bg-white/5 p-3 md:p-4 flex-1 rounded-2xl md:rounded-3xl border border-white/5"><div class="text-2xl md:text-5xl font-bold tech-num" id="cdHours">00</div><p class="text-[9px] opacity-40 uppercase mt-1">小時</p></div>
-            </div>
           </div>
         </div>
       </div>
@@ -569,25 +543,13 @@
           </p>
         `,
         linkHtml: `<a href="#home" onclick="closeInteractiveModal()" class="w-full py-3 bg-orange-500 text-white rounded-xl font-bold text-center text-sm shadow-md hover:bg-orange-600 transition-all mb-2 block"><i class="fa-solid fa-rotate-left mr-1.5"></i>返回頂部體驗主介面</a>`
-      },
-            notice4: {
-        type: "notice_detail", title: "家族核心通訊錄數據校對", tag: "重要通知", color: "bg-red-500",
-        content: `
-          <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-4 rounded-r-xl text-left">
-            <p class="text-amber-800 font-bold text-xs md:text-sm"><i class="fa-solid fa-address-book mr-1"></i>校對重點：</p>
-            <p class="text-amber-700 text-xs mt-1 leading-relaxed">請全體 16 位成員核對各自的通訊電話、常駐分支節點是否正確。</p>
-          </div>
-          <p class="text-slate-600 text-xs md:text-sm text-left leading-relaxed mb-4">
-            配合 3.0 系統升級，後台正進行全面通訊加密，請有更換聯絡方式的成員主動洽詢行政管理人員。
-          </p>
-        `
       }
     };
 
     const notices = [
       { id: "notice1", tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" },
-          ];
+      { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" }
+    ];
 
     function initNotices() {
       const container = document.getElementById('noticeContainer');
@@ -623,11 +585,13 @@
 
       if (notices.length > showLimit && moreBtn) {
         moreBtn.classList.remove('hidden');
+      } else if (moreBtn) {
+        moreBtn.classList.add('hidden');
       }
     }
 
     function showSurprise() { 
-      const qs = ["呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。", "家人的陪伴，是歲月裡最暖、最珍過的禮物。","中秋明月下，期待全家人歡聚烤肉的笑聲。","老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門.","今日的努力，是為了讓呂家未來更加繁盛。","風雨並肩，我們是彼此最重要的守護力量。","心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"]; 
+      const qs = ["呂家向心力，永遠是我們最堅強的後盾。", "平安，就是生命中最大的幸福與財富。", "家人的陪伴，是歲月裡最暖、最珍過的禮物。","今日的努力，是為了讓呂家未來更加繁盛。","老大發話：願我們每個人都健康、平安、快樂。","行遍天下，最溫馨的歸宿永遠是呂氏家門。","風雨並肩，我們是彼此最重要的守護力量。","心若向陽，無畏風霜；呂氏精神，永綻光芒。","凝聚才智與愛，共築呂氏家族的榮耀願景。"]; 
       const target = document.getElementById('surpriseText');
       const modal = document.getElementById('surpriseModal');
       if(target && modal) {
@@ -781,18 +745,9 @@
     function openHistoryModal() { if(document.getElementById('historyModal')) document.getElementById('historyModal').classList.remove('hidden'); }
     function closeHistoryModal() { if(document.getElementById('historyModal')) document.getElementById('historyModal').classList.add('hidden'); }
 
-    function updateCountdown() {
-      const target = new Date("Sep 25, 2026 18:00:00").getTime(); 
-      const dist = target - new Date().getTime();
-      if(dist > 0) {
-        if(document.getElementById("cdDays")) document.getElementById("cdDays").innerText = Math.floor(dist / 86400000).toString().padStart(2, '0');
-        if(document.getElementById("cdHours")) document.getElementById("cdHours").innerText = Math.floor((dist % 86400000) / 3600000).toString().padStart(2, '0');
-      }
-    }
-
     window.onload = () => {
       document.body.style.overflow = 'hidden'; 
-      updateWeather(); renderMsgs(); initNotices(); updateCountdown();
+      updateWeather(); renderMsgs(); initNotices();
       
       document.querySelectorAll('.progress-bar-fill').forEach(b => {
         b.style.width = b.getAttribute('data-target-width');
@@ -801,10 +756,6 @@
       document.querySelectorAll('.counter').forEach(c => {
         c.innerText = c.getAttribute('data-target');
       });
-      
-      setInterval(updateCountdown, 1000);
-
-      if(document.getElementById('birthdayName')) document.getElementById('birthdayName').innerText = "呂佳寯";
     };
 
     const btt = document.getElementById('backToTop');
