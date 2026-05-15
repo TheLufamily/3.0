@@ -170,26 +170,26 @@
         <a href="#home" class="hover:text-indigo-600 transition-all px-1">首頁</a>
         <a href="#events" class="hover:text-indigo-600 transition-all px-1">活動</a>
         <a href="#notice" class="hover:text-indigo-600 transition-all px-1">公告</a>
+        <a href="#mail-section" class="hover:text-indigo-600 transition-all px-1">信件</a>
         <a href="#members" class="hover:text-indigo-600 transition-all px-1">幹部</a>
         <a href="#location" class="hover:text-indigo-600 transition-all px-1">分支</a>
         <a href="#guestbook" class="hover:text-indigo-600 transition-all px-1">留言</a>
       </div>
-      <button onclick="openHistoryModal()" class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0">
+      <button onclick="openHistoryModal()" class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0" title="開啟消息中心">
         <i class="fa-solid fa-bell"></i>
         <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
       </button>
     </div>
   </nav>
 
-  <section id="home" class="py-6 md:py-16">
+  <section id="home" class="py-6 md:py-12">
     <div class="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
       <div class="text-center lg:text-left">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold mb-4 md:mb-6 border border-indigo-100 uppercase tracking-widest">正式啟用 2026</div>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 elegant-card text-indigo-600 text-[10px] font-bold mb-4 md:mb-6 border border-indigo-100 uppercase tracking-widest">正式啟用 2026</div>
         <h2 class="text-3xl md:text-6xl font-black leading-tight text-slate-800 mb-4 md:mb-6">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
         <p class="italic text-slate-400 text-base md:text-lg mb-4 md:mb-8">「3.0 正式啟用」</p>
       </div>
       <div class="relative">
-        
         <div class="family-card overflow-hidden border-2">
           <div class="p-6 md:p-12">
             <div class="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-8 gap-4 text-center sm:text-left">
@@ -205,12 +205,11 @@
             <div class="grid grid-cols-3 gap-2 md:gap-6 border-t border-slate-200/60 pt-6 md:pt-10 text-center" id="weatherGrid"></div>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
 
-  <section class="py-6 md:py-16 bg-white">
+  <section class="py-6 md:py-10 bg-white">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <div class="modern-stats-bg rounded-[35px] md:rounded-[50px] p-6 md:p-16 shadow-2xl text-white relative">
         <div class="grid lg:grid-cols-2 gap-12 relative z-10">
@@ -340,6 +339,71 @@
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mail-section" class="py-8 bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div onclick="openInteractiveModal('mailNotice')" class="group relative overflow-hidden rounded-[2.5rem] p-6 md:p-8 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl border border-indigo-500/20 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:border-indigo-500/40 hover:-translate-y-1">
+        
+        <div class="absolute -right-10 -bottom-10 text-white/[0.02] text-9xl font-black group-hover:text-white/[0.04] transition-all duration-500">
+          <i class="fa-solid fa-boxes-packing"></i>
+        </div>
+        
+        <div class="relative z-10 space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-400/30 text-indigo-400 flex items-center justify-center text-xl shrink-0 group-hover:bg-indigo-500/20 transition-all">
+                <i class="fa-solid fa-envelope-open-text animate-pulse"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="bg-indigo-500 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Mail Control</span>
+                  <span class="text-indigo-300/80 text-xs font-mono hidden sm:inline"><i class="fa-solid fa-circle-nodes mr-1 text-[10px]"></i>Live Status</span>
+                </div>
+                <h3 class="text-lg md:text-2xl font-black tracking-tight text-white">重要信件收發與公文包裹查詢</h3>
+              </div>
+            </div>
+            
+            <button class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-indigo-950/50 transition-all group-hover:scale-105 shrink-0">
+              <i class="fa-solid fa-headset"></i> 聯絡行政總部核對 <i class="fa-solid fa-chevron-right text-[9px] opacity-60"></i>
+            </button>
+          </div>
+
+          <div class="bg-black/30 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden">
+            <div class="p-4 bg-white/5 border-b border-white/5 text-[11px] font-bold tracking-wider text-indigo-300 uppercase grid grid-cols-4 gap-2 text-center">
+              <div>收件日期</div>
+              <div>收件類別</div>
+              <div>指定收件人</div>
+              <div>最新簽收狀態</div>
+            </div>
+            <div class="divide-y divide-white/5 text-xs font-medium">
+              <div class="p-4 grid grid-cols-4 gap-2 items-center text-center hover:bg-white/[0.02] transition-colors">
+                <div class="font-mono text-slate-400 text-[11px]">2026/05/15</div>
+                <div class="text-amber-400"><i class="fa-solid fa-box mr-1"></i>重要包裹</div>
+                <div class="text-white font-bold">呂佳寯</div>
+                <div><span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-warehouse mr-1 text-[10px]"></i>管理室代收</span></div>
+              </div>
+              <div class="p-4 grid grid-cols-4 gap-2 items-center text-center hover:bg-white/[0.02] transition-colors">
+                <div class="font-mono text-slate-400 text-[11px]">2026/05/14</div>
+                <div class="text-sky-400"><i class="fa-solid fa-envelope mr-1"></i>掛號信件</div>
+                <div class="text-white font-bold">呂陳英妹</div>
+                <div><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-[10px]"></i>本人已簽收</span></div>
+              </div>
+              <div class="p-4 grid grid-cols-4 gap-2 items-center text-center hover:bg-white/[0.02] transition-colors">
+                <div class="font-mono text-slate-400 text-[11px]">2026/05/12</div>
+                <div class="text-amber-400"><i class="fa-solid fa-box mr-1"></i>重要包裹</div>
+                <div class="text-white font-bold">呂佳芯</div>
+                <div><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-1 rounded-md text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-[10px]"></i>本人已簽收</span></div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-400 text-xs font-medium leading-relaxed max-w-4xl pt-1">
+            <i class="fa-solid fa-circle-info text-indigo-400 mr-1.5"></i>系統提示：因外部伺服器數據交換存有延遲時差，上方看板僅供參考。如需核對貴重物件，請點擊本區塊查看完整說明。
+          </p>
         </div>
       </div>
     </div>
@@ -481,7 +545,7 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     let isWelcomeActive = true;
-    let showLimit = 3; // 公告首頁只顯示前3則
+    let showLimit = 3; 
 
     function dismissWelcome() {
       const overlay = document.getElementById('welcomeOverlay');
@@ -523,19 +587,19 @@
         isImg: false, icon: "fa-wand-magic-sparkles", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"],
         bgImg: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600"
       },
-      loc1: { type: "location", title: "新北板橋", sub: "總部", l1: "人員情況", i1: "7 名", l2: "特色", i2: "大總部，有如指揮中心，年度慶典或決策基地。", theme: "bg-blue-600", icon: "fa-city" },
+      loc1: { type: "location", title: "新北板橋 (總部)", sub: "總部", l1: "人員情況", i1: "7 名", l2: "特色", i2: "大總部，有如指揮中心，年度慶典或決策基地。", theme: "bg-blue-600", icon: "fa-city" },
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up" },
       
       mailNotice: {
-        type: "notice_detail", title: "信件收發查詢專區說明", tag: "服務新增", color: "bg-blue-500",
+        type: "notice_detail", title: "信件包裹查詢專區說明", tag: "服務新增", color: "bg-blue-500",
         content: `
           <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-4 rounded-r-xl text-left">
             <p class="text-amber-800 font-bold text-xs md:text-sm"><i class="fa-solid fa-triangle-exclamation mr-1"></i>重要提示：</p>
-            <p class="text-amber-700 text-xs mt-1 leading-relaxed">因信件收發伺服器與系統登入時間存有時差，系統顯示之收發時間可能與實際收到時間有所出入。</p>
+            <p class="text-amber-700 text-xs mt-1 leading-relaxed">因外部收發伺服器與系統登入時間存有時差，系統內快報看板之收發進度可能與實際狀況存有些許出入。</p>
           </div>
           <p class="text-slate-600 text-xs md:text-sm text-left leading-relaxed mb-4">
-            各位成員如需確實查詢、確認特定外部信件或公文包裹是否已成功送達總部或分支機構，為避免系統時差造成誤判，歡迎直接與本部進行聯繫與人工核對。
+            各位成員如需確實查詢、確認特定外部貴重信件、公文或網購包裹是否已成功送達總部與指定分支機構，歡迎直接與本部進行聯繫與人工核對，以防遺漏重要物件。
           </p>
           <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs text-slate-500 space-y-1">
             <p class="font-bold text-slate-700"><i class="fa-solid fa-headset mr-1 text-indigo-500"></i>本部對外服務窗口：</p>
@@ -599,7 +663,7 @@
 
     // 最新公告清單資料庫（共 5 條）
     const notices = [
-      { id: "mailNotice", tag: "服務新增", title: "新增信件收發查詢專區", content: "信件收發因伺服器時差問題，如需確實核對是否收到請洽詢本部。", date: "2026/05/15", color: "bg-blue-500" },
+      { id: "mailNotice", tag: "服務新增", title: "新增信件包裹快報看板", content: "信件收發因伺服器時差問題，現已將最新收發動態直接顯示於專區看板中。", date: "2026/05/15", color: "bg-blue-500" },
       { id: "notice1", tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" },
       { id: "notice3", tag: "節慶活動", title: "2026 端午佳節南北大會師籌備", content: "端午南北聚會預案擬定，相關粽子配額與人數統計開跑。", date: "2026/05/10", color: "bg-emerald-500" },
@@ -640,7 +704,6 @@
         });
       }
 
-      // 只要總消息數大於3，就讓「顯示更多消息」按鈕露出來
       if (notices.length > showLimit && moreBtn) {
         moreBtn.classList.remove('hidden');
       }
@@ -728,7 +791,7 @@
                     <h3 class="text-2xl font-black tracking-tight text-white">${d.name}</h3>
                     <i class="fa-brands fa-instagram text-xl text-slate-400"></i>
                   </div>
-                  <p class="text-slate-400 text-xs mt-1 font-medium">綽號：${d.alias}</p>
+                  <p class="text-slate-400 text-[11px] mt-1 font-medium">綽號：${d.alias}</p>
                 </div>
                 <div class="bg-slate-900/60 border border-indigo-500/30 px-3 py-1.5 rounded-xl text-center shadow-inner">
                   <span class="font-mono text-pink-500 font-bold text-sm tracking-tighter">${d.number}</span>
