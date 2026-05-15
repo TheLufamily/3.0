@@ -141,7 +141,7 @@
       </div>
       
       <h2 class="text-sm md:text-base font-bold text-slate-400 uppercase tracking-[0.3em] mb-3 font-mono">SYSTEM INITIALIZATION</h2>
-      <h1 class="text-2xl md:text-4xl font-black tracking-wider mb-2 glow-cyan leading-tight">WELCOME TO</h1>
+      <h1 class="text-2xl md:text-4xl font-black tracking-wider mb-2 glow-cyan winding-tight">WELCOME TO</h1>
       <h1 class="text-3xl md:text-5xl font-black tracking-widest mb-4 glow-pink leading-tight">呂氏家庭3.0網站</h1>
       <p class="text-xs md:text-sm font-medium tracking-[0.2em] text-[#00f2fe]/80 font-mono mb-8">LIFE INFORMATION NETWORK</p>
       
@@ -258,13 +258,16 @@
   </section>
 
   <section id="notice" class="py-10 md:py-20 bg-slate-50/50">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
-      <div>
-        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-4 text-slate-800"><i class="fa-solid fa-bullhorn text-orange-500"></i> 最新公告</h2>
+    <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-stretch">
+      
+      <div class="flex flex-col h-full">
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-4 text-slate-800 shrink-0">
+          <i class="fa-solid fa-bullhorn text-orange-500"></i> 最新公告
+        </h2>
         
-        <div id="noticeContainer" class="space-y-4"></div>
+        <div id="noticeContainer" class="flex flex-col gap-4 flex-1"></div>
         
-        <div id="quickUpdateInfo" class="mt-4 px-2 py-1.5 bg-slate-100/60 border border-slate-200/40 rounded-xl flex items-center justify-between text-slate-400 text-[11px] font-medium tracking-wide transition-all duration-300">
+        <div id="quickUpdateInfo" class="mt-4 px-2 py-1.5 bg-slate-100/60 border border-slate-200/40 rounded-xl flex items-center justify-between text-slate-400 text-[11px] font-medium tracking-wide shrink-0 transition-all duration-300">
           <div class="flex items-center gap-2">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span>
             <span><i class="fa-solid fa-clock-rotate-left mr-1"></i>系統管道核心數據已於今天即時完成變更更新。</span>
@@ -274,35 +277,39 @@
           </button>
         </div>
 
-        <div id="moreNoticeBtnContainer" class="hidden mt-6">
+        <div id="moreNoticeBtnContainer" class="hidden mt-6 shrink-0">
           <button onclick="openHistoryModal()" class="w-full py-4 rounded-2xl border border-dashed border-indigo-300 text-indigo-600 bg-indigo-50/50 font-bold text-sm hover:bg-indigo-50 transition-all flex items-center justify-center gap-2">
             <i class="fa-solid fa-layer-group"></i> 顯示更多消息
           </button>
         </div>
       </div>
       
-      <div>
-        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-4 text-slate-800"><i class="fa-solid fa-list-check text-emerald-500"></i> 活動執行進度</h2>
-        <div class="family-card p-5 md:p-8 space-y-6">
-          <div>
-            <div class="flex justify-between mb-2 text-xs md:text-sm"><p class="text-slate-800 font-medium">2026 新年春節大團圓</p><span class="text-slate-400">100% 已結束</span></div>
-            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="progress-bar-fill h-full bg-slate-300" data-target-width="100%"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2 text-xs md:text-sm"><p class="text-slate-800 font-medium">2026 母親節聚餐活動</p><span class="text-slate-400">100% 已結束</span></div>
-            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="progress-bar-fill h-full bg-slate-300" data-target-width="100%"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2 text-xs md:text-sm"><p class="text-slate-800 font-medium">中秋家族歡聚烤肉</p><span class="text-indigo-600 font-bold">35% 籌備中</span></div>
-            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden shadow-inner"><div class="progress-bar-fill h-full rounded-full glow-effect" data-target-width="35%"></div></div>
+      <div class="flex flex-col h-full">
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-4 text-slate-800 shrink-0">
+          <i class="fa-solid fa-list-check text-emerald-500"></i> 活動執行進度
+        </h2>
+        <div class="family-card p-5 md:p-8 flex flex-col justify-between flex-1 h-full space-y-6">
+          <div class="space-y-6 flex-1 flex flex-col justify-center">
+            <div>
+              <div class="flex justify-between mb-2 text-xs md:text-sm"><p class="text-slate-800 font-medium">2026 新年春節大團圓</p><span class="text-slate-400">100% 已結束</span></div>
+              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="progress-bar-fill h-full bg-slate-300" data-target-width="100%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2 text-xs md:text-sm"><p class="text-slate-800 font-medium">2026 母親節聚餐活動</p><span class="text-slate-400">100% 已結束</span></div>
+              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="progress-bar-fill h-full bg-slate-300" data-target-width="100%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2 text-xs md:text-sm"><p class="text-slate-800 font-medium">中秋家族歡聚烤肉</p><span class="text-indigo-600 font-bold">35% 籌備中</span></div>
+              <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden shadow-inner"><div class="progress-bar-fill h-full rounded-full glow-effect" data-target-width="35%"></div></div>
+            </div>
           </div>
 
-          <div class="border-t border-slate-100 pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+          <div class="border-t border-slate-100 pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left shrink-0">
             <div class="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/40">
               <span class="text-[10px] uppercase tracking-wider text-indigo-500 font-bold block mb-2"><i class="fa-solid fa-circle-check mr-1"></i> 今年已完成活動</span>
               <ul class="text-xs text-slate-600 space-y-1 font-medium list-disc pl-4">
                 <li>新年春節團圓餐會</li>
-                <li>母親節感恩溫馨MV</li>
+                <li>母親節感恩慶祝</li>
               </ul>
             </div>
             <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-100/40">
@@ -314,6 +321,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -518,6 +526,33 @@
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up" },
       
+      notice_hongcui: {
+        type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
+        content: `
+          <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4 rounded-r-xl text-left text-xs md:text-sm">
+            <p class="text-red-800 font-bold mb-1"><i class="fa-solid fa-users mr-1"></i>一、發放對象：</p>
+            <p class="text-red-700 leading-relaxed pl-4">設籍於宏翠里，且以115年1月1日為基準日，設籍滿4年以上之戶（戶內人口至少有1人設籍滿4年）。</p>
+          </div>
+          <div class="bg-slate-50 border rounded-2xl p-4 text-left text-xs md:text-sm space-y-3 mb-4">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、發放資訊與應備文件：</p>
+            <p class="text-slate-600 pl-2">1. 領取通知單由殯葬處統一於「5月08日」寄出。</p>
+            <p class="text-slate-600 pl-2">2. 請領取人（戶長）攜帶：<strong class="text-slate-900 font-bold">身分證及印章</strong>（如為代領，除戶長身分證印章外，另請備妥代領人身分證及印章）供核對。</p>
+            
+            <div class="border-t border-dashed border-slate-200 my-2 pt-2">
+              <p class="font-bold text-amber-600"><i class="fa-solid fa-location-dot mr-1"></i>現場領取地點：</p>
+              <p class="text-slate-700 font-medium pl-2">宏翠里里辦公室（板橋區長江路一段156巷9弄5號1樓）</p>
+              <p class="text-slate-600 pl-2 mt-1 font-semibold text-indigo-600">📣 第一波時間：5月30日（六）/ 5月31日（日）09:00-16:00</p>
+              <p class="text-slate-600 pl-2 font-semibold text-indigo-600">📣 第二波時間：6月06日（六）/ 6月07日（日）09:00-16:00</p>
+            </div>
+          </div>
+          <div class="text-left text-xs text-slate-500 space-y-1 bg-slate-100/60 p-3 rounded-xl">
+            <p>• <strong class="text-slate-700">三、其他領取方式：</strong>詳見領取通知單說明。</p>
+            <p>• <strong class="text-slate-700">四、注意事項：</strong>未來若選擇匯款，請於通知單背面填寫相關資料。</p>
+            <p>• <strong class="text-slate-700">五、疑義洽詢：</strong>請電洽新北市政府殯葬管理處 殯儀管理課 吳先生（電話：22571207 分機110）。</p>
+          </div>
+        `,
+        linkHtml: `<div class="w-full text-center text-xs font-bold py-2 text-slate-400">— 宏翠里 里辦公室 ❤️ 敬上 —</div>`
+      },
       notice1: {
         type: "notice_detail", title: "114年度所得稅申報提示", tag: "重要通知", color: "bg-red-500",
         content: `
@@ -547,8 +582,9 @@
     };
 
     const notices = [
-      { id: "notice1", tag: "重要通知", title: "114年度所得稅申報作業", content: "請成員於 2026/06/01 前完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，新增科技數據顯示條與全方位整合介面。", date: "2026/05/14", color: "bg-orange-500" }
+      { id: "notice_hongcui", tag: "重要通知", title: "宏翠里 115年殯儀館及火化場回饋金發放", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
+      { id: "notice1", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
+      { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，升級氣象三宮格、HUD彈窗與響應式流暢度。", date: "2026/05/14", color: "bg-orange-500" }
     ];
 
     function initNotices() {
@@ -559,7 +595,7 @@
 
       notices.slice(0, showLimit).forEach(n => {
         container.innerHTML += `
-          <div class="family-card p-5 md:p-6 cursor-pointer border hover:border-indigo-200 transition-all" onclick="openInteractiveModal('${n.id}')">
+          <div class="family-card p-5 md:p-6 cursor-pointer border hover:border-indigo-200 transition-all flex flex-col justify-center flex-1" onclick="openInteractiveModal('${n.id}')">
             <div class="flex flex-wrap gap-2 items-center mb-2 md:mb-3">
               <span class="${n.color} text-white text-[9px] font-bold px-3 py-1 rounded-full">${n.tag}</span>
               <span class="text-slate-400 text-[10px] font-medium tracking-tight tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
@@ -625,7 +661,7 @@
     }
     function toggleHistory() { 
       const box = document.getElementById('historyMessages');
-      if(box) box.toggle('hidden'); 
+      if(box) box.classList.toggle('hidden'); 
     }
 
     function updateWeather() {
@@ -699,7 +735,7 @@
                 <i class="fa-solid fa-xmark text-xs"></i>
               </button>
             </div>
-            <div class="p-6 text-center">
+            <div class="p-6 text-center max-h-[70vh] overflow-y-auto custom-scrollbar">
               ${d.content}
               <div class="mt-6 space-y-2">
                 ${d.linkHtml ? d.linkHtml : ''}
