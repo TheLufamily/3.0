@@ -108,10 +108,22 @@
     }
     @keyframes gradient-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
     
-    #backToTop, #surpriseBtn { opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 1000; }
-    #backToTop.show, #surpriseBtn.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    #backToTop { box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3); }
-    #surpriseBtn { box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3); }
+    /* ===== 雙懸浮固定功能鈕空間精密重組 ===== */
+    #backToTop, #surpriseBtn { opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 1000; right: 1rem; }
+    #backToTop.show, #surpriseBtn.show { opacity: 1; pointer-events: auto; }
+    
+    /* 手機版垂直間距錯開 */
+    #backToTop { bottom: 1rem; transform: translateY(20px); box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3); }
+    #surpriseBtn { bottom: 4.5rem; transform: translateY(20px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3); }
+    
+    #backToTop.show { transform: translateY(0); }
+    #surpriseBtn.show { transform: translateY(0); }
+
+    /* 電腦版等比例放大並優化高度 */
+    @media (min-width: 768px) {
+      #backToTop { bottom: 1.5rem; right: 1.5rem; }
+      #surpriseBtn { bottom: 6rem; right: 1.5rem; }
+    }
 
     .modal-bounce { animation: modalBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
     @keyframes modalBounce { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -184,6 +196,7 @@
         <a href="#members" class="hover:text-indigo-600 transition-all px-0.5">幹部</a>
         <a href="#location" class="hover:text-indigo-600 transition-all px-0.5">分支</a>
         <a href="#guestbook" class="hover:text-indigo-600 transition-all px-0.5">留言</a>
+        <a href="#contact" class="hover:text-indigo-600 transition-all px-0.5">聯絡</a>
       </div>
       <button onclick="openHistoryModal()" class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0" title="開啟消息中心">
         <i class="fa-solid fa-bell text-sm"></i>
@@ -481,6 +494,91 @@
     </div>
   </section>
 
+  <section id="contact" class="py-10 md:py-20 bg-slate-50 border-t border-slate-200/50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8 md:mb-14">
+        <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight">聯絡我們</h2>
+        <p class="text-indigo-600 text-[10px] md:text-xs uppercase font-bold tracking-widest mt-1">Contact Our Management Base</p>
+        <div class="w-10 md:w-16 h-1 bg-indigo-600 mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-stretch">
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-4 md:space-y-6 h-full">
+          <div class="family-card p-5 md:p-6 border bg-white flex-1">
+            <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">
+              <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-base shrink-0 border border-indigo-100">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-slate-800">聯絡川口</h3>
+                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider font-mono">Management Window</p>
+              </div>
+            </div>
+            <p class="text-slate-500 text-xs leading-relaxed mb-4">本網路由呂氏核心管理層——<strong>川口管理團隊</strong>負責全權維運與業務接洽。若您有活動提案、權限調取或里民反饋，請不吝聯絡本基地窗口。</p>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-user-tie text-indigo-500 w-4 text-center"></i>核心聯絡：管理窗口 (呂佳寯)</div>
+              <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-envelope text-indigo-500 w-4 text-center"></i>公務信箱：<span class="font-mono text-slate-700">service@lufamily.local</span></div>
+              <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-clock text-indigo-500 w-4 text-center"></i>受理時間：週一至週日 09:00 - 21:00</div>
+            </div>
+          </div>
+
+          <div class="family-card p-5 md:p-6 border bg-amber-50/40 border-amber-200/40 shrink-0">
+            <div class="flex items-center gap-2.5 mb-2.5 text-amber-600 font-bold text-xs sm:text-sm">
+              <i class="fa-solid fa-triangle-exclamation text-base"></i>
+              <h3>服務注意事項</h3>
+            </div>
+            <ul class="text-[11px] md:text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium leading-relaxed">
+              <li>送出表單後，系統核心管道將即時派發代辦單至幹部後台。</li>
+              <li>公務反饋預計於 <strong class="text-indigo-600">48 小時內</strong> 由專人回信或電話致電答覆。</li>
+              <li>請務必填寫正確的稱呼與電話號碼，以免造成數據失聯。</li>
+              <li>本表單資料受內部高度隱私加密通道保護，絕不外洩。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col h-full">
+          <div class="family-card p-5 sm:p-6 md:p-8 border bg-white flex-1 flex flex-col justify-between">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4 flex-1">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-user mr-1 text-slate-400"></i>您的稱呼 <span class="text-red-500">*</span></label>
+                  <input type="text" id="contactName" required placeholder="例如：呂先生 / 里民" class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white shadow-inner">
+                </div>
+                <div>
+                  <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-phone mr-1 text-slate-400"></i>聯絡電話 <span class="text-red-500">*</span></label>
+                  <input type="tel" id="contactPhone" required placeholder="例如：0912345678" class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white shadow-inner">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-tags mr-1 text-slate-400"></i>服務事項類別 <span class="text-red-500">*</span></label>
+                <div class="relative">
+                  <select id="contactCategory" required class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white appearance-none cursor-pointer shadow-inner">
+                    <option value="" disabled selected>請選擇您要諮詢的項目...</option>
+                    <option value="里民公務反饋">里民公務及回饋金諮詢</option>
+                    <option value="家族出遊與慶典提案">家族出遊與大型慶典提案</option>
+                    <option value="系統升級建言">家庭生活網 3.0 系統功能建言</option>
+                    <option value="其他綜合事務">其他綜合商務及聯絡事務</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                </div>
+              </div>
+
+              <div class="flex-1 flex flex-col">
+                <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-comment-dots mr-1 text-slate-400"></i>服務內容詳述 <span class="text-red-500">*</span></label>
+                <textarea id="contactMessage" required rows="4" placeholder="請詳細敘述您的具體反饋、建言或諮詢內容，以利川口團隊快速為您研判分析..." class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white flex-1 resize-none shadow-inner min-h-[100px]"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 shadow-md transition-all flex items-center justify-center gap-2 text-xs sm:text-sm mt-2 tracking-widest uppercase">
+                <i class="fa-solid fa-paper-plane text-xs"></i> 遞交線上表單 (同步發布通知)
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="walkway-container" id="floatingWalkway">
     <div class="family-walking-group text-slate-400">
       <div class="walk-bounce flex flex-col items-center"><i class="fa-solid fa-baby-carriage text-lg text-indigo-500"></i><span class="text-[8px] font-medium text-slate-400 scale-90">散步中</span></div>
@@ -517,12 +615,14 @@
     </div>
   </div>
 
-  <button id="surpriseBtn" onclick="showSurprise()" class="fixed bottom-16 right-3 bg-pink-500 text-white rounded-full flex flex-col items-center justify-center p-1.5 text-center group border border-white/10 shadow-md hover:bg-pink-600 transition-all w-10 h-10 md:w-14 md:h-14">
+  <button id="surpriseBtn" onclick="showSurprise()" class="fixed bg-pink-500 text-white rounded-full flex flex-col items-center justify-center p-1.5 text-center group border border-white/10 shadow-md hover:bg-pink-600 transition-all w-10 h-10 md:w-14 md:h-14">
     <i class="fa-solid fa-wand-magic-sparkles text-xs md:text-base animate-bounce"></i>
     <span class="text-[7px] md:text-[8px] font-black tracking-tighter block -mt-0.5">小彩蛋</span>
   </button>
 
-  <button id="backToTop" class="fixed bottom-4 right-3 w-10 h-10 md:w-14 md:h-14 bg-indigo-600 text-white rounded-xl shadow-md flex items-center justify-center border border-white/10 z-[95] hover:bg-indigo-700 transition-all"><i class="fa-solid fa-chevron-up text-xs md:text-lg"></i></button>
+  <button id="backToTop" class="fixed w-10 h-10 md:w-14 md:h-14 bg-indigo-600 text-white rounded-xl shadow-md flex items-center justify-center border border-white/10 z-[95] hover:bg-indigo-700 transition-all">
+    <i class="fa-solid fa-chevron-up text-xs md:text-lg"></i>
+  </button>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -598,7 +698,7 @@
         linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-400">— 宏翠里 里辦公室 里長敬上 —</div>`
       },
       notice1: {
-        type: "notice_detail", title: "114年度所得稅申報提示", tag: "重要通知", color: "bg-red-500",
+        type: "notice_detail", title: "114年度所得稅申報作業提示", tag: "重要通知", color: "bg-red-500",
         content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs"><i class="fa-solid fa-circle-exclamation mr-1"></i>截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">請全體家庭成員注意，申報期期限截止日為 2026/06/01，逾期系統管道將關閉。</p></div>`,
         linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往電子申報繳稅服務網</a>`
       },
@@ -677,6 +777,44 @@
       if (msgs.length > 3 && btn) btn.classList.remove('hidden');
     }
     function toggleHistory() { document.getElementById('historyMessages').classList.toggle('hidden'); }
+
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const category = document.getElementById('contactCategory').value;
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if(!name || !phone || !category || !message) {
+        alert("請確認所有欄位皆已填寫完整！");
+        return;
+      }
+
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden font-sans border border-slate-100">
+          <div class="bg-emerald-500 text-white px-5 py-4 flex flex-col items-center justify-center text-center">
+            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-2 text-2xl shadow-inner animate-bounce">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-base font-black">表單傳送成功</h3>
+            <p class="text-[9px] opacity-80 tracking-widest font-mono mt-0.5">DATA SENT TO MANAGEMENT CHANNEL</p>
+          </div>
+          <div class="p-5 text-left text-xs space-y-2 text-slate-600">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-paper-plane text-indigo-500 mr-1"></i>川口基地已接收反饋：</p>
+            <div class="bg-slate-50 border rounded-xl p-3 space-y-1 font-medium">
+              <p><span class="text-slate-400">諮詢人：</span>\${name}</p>
+              <p><span class="text-slate-400">類別：</span>\${category}</p>
+              <p><span class="text-slate-400">流派序號：</span><span class="text-emerald-600 font-mono">#LU-\\${Math.floor(1000 + Math.random() * 9000)}</span></p>
+            </div>
+            <p class="text-[11px] leading-relaxed pt-2 text-slate-400 font-medium">感謝您的建言！管理團隊（呂佳寯）將根據服務注意事項，於 48 小時內向電話 \${phone} 進行聯繫處理。</p>
+            <button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700 shadow-sm transition-all mt-4 block text-center">確認並返回網頁</button>
+          </div>
+        </div>`;
+      
+      document.getElementById('interactiveModal').classList.remove('hidden');
+      document.getElementById('contactForm').reset();
+    }
 
     function updateWeather() {
       const w = [{c:'板橋',t:28,i:'fa-sun',cl:'text-sky-600'},{c:'臺中',t:30,i:'fa-cloud-sun',cl:'text-emerald-600'},{c:'平鎮',t:27,i:'fa-cloud',cl:'text-orange-600'}];
