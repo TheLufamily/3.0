@@ -219,8 +219,11 @@
               <div>
                 <p class="text-slate-400 text-[9px] sm:text-[10px] mb-1" id="weatherSyncText">數據同步中...</p>
                 <div class="flex items-center gap-3 md:gap-4">
-                  <span class="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-800 tech-num" id="mainTemp">28°</span>
-                  <div><p class="text-sm sm:text-base md:text-2xl font-bold text-slate-800" id="currentDate">5月16日</p><p class="text-[10px] sm:text-xs md:text-sm font-bold text-indigo-600">星期六</p></div>
+                  <span class="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-800 tech-num" id="mainTemp">--°</span>
+                  <div>
+                    <p class="text-sm sm:text-base md:text-2xl font-bold text-slate-800" id="currentDate">--月--日</p>
+                    <p class="text-[10px] sm:text-xs md:text-sm font-bold text-indigo-600" id="currentDay">--</p>
+                  </div>
                 </div>
               </div>
               <i class="fa-solid fa-cloud-sun text-4xl sm:text-5xl md:text-6xl text-orange-400 animate-bounce"></i>
@@ -816,13 +819,50 @@
       document.getElementById('contactForm').reset();
     }
 
+    // ===== 系統時間與日期自動更新邏輯 =====
     function updateWeather() {
-      const w = [{c:'板橋',t:28,i:'fa-sun',cl:'text-sky-600'},{c:'臺中',t:30,i:'fa-cloud-sun',cl:'text-emerald-600'},{c:'平鎮',t:27,i:'fa-cloud',cl:'text-orange-600'}];
+      // 1. 抓取當下使用者端正確時間
       const now = new Date();
-      if(document.getElementById('weatherSyncText')) document.getElementById('weatherSyncText').innerText = `同步時間 ${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`;
-      if(document.getElementById('currentDate')) document.getElementById('currentDate').innerText = `${now.getMonth()+1}月${now.getDate()}日`;
-      if(document.getElementById('mainTemp')) document.getElementById('mainTemp').innerText = `${w[0].t}°`;
-      if(document.getElementById('weatherGrid')) document.getElementById('weatherGrid').innerHTML = w.map(x => `<div class="text-center"><p class="text-[10px] sm:text-xs text-slate-500 mb-0.5 font-medium">${x.c}</p><p class="text-base sm:text-xl font-bold ${x.cl} tech-num mb-0.5">${x.t}°</p><i class="fa-solid ${x.i} ${x.cl} text-xs sm:text-sm"></i></div>`).join('');
+      
+      // 2. 補零防跳動處理 (維持科技儀表板對齊美感)
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      
+      // 3. 自動解析月份、日期與星期
+      const month = now.getMonth() + 1;
+      const date = now.getDate();
+      const weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      const dayName = weekDays[now.getDay()];
+
+      // 4. 三宮格地區靜態參考溫度
+      const w = [
+        { c: '板橋', t: 28, i: 'fa-sun', cl: 'text-sky-600' },
+        { c: '臺中', t: 30, i: 'fa-cloud-sun', cl: 'text-emerald-600' },
+        { c: '平鎮', t: 27, i: 'fa-cloud', cl: 'text-orange-600' }
+      ];
+      
+      // 5. 將動態數據映射到頁面元件中
+      if (document.getElementById('weatherSyncText')) {
+        document.getElementById('weatherSyncText').innerText = `同步時間 ${hours}:${minutes}`;
+      }
+      if (document.getElementById('currentDate')) {
+        document.getElementById('currentDate').innerText = `${month}月${date}日`;
+      }
+      if (document.getElementById('currentDay')) {
+        document.getElementById('currentDay').innerText = dayName;
+      }
+      if (document.getElementById('mainTemp')) {
+        document.getElementById('mainTemp').innerText = `${w[0].t}°`;
+      }
+      if (document.getElementById('weatherGrid')) {
+        document.getElementById('weatherGrid').innerHTML = w.map(x => `
+          <div class="text-center">
+            <p class="text-[10px] sm:text-xs text-slate-500 mb-0.5 font-medium">${x.c}</p>
+            <p class="text-base sm:text-xl font-bold ${x.cl} tech-num mb-0.5">${x.t}°</p>
+            <i class="fa-solid ${x.i} ${x.cl} text-xs sm:text-sm"></i>
+          </div>
+        `).join('');
+      }
     }
 
     function openInteractiveModal(k) {
@@ -901,6 +941,9 @@
     window.onload = () => {
       document.body.style.overflow = 'hidden'; 
       updateWeather(); renderMsgs(); initNotices();
+      // 設定每隔 30 秒在背景悄悄更新一次時間，不影響使用者閱讀
+      setInterval(updateWeather, 30000);
+
       document.querySelectorAll('.progress-bar-fill').forEach(b => b.style.width = b.getAttribute('data-target-width'));
       document.querySelectorAll('.counter').forEach(c => c.innerText = c.getAttribute('data-target'));
     };
