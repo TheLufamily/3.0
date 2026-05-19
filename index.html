@@ -666,19 +666,40 @@
       member4: { 
         type: "member", name: "後勤員", alias: "後勤員", number: "#後勤", 
         range: "確保各項物資及裝備完美到位！",
-        role: "後勤", skill: "物資統籌 / 現場營運支援", sign: "未公開", dob: "2026", 
+        role: "後勤", skill: "物資整備", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-blue-400", tags: ["fa-boxes-packing", "fa-truck-ramp-box", "fa-clipboard-list"], bgImg: ""
       },
       member5: { 
         type: "member", name: "美術員", alias: "美術員", number: "#美術", 
         range: "負責記錄下各項大小活動✨",
-        role: "創意美術", skill: "平面視覺 / 家族紀念影片包裝", sign: "未公開", dob: "2026", 
+        role: "創意美術", skill: "用影像說話", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-purple-400", tags: ["fa-palette", "fa-pen-nib", "fa-bezier-curve"], bgImg: ""
       },
 
       loc1: { type: "location", title: "新北板橋 (總部)", sub: "總部", l1: "人員情況", i1: "7 名", l2: "特色", i2: "大總部，有如指揮中心，年度慶典或決策基地。", theme: "bg-blue-600", icon: "fa-city" },
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up" },
+      
+      notice_hongcui: {
+        type: "notice_detail", title: "115年暑期戰鬥營 即將開始報名啦！", tag: "活動通知", color: "bg-red-500",
+        content: `
+          <div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm">
+            <p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、發放對象：</p>
+            <p class="text-red-700 leading-relaxed pl-3">設籍於宏翠里，且以115年1月1日為基準日，設籍滿4年以上之戶（戶內人口至少有1人設籍滿4年）。</p>
+          </div>
+          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、發放資訊與應備文件：</p>
+            <p class="text-slate-600 pl-1">1. 領取通知單由殯葬處統一於「5月08日」寄出。</p>
+            <p class="text-slate-600 pl-1">2. 請領取人（戶長）攜帶：<strong class="text-slate-900 font-bold">身分證及印章</strong>供核對。</p>
+            <div class="border-t border-dashed border-slate-200 my-1.5 pt-1.5">
+              <p class="font-bold text-amber-600"><i class="fa-solid fa-location-dot mr-1"></i>現場領取地點：</p>
+              <p class="text-slate-700 font-medium pl-1">宏翠里里辦公室（板橋區長江路一段156巷9弄5號1樓）</p>
+              <p class="text-slate-600 pl-1 mt-0.5 font-semibold text-indigo-600">📣 第一波時間：5月30日（六）/ 5月31日（日）09:00-16:00</p>
+              <p class="text-slate-600 pl-1 font-semibold text-indigo-600">📣 第二波時間：6月06日（六）/ 6月07日（日）09:00-16:00</p>
+            </div>
+          </div>`,
+        linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-400">— 宏翠里 里辦公室 里長敬上 —</div>`
+      },
       
       notice_hongcui: {
         type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
