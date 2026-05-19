@@ -248,6 +248,8 @@
         <a href="#location" class="hover:text-indigo-600 transition-all px-0.5">分支</a>
         <a href="#guestbook" class="hover:text-indigo-600 transition-all px-0.5">留言</a>
         <a href="#contact" class="hover:text-indigo-600 transition-all px-0.5">聯絡</a>
+        <button onclick="document.getElementById('queryModal').classList.remove('hidden')" class="hover:text-indigo-600 transition-all font-bold">查詢</button>
+<button onclick="document.getElementById('authModal').classList.remove('hidden')" class="hover:text-pink-600 transition-all font-bold">考核</button>
       </div>
       <button onclick="openHistoryModal()" class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0" title="開啟消息中心">
         <i class="fa-solid fa-bell text-sm"></i>
@@ -1127,5 +1129,52 @@
     window.onscroll = triggerScrollChecks;
     if(btt) btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
+  <div id="queryModal" class="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="this.classList.add('hidden')">
+  <div class="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
+    <h2 class="text-xl font-black mb-6 text-slate-800">個人績效查詢</h2>
+    <input type="text" id="queryInput" class="w-full p-3 border rounded-xl mb-4 bg-slate-50" placeholder="輸入成員姓名...">
+    <button onclick="runQuery()" class="w-full bg-indigo-600 text-white p-3 rounded-xl font-bold hover:bg-indigo-700 transition">搜尋</button>
+    <div id="queryResult" class="mt-6 text-sm font-bold text-slate-700 text-center"></div>
+  </div>
+</div>
+
+<div id="authModal" class="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="this.classList.add('hidden')">
+  <div class="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
+    <h2 class="text-xl font-black mb-6 text-slate-800">安全考核認證</h2>
+    <input type="password" id="authToken" class="w-full p-3 border rounded-xl mb-4 bg-slate-50" placeholder="輸入專屬金鑰...">
+    <button onclick="runAuth()" class="w-full bg-pink-600 text-white p-3 rounded-xl font-bold hover:bg-pink-700 transition">驗證身分</button>
+    <div id="authResult" class="mt-6 text-sm font-bold text-slate-700 text-center"></div>
+  </div>
+</div>
+
+<script>
+  // 績效數據庫
+  const memberData = {
+    "呂陳英妹": "單位：總部 | 考核：卓越特優(A++)", "呂佳寯": "單位：總部 | 考核：卓越特優(A+)",
+    "呂佳芯": "單位：總部 | 考核：優等(A)", "呂幸福": "單位：總部 | 考核：優等(A)",
+    "吳孟綺": "單位：總部 | 考核：優等(A)", "呂理享": "單位：總部 | 考核：優等(A)",
+    "阮氏紅幸": "單位：總部 | 考核：優等(A)", "呂寶梅": "單位：第二分支 | 考核：優等(A)",
+    "劉沛緹": "單位：第二分支 | 考核：優等(A)", "劉宗豪": "單位：第二分支 | 考核：優等(A)",
+    "于國輝": "單位：第一分支 | 考核：優等(A)", "于子祥": "單位：第一分支 | 考核：優等(A)",
+    "呂寶珠": "單位：第一分支 | 考核：優等(A)", "陳凱華": "單位：第一分支 | 考核：優等(A)",
+    "劉羿汝": "單位：第一分支 | 考核：優等(A)", "陳俊廷": "單位：第一分支 | 考核：優等(A)"
+  };
+
+  function runQuery() {
+    const val = document.getElementById('queryInput').value.trim();
+    document.getElementById('queryResult').innerText = memberData[val] || "查無此人數據。";
+  }
+
+  function runAuth() {
+    const token = document.getElementById('authToken').value.trim();
+    const authKeys = { 
+      "妹555":"呂陳英妹","寯202":"呂佳寯","芯821":"呂佳芯","福777":"呂幸福","綺111":"吳孟綺",
+      "享123":"呂理享","幸001":"阮氏紅幸","梅666":"呂寶梅","緹999":"劉沛緹","豪888":"劉宗豪",
+      "輝321":"于國輝","祥520":"于子祥","珠889":"呂寶珠","華711":"陳凱華","汝101":"劉羿汝",
+      "廷991":"陳俊廷","admin999":"最高權限管理員" 
+    };
+    document.getElementById('authResult').innerText = authKeys[token] ? `驗證成功：${authKeys[token]}` : "金鑰錯誤。";
+  }
+</script>
 </body>
 </html>
