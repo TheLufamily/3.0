@@ -1017,5 +1017,16 @@
     window.onscroll = triggerScrollChecks;
     if(btt) btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
+  <section id="footer-performance" class="max-w-4xl mx-auto px-4 py-12 mt-10 border-t border-slate-200">
+    <div class="bg-slate-800 rounded-3xl p-6 md:p-10 shadow-lg text-center">
+        <h3 class="text-white font-black text-xl mb-2"><i class="fa-solid fa-square-poll-vertical mr-2"></i>個人成績考核查詢</h3>
+        <p class="text-slate-400 text-xs mb-6">請輸入您的專屬識別代碼進行查詢</p>
+        
+        <div class="max-w-xs mx-auto flex gap-2">
+            <input type="password" id="footerAuthCode" placeholder="輸入代碼" class="flex-1 bg-slate-700 text-white rounded-xl px-4 py-3 border border-slate-600 focus:border-indigo-500 outline-none text-center font-bold">
+            <button onclick="footerVerifyPerformance()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all">查詢</button>
+        </div>
+    </div>
+</section>
 </body>
 </html>
