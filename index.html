@@ -1017,47 +1017,5 @@
     window.onscroll = triggerScrollChecks;
     if(btt) btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
- function footerVerifyPerformance() {
-    const inputField = document.getElementById('footerAuthCode');
-    if (!inputField) {
-        alert("錯誤：找不到輸入框 ID (footerAuthCode)");
-        return;
-    }
-    
-    const code = inputField.value.trim();
-    const modalContent = document.getElementById('modalContent');
-    const interactiveModal = document.getElementById('interactiveModal');
-
-    const membersDatabase = {
-        "妹555": "呂陳英妹", "雋202": "呂佳寯", "芯821": "呂佳芯", "福777": "呂幸福",
-        "綺111": "吳孟綺", "享123": "呂理享", "幸001": "阮氏紅幸", "梅666": "呂寶梅",
-        "緹999": "劉沛緹", "豪888": "劉宗豪", "輝321": "于國輝", "祥520": "于子祥",
-        "珠889": "呂寶珠", "華711": "陳凱華", "汝101": "劉羿汝", "廷991": "陳俊廷"
-    };
-
-    if (code === "admin999") {
-        modalContent.innerHTML = `
-            <div class="bg-white rounded-[24px] p-6 shadow-2xl max-h-[70vh] overflow-y-auto">
-                <h3 class="text-red-600 font-black text-center mb-4">ADMIN 最高管理權限</h3>
-                ${Object.entries(membersDatabase).map(([c, n]) => `
-                    <div class="p-3 border-b flex justify-between text-xs font-bold text-slate-700">
-                        ${n} <a href="#" class="text-indigo-600 hover:underline">檢視考績</a>
-                    </div>`).join('')}
-                <button onclick="closeInteractiveModal()" class="w-full mt-4 py-2 bg-slate-100 rounded-lg text-xs">關閉</button>
-            </div>`;
-        interactiveModal.classList.remove('hidden');
-    } else if (membersDatabase[code]) {
-        modalContent.innerHTML = `
-            <div class="bg-white rounded-[24px] p-6 text-center shadow-2xl">
-                <h3 class="text-xl font-black text-slate-800">歡迎，${membersDatabase[code]}</h3>
-                <p class="text-xs text-slate-500 my-4">查詢成功，請查看您的績效報告</p>
-                <a href="#" class="block w-full py-3 bg-indigo-600 text-white font-bold rounded-xl text-sm hover:bg-indigo-700">開啟成績考核表</a>
-                <button onclick="closeInteractiveModal()" class="w-full mt-3 py-2 text-slate-400 text-xs font-bold">關閉</button>
-            </div>`;
-        interactiveModal.classList.remove('hidden');
-    } else {
-        alert("代碼錯誤或無權限，請確認後重新輸入。");
-    }
-}
 </body>
 </html>
