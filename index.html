@@ -18,38 +18,44 @@
     .scrollbar-none::-webkit-scrollbar { display: none; }
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* ===== 科技風格歡迎幕專屬樣式 ===== */
+    /* ===== 核心重構：極硬核 HUD 科技儀表板入口網幕 ===== */
     .tech-welcome-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #1a1d29 0%, #0a0b10 100%);
+      background: radial-gradient(circle at center, #0f111a 0%, #05060b 100%);
       z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .tech-hud-box {
-      background: rgba(22, 25, 35, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(0, 242, 254, 0.15);
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.05);
-      border-radius: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-    @media (min-width: 768px) {
-      .tech-hud-box { border-radius: 40px; }
-    }
-    .tech-hud-box::before {
-      content: '';
+    /* 掃描線動態特效 */
+    .tech-welcome-overlay::after {
+      content: " ";
+      display: block;
       position: absolute;
-      inset: 10px;
-      border: 1px dashed rgba(255, 255, 255, 0.05);
-      border-radius: 24px;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 242, 254, 0.04) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      z-index: 10000;
+      background-size: 100% 4px, 6px 100%;
       pointer-events: none;
     }
+    .tech-hud-center-console {
+      background: rgba(13, 16, 27, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      box-shadow: 0 0 70px rgba(0, 242, 254, 0.1), inset 0 0 30px rgba(0, 242, 254, 0.05);
+      border-radius: 32px;
+      position: relative;
+    }
+    /* 儀表板四角科技定位邊框 */
+    .hud-corner { position: absolute; width: 16px; height: 16px; border-color: #00f2fe; border-style: solid; pointer-events: none; }
+    .hc-tl { top: -1px; left: -1px; border-width: 3px 0 0 3px; border-top-left-radius: 12px; }
+    .hc-tr { top: -1px; right: -1px; border-width: 3px 3px 0 0; border-top-right-radius: 12px; }
+    .hc-bl { bottom: -1px; left: -1px; border-width: 0 0 3px 3px; border-bottom-left-radius: 12px; }
+    .hc-br { bottom: -1px; right: -1px; border-width: 0 3px 3px 0; border-bottom-right-radius: 12px; }
+
     .glow-cyan {
       font-family: 'Orbitron', "Noto Sans TC", sans-serif;
       color: #00f2fe;
@@ -62,26 +68,20 @@
     }
     .tech-btn {
       font-family: 'Orbitron', sans-serif;
-      background: rgba(0, 242, 254, 0.03);
-      border: 1px solid rgba(0, 242, 254, 0.4);
+      background: linear-gradient(180deg, rgba(0, 242, 254, 0.05) 0%, rgba(0, 242, 254, 0.15) 100%);
+      border: 1px solid #00f2fe;
       color: #00f2fe;
-      text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
-      transition: all 0.3s ease;
+      text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
     }
     .tech-btn:hover {
-      background: rgba(0, 242, 254, 0.15);
-      border-color: #00f2fe;
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
-      transform: scale(1.05);
+      background: linear-gradient(180deg, rgba(0, 242, 254, 0.2) 0%, rgba(0, 242, 254, 0.4) 100%);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.5), inset 0 0 10px rgba(0, 242, 254, 0.2);
+      transform: scale(1.03);
     }
-    .pulse-line { animation: techPulse 2s infinite alternate; }
-    @keyframes techPulse {
-      0% { opacity: 0.3; transform: scale(0.98); }
-      100% { opacity: 0.8; transform: scale(1.02); }
-    }
-
+    
     /* ===== 基礎卡片樣式 ===== */
     .family-card { background: #ffffff; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid rgba(255,255,255,1); transition: all 0.3s ease; }
     @media (min-width: 768px) {
@@ -158,25 +158,59 @@
 <body class="text-slate-700 text-xs sm:text-sm md:text-base pb-[55px]">
 
   <div id="welcomeOverlay" class="tech-welcome-overlay">
-    <div class="tech-hud-box max-w-md md:max-w-xl w-[88%] p-6 md:p-12 text-center pulse-line">
-      <div class="text-[#00f2fe] text-3xl md:text-4xl mb-4 md:mb-6 filter drop-shadow-[0_0_15px_rgba(0,242,254,0.5)]">
-        <i class="fa-solid fa-circle-nodes animate-spin" style="animation-duration: 8s;"></i>
+    <div class="tech-hud-center-console max-w-lg md:max-w-2xl w-[92%] p-6 md:p-10 text-center font-mono relative overflow-hidden">
+      <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
+      <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
+
+      <div class="flex justify-between items-center text-[10px] text-[#00f2fe]/60 border-b border-[#00f2fe]/20 pb-3 mb-6">
+        <span>SYS_STATUS: ACTIVE</span>
+        <span class="animate-pulse"><i class="fa-solid fa-satellite-dish mr-1 text-pink-500"></i>MAIN_FRAME LOADED</span>
+      </div>
+
+      <div class="text-[#00f2fe] text-4xl mb-4 filter drop-shadow-[0_0_15px_rgba(0,242,254,0.6)]">
+        <i class="fa-solid fa-square-poll-vertical animate-pulse"></i>
       </div>
       
-      <h2 class="text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-[0.25em] mb-2 font-mono">SYSTEM INITIALIZATION</h2>
-      <h1 class="text-xl md:text-3xl font-black tracking-wider mb-1 glow-cyan leading-tight">WELCOME TO</h1>
-      <h1 class="text-2xl md:text-4xl font-black tracking-widest mb-3 glow-pink leading-tight">呂氏家庭3.0網站</h1>
-      <p class="text-[10px] md:text-xs font-medium tracking-[0.2em] text-[#00f2fe]/80 font-mono mb-6 md:mb-8">LIFE INFORMATION NETWORK</p>
+      <h1 class="text-2xl md:text-4xl font-black tracking-widest mb-1 glow-cyan leading-tight font-sans">呂氏家族戰略終端</h1>
+      <p class="text-[11px] md:text-xs font-bold tracking-[0.3em] text-pink-500/90 mb-6">CORE DATA CHANNEL CONTROL CENTER</p>
       
-      <div class="w-12 h-px bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent mx-auto mb-6"></div>
+      <div class="grid grid-cols-3 gap-3 my-6 text-left">
+        <div class="bg-slate-950/80 border border-[#00f2fe]/20 rounded-xl p-3 relative">
+          <span class="text-[8px] text-slate-500 block uppercase tracking-wider">STRUCTURE / 結構</span>
+          <span class="text-lg md:text-2xl font-black text-[#00f2fe] block font-sans tracking-tight mt-1">16 <span class="text-xs text-slate-400">核心</span></span>
+          <p class="text-[9px] text-slate-400 mt-1 font-sans border-t border-slate-800 pt-1 leading-tight">家庭成員全面歸隊</p>
+          <div class="absolute bottom-1 right-2 text-[#00f2fe]/10 text-xl"><i class="fa-solid fa-users"></i></div>
+        </div>
+        <div class="bg-slate-950/80 border border-[#00f2fe]/20 rounded-xl p-3 relative">
+          <span class="text-[8px] text-slate-500 block uppercase tracking-wider">MISSIONS / 活動</span>
+          <span class="text-lg md:text-2xl font-black text-[#00f2fe] block font-sans tracking-tight mt-1">02 <span class="text-xs text-slate-400">編組</span></span>
+          <p class="text-[9px] text-slate-400 mt-1 font-sans border-t border-slate-800 pt-1 leading-tight">年度出遊活動編排</p>
+          <div class="absolute bottom-1 right-2 text-[#00f2fe]/10 text-xl"><i class="fa-solid fa-calendar-check"></i></div>
+        </div>
+        <div class="bg-slate-950/80 border border-[#00f2fe]/20 rounded-xl p-3 relative">
+          <span class="text-[8px] text-slate-500 block uppercase tracking-wider">UNITY / 向心力</span>
+          <span class="text-lg md:text-2xl font-black text-pink-500 block font-sans tracking-tight mt-1">100<span class="text-xs">%</span></span>
+          <p class="text-[9px] text-slate-400 mt-1 font-sans border-t border-slate-800 pt-1 leading-tight">家族意識高度凝聚</p>
+          <div class="absolute bottom-1 right-2 text-pink-500/10 text-xl"><i class="fa-solid fa-heart-pulse"></i></div>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-3.5 mb-6 text-left">
+        <div class="flex justify-between items-center text-[10px] text-slate-400 mb-1.5">
+          <span><i class="fa-solid fa-circle-notch animate-spin mr-1 text-[#00f2fe]"></i>系統全息鏈結進度...</span>
+          <span class="text-[#00f2fe]">READY</span>
+        </div>
+        <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden p-px border border-slate-800">
+          <div class="h-full rounded-full bg-gradient-to-r from-[#00f2fe] via-indigo-500 to-pink-500" style="width: 100%; transition: width 1.5s ease;"></div>
+        </div>
+      </div>
       
-      <p class="text-[11px] md:text-xs text-slate-500 tracking-widest font-medium mb-6 md:mb-8 leading-relaxed">
-        — 網站正式上線啟動 —<br>
-        <span class="font-mono text-[9px] text-slate-600 block mt-1">CORE DATA CHANNELS READY TO BEGIN...</span>
+      <p class="text-[11px] text-slate-500 tracking-widest font-sans mb-6 md:mb-8 leading-relaxed">
+        — 呂佳寯 行政管理基地 · 核心數據矩陣校準完畢 —
       </p>
       
-      <button onclick="dismissWelcome()" class="tech-btn px-8 py-3 rounded-xl font-bold uppercase tracking-[0.15em] text-xs md:text-sm font-mono">
-        <i class="fa-solid fa-terminal mr-2 text-[10px]"></i>ENTER SYSTEM
+      <button onclick="dismissWelcome()" class="tech-btn px-10 py-3.5 rounded-xl font-bold uppercase tracking-[0.2em] text-xs md:text-sm font-sans w-full sm:w-auto shadow-md">
+        <i class="fa-solid fa-terminal mr-2 text-xs"></i>進入主系統平台
       </button>
     </div>
   </div>
@@ -953,7 +987,6 @@
       }
     }
 
-    // ===== 核心修正：正確解析反斜線樣樣板變數，徹底消滅網頁亂碼 =====
     function openInteractiveModal(k) {
       const d = db[k]; if(!d) return;
       const modalContent = document.getElementById('modalContent');
@@ -1003,7 +1036,6 @@
             <div class="p-4 sm:p-6 text-center max-h-[80vh] overflow-y-auto custom-scrollbar">${d.content}<div class="mt-4 space-y-2">${d.linkHtml ? d.linkHtml : ''}<button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-all">確認並關閉</button></div></div>
           </div>`;
       } else {
-        // 修正分部 HUD 彈窗亂碼：將所有誤置的反斜線變數移除，回歸標準樣板語法
         let modalIconHtml = '';
         let headerBgTheme = 'bg-indigo-600';
         
