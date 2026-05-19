@@ -627,6 +627,14 @@
     </div>
   </section>
 
+  <section id="performance-section" class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100 my-8">
+    <h3 class="text-xl font-black text-slate-800 mb-4">年度考績查詢</h3>
+    <div class="flex gap-2">
+        <input type="password" id="authCode" placeholder="請輸入成員代碼" class="flex-1 px-4 py-2 rounded-lg border border-slate-300">
+        <button onclick="verifyPerformance()" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700">查詢</button>
+    </div>
+</section>
+
   <div class="walkway-container" id="floatingWalkway">
     <div class="family-walking-group text-slate-400">
       <div class="walk-bounce flex flex-col items-center"><i class="fa-solid fa-baby-carriage text-lg text-indigo-500"></i><span class="text-[8px] font-medium text-slate-400 scale-90">散步中</span></div>
@@ -1016,6 +1024,26 @@
     }
     window.onscroll = triggerScrollChecks;
     if(btt) btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 家族成員資料庫 (對應您提供的名單)
+const membersDatabase = {
+    "妹555": "呂陳英妹", "雋202": "呂佳寯", "芯821": "呂佳芯", "福777": "呂幸福",
+    "綺111": "吳孟綺", "享123": "呂理享", "幸001": "阮氏紅幸", "梅666": "呂寶梅",
+    "緹999": "劉沛緹", "豪888": "劉宗豪", "輝321": "于國輝", "祥520": "于子祥",
+    "珠889": "呂寶珠", "華711": "陳凱華", "汝101": "劉羿汝", "廷991": "陳俊廷"
+};
+
+// 考績查詢驗證功能
+function verifyPerformance() {
+    const code = document.getElementById('authCode').value.trim();
+    // admin999 為最高管理員權限
+    if (code === "admin999") {
+        alert("管理員模式已啟動，請前往後台查看全體考績。");
+    } else if (membersDatabase[code]) {
+        alert("驗證成功：歡迎 " + membersDatabase[code] + "，請點擊考績表連結。");
+    } else {
+        alert("代碼錯誤或權限不足，請重新輸入。");
+    }
+}
   </script>
 </body>
 </html>
