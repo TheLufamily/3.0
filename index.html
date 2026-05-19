@@ -270,7 +270,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-stretch">
         <div class="lg:col-span-6 flex flex-col h-full">
           <div class="family-card overflow-hidden border p-0 flex flex-col flex-1 h-full">
-            <img src="S__23732244.jpg" class="w-full flex-1 object-cover min-h-[220px] sm:min-h-[280px] md:min-h-[340px]" onerror="this.src='https://via.placeholder.com/800x500?text=Lu+Family+Gathering'">
+            <img src="S__23732244.jpg" class="w-full h-full object-cover min-h-[220px] sm:min-h-[280px] md:min-h-[340px]" onerror="this.src='https://via.placeholder.com/800x500?text=Lu+Family+Gathering'">
             <div class="p-4 bg-indigo-50/50 border-t border-indigo-100/40 text-center shrink-0">
               <p class="text-indigo-600 font-bold text-sm sm:text-base mb-0.5"><i class="fa-solid fa-camera mr-1.5"></i>家族大聚會</p>
               <p class="text-slate-500 text-xs italic font-medium">「2026 母親節慶祝 大合照」</p>
@@ -290,51 +290,43 @@
     </div>
   </section>
 
-  <!-- ===== 最新公告分類精密重組區塊 ===== -->
   <section id="notice" class="py-8 md:py-20 bg-slate-50/50">
     <div class="max-w-7xl mx-auto px-4">
       
-      <!-- 頂部即時通知跑馬燈提示 -->
       <div id="quickUpdateInfo" class="mb-8 px-4 py-2.5 bg-white border border-slate-200/60 rounded-2xl flex items-center justify-between text-slate-500 text-[10px] sm:text-[11px] font-medium tracking-wide shadow-sm transition-all duration-300">
         <div class="flex items-center gap-2">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span>
-          <span><i class="fa-solid fa-clock-rotate-left text-indigo-500 mr-1"></i>系統管道數據已於今天動態分類完成。點擊各卡片可開啟 HUD 核心詳情彈窗。</span>
+          <span><i class="fa-solid fa-clock-rotate-left text-indigo-500 mr-1"></i>系統核心管道公告數據流分選完成。點擊各數據組件解鎖 HUD 詳情。</span>
         </div>
         <button onclick="document.getElementById('quickUpdateInfo').style.opacity='0'; setTimeout(()=>document.getElementById('quickUpdateInfo').remove(), 300)" class="text-slate-300 hover:text-slate-500 p-1">
           <i class="fa-solid fa-xmark text-xs"></i>
         </button>
       </div>
 
-      <!-- 公告雙分流主排版架構 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch mb-12">
         
-        <!-- 左側：重要公告分區 -->
         <div class="flex flex-col h-full">
-          <h2 class="text-base md:text-xl font-black mb-4 md:mb-6 flex items-center gap-2.5 text-slate-800 shrink-0 border-b border-slate-200/60 pb-3">
+          <h2 class="text-base md:text-xl font-black mb-4 md:mb-6 flex items-center gap-2.5 text-slate-800 shrink-0 border-b border-slate-200 pb-3">
             <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
             <i class="fa-solid fa-triangle-exclamation text-red-500"></i> 重要公告
-            <span class="text-[9px] md:text-[10px] text-slate-400 font-mono tracking-wider ml-auto uppercase font-bold">🚨 CRITICAL_INFO</span>
+            <span class="text-[9px] md:text-[10px] text-slate-400 font-mono ml-auto uppercase font-bold tracking-wider">🚨 CRITICAL_INFO</span>
           </h2>
           <div id="importantNoticeContainer" class="flex flex-col gap-4 flex-1">
-            <!-- 由 JS 動態注入重要通知卡片 -->
-          </div>
+            </div>
         </div>
         
-        <!-- 右側：系統維護分區 -->
         <div class="flex flex-col h-full">
-          <h2 class="text-base md:text-xl font-black mb-4 md:mb-6 flex items-center gap-2.5 text-slate-800 shrink-0 border-b border-slate-200/60 pb-3">
+          <h2 class="text-base md:text-xl font-black mb-4 md:mb-6 flex items-center gap-2.5 text-slate-800 shrink-0 border-b border-slate-200 pb-3">
             <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
             <i class="fa-solid fa-gears text-orange-500"></i> 系統維護
-            <span class="text-[9px] md:text-[10px] text-slate-400 font-mono tracking-wider ml-auto uppercase font-bold">⚙️ SYS_MAINTAIN</span>
+            <span class="text-[9px] md:text-[10px] text-slate-400 font-mono ml-auto uppercase font-bold tracking-wider">⚙️ SYS_MAINTAIN</span>
           </h2>
           <div id="systemNoticeContainer" class="flex flex-col gap-4 flex-1">
-            <!-- 由 JS 動態注入維護通知卡片 -->
-          </div>
+            </div>
         </div>
 
       </div>
 
-      <!-- 底部：活動執行進度區塊 -->
       <div class="grid grid-cols-1 gap-4">
         <h2 class="text-lg md:text-2xl font-bold mb-2 flex items-center gap-3 text-slate-800 shrink-0">
           <i class="fa-solid fa-list-check text-emerald-500 text-base"></i> 活動執行進度
@@ -535,7 +527,7 @@
                 <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider font-mono">Management Window</p>
               </div>
             </div>
-            <p class="text-slate-500 text-xs leading-relaxed mb-4">本網路由呂氏核心管理層——<strong>窗口管理團隊</strong>負責全權維運與業務接洽。若您有活動提案、權限調取或里民反饋，請不吝聯絡本基地窗口。</p>
+            <p class="text-slate-500 text-xs leading-relaxed mb-4">本聯絡窗口—<strong>由呂佳寯 政戰幹部</strong>負責全權維運與業務接洽。若您有活動提案、權限調取或里民反饋，請不吝聯絡本基地窗口。</p>
             <div class="space-y-2.5 text-xs">
               <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-user-tie text-indigo-500 w-4 text-center"></i>核心聯絡：管理窗口 (呂佳寯)</div>
               <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-envelope text-indigo-500 w-4 text-center"></i>公務信箱：<span class="font-mono text-slate-700">設置中</span></div>
@@ -549,7 +541,7 @@
               <h3>服務注意事項</h3>
             </div>
             <ul class="text-[11px] md:text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium leading-relaxed">
-              <li>送出表單後，系統核心管道將即時派發代辦單至幹部後台。</li>
+              <li>送出表單後，本聯絡負責人會盡快回覆問題。</li>
               <li>公務反饋預計於 <strong class="text-indigo-600">2-3日內</strong> 由專人回信或電話致電答覆。</li>
               <li>請務必填寫正確的稱呼與電話號碼，以免造成數據失聯。</li>
               <li>本表單資料受內部高度隱私加密通道保護，絕不外洩。</li>
@@ -648,7 +640,7 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     let isWelcomeActive = true;
-    let showLimit = 3; 
+    let showLimit = 4;
 
     function dismissWelcome() {
       const overlay = document.getElementById('welcomeOverlay');
@@ -663,11 +655,12 @@
 
     try { AOS.init({ duration: 800, once: true, disable: 'mobile' }); } catch (e) { console.log('AOS skipped'); }
 
+    // HUD 彈窗與數據流核心資料庫
     const db = {
       member1: { 
         type: "member", name: "呂陳英妹", alias: "最強總指揮官", number: "#幹部", 
         range: "雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。",
-        role: "領導", skill: "秘密", sign: "秘密", dob: "1949 / 05 / 07", 
+        role: "領導", skill: "秘密", sign: "秘密", dob: "秘密", 
         isImg: true, src: "呂陳英妹.jpg", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-utensils"], bgImg: "呂陳英妹.jpg"
       },
       member2: { 
@@ -677,20 +670,20 @@
       },
       member3: { 
         type: "member", name: "呂佳芯", alias: "分隊長", number: "幹部", 
-        range: "突然被政戰幹部派選為分隊長！今天也是充滿活力的一天✨",
+        range: "突然被政戰幹部派選為分隊長！",
         role: "領導", skill: "凝聚向心力", sign: "獅子座", dob: "2005 / 08 / 21", 
         isImg: true, src: "1709717928_2KZnL.png", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"], bgImg: "1709717928_2KZnL.png"
       },
       member4: { 
-        type: "member", name: "後勤員", alias: "物資保障組主要調度人員", number: "#後勤", 
-        range: "確保每一次家族大聚會的設備、餐飲與物資完美到位！",
-        role: "後勤", skill: "物資統籌 / 現場營運支援", sign: "未公開", dob: "2026", 
+        type: "member", name: "後勤員", alias: "後勤員", number: "#後勤", 
+        range: "確保各項物資及裝備完美到位！",
+        role: "後勤", skill: "物資整備", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-blue-400", tags: ["fa-boxes-packing", "fa-truck-ramp-box", "fa-clipboard-list"], bgImg: ""
       },
       member5: { 
-        type: "member", name: "美術員", alias: "創意視覺組核心設計師", number: "#美術", 
-        range: "用創意色彩與精緻排版，記錄下呂氏家庭最精彩的每一瞬間✨",
-        role: "創意美術", skill: "平面視覺 / 家族紀念影片包裝", sign: "未公開", dob: "2026", 
+        type: "member", name: "美術員", alias: "美術員", number: "#美術", 
+        range: "負責記錄下各項大小活動✨",
+        role: "創意美術", skill: "用影像說話", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-purple-400", tags: ["fa-palette", "fa-pen-nib", "fa-bezier-curve"], bgImg: ""
       },
 
@@ -698,6 +691,27 @@
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up" },
       
+      notice_camp: {
+        type: "notice_detail", title: "115年暑期戰鬥營 官方海報與簡章規範", tag: "活動通知", color: "bg-red-500",
+        content: `
+          <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 bg-slate-950 shadow-md">
+            <img src="701465836_1422120123276913_1195652567231001211_n (1).jpg" class="w-full h-auto object-contain mx-auto" alt="115年暑期戰鬥營海報">
+          </div>
+          <div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm">
+            <p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、招訓與身分查驗限制：</p>
+            <p class="text-red-700 leading-relaxed pl-3">具中華民國國籍，且不得持有中國大陸地區「居民身分證」、「定居證」或「護照」，並填妥切結書。除「科學體驗營」外，須為年滿15足歲國中應屆畢業生至未滿32歲在學學生。科學體驗營招收國中在學學生。</p>
+          </div>
+          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3 font-medium">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、本島與外島營隊一覽：</p>
+            <p class="text-slate-600 leading-relaxed text-xs pl-1">數位化捷豹戰鬥營（新竹湖口）、無人機潛能探索戰鬥營（臺南白河）、迷彩職人戰鬥營（屏東萬巒）、全方位戰士戰鬥營（臺中烏日）、花蓮山海探索戰鬥營（花蓮市）、金門戰鬥營（金門金湖）、馬祖戰鬥營（連江南竿）、澎湖戰鬥營（澎湖馬公）、傘訓戰鬥營（屏東市）、海軍勇士挑戰營（高雄左營）、航空戰鬥營（高雄岡山）、航空科技戰鬥營（高雄岡山）、憲兵鐵衛戰鬥營（新北五股）、國防科技實作研習營（桃園大溪）、新聞研習營（臺北北投）、醫學暨戰傷救護研習營（臺北內湖）、科學體驗營（高雄鳳山）。</p>
+            <div class="border-t border-dashed border-slate-200 my-1.5 pt-1.5">
+              <p class="font-bold text-amber-600"><i class="fa-solid fa-calendar-days mr-1"></i>三、精準日程：</p>
+              <p class="text-slate-600 pl-1 text-indigo-600">📣 網路報名：115年5月25日 1200時 起至 6月15日 1700時 止</p>
+              <p class="text-slate-600 pl-1 text-indigo-600">📣 錄取公告：115年6月16日 1200時 電子化抽籤公告</p>
+            </div>
+          </div>`,
+        linkHtml: `<a href="https://aode.mnd.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往全民國防教育全球資訊網</a>`
+      },
       notice_hongcui: {
         type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
         content: `
@@ -724,20 +738,21 @@
         linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往電子申報繳稅服務網</a>`
       },
       notice2: {
-        type: "notice_detail", title: "資訊網 3.0 升級詳情報告", tag: "系統維護", color: "bg-orange-500",
-        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網本期全面完成升級，優化行動端響應速度與排版齊高功能。</p></div>`,
-        linkHtml: `<a href="#home" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block"><i class="fa-solid fa-rotate-left mr-1"></i>返回頂部體驗主介面</a>`
+        type: "notice_detail", title: "資訊網 3.0 核心分流維護報告", tag: "系統維護", color: "bg-orange-500",
+        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網維護團隊全面導入國防教育核心數據流，修復影像鏈結並部署雙欄儀表板網格。</p></div>`,
+        linkHtml: `<a href="#notice" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block"><i class="fa-solid fa-rotate-left mr-1"></i>返回公告分區體驗</a>`
       }
     };
 
-    // 公告原始資料陣列 (包含各自歸屬的分類資訊)
+    // 分流資料陣列，group 對應重要公告或系統維護
     const notices = [
-      { id: "notice_hongcui", type: "important", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice1", type: "important", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice2", type: "system", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，升級氣象三宮格、HUD彈窗與分流式佈局。", date: "2026/05/14", color: "bg-orange-500" }
+      { id: "notice_hongcui", group: "important", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
+      { id: "notice1", group: "important", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
+      { id: "notice_camp", group: "system", tag: "活動通知", title: "115年暑期戰鬥營 報名管道對接", content: "外島、航空科技、鐵衛等多項精銳營隊，25日中午12時起全面開放網路報名。配額有限先報先錄取。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" },
+      { id: "notice2", group: "system", tag: "系統維護", title: "呂氏資訊網核心分流升級成功", content: "維護完成！導入圖文混排組件、HUD彈窗大圖檢視，健全數據看板穩定度。", date: "2026/05/14", color: "bg-orange-500" }
     ];
 
-    // ===== 精密分流公告渲染函式 =====
+    // ===== 雙區分流暨儀表板大圖動態渲染邏輯 =====
     function initNotices() {
       const impContainer = document.getElementById('importantNoticeContainer');
       const sysContainer = document.getElementById('systemNoticeContainer');
@@ -748,44 +763,76 @@
       sysContainer.innerHTML = '';
       if (modalList) modalList.innerHTML = '';
 
-      // 1. 前端頁面分流渲染
       notices.forEach(n => {
-        const cardHtml = `
-          <div class="family-card p-4 sm:p-5 cursor-pointer border hover:border-indigo-200 transition-all flex flex-col justify-center flex-1" onclick="openInteractiveModal('${n.id}')">
-            <div class="flex flex-wrap gap-2 items-center mb-2">
-              <span class="${n.color} text-white text-[8px] sm:text-[9px] font-bold px-2.5 py-0.5 rounded-full">${n.tag}</span>
-              <span class="text-slate-400 text-[9px] sm:text-[10px] tracking-tight tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
-            </div>
-            <h3 class="text-sm sm:text-base font-bold mb-0.5 text-slate-800">${n.title}</h3>
-            <p class="text-slate-500 text-xs font-medium">${n.content}</p>
-          </div>`;
+        let cardHtml = '';
 
-        if (n.type === 'important') {
+        // 如果是帶有儀表板海報圖片的系統營隊公告，使用高階圖文儀表板卡片
+        if (n.hasImage) {
+          cardHtml = `
+            <div class="family-card overflow-hidden border border-slate-200/80 hover:border-indigo-300 transition-all flex flex-col cursor-pointer bg-white" onclick="openInteractiveModal('${n.id}')">
+              <div class="relative w-full h-[140px] sm:h-[180px] bg-slate-900 overflow-hidden shrink-0 group">
+                <img src="${n.imageSrc}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" alt="戰鬥營海報">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <span class="absolute top-3 left-3 bg-red-600 text-white text-[8px] font-black px-2.5 py-0.5 rounded-full font-mono tracking-widest"><i class="fa-solid fa-jet-fighter mr-1"></i>MILITARY_CAMP</span>
+                <div class="absolute bottom-3 left-3 right-3 text-left">
+                  <p class="text-[9px] font-mono font-bold text-cyan-400 mb-0.5 tracking-tighter"><i class="fa-solid fa-circle-nodes animate-pulse mr-1"></i>通道傳送狀態: ONLINE</p>
+                  <h4 class="text-white font-black text-xs sm:text-sm truncate filter drop-shadow-md">${n.title}</h4>
+                </div>
+              </div>
+              <div class="p-4 sm:p-5 text-left">
+                <div class="flex items-center justify-between text-slate-400 text-[9px] font-mono mb-2 border-b border-dashed pb-2">
+                  <span>配額調度：先報名先錄取</span>
+                  <span class="tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+                </div>
+                <p class="text-slate-500 text-xs font-medium leading-relaxed mb-3 truncate-2-lines">${n.content}</p>
+                <div class="grid grid-cols-2 gap-2 text-center text-[10px] font-mono">
+                  <div class="bg-slate-50 border rounded-lg py-1.5 font-bold text-slate-600"><i class="fa-solid fa-calendar-day mr-1 text-indigo-500"></i>5/25 12:00 開搶</div>
+                  <div class="bg-indigo-50/50 border border-indigo-100 text-indigo-600 rounded-lg py-1.5 font-bold"><i class="fa-solid fa-expand mr-1"></i>點擊解鎖 HUD 大圖</div>
+                </div>
+              </div>
+            </div>`;
+        } else {
+          // 一般公告卡片範本
+          cardHtml = `
+            <div class="family-card p-4 sm:p-5 cursor-pointer border hover:border-indigo-200 transition-all flex flex-col justify-center flex-1 bg-white" onclick="openInteractiveModal('${n.id}')">
+              <div class="flex flex-wrap gap-2 items-center mb-2">
+                <span class="${n.color} text-white text-[8px] sm:text-[9px] font-bold px-2.5 py-0.5 rounded-full">${n.tag}</span>
+                <span class="text-slate-400 text-[9px] sm:text-[10px] tracking-tight tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold mb-0.5 text-slate-800">${n.title}</h3>
+              <p class="text-slate-500 text-xs font-medium leading-relaxed">${n.content}</p>
+            </div>`;
+        }
+
+        // 分流派送
+        if (n.group === "important") {
           impContainer.innerHTML += cardHtml;
-        } else if (n.type === 'system') {
+        } else if (n.group === "system") {
           sysContainer.innerHTML += cardHtml;
         }
 
-        // 2. 歷史消息中心彈窗同步（不分流，集中呈現）
+        // 歷史彈窗列表
         if (modalList) {
           modalList.innerHTML += `
-            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-left cursor-pointer hover:bg-slate-100 transition-all" onclick="closeHistoryModal(); openInteractiveModal('${n.id}')">
-              <div class="flex justify-between items-center mb-1.5">
-                <span class="${n.color} text-white text-[8px] font-bold px-2 py-0.5 rounded-full">${n.tag}</span>
-                <span class="text-slate-400 text-[9px] tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-left cursor-pointer hover:bg-slate-100 transition-all flex justify-between items-center gap-3" onclick="closeHistoryModal(); openInteractiveModal('${n.id}')">
+              <div class="flex-1 min-w-0">
+                <div class="flex justify-between items-center mb-1.5">
+                  <span class="${n.color} text-white text-[8px] font-bold px-2 py-0.5 rounded-full">${n.tag}</span>
+                  <span class="text-slate-400 text-[9px] tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-xs sm:text-sm mb-0.5 truncate">${n.title}</h4>
+                <p class="text-slate-500 text-xs font-medium truncate">${n.content}</p>
               </div>
-              <h4 class="font-bold text-slate-800 text-xs sm:text-sm mb-0.5">${n.title}</h4>
-              <p class="text-slate-500 text-xs font-medium leading-relaxed">${n.content}</p>
+              ${n.hasImage ? `<img src="${n.imageSrc}" class="w-10 h-10 object-cover rounded-lg border bg-slate-200 shrink-0">` : ''}
             </div>`;
         }
       });
 
-      // 補足美觀空缺：若某個分類目前沒有資料，塞入防空圖樣
       if (impContainer.innerHTML === '') {
-        impContainer.innerHTML = `<div class="text-slate-400 border border-dashed rounded-2xl py-8 text-xs font-medium text-center bg-white/40">目前暫無重要公告</div>`;
+        impContainer.innerHTML = `<div class="text-slate-400 border border-dashed rounded-2xl py-8 text-xs text-center bg-white/50">當前無重要公告項目</div>`;
       }
       if (sysContainer.innerHTML === '') {
-        sysContainer.innerHTML = `<div class="text-slate-400 border border-dashed rounded-2xl py-8 text-xs font-medium text-center bg-white/40">目前暫無系統維護通知</div>`;
+        sysContainer.innerHTML = `<div class="text-slate-400 border border-dashed rounded-2xl py-8 text-xs text-center bg-white/50">當前無系統維護公告</div>`;
       }
     }
 
@@ -930,7 +977,7 @@
           </div>`;
       } else if (d.type === "notice_detail") {
         modalContent.innerHTML = `
-          <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden border border-slate-100 font-sans">
+          <div class="bg-white rounded-[24px] w-full max-w-lg shadow-2xl overflow-hidden border border-slate-100 font-sans">
             <div class="bg-slate-50 px-4 sm:px-6 py-3 border-b border-slate-100 flex justify-between items-center">
               <div class="flex items-center gap-1.5 overflow-hidden mr-2">
                 <span class="${d.color} text-white text-[8px] font-bold px-2 py-0.5 rounded-full shrink-0">${d.tag}</span>
@@ -938,7 +985,7 @@
               </div>
               <button onclick="closeInteractiveModal()" class="w-6 h-6 rounded-full bg-slate-200/50 flex items-center justify-center text-slate-400 hover:bg-slate-200 transition-all shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>
             </div>
-            <div class="p-4 sm:p-6 text-center max-h-[65vh] overflow-y-auto custom-scrollbar">${d.content}<div class="mt-4 space-y-2">${d.linkHtml ? d.linkHtml : ''}<button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-all">確認並關閉</button></div></div>
+            <div class="p-4 sm:p-6 text-center max-h-[80vh] overflow-y-auto custom-scrollbar">${d.content}<div class="mt-4 space-y-2">${d.linkHtml ? d.linkHtml : ''}<button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-all">確認並關閉</button></div></div>
           </div>`;
       } else {
         modalContent.innerHTML = `
