@@ -239,7 +239,7 @@
         <a href="#location" class="hover:text-indigo-600 transition-all px-0.5">分支</a>
         <a href="#guestbook" class="hover:text-indigo-600 transition-all px-0.5">留言</a>
         <a href="#contact" class="hover:text-indigo-600 transition-all px-0.5">聯絡</a>
-        <button onclick="document.getElementById('authModal').classList.remove('hidden')" class="hover:text-pink-600 transition-all font-bold">考核</button>
+        <button onclick="document.getElementById('queryModal').classList.remove('hidden')" class="hover:text-indigo-600 font-bold uppercase tracking-widest text-xs">個人績效查詢</button>
       </div>
       <button onclick="openHistoryModal()" class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0" title="開啟消息中心">
         <i class="fa-solid fa-bell text-sm"></i>
@@ -1128,43 +1128,57 @@
   </div>
 </div>
 
-<div id="authModal" class="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="this.classList.add('hidden')">
-  <div class="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
-    <h2 class="text-xl font-black mb-6 text-slate-800">安全考核認證</h2>
-    <input type="password" id="authToken" class="w-full p-3 border rounded-xl mb-4 bg-slate-50" placeholder="輸入專屬金鑰...">
-    <button onclick="runAuth()" class="w-full bg-pink-600 text-white p-3 rounded-xl font-bold hover:bg-pink-700 transition">驗證身分</button>
-    <div id="authResult" class="mt-6 text-sm font-bold text-slate-700 text-center"></div>
+<div id="queryModal" class="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="this.classList.add('hidden')">
+  <div class="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl border" onclick="event.stopPropagation()">
+    <h2 class="text-xl font-black mb-6 text-slate-800">個人績效查詢</h2>
+    
+    <input type="password" id="accessKey" class="w-full p-3 border rounded-xl mb-4 bg-slate-50" placeholder="請輸入專屬密碼...">
+    <button onclick="fetchPerformance()" class="w-full bg-indigo-600 text-white p-3 rounded-xl font-bold hover:bg-indigo-700 transition">查詢績效</button>
+    
+    <div id="resultOutput" class="mt-6 text-sm font-bold text-slate-700 text-center"></div>
   </div>
 </div>
 
 <script>
-  // 績效數據庫
-  const memberData = {
-    "呂陳英妹": "單位：總部 | 考核：卓越特優(A++)", "呂佳寯": "單位：總部 | 考核：卓越特優(A+)",
-    "呂佳芯": "單位：總部 | 考核：優等(A)", "呂幸福": "單位：總部 | 考核：優等(A)",
-    "吳孟綺": "單位：總部 | 考核：優等(A)", "呂理享": "單位：總部 | 考核：優等(A)",
-    "阮氏紅幸": "單位：總部 | 考核：優等(A)", "呂寶梅": "單位：第二分支 | 考核：優等(A)",
-    "劉沛緹": "單位：第二分支 | 考核：優等(A)", "劉宗豪": "單位：第二分支 | 考核：優等(A)",
-    "于國輝": "單位：第一分支 | 考核：優等(A)", "于子祥": "單位：第一分支 | 考核：優等(A)",
-    "呂寶珠": "單位：第一分支 | 考核：優等(A)", "陳凱華": "單位：第一分支 | 考核：優等(A)",
-    "劉羿汝": "單位：第一分支 | 考核：優等(A)", "陳俊廷": "單位：第一分支 | 考核：優等(A)"
+  const perfData = {
+    "妹555": { name: "呂陳英妹", unit: "總部", score: "卓越特優(A++)" },
+    "寯202": { name: "呂佳寯", unit: "總部", score: "卓越特優(A+)" },
+    "芯821": { name: "呂佳芯", unit: "總部", score: "優等(A)" },
+    "福777": { name: "呂幸福", unit: "總部", score: "優等(A)" },
+    "綺111": { name: "吳孟綺", unit: "總部", score: "優等(A)" },
+    "享123": { name: "呂理享", unit: "總部", score: "優等(A)" },
+    "幸001": { name: "阮氏紅幸", unit: "總部", score: "優等(A)" },
+    "梅666": { name: "呂寶梅", unit: "第二分支", score: "優等(A)" },
+    "緹999": { name: "劉沛緹", unit: "第二分支", score: "優等(A)" },
+    "豪888": { name: "劉宗豪", unit: "第二分支", score: "優等(A)" },
+    "輝321": { name: "于國輝", unit: "第一分支", score: "優等(A)" },
+    "祥520": { name: "于子祥", unit: "第一分支", score: "優等(A)" },
+    "珠889": { name: "呂寶珠", unit: "第一分支", score: "優等(A)" },
+    "華711": { name: "陳凱華", unit: "第一分支", score: "優等(A)" },
+    "汝101": { name: "劉羿汝", unit: "第一分支", score: "優等(A)" },
+    "廷991": { name: "陳俊廷", unit: "第一分支", score: "優等(A)" }
   };
 
-  function runQuery() {
-    const val = document.getElementById('queryInput').value.trim();
-    document.getElementById('queryResult').innerText = memberData[val] || "查無此人數據。";
+  function fetchPerformance() {
+    const key = document.getElementById('accessKey').value.trim();
+    const res = document.getElementById('resultOutput');
+    
+    if (key === "admin999") {
+      res.innerHTML = `<span class="text-indigo-600">最高權限管理員：全體績效監控模式已啟用。</span>`;
+    } else if (perfData[key]) {
+      const p = perfData[key];
+      res.innerHTML = `
+        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-left">
+          <p>姓名：${p.name}</p>
+          <p>單位：${p.unit}</p>
+          <p class="text-indigo-700 font-black">考核結果：${p.score}</p>
+        </div>`;
+    } else {
+      res.innerText = "密碼錯誤或無此權限。";
+      res.className = "mt-6 text-sm font-bold text-red-600 text-center";
+    }
   }
-
-  function runAuth() {
-    const token = document.getElementById('authToken').value.trim();
-    const authKeys = { 
-      "妹555":"呂陳英妹","寯202":"呂佳寯","芯821":"呂佳芯","福777":"呂幸福","綺111":"吳孟綺",
-      "享123":"呂理享","幸001":"阮氏紅幸","梅666":"呂寶梅","緹999":"劉沛緹","豪888":"劉宗豪",
-      "輝321":"于國輝","祥520":"于子祥","珠889":"呂寶珠","華711":"陳凱華","汝101":"劉羿汝",
-      "廷991":"陳俊廷","admin999":"最高權限管理員" 
-    };
-    document.getElementById('authResult').innerText = authKeys[token] ? `驗證成功：${authKeys[token]}` : "金鑰錯誤。";
-  }
+</script>
 </script>
 </body>
 </html>
