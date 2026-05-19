@@ -155,7 +155,46 @@
   </style>
 </head>
 
-<body class="text-slate-700 text-xs sm:text-sm md:text-base pb-[55px]">
+<div id="queryModal" class="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="this.classList.add('hidden')">
+  <div class="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
+    <h2 class="text-xl font-black mb-6">個人績效查詢</h2>
+    <input type="text" id="queryInput" class="w-full p-3 border rounded-xl mb-4 bg-slate-50 outline-indigo-600" placeholder="輸入成員姓名...">
+    <button onclick="runQuery()" class="w-full bg-indigo-600 text-white p-3 rounded-xl font-bold hover:bg-indigo-700 transition">搜尋</button>
+    <div id="queryResult" class="mt-6 text-sm font-bold text-slate-700 text-center"></div>
+  </div>
+</div>
+
+<div id="authModal" class="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="this.classList.add('hidden')">
+  <div class="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
+    <h2 class="text-xl font-black mb-6">安全考核認證</h2>
+    <input type="password" id="authToken" class="w-full p-3 border rounded-xl mb-4 bg-slate-50 outline-pink-600" placeholder="輸入金鑰...">
+    <button onclick="runAuth()" class="w-full bg-pink-600 text-white p-3 rounded-xl font-bold hover:bg-pink-700 transition">驗證身分</button>
+    <div id="authResult" class="mt-6 text-sm font-bold text-slate-700 text-center"></div>
+  </div>
+</div>
+
+<script>
+  function runQuery() {
+    const val = document.getElementById('queryInput').value.trim();
+    const data = { 
+      "呂佳寯": "績效：卓越特優(A+)，系統架構維運穩定。", 
+      "呂陳英妹": "績效：卓越特優(A++)，家族精神領袖。" 
+    };
+    document.getElementById('queryResult').innerText = data[val] || "查無此人數據。";
+  }
+  function runAuth() {
+    const token = document.getElementById('authToken').value.trim();
+    const display = document.getElementById('authResult');
+    const data = {
+      "妹555": "呂陳英妹：卓越特優(A++)。",
+      "寯202": "呂佳寯：卓越特優(A+)。",
+      "admin999": "全體總覽：16位成員皆在編，考核狀態卓越。"
+    };
+    display.innerText = data[token] || "授權失敗。";
+  }
+</script>
+  
+  <body class="text-slate-700 text-xs sm:text-sm md:text-base pb-[55px]">
 
   <div id="welcomeOverlay" class="tech-welcome-overlay">
     <div class="tech-hud-center-console max-w-lg md:max-w-2xl w-[92%] p-6 md:p-10 text-center font-mono relative overflow-hidden">
