@@ -459,22 +459,53 @@
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-xl md:text-3xl font-black text-slate-800 mb-2 tracking-tight">家庭分布區域</h2>
       <p class="italic text-slate-400 text-xs mb-6 md:mb-12">「常駐三大核心據點 · 數據即時同步」</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-        <div onclick="openInteractiveModal('loc1')" class="glass-card p-5 md:p-10 border-b-4 border-indigo-500 cursor-pointer">
-          <i class="fa-solid fa-city text-xl md:text-3xl text-indigo-600 mb-3 md:mb-6 block"></i>
-          <h3 class="text-base md:text-xl font-bold text-slate-800">新北板橋 (總部)</h3>
-          <p class="text-indigo-600 text-xs mt-2 font-medium">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i></p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        
+        <div onclick="openInteractiveModal('loc1')" class="glass-card p-6 md:p-10 border-b-4 border-indigo-500 cursor-pointer flex flex-col items-center justify-between group">
+          <div class="w-full flex flex-col items-center">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2.5 flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
+              <img src="New_Taipei_City_Government_Logo.svg.png" class="max-w-full max-h-full object-contain" alt="新北市徽">
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-800 flex items-center gap-1.5 justify-center">
+              新北板橋 <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md font-medium">總部</span>
+            </h3>
+            <p class="text-slate-400 text-xs mt-2 font-medium">駐點核心決策與指揮中樞</p>
+          </div>
+          <p class="text-indigo-600 text-xs mt-6 font-bold w-full text-center border-t border-dashed border-slate-200/80 pt-3">
+            查看駐點詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i>
+          </p>
         </div>
-        <div onclick="openInteractiveModal('loc2')" class="glass-card p-5 md:p-10 border-b-4 border-emerald-500 cursor-pointer">
-          <i class="fa-solid fa-tree text-xl md:text-3xl text-emerald-600 mb-3 md:mb-6 block"></i>
-          <h3 class="text-base md:text-xl font-bold text-slate-800">臺中北區、中區</h3>
-          <p class="text-emerald-600 text-xs mt-2 font-medium">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i></p>
+
+        <div onclick="openInteractiveModal('loc2')" class="glass-card p-6 md:p-10 border-b-4 border-emerald-500 cursor-pointer flex flex-col items-center justify-between group">
+          <div class="w-full flex flex-col items-center">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2.5 flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
+              <img src="Flag_of_Taichung_City_2025.svg.png" class="max-w-full max-h-full object-contain" alt="臺中市徽">
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-800 flex items-center gap-1.5 justify-center">
+              臺中北區、中區 <span class="text-xs text-emerald-600 bg-emerald-50 Play-50 px-2 py-0.5 rounded-md font-medium">分支 I</span>
+            </h3>
+            <p class="text-slate-400 text-xs mt-2 font-medium">中台灣核心分布暨集散編組</p>
+          </div>
+          <p class="text-emerald-600 text-xs mt-6 font-bold w-full text-center border-t border-dashed border-slate-200/80 pt-3">
+            查看駐點詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i>
+          </p>
         </div>
-        <div onclick="openInteractiveModal('loc3')" class="glass-card p-5 md:p-10 border-b-4 border-orange-500 cursor-pointer">
-          <i class="fa-solid fa-plane-up text-xl md:text-3xl text-orange-600 mb-3 md:mb-6 block"></i>
-          <h3 class="text-base md:text-xl font-bold text-slate-800">桃園平鎮</h3>
-          <p class="text-orange-600 text-xs mt-2 font-medium">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i></p>
+
+        <div onclick="openInteractiveModal('loc3')" class="glass-card p-6 md:p-10 border-b-4 border-orange-500 cursor-pointer flex flex-col items-center justify-between group">
+          <div class="w-full flex flex-col items-center">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2.5 flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
+              <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="max-w-full max-h-full object-contain" alt="桃園市徽">
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-800 flex items-center gap-1.5 justify-center">
+              桃園平鎮 <span class="text-xs text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md font-medium">分支 II</span>
+            </h3>
+            <p class="text-slate-400 text-xs mt-2 font-medium">北區重要交通與後勤中繼點</p>
+          </div>
+          <p class="text-orange-600 text-xs mt-6 font-bold w-full text-center border-t border-dashed border-slate-200/80 pt-3">
+            查看駐點詳情 <i class="fa-solid fa-arrow-trend-up ml-1"></i>
+          </p>
         </div>
+
       </div>
     </div>
   </section>
@@ -680,7 +711,7 @@
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up" },
       
       notice_camp: {
-        type: "notice_detail", title: "115年暑期戰鬥營 開放報名", tag: "活動通知", color: "bg-red-500",
+        type: "notice_detail", title: "115年暑期戰鬥營 官方海報與簡章規範", tag: "活動通知", color: "bg-red-500",
         content: `
           <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 bg-slate-950 shadow-md">
             <img src="701465836_1422120123276913_1195652567231001211_n (1).jpg" class="w-full h-auto object-contain mx-auto" alt="115年暑期戰鬥營海報">
@@ -691,7 +722,7 @@
           </div>
           <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3 font-medium">
             <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、本島與外島營隊一覽：</p>
-            <p class="text-slate-600 leading-relaxed text-xs pl-1">數位化捷豹戰鬥營（新竹湖口）、無人機潛能探索戰鬥營（臺南白河）、迷彩職人戰鬥營（屏東萬巒）、全方位戰士戰鬥營（臺中烏日）、花蓮山海探索戰鬥營（花蓮市）、金門戰鬥營（金門金湖）、馬祖戰鬥營（連江南竿）、澎湖戰鬥營（澎湖馬公）、傘訓戰鬥營（屏東市）、海軍勇士挑戰營（高雄左營）、航空戰鬥營（高雄岡山）、航空科技戰鬥營（高雄岡山）、憲兵鐵衛戰鬥營（新北五股）、國防科技實作研習營（桃園大溪）、新聞研習營（臺北北投）、醫學暨戰傷救護研習營（臺北內湖）、科學體驗營（高雄鳳山）。</p>
+            <p class="text-slate-600 leading-relaxed text-xs pl-1">數位化捷豹戰鬥營（新竹湖口）、無人機潛能探索戰鬥營（臺南白河）、迷彩職人戰鬥營（屏東萬巒'), 全方位戰士戰鬥營（臺中烏日）、花蓮山海探索戰鬥營（花蓮市）、金門戰鬥營（金門金湖）、馬祖戰鬥營（連江南竿）、澎湖戰鬥營（澎湖馬公）、傘訓戰鬥營（屏東市）、海軍勇士挑戰營（高雄左營）、航空戰鬥營（高雄岡山）、航空科技戰鬥營（高雄岡山）、憲兵鐵衛戰鬥營（新北五股）、國防科技實作研習營（桃園大溪）、新聞研習營（臺北北投）、醫學暨戰傷救護研習營（臺北內湖）、科學體驗營（高雄鳳山）。</p>
             <div class="border-t border-dashed border-slate-200 my-1.5 pt-1.5">
               <p class="font-bold text-amber-600"><i class="fa-solid fa-calendar-days mr-1"></i>三、精準日程：</p>
               <p class="text-slate-600 pl-1 text-indigo-600">📣 網路報名：115年5月25日 1200時 起至 6月15日 1700時 止</p>
@@ -722,22 +753,22 @@
       },
       notice1: {
         type: "notice_detail", title: "114年度所得稅申報作業提示", tag: "重要通知", color: "bg-red-500",
-        content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs"><i class="fa-solid fa-circle-exclamation mr-1"></i>截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">請全體家庭成員注意，申報期期限截止日為 2026/06/01，逾期數據通道將關閉。</p></div>`,
+        content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs"><i class="fa-solid fa-circle-exclamation mr-1"></i>截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">請全體家庭成員注意，申報期期限截止日為 2026/06/01，國稅局數據通道屆時關閉。</p></div>`,
         linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往電子申報繳稅服務網</a>`
       },
       notice2: {
-        type: "notice_detail", title: "資訊網 3.0 核心升級報告", tag: "系統維護", color: "bg-orange-500",
-        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網維護團隊全面完成升級！本次成功修復舊版白底清爽外觀，並打造動態按鈕選單切換公告結構。</p></div>`,
+        type: "notice_detail", title: "資訊網 3.0 縣市徽整合報告", tag: "系統維護", color: "bg-orange-500",
+        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網維護團隊全面完成縣市徽融合！成功將新北市徽、臺中市徽、桃園市徽完美嵌入分區圖表中。</p></div>`,
         linkHtml: `<a href="#notice" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block"><i class="fa-solid fa-rotate-left mr-1"></i>返回公告分區體驗</a>`
       }
     };
 
-    // 公告總資料庫 (區分為最新公告、系統公告、活動公告三類)
+    // 公告總資料庫 (分類：最新公告、系統公告、活動公告)
     const notices = [
       { id: "notice_hongcui", tabGroup: "tab-latest", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice1", tabGroup: "tab-latest", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "呂氏資訊網三區按鈕切換框架升級", content: "完成公告架構重組，成功部署最新公告、系統公告、活動公告動態標籤卡選單。", date: "2026/05/20", color: "bg-orange-500" },
-      { id: "notice_camp", tabGroup: "tab-camp", tag: "活動通知", title: "115年暑期戰鬥營 開放報名", content: "憲兵鐵衛、無人機探索、航空科技等多項硬核營隊，25日中午12時起全面開放網路報名。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" }
+      { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "家庭分布專區·縣市徽章模組部署完畢", content: "成功引入新北市徽、桃園市徽、臺中市徽高畫質幾何組件，全面優化區域卡片視覺完整度。", date: "2026/05/20", color: "bg-orange-500" },
+      { id: "notice_camp", tabGroup: "tab-camp", tag: "活動通知", title: "115年暑期戰鬥營 全線招生對接", content: "憲兵鐵衛、無人機探索、航空科技等多項硬核營隊，25日中午12時起全面開放網路報名。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" }
     ];
 
     // ===== 三欄分頁標籤動態切換渲染引擎 =====
@@ -980,18 +1011,27 @@
             <div class="p-4 sm:p-6 text-center max-h-[80vh] overflow-y-auto custom-scrollbar">${d.content}<div class="mt-4 space-y-2">${d.linkHtml ? d.linkHtml : ''}<button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-all">確認並關閉</button></div></div>
           </div>`;
       } else {
+        // 優化分支區域 HUD 彈窗外觀（對應各縣市主徽標色調）
+        let modalIconHtml = '';
+        if (k === 'loc1') modalIconHtml = `<img src="New_Taipei_City_Government_Logo.svg.png" class="w-12 h-12 object-contain mx-auto">`;
+        else if (k === 'loc2') modalIconHtml = `<img src="Flag_of_Taichung_City_2025.svg.png" class="w-12 h-12 object-contain mx-auto">`;
+        else if (k === 'loc3') modalIconHtml = `<img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-12 h-12 object-contain mx-auto">`;
+        else modalIconHtml = `<i class="fa-solid \${d.icon} \${d.theme.replace('bg-','text-')} text-2xl"></i>`;
+
         modalContent.innerHTML = `
-          <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden">
-            <div class="h-20 flex items-center justify-center ${d.theme} opacity-80 relative">
-              <div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center text-xl shadow-md mt-12 border-4 border-white overflow-hidden"><i class="fa-solid ${d.icon} ${d.theme.replace('bg-','text-')}"></i></div>
+          <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden border">
+            <div class="h-24 flex items-center justify-center \${d.theme} opacity-90 relative">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-md mt-16 border-4 border-white overflow-hidden p-1.5">
+                \${modalIconHtml}
+              </div>
               <button onclick="closeInteractiveModal()" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-black/20 flex items-center justify-center text-white hover:bg-black/40"><i class="fa-solid fa-xmark text-xs"></i></button>
             </div>
             <div class="px-5 pb-6 pt-12 text-center">
-              <h3 class="text-base sm:text-xl font-black text-slate-800 mb-1">${d.title}</h3>
-              <p class="text-indigo-600 text-[9px] tracking-widest mb-4 font-bold uppercase">${d.sub}</p>
+              <h3 class="text-base sm:text-xl font-black text-slate-800 mb-1">\${d.title}</h3>
+              <p class="text-indigo-600 text-[9px] tracking-widest mb-4 font-bold uppercase">\${d.sub}</p>
               <div class="bg-slate-50 rounded-xl p-4 text-left border border-slate-100">
-                <div class="mb-3"><span class="text-[9px] text-indigo-400 block mb-0.5 uppercase font-bold">${d.l1}</span><p class="text-xs sm:text-sm text-slate-800 font-bold">${d.i1}</p></div>
-                <div><span class="text-[9px] text-indigo-400 block mb-0.5 uppercase font-bold">${d.l2}</span><p class="text-xs text-slate-500 font-medium leading-relaxed">${d.i2}</p></div>
+                <div class="mb-3"><span class="text-[9px] text-indigo-400 block mb-0.5 uppercase font-bold">\${d.l1}</span><p class="text-xs sm:text-sm text-slate-800 font-bold">\${d.i1}</p></div>
+                <div><span class="text-[9px] text-indigo-400 block mb-0.5 uppercase font-bold">\${d.l2}</span><p class="text-xs text-slate-500 font-medium leading-relaxed">\${d.i2}</p></div>
               </div>
               <button onclick="closeInteractiveModal()" class="mt-5 w-full py-2.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-sm">關閉視窗</button>
             </div>
