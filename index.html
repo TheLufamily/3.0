@@ -1017,9 +1017,17 @@
     window.onscroll = triggerScrollChecks;
     if(btt) btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
-  function footerVerifyPerformance() {
-    const code = document.getElementById('footerAuthCode').value.trim();
+ function footerVerifyPerformance() {
+    const inputField = document.getElementById('footerAuthCode');
+    if (!inputField) {
+        alert("錯誤：找不到輸入框 ID (footerAuthCode)");
+        return;
+    }
+    
+    const code = inputField.value.trim();
     const modalContent = document.getElementById('modalContent');
+    const interactiveModal = document.getElementById('interactiveModal');
+
     const membersDatabase = {
         "妹555": "呂陳英妹", "雋202": "呂佳寯", "芯821": "呂佳芯", "福777": "呂幸福",
         "綺111": "吳孟綺", "享123": "呂理享", "幸001": "阮氏紅幸", "梅666": "呂寶梅",
@@ -1027,7 +1035,6 @@
         "珠889": "呂寶珠", "華711": "陳凱華", "汝101": "劉羿汝", "廷991": "陳俊廷"
     };
 
-    // 管理員權限
     if (code === "admin999") {
         modalContent.innerHTML = `
             <div class="bg-white rounded-[24px] p-6 shadow-2xl max-h-[70vh] overflow-y-auto">
@@ -1038,32 +1045,19 @@
                     </div>`).join('')}
                 <button onclick="closeInteractiveModal()" class="w-full mt-4 py-2 bg-slate-100 rounded-lg text-xs">關閉</button>
             </div>`;
-        document.getElementById('interactiveModal').classList.remove('hidden');
-    } 
-    // 成員登入
-    else if (membersDatabase[code]) {
+        interactiveModal.classList.remove('hidden');
+    } else if (membersDatabase[code]) {
         modalContent.innerHTML = `
             <div class="bg-white rounded-[24px] p-6 text-center shadow-2xl">
                 <h3 class="text-xl font-black text-slate-800">歡迎，${membersDatabase[code]}</h3>
-                <p class="text-xs text-slate-500 my-4">查詢成功，請點擊下方查看您的個人績效報告</p>
+                <p class="text-xs text-slate-500 my-4">查詢成功，請查看您的績效報告</p>
                 <a href="#" class="block w-full py-3 bg-indigo-600 text-white font-bold rounded-xl text-sm hover:bg-indigo-700">開啟成績考核表</a>
                 <button onclick="closeInteractiveModal()" class="w-full mt-3 py-2 text-slate-400 text-xs font-bold">關閉</button>
             </div>`;
-        document.getElementById('interactiveModal').classList.remove('hidden');
+        interactiveModal.classList.remove('hidden');
     } else {
         alert("代碼錯誤或無權限，請確認後重新輸入。");
     }
 }
-  <section id="footer-performance" class="max-w-4xl mx-auto px-4 py-12 mt-10 border-t border-slate-200">
-    <div class="bg-slate-800 rounded-3xl p-6 md:p-10 shadow-lg text-center">
-        <h3 class="text-white font-black text-xl mb-2"><i class="fa-solid fa-square-poll-vertical mr-2"></i>個人成績考核查詢</h3>
-        <p class="text-slate-400 text-xs mb-6">請輸入您的專屬識別代碼進行查詢</p>
-        
-        <div class="max-w-xs mx-auto flex gap-2">
-            <input type="password" id="footerAuthCode" placeholder="輸入代碼" class="flex-1 bg-slate-700 text-white rounded-xl px-4 py-3 border border-slate-600 focus:border-indigo-500 outline-none text-center font-bold">
-            <button onclick="footerVerifyPerformance()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all">查詢</button>
-        </div>
-    </div>
-</section>
 </body>
 </html>
