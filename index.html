@@ -14,10 +14,11 @@
     
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
     
+    /* 隱藏滾動條專用樣式 (導覽列與輕量容器使用) */
     .scrollbar-none::-webkit-scrollbar { display: none; }
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* ===== 入口網：全息科技儀表板控制台 ===== */
+    /* ===== 核心重構：極硬核 HUD 科技儀表板入口網幕 ===== */
     .tech-welcome-overlay {
       position: fixed;
       inset: 0;
@@ -28,6 +29,7 @@
       justify-content: center;
       transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    /* 掃描線動態特效 */
     .tech-welcome-overlay::after {
       content: " ";
       display: block;
@@ -47,6 +49,7 @@
       border-radius: 32px;
       position: relative;
     }
+    /* 儀表板四角科技定位邊框 */
     .hud-corner { position: absolute; width: 16px; height: 16px; border-color: #00f2fe; border-style: solid; pointer-events: none; }
     .hc-tl { top: -1px; left: -1px; border-width: 3px 0 0 3px; border-top-left-radius: 12px; }
     .hc-tr { top: -1px; right: -1px; border-width: 3px 3px 0 0; border-top-right-radius: 12px; }
@@ -79,6 +82,7 @@
       transform: scale(1.03);
     }
     
+    /* ===== 基礎卡片樣式 ===== */
     .family-card { background: #ffffff; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid rgba(255,255,255,1); transition: all 0.3s ease; }
     @media (min-width: 768px) {
       .family-card { border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
@@ -104,11 +108,50 @@
     }
     @keyframes gradient-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
     
-    #backToTop { opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 1000; right: 1rem; bottom: 1rem; }
-    #backToTop.show { opacity: 1; pointer-events: auto; }
+    /* ===== 雙懸浮固定功能鈕空間精密重組 ===== */
+    #backToTop, #surpriseBtn { opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 1000; right: 1rem; }
+    #backToTop.show, #surpriseBtn.show { opacity: 1; pointer-events: auto; }
+    
+    /* 手機版垂直間距錯開 */
+    #backToTop { bottom: 1rem; transform: translateY(20px); box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3); }
+    #surpriseBtn { bottom: 4.5rem; transform: translateY(20px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3); }
+    
+    #backToTop.show { transform: translateY(0); }
+    #surpriseBtn.show { transform: translateY(0); }
+
+    /* 電腦版等比例放大並優化高度 */
+    @media (min-width: 768px) {
+      #backToTop { bottom: 1.5rem; right: 1.5rem; }
+      #surpriseBtn { bottom: 6rem; right: 1.5rem; }
+    }
 
     .modal-bounce { animation: modalBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
     @keyframes modalBounce { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    
+    /* ===== 幹部專屬卡片配置與自訂滑動滾動條 ===== */
+    .member-tech-card { background: #161923; border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    @media (min-width: 768px) {
+      .member-tech-card { border-radius: 30px; }
+      .member-tech-card:hover { transform: translateY(-8px); border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.01); border-radius: 10px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 10px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.3); }
+
+    .walkway-container { 
+      position: fixed; 
+      bottom: 0; 
+      left: 0; width: 100%; height: 50px; overflow: hidden; 
+      background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-top: 2px dashed rgba(99, 102, 241, 0.2); z-index: 90; transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .family-walking-group { position: absolute; display: flex; align-items: flex-end; gap: 24px; bottom: 4px; left: -250px; animation: familyWalk 28s linear infinite; }
+    .walk-bounce { animation: bodyBounce 0.6s ease-in-out infinite alternate; }
+    .bike-lean { animation: bikeVibrate 0.3s linear infinite alternate; }
+    .dog-wag { animation: dogWaggle 0.4s ease-in-out infinite alternate; }
   </style>
 </head>
 
@@ -121,7 +164,7 @@
 
       <div class="flex justify-between items-center text-[10px] text-[#00f2fe]/60 border-b border-[#00f2fe]/20 pb-3 mb-6">
         <span>SYS_STATUS: ACTIVE</span>
-        <span class="animate-pulse"><i class="fa-solid fa-satellite-dish mr-1 text-pink-500"></i>REALTIME LIVE CHANNEL</span>
+        <span class="animate-pulse"><i class="fa-solid fa-satellite-dish mr-1 text-pink-500"></i>MAIN_FRAME LOADED</span>
       </div>
 
       <div class="text-[#00f2fe] text-4xl mb-4 filter drop-shadow-[0_0_15px_rgba(0,242,254,0.6)]">
@@ -134,19 +177,19 @@
       <div class="grid grid-cols-3 gap-3 my-6 text-left">
         <div class="bg-slate-950/80 border border-[#00f2fe]/20 rounded-xl p-3 relative">
           <span class="text-[8px] text-slate-500 block uppercase tracking-wider">STRUCTURE / 結構</span>
-          <span class="text-lg md:text-2xl font-black text-[#00f2fe] block font-sans tracking-tight mt-1" id="hudMemberCount">16 <span class="text-xs text-slate-400">核心</span></span>
+          <span class="text-lg md:text-2xl font-black text-[#00f2fe] block font-sans tracking-tight mt-1">16 <span class="text-xs text-slate-400">核心</span></span>
           <p class="text-[9px] text-slate-400 mt-1 font-sans border-t border-slate-800 pt-1 leading-tight">家庭成員全面歸隊</p>
           <div class="absolute bottom-1 right-2 text-[#00f2fe]/10 text-xl"><i class="fa-solid fa-users"></i></div>
         </div>
         <div class="bg-slate-950/80 border border-[#00f2fe]/20 rounded-xl p-3 relative">
           <span class="text-[8px] text-slate-500 block uppercase tracking-wider">MISSIONS / 活動</span>
-          <span class="text-lg md:text-2xl font-black text-[#00f2fe] block font-sans tracking-tight mt-1" id="hudMissionCount">02 <span class="text-xs text-slate-400">編組</span></span>
+          <span class="text-lg md:text-2xl font-black text-[#00f2fe] block font-sans tracking-tight mt-1">02 <span class="text-xs text-slate-400">編組</span></span>
           <p class="text-[9px] text-slate-400 mt-1 font-sans border-t border-slate-800 pt-1 leading-tight">年度出遊活動編排</p>
           <div class="absolute bottom-1 right-2 text-[#00f2fe]/10 text-xl"><i class="fa-solid fa-calendar-check"></i></div>
         </div>
         <div class="bg-slate-950/80 border border-[#00f2fe]/20 rounded-xl p-3 relative">
           <span class="text-[8px] text-slate-500 block uppercase tracking-wider">UNITY / 向心力</span>
-          <span class="text-lg md:text-2xl font-black text-pink-500 block font-sans tracking-tight mt-1" id="hudUnityRate">100<span class="text-xs">%</span></span>
+          <span class="text-lg md:text-2xl font-black text-pink-500 block font-sans tracking-tight mt-1">100<span class="text-xs">%</span></span>
           <p class="text-[9px] text-slate-400 mt-1 font-sans border-t border-slate-800 pt-1 leading-tight">家族意識高度凝聚</p>
           <div class="absolute bottom-1 right-2 text-pink-500/10 text-xl"><i class="fa-solid fa-heart-pulse"></i></div>
         </div>
@@ -154,16 +197,16 @@
 
       <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-3.5 mb-6 text-left">
         <div class="flex justify-between items-center text-[10px] text-slate-400 mb-1.5">
-          <span><i class="fa-solid fa-circle-notch animate-spin mr-1 text-[#00f2fe]"></i>雲端數據同步通道已連結...</span>
-          <span class="text-[#00f2fe]" id="syncStateText">ONLINE</span>
+          <span><i class="fa-solid fa-circle-notch animate-spin mr-1 text-[#00f2fe]"></i>系統全息鏈結進度...</span>
+          <span class="text-[#00f2fe]">READY</span>
         </div>
         <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden p-px border border-slate-800">
-          <div class="h-full rounded-full bg-gradient-to-r from-[#00f2fe] via-indigo-500 to-pink-500" style="width: 100%;"></div>
+          <div class="h-full rounded-full bg-gradient-to-r from-[#00f2fe] via-indigo-500 to-pink-500" style="width: 100%; transition: width 1.5s ease;"></div>
         </div>
       </div>
       
       <p class="text-[11px] text-slate-500 tracking-widest font-sans mb-6 md:mb-8 leading-relaxed">
-        — 呂佳寯 行政管理基地 · 全線大數據通道架設完畢 —
+        — 呂佳寯 行政管理基地 · 核心數據矩陣校準完畢 —
       </p>
       
       <button onclick="dismissWelcome()" class="tech-btn px-10 py-3.5 rounded-xl font-bold uppercase tracking-[0.2em] text-xs md:text-sm font-sans w-full sm:w-auto shadow-md">
@@ -175,17 +218,24 @@
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 font-medium">
     <div class="max-w-7xl mx-auto px-4 py-2.5 flex justify-between items-center gap-4">
       <div class="flex items-center gap-2 shrink-0">
-        <a href="#home" class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md hover:bg-indigo-700 transition-all">
+        <a href="#home" class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md hover:bg-indigo-700 transition-all" title="回首頁">
           <i class="fa-solid fa-house text-sm"></i>
         </a>
         <h1 class="font-bold text-slate-800 tracking-tight hidden sm:block text-xs md:text-sm">呂氏家庭生活資訊網 3.0</h1>
       </div>
-      <div class="flex items-center gap-3 md:gap-5 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-slate-500 font-bold overflow-x-auto whitespace-nowrap scrollbar-none py-1.5 flex-1 justify-end">
-        <a href="#home" class="hover:text-indigo-600 transition-all">首頁</a>
-        <a href="#notice" class="hover:text-indigo-600 transition-all">公告</a>
-        <a href="#location" class="hover:text-indigo-600 transition-all">分支</a>
-        <a href="#guestbook" class="hover:text-indigo-600 transition-all">留言</a>
+      <div class="flex items-center gap-3 md:gap-5 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-slate-500 font-bold overflow-x-auto whitespace-nowrap scrollbar-none py-1.5 flex-1 justify-start sm:justify-end">
+        <a href="#home" class="hover:text-indigo-600 transition-all px-0.5">首頁</a>
+        <a href="#notice" class="hover:text-indigo-600 transition-all px-0.5">公告</a>
+        <a href="#events" class="hover:text-indigo-600 transition-all px-0.5">活動</a>
+        <a href="#members" class="hover:text-indigo-600 transition-all px-0.5">幹部</a>
+        <a href="#location" class="hover:text-indigo-600 transition-all px-0.5">分支</a>
+        <a href="#guestbook" class="hover:text-indigo-600 transition-all px-0.5">留言</a>
+        <a href="#contact" class="hover:text-indigo-600 transition-all px-0.5">聯絡</a>
       </div>
+      <button onclick="openHistoryModal()" class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0" title="開啟消息中心">
+        <i class="fa-solid fa-bell text-sm"></i>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+      </button>
     </div>
   </nav>
 
@@ -194,7 +244,7 @@
       <div class="text-center lg:text-left">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold mb-3 border border-indigo-100 uppercase tracking-widest">正式啟用 2026</div>
         <h2 class="text-2xl sm:text-4xl md:text-6xl font-black leading-tight text-slate-800 mb-3 md:mb-6">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
-        <p class="italic text-slate-400 text-sm md:text-lg mb-6">「3.0 整合推播與據點分佈版」</p>
+        <p class="italic text-slate-400 text-sm md:text-lg mb-2 mb-6">「3.0 正式啟用」</p>
       </div>
       <div class="relative w-full">
         <div class="family-card overflow-hidden border">
@@ -223,22 +273,22 @@
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative">
       <div class="stat-item text-center">
         <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Member Count</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span id="statMemberCount">16</span></div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="16">0</span></div>
         <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">成員總數</p>
       </div>
       <div class="stat-item text-center border-l border-white/5 md:border-l-0">
         <div class="text-emerald-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Active Missions</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5 text-emerald-400"><span id="statMissionCount">2</span></div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5 text-emerald-400"><span class="counter" data-target="2">0</span></div>
         <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">累計執行活動</p>
       </div>
       <div class="stat-item text-center border-l border-white/5">
         <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Core Bases</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span>3</span></div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="3">0</span></div>
         <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">區域分支</p>
       </div>
       <div class="stat-item text-center border-l border-white/5">
         <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Unity Rate</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span id="statUnityRate">100</span><span class="text-xs md:text-lg ml-0.5">%</span></div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="100">0</span><span class="text-xs md:text-lg ml-0.5">%</span></div>
         <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">家族向心力</p>
       </div>
     </div>
@@ -246,6 +296,7 @@
 
   <section id="notice" class="py-8 md:py-20 bg-slate-50/50">
     <div class="max-w-4xl mx-auto px-4">
+      
       <div class="text-center mb-6 md:mb-10">
         <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight flex items-center justify-center gap-2">
           <i class="fa-solid fa-bullhorn text-indigo-600"></i> 公告訊息中心
@@ -254,54 +305,229 @@
       </div>
 
       <div class="flex justify-center p-1 bg-slate-200/60 rounded-2xl mb-6 max-w-md mx-auto border border-slate-200 font-bold">
-        <button onclick="switchTab('tab-latest')" id="btn-tab-latest" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all bg-white text-indigo-600 shadow-sm">最新公告</button>
-        <button onclick="switchTab('tab-system')" id="btn-tab-system" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all text-slate-500">系統公告</button>
-        <button onclick="switchTab('tab-camp')" id="btn-tab-camp" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all text-slate-500">活動公告</button>
+        <button onclick="switchTab('tab-latest')" id="btn-tab-latest" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 bg-white text-indigo-600 shadow-sm flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-newspaper text-[11px]"></i>最新公告
+        </button>
+        <button onclick="switchTab('tab-system')" id="btn-tab-system" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-800 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-gears text-[11px]"></i>系統公告
+        </button>
+        <button onclick="switchTab('tab-camp')" id="btn-tab-camp" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-800 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-jet-fighter text-[11px]"></i>活動公告
+        </button>
       </div>
 
-      <div id="noticeDisplayWrapper" class="space-y-4 min-h-[160px]"></div>
+      <div id="noticeDisplayWrapper" class="space-y-4 min-h-[160px] transition-all duration-300">
+        </div>
+
+      <div class="mt-12">
+        <h2 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2.5 text-slate-800">
+          <i class="fa-solid fa-list-check text-emerald-500 text-base"></i> 活動執行進度
+        </h2>
+        <div class="family-card p-4 sm:p-6 md:p-8 flex flex-col justify-between space-y-5 md:space-y-6">
+          <div class="space-y-5 flex-1 flex flex-col justify-center">
+            <div>
+              <div class="flex justify-between mb-1.5 text-xs"><p class="text-slate-800 font-medium">2026 新年春節大團圓</p><span class="text-slate-400">100% 已結束</span></div>
+              <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden"><div class="progress-bar-fill h-full bg-slate-300" data-target-width="100%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5 text-xs"><p class="text-slate-800 font-medium">2026 母親節聚餐活動</p><span class="text-slate-400">100% 已結束</span></div>
+              <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden"><div class="progress-bar-fill h-full bg-slate-300" data-target-width="100%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5 text-xs"><p class="text-slate-800 font-medium">中秋家族歡聚烤肉</p><span class="text-indigo-600 font-bold">35% 籌備中</span></div>
+              <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden shadow-inner"><div class="progress-bar-fill h-full rounded-full glow-effect" data-target-width="35%"></div></div>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-100 pt-4 md:pt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left shrink-0">
+            <div class="bg-indigo-50/40 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-indigo-100/30">
+              <span class="text-[9px] sm:text-[10px] uppercase tracking-wider text-indigo-500 font-bold block mb-1.5"><i class="fa-solid fa-circle-check mr-1"></i> 今年已完成活動</span>
+              <ul class="text-[11px] text-slate-600 space-y-1 font-medium list-disc pl-3.5">
+                <li>新年春節團圓餐會</li>
+                <li>母親節感恩活動</li>
+              </ul>
+            </div>
+            <div class="bg-amber-50/40 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-amber-100/30">
+              <span class="text-[9px] sm:text-[10px] uppercase tracking-wider text-amber-600 font-bold block mb-1.5"><i class="fa-solid fa-umbrella-beach mr-1"></i> 盛夏熱門活動</span>
+              <ul class="text-[11px] text-slate-600 space-y-1 font-medium list-disc pl-3.5">
+                <li>2026中秋烤肉(規劃中)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="events" class="py-8 md:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-6 md:mb-12">
+        <h2 class="text-xl md:text-4xl font-black text-slate-800 tracking-tight">近期活動回顧</h2>
+        <div class="w-10 md:w-16 h-1 bg-pink-500 mx-auto mt-2 rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-stretch">
+        <div class="lg:col-span-6 flex flex-col h-full">
+          <div class="family-card overflow-hidden border p-0 flex flex-col flex-1 h-full">
+            <img src="S__23732244.jpg" class="w-full h-full object-cover min-h-[220px] sm:min-h-[280px] md:min-h-[340px]" onerror="this.src='https://via.placeholder.com/800x500?text=Lu+Family+Gathering'">
+            <div class="p-4 bg-indigo-50/50 border-t border-indigo-100/40 text-center shrink-0">
+              <p class="text-indigo-600 font-bold text-sm sm:text-base mb-0.5"><i class="fa-solid fa-camera mr-1.5"></i>家族大聚會</p>
+              <p class="text-slate-500 text-xs italic font-medium">「2026 母親節慶祝 大合照」</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-6 flex flex-col h-full">
+          <div class="glass-card p-4 sm:p-6 md:p-8 border flex flex-col justify-between flex-1 h-full">
+            <div class="flex-1 flex items-center justify-center bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-sm w-full min-h-[220px] sm:min-h-[280px]">
+              <video controls playsinline class="w-full h-full object-contain"><source src="母親節MV.mp4" type="video/mp4"></video>
+            </div>
+            <h4 class="mt-4 text-sm sm:text-base md:text-xl font-bold text-slate-800 text-center shrink-0">2026 母親節影片回顧-預告</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="members" class="py-10 md:py-24 text-center bg-[#0b0d14] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-xl md:text-3xl font-black text-white mb-1.5">核心幹部團隊</h2>
+      <p class="text-indigo-400 text-[10px] md:text-xs uppercase font-bold tracking-widest mb-1.5">Lu Family Leadership Team</p>
+      <p class="text-slate-500 text-[10px] sm:text-[11px] mb-6 md:mb-12 font-medium tracking-wider animate-pulse px-2">
+        <i class="fa-solid fa-angles-left-right mr-1 text-indigo-500"></i> 左右滑動或拖曳滑鼠可解鎖看更多幹部資料 <i class="fa-solid fa-angles-left-right ml-1 text-indigo-500"></i>
+      </p>
+      
+      <div class="flex overflow-x-auto pb-5 gap-4 sm:gap-6 md:gap-8 custom-scrollbar scroll-smooth text-left snap-x snap-mandatory px-2 items-stretch">
+        
+        <div onclick="openInteractiveModal('member1')" class="member-tech-card p-5 md:p-6 cursor-pointer relative overflow-hidden group min-w-[250px] sm:min-w-[300px] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl overflow-hidden mx-auto mb-5 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-indigo-500/30 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+              <img src="呂陳英妹.jpg" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150'">
+            </div>
+            <div class="flex justify-center items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold text-white">呂陳英妹</h3>
+              <span class="font-mono text-[9px] text-pink-500 border border-pink-500/20 px-1.5 py-0.5 rounded bg-pink-500/5">#幹部</span>
+            </div>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">最強總指揮官心</p>
+          </div>
+          <div>
+            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-indigo-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">家庭長</div></div>
+            <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-5 -mx-5 -mb-6"></div>
+          </div>
+        </div>
+
+        <div onclick="openInteractiveModal('member2')" class="member-tech-card p-5 md:p-6 cursor-pointer relative overflow-hidden group min-w-[250px] sm:min-w-[300px] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl overflow-hidden mx-auto mb-5 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+              <img src="110417006.jpg" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150'">
+            </div>
+            <div class="flex justify-center items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold text-white">呂佳寯</h3>
+              <span class="font-mono text-[9px] text-pink-500 border border-pink-500/20 px-1.5 py-0.5 rounded bg-pink-500/5">#幹部</span>
+            </div>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">行政及政教業務</p>
+          </div>
+          <div>
+            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-emerald-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">行政管理</div></div>
+            <div class="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mt-5 -mx-5 -mb-6"></div>
+          </div>
+        </div>
+
+        <div onclick="openInteractiveModal('member3')" class="member-tech-card p-5 md:p-6 cursor-pointer relative overflow-hidden group min-w-[250px] sm:min-w-[300px] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl overflow-hidden mx-auto mb-5 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-pink-500/30 shadow-[0_0_15px_rgba(236,72,153,0.1)]">
+              <img src="1709717928_2KZnL.png" class="w-full h-full object-cover bg-white" onerror="this.src='https://via.placeholder.com/150'">
+            </div>
+            <div class="flex justify-center items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold text-white">呂佳芯</h3>
+              <span class="font-mono text-[9px] text-pink-500 border border-pink-500/20 px-1.5 py-0.5 rounded bg-pink-500/5">#幹部</span>
+            </div>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">凝聚向心力</p>
+          </div>
+          <div>
+            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-pink-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">分隊長</div></div>
+            <div class="h-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full mt-5 -mx-5 -mb-6"></div>
+          </div>
+        </div>
+
+        <div onclick="openInteractiveModal('member4')" class="member-tech-card p-5 md:p-6 cursor-pointer relative overflow-hidden group min-w-[250px] sm:min-w-[300px] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl overflow-hidden mx-auto mb-5 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)] flex items-center justify-center bg-slate-900 text-slate-500">
+              <i class="fa-solid fa-boxes-packing text-2xl md:text-3xl"></i>
+            </div>
+            <div class="flex justify-center items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold text-white">後勤員</h3>
+              <span class="font-mono text-[9px] text-blue-400 border border-blue-400/20 px-1.5 py-0.5 rounded bg-blue-500/5">#後勤</span>
+            </div>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">物資維保及申請</p>
+          </div>
+          <div>
+            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-blue-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">後勤員</div></div>
+            <div class="h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-5 -mx-5 -mb-6"></div>
+          </div>
+        </div>
+
+        <div onclick="openInteractiveModal('member5')" class="member-tech-card p-5 md:p-6 cursor-pointer relative overflow-hidden group min-w-[250px] sm:min-w-[300px] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col justify-between">
+          <div>
+            <div class="w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl overflow-hidden mx-auto mb-5 border border-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.1)] flex items-center justify-center bg-slate-900 text-slate-500">
+              <i class="fa-solid fa-palette text-2xl md:text-3xl"></i>
+            </div>
+            <div class="flex justify-center items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold text-white">美術員</h3>
+              <span class="font-mono text-[9px] text-purple-400 border border-purple-400/20 px-1.5 py-0.5 rounded bg-purple-500/5">#美術</span>
+            </div>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">視覺設計 / 家族影像美化</p>
+          </div>
+          <div>
+            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-purple-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">美術員</div></div>
+            <div class="h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-5 -mx-5 -mb-6"></div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <section id="location" class="py-10 md:py-24 text-center bg-slate-50">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-4xl font-black text-slate-800 mb-2 tracking-tight">家庭分布區域</h2>
-      <p class="italic text-slate-500 text-sm mb-6 md:mb-12">「常駐三大核心據點 · 官方大數據融合」</p>
+      <p class="italic text-slate-500 text-sm mb-6 md:mb-12">「常駐三大核心據點 · 數據即時同步」</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         
         <div onclick="openInteractiveModal('loc1')" class="family-card p-6 md:p-10 border-b-4 border-indigo-500 cursor-pointer flex flex-col items-center justify-between group bg-white">
           <div class="w-full flex flex-col items-center">
-            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2 flex items-center justify-center mb-4">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2 flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
               <img src="New_Taipei_City_Government_Logo.svg.png" class="max-w-full max-h-full object-contain" alt="新北市徽">
             </div>
             <h3 class="text-lg md:text-2xl font-black text-slate-800 flex items-center gap-2 justify-center">
               新北板橋 <span class="text-xs sm:text-sm text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-md font-bold">總部</span>
             </h3>
-            <p class="text-slate-500 text-sm md:text-base mt-3 font-semibold">查看詳情 <i class="fa-solid Faust-arrow-trend-up ml-1 text-indigo-500 text-xs"></i></p>
+            <p class="text-slate-500 text-sm md:text-base mt-3 font-semibold tracking-wide">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1 text-indigo-500 text-xs"></i></p>
           </div>
         </div>
 
         <div onclick="openInteractiveModal('loc2')" class="family-card p-6 md:p-10 border-b-4 border-emerald-500 cursor-pointer flex flex-col items-center justify-between group bg-white">
           <div class="w-full flex flex-col items-center">
-            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2 flex items-center justify-center mb-4">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2 flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
               <img src="Flag_of_Taichung_City_2025.svg.png" class="max-w-full max-h-full object-contain" alt="臺中市徽">
             </div>
             <h3 class="text-lg md:text-2xl font-black text-slate-800 flex items-center gap-2 justify-center">
               臺中北區、中區 <span class="text-xs sm:text-sm text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md font-bold">第一分支</span>
             </h3>
-            <p class="text-slate-500 text-sm md:text-base mt-3 font-semibold">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1 text-emerald-500 text-xs"></i></p>
+            <p class="text-slate-500 text-sm md:text-base mt-3 font-semibold tracking-wide">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1 text-emerald-500 text-xs"></i></p>
           </div>
         </div>
 
         <div onclick="openInteractiveModal('loc3')" class="family-card p-6 md:p-10 border-b-4 border-orange-500 cursor-pointer flex flex-col items-center justify-between group bg-white">
           <div class="w-full flex flex-col items-center">
-            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2 flex items-center justify-center mb-4">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 p-2 flex items-center justify-center mb-4 transition-transform group-hover:scale-105">
               <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="max-w-full max-h-full object-contain" alt="桃園市徽">
             </div>
             <h3 class="text-lg md:text-2xl font-black text-slate-800 flex items-center gap-2 justify-center">
               桃園平鎮 <span class="text-xs sm:text-sm text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-md font-bold">第二分支</span>
             </h3>
-            <p class="text-slate-500 text-sm md:text-base mt-3 font-semibold">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1 text-orange-500 text-xs"></i></p>
+            <p class="text-slate-500 text-sm md:text-base mt-3 font-semibold tracking-wide">查看詳情 <i class="fa-solid fa-arrow-trend-up ml-1 text-orange-500 text-xs"></i></p>
           </div>
         </div>
 
@@ -311,53 +537,152 @@
 
   <section id="guestbook" class="py-10 md:py-24 bg-white">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-xl md:text-3xl font-black text-slate-800 mb-5 tracking-tight">實時留言板</h2>
-      <div class="family-card p-4 sm:p-6 md:p-10 mb-6 border border-slate-100">
+      <h2 class="text-xl md:text-3xl font-black text-slate-800 mb-5 md:mb-10 tracking-tight">留言板</h2>
+      <div class="family-card p-4 sm:p-6 md:p-10 mb-6 md:mb-10 border border-slate-100">
         <div class="flex flex-col md:flex-row gap-3">
-          <input type="text" id="guestName" placeholder="您的稱呼" class="w-full md:w-1/4 bg-white rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium">
-          <input type="text" id="guestMsg" placeholder="輸入訊息...按傳送全網秒級同步更新數據！" class="w-full md:flex-1 bg-white rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium">
-          <button onclick="postMsg()" class="w-full md:w-auto bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all shrink-0">傳送訊息</button>
+          <input type="text" id="guestName" placeholder="稱呼" class="w-full md:w-1/4 bg-white rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium">
+          <input type="text" id="guestMsg" placeholder="祝福心語..." class="w-full md:flex-1 bg-white rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium">
+          <button onclick="postMsg()" class="w-full md:w-auto bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-sm transition-all shrink-0">傳送</button>
         </div>
       </div>
       <div id="latestMessages" class="space-y-3 mb-4"></div>
+      <div id="historyBtnContainer" class="hidden"><button onclick="toggleHistory()" class="text-indigo-600 font-bold text-xs flex items-center gap-1.5 mx-auto hover:underline"><i class="fa-solid fa-clock-rotate-left"></i> 歷史留言</button></div>
+      <div id="historyMessages" class="mt-6 space-y-3 hidden border-t pt-6"></div>
     </div>
   </section>
 
-  <footer class="bg-white py-8 text-center border-t border-slate-100 font-medium"><p class="text-[9px] text-slate-300 tracking-[0.3em] uppercase">© 2026 呂氏家庭生活資訊網. V3.0 Final Realtime</p></footer>
+  <section id="contact" class="py-10 md:py-20 bg-slate-50 border-t border-slate-200/50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8 md:mb-14">
+        <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight">聯絡我們</h2>
+        <p class="text-indigo-600 text-[10px] md:text-xs uppercase font-bold tracking-widest mt-1">Contact Our Management Base</p>
+        <div class="w-10 md:w-16 h-1 bg-indigo-600 mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-stretch">
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-4 md:space-y-6 h-full">
+          <div class="family-card p-5 md:p-6 border bg-white flex-1">
+            <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">
+              <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-base shrink-0 border border-indigo-100">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-slate-800">聯絡窗口</h3>
+                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider font-mono">Management Window</p>
+              </div>
+            </div>
+            <p class="text-slate-500 text-xs leading-relaxed mb-4">本聯絡窗口—<strong>由呂佳寯 政戰幹部</strong>負責全權維運與業務接洽。若您有活動提案、權限調取或里民反饋，請不吝聯絡本基地窗口。</p>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-user-tie text-indigo-500 w-4 text-center"></i>核心聯絡：管理窗口 (呂佳寯)</div>
+              <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-envelope text-indigo-500 w-4 text-center"></i>公務信箱：<span class="font-mono text-slate-700">設置中</span></div>
+              <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-clock text-indigo-500 w-4 text-center"></i>受理時間：週一至週五 09:00 - 18:00</div>
+            </div>
+          </div>
+
+          <div class="family-card p-5 md:p-6 border bg-amber-50/40 border-amber-200/40 shrink-0">
+            <div class="flex items-center gap-2.5 mb-2.5 text-amber-600 font-bold text-xs sm:text-sm">
+              <i class="fa-solid fa-triangle-exclamation text-base"></i>
+              <h3>服務注意事項</h3>
+            </div>
+            <ul class="text-[11px] md:text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium leading-relaxed">
+              <li>送出表單後，本聯絡負責人會盡快回覆問題。</li>
+              <li>公務反饋預計於 <strong class="text-indigo-600">2-3日內</strong> 由專人回信或電話致電答覆。</li>
+              <li>請務必填寫正確的稱呼與電話號碼，以免造成數據失聯。</li>
+              <li>本表單資料受內部高度隱私加密通道保護，絕不外洩。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col h-full">
+          <div class="family-card p-5 sm:p-6 md:p-8 border bg-white flex-1 flex flex-col justify-between">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4 flex-1">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-user mr-1 text-slate-400"></i>您的稱呼 <span class="text-red-500">*</span></label>
+                  <input type="text" id="contactName" required placeholder="例如：呂先生 / 里民" class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white shadow-inner">
+                </div>
+                <div>
+                  <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-phone mr-1 text-slate-400"></i>聯絡電話 <span class="text-red-500">*</span></label>
+                  <input type="tel" id="contactPhone" required placeholder="例如：0912345678" class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white shadow-inner">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-tags mr-1 text-slate-400"></i>服務事項類別 <span class="text-red-500">*</span></label>
+                <div class="relative">
+                  <select id="contactCategory" required class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white appearance-none cursor-pointer shadow-inner">
+                    <option value="" disabled selected>請選擇您要諮詢的項目...</option>
+                    <option value="里民公務反饋">里民公務及回饋金諮詢</option>
+                    <option value="家族出遊與慶典提案">家族出遊與大型慶典提案</option>
+                    <option value="系統升級建言">家庭生活網 3.0 系統功能建言</option>
+                    <option value="其他綜合事務">其他綜合商務及聯絡事務</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                </div>
+              </div>
+
+              <div class="flex-1 flex flex-col">
+                <label class="block text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"><i class="fa-solid fa-comment-dots mr-1 text-slate-400"></i>服務內容詳述 <span class="text-red-500">*</span></label>
+                <textarea id="contactMessage" required rows="4" placeholder="請詳細敘述您的具體反饋、建言 or 諮詢內容..." class="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200 outline-none focus:border-indigo-500 font-medium text-xs sm:text-sm transition-all focus:bg-white flex-1 resize-none shadow-inner min-h-[100px]"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 shadow-md transition-all flex items-center justify-center gap-2 text-xs sm:text-sm mt-2 tracking-widest uppercase">
+                <i class="fa-solid fa-paper-plane text-xs"></i> 遞交線上表單 (同步發布通知)
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="walkway-container" id="floatingWalkway">
+    <div class="family-walking-group text-slate-400">
+      <div class="walk-bounce flex flex-col items-center"><i class="fa-solid fa-baby-carriage text-lg text-indigo-500"></i><span class="text-[8px] font-medium text-slate-400 scale-90">散步中</span></div>
+      <div class="walk-bounce flex flex-col items-center" style="animation-delay: -0.2s;"><i class="fa-solid fa-person-walking text-xl text-pink-500"></i></div>
+      <div class="bike-lean flex flex-col items-center"><i class="fa-solid fa-bicycle text-lg text-emerald-500"></i></div>
+      <div class="dog-wag flex flex-col items-center"><i class="fa-solid fa-dog text-sm text-amber-500"></i></div>
+    </div>
+  </div>
+
+  <footer class="bg-white py-8 text-center border-t border-slate-100 font-medium"><p class="text-[9px] text-slate-300 tracking-[0.3em] uppercase">© 2026 呂氏家庭生活資訊網. V3.0 Final 版</p></footer>
 
   <div id="interactiveModal" class="fixed inset-0 z-[260] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="closeInteractiveModal()">
     <div id="modalContent" class="w-full max-w-sm md:max-w-md shadow-2xl modal-bounce" onclick="event.stopPropagation()"></div>
   </div>
 
+  <div id="historyModal" class="fixed inset-0 z-[250] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden" onclick="closeHistoryModal()">
+    <div class="bg-white rounded-[24px] md:rounded-[30px] w-full max-w-md md:max-w-xl shadow-2xl modal-bounce" id="historyModalContainer" onclick="event.stopPropagation()">
+      <div class="p-5 md:p-10">
+        <div class="flex justify-between items-center mb-5">
+          <div><h3 class="text-base md:text-2xl font-black text-slate-800">消息中心</h3><p class="text-slate-400 text-[8px] uppercase font-bold tracking-wider">All History Announcements</p></div>
+          <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-200 transition-all"><i class="fa-solid fa-xmark text-sm"></i></button>
+        </div>
+        <div id="modalNoticeList" class="space-y-3.5 max-h-[40vh] md:max-h-[50vh] overflow-y-auto pr-1 custom-scrollbar"></div>
+        <button onclick="closeHistoryModal()" class="mt-5 md:mt-8 w-full py-3 rounded-xl bg-indigo-600 text-white font-bold shadow-md hover:bg-indigo-700 transition-all">確認關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="surpriseModal" class="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md hidden" onclick="closeSurprise()">
+    <div class="bg-white rounded-[25px] p-6 max-w-xs w-full text-center shadow-2xl modal-bounce" onclick="event.stopPropagation()">
+      <div class="text-indigo-500 text-2xl mb-3"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <p id="surpriseText" class="text-xs sm:text-sm font-bold text-slate-800 mb-5 leading-relaxed"></p>
+      <button onclick="closeSurprise()" class="w-full py-2.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all">收到祝福</button>
+    </div>
+  </div>
+
+  <button id="surpriseBtn" onclick="showSurprise()" class="fixed bg-pink-500 text-white rounded-full flex flex-col items-center justify-center p-1.5 text-center group border border-white/10 shadow-md hover:bg-pink-600 transition-all w-10 h-10 md:w-14 md:h-14">
+    <i class="fa-solid fa-wand-magic-sparkles text-xs md:text-base animate-bounce"></i>
+    <span class="text-[7px] md:text-[8px] font-black tracking-tighter block -mt-0.5">小彩蛋</span>
+  </button>
+
   <button id="backToTop" class="fixed w-10 h-10 md:w-14 md:h-14 bg-indigo-600 text-white rounded-xl shadow-md flex items-center justify-center border border-white/10 z-[95] hover:bg-indigo-700 transition-all">
     <i class="fa-solid fa-chevron-up text-xs md:text-lg"></i>
   </button>
 
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // 🔔 【最核心步驟】：請將下方金鑰物件，完整替換成你在 Firebase 拿到的連線代碼！
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "lu-family-3.firebaseapp.com",
-      databaseURL: "https://lu-family-3-default-rtdb.firebaseio.com", 
-      projectId: "lu-family-3",
-      storageBucket: "lu-family-3.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
-    let dbRef;
-    try {
-      firebase.initializeApp(firebaseConfig);
-      dbRef = firebase.database().ref();
-      document.getElementById('syncStateText').innerText = "STREAM_CONNECTED";
-    } catch(e) {
-      document.getElementById('syncStateText').innerText = "LOCAL_BACKUP";
-      console.log("Firebase config 尚未設定完成，開啟本地備份快取數據通道。");
-    }
-
     let isWelcomeActive = true;
     let currentActiveTab = 'tab-latest';
 
@@ -365,163 +690,425 @@
       const overlay = document.getElementById('welcomeOverlay');
       if (overlay) {
         overlay.style.opacity = '0'; overlay.style.transform = 'scale(1.03)';
-        setTimeout(() => { overlay.style.display = 'none'; document.body.style.overflow = 'auto'; isWelcomeActive = false; }, 600);
+        setTimeout(() => {
+          overlay.style.display = 'none'; document.body.style.overflow = 'auto'; 
+          isWelcomeActive = false; triggerScrollChecks(); 
+        }, 600);
       }
     }
 
-    // ===== 📊 終極整合本地庫（包含官方分布圖數據、文字放大，數據一字不變） =====
-    const localDb = {
-      loc1: { 
-        title: "新北板橋 (總部)", 
-        sub: "總部", 
-        l1: "常駐核心人員", 
-        i1: "7 名", 
-        l2: "官方據點分佈情形", 
-        i2: "5 共融 / 6 家照據點。大總部兼具高度社會共融服務機能，為年度慶典與核心決策基地。" 
+    try { AOS.init({ duration: 800, once: true, disable: 'mobile' }); } catch (e) { console.log('AOS skipped'); }
+
+    // HUD 彈窗詳細資料庫 (資料絕對保留不變)
+    const db = {
+      member1: { 
+        type: "member", name: "呂陳英妹", alias: "最強總指揮官", number: "#幹部", 
+        range: "雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。",
+        role: "領導", skill: "秘密", sign: "秘密", dob: "秘密", 
+        isImg: true, src: "呂陳英妹.jpg", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-utensils"], bgImg: "呂陳英妹.jpg"
       },
-      loc2: { 
-        title: "臺中北區、中區", 
-        sub: "第一分支", 
-        l1: "常駐核心人員", 
-        i1: "6 名", 
-        l2: "官方據點分佈情形", 
-        i2: "13 共融據點。分布於北區與中區，為本單位共融戰略深度最強、分布極廣之核心次分區。" 
+      member2: { 
+        type: "member", name: "呂佳寯", alias: "政戰幹部兼任行政管理", number: "#幹部", range: "政戰才是我的專業，行政業務是支援",
+        role: "政戰、行政", skill: "文宣、攝影", sign: "金牛座", dob: "2002/05/01",
+        isImg: true, src: "110417006.jpg", theme: "text-emerald-400", tags: ["fa-file-invoice", "fa-shield-halved", "fa-code"], bgImg: "110417006.jpg"
       },
-      loc3: { 
-        title: "桃園平鎮", 
-        sub: "第二分支", 
-        l1: "常駐核心人員", 
-        i1: "3 名", 
-        l2: "官方據點分佈情形", 
-        i2: "1 共融 / 6 家照據點。位處交通重要樞紐，結合完整家影關懷體系，完美支援後勤體系。" 
+      member3: { 
+        type: "member", name: "呂佳芯", alias: "分隊長", number: "幹部", 
+        range: "突然被政戰幹部派選為分隊長！",
+        role: "領導", skill: "凝聚向心力", sign: "獅子座", dob: "2005 / 08 / 21", 
+        isImg: true, src: "1709717928_2KZnL.png", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"], bgImg: "1709717928_2KZnL.png"
+      },
+      member4: { 
+        type: "member", name: "後勤員", alias: "後勤員", number: "#後勤", 
+        range: "確保各項物資及裝備完美到位！",
+        role: "後勤", skill: "物資整備", sign: "未公開", dob: "2026", 
+        isImg: false, theme: "text-blue-400", tags: ["fa-boxes-packing", "fa-truck-ramp-box", "fa-clipboard-list"], bgImg: ""
+      },
+      member5: { 
+        type: "member", name: "美術員", alias: "美術員", number: "#美術", 
+        range: "負責記錄下各項大小活動✨",
+        role: "創意美術", skill: "用影像說話", sign: "未公開", dob: "2026", 
+        isImg: false, theme: "text-purple-400", tags: ["fa-palette", "fa-pen-nib", "fa-bezier-curve"], bgImg: ""
+      },
+
+      loc1: { type: "location", title: "新北板橋 (總部)", sub: "總部", l1: "人員情況", i1: "7 名", l2: "特色", i2: "大總部，有如指揮中心，年度慶典或決策基地。" },
+      loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。" },
+      loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。" },
+      
+      notice_camp: {
+        type: "notice_detail", title: "115年暑期戰鬥營 官方海報與簡章規範", tag: "活動通知", color: "bg-red-500",
+        content: `
+          <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 bg-slate-950 shadow-md">
+            <img src="701465836_1422120123276913_1195652567231001211_n (1).jpg" class="w-full h-auto object-contain mx-auto" alt="115年暑期戰鬥營海報">
+          </div>
+          <div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm">
+            <p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、招訓與身分查驗限制：</p>
+            <p class="text-red-700 leading-relaxed pl-3">具中華民國國籍，且不得持有中國大陸地區「居民身分證」、「定居證」或「護照」，並填妥切結書。除「科學體驗營」外，須為年滿15足歲國中應屆畢業生至未滿32歲在學學生。科學體驗營招收國中在學學生。</p>
+          </div>
+          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3 font-medium">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、本島與外島營隊一覽：</p>
+            <p class="text-slate-600 leading-relaxed text-xs pl-1">數位化捷豹戰鬥營（新竹湖口）、無人機潛能探索戰鬥營（臺南白河）、迷彩職人戰鬥營（屏東萬巒），全方位戰士戰鬥營（臺中烏日）、花蓮山海探索戰鬥營（花蓮市）、金門戰鬥營（金門金湖）、馬祖戰鬥營（連江南竿）、澎湖戰鬥營（澎湖馬公）、傘訓戰鬥營（屏東市）、海軍勇士挑戰營（高雄左營）、航空戰鬥營（高雄岡山）、航空科技戰鬥營（高雄岡山）、憲兵鐵衛戰鬥營（新北五股）、國防科技實作研習營（桃園大溪）、新聞研習營（臺北北投）、醫學暨戰傷救護研習營（臺北內湖）、科學體驗營（高雄鳳山）。</p>
+            <div class="border-t border-dashed border-slate-200 my-1.5 pt-1.5">
+              <p class="font-bold text-amber-600"><i class="fa-solid fa-calendar-days mr-1"></i>三、精準日程：</p>
+              <p class="text-slate-600 pl-1 text-indigo-600">📣 網路報名：115年5月25日 1200時 起至 6月15日 1700時 止</p>
+              <p class="text-slate-600 pl-1 text-indigo-600">📣 錄取公告：115年6月16日 1200時 電子化抽籤公告</p>
+            </div>
+          </div>`,
+        linkHtml: `<a href="https://aode.mnd.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往全民國防教育全球資訊網</a>`
+      },
+      notice_hongcui: {
+        type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
+        content: `
+          <div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm">
+            <p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、發放對象：</p>
+            <p class="text-red-700 leading-relaxed pl-3">設籍於宏翠里，且以115年1月1日為基準日，設籍滿4年以上之戶（戶內人口至少有1人設籍滿4年）。</p>
+          </div>
+          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、發放資訊與應備文件：</p>
+            <p class="text-slate-600 pl-1">1. 領取通知單由殯葬處統一於「5月08日」寄出。</p>
+            <p class="text-slate-600 pl-1">2. 請領取人（戶長）攜帶：<strong class="text-slate-900 font-bold">身分證及印章</strong>供核對。</p>
+            <div class="border-t border-dashed border-slate-200 my-1.5 pt-1.5">
+              <p class="font-bold text-amber-600"><i class="fa-solid fa-location-dot mr-1"></i>現場領取地點：</p>
+              <p class="text-slate-700 font-medium pl-1">宏翠里里辦公室（板橋區長江路一段156巷9弄5號1樓）</p>
+              <p class="text-slate-600 pl-1 mt-0.5 font-semibold text-indigo-600">📣 第一波時間：5月30日（六）/ 5月31日（日）09:00-16:00</p>
+              <p class="text-slate-600 pl-1 font-semibold text-indigo-600">📣 第二波時間：6月06日（六）/ 6月07日（日）09:00-16:00</p>
+            </div>
+          </div>`,
+        linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-400">— 宏翠里 里辦公室 里長敬上 —</div>`
+      },
+      notice1: {
+        type: "notice_detail", title: "114年度所得稅申報作業提示", tag: "重要通知", color: "bg-red-500",
+        content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs"><i class="fa-solid fa-circle-exclamation mr-1"></i>截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">請全體家庭成員注意，申報期期限截止日為 2026/06/01，國稅局數據通道屆時關閉。</p></div>`,
+        linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往電子申報繳稅服務網</a>`
+      },
+      notice2: {
+        type: "notice_detail", title: "資訊網 3.0 縣市徽整合報告", tag: "系統維護", color: "bg-orange-500",
+        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網維護團隊全面完成縣市徽融合！成功將新北市徽、臺中市徽、桃園市徽完美嵌入分區圖表中。</p></div>`,
+        linkHtml: `<a href="#notice" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block"><i class="fa-solid fa-rotate-left mr-1"></i>返回公告分區體驗</a>`
       }
     };
 
-    let cloudDb = localDb;
-    let cloudNotices = [
+    // 公告總資料庫 (分類：最新公告、系統公告、活動公告)
+    const notices = [
       { id: "notice_hongcui", tabGroup: "tab-latest", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "家庭分布專區·縣市徽章模組部署完畢", content: "成功引入新北市徽、桃園市徽、臺中市徽高畫質幾何組件，全面優化區域卡片視覺完整度。", date: "2026/05/20", color: "bg-orange-500" }
+      { id: "notice1", tabGroup: "tab-latest", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
+      { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "家庭分布專區·縣市徽章模組部署完畢", content: "成功引入新北市徽、桃園市徽、臺中市徽高畫質幾何組件，全面優化區域卡片視覺完整度。", date: "2026/05/20", color: "bg-orange-500" },
+      { id: "notice_camp", tabGroup: "tab-camp", tag: "活動通知", title: "115年暑期戰鬥營 全線招生對接", content: "憲兵鐵衛、無人機探索、航空科技等多項硬核營隊，25日中午 12 時起全面開放網路報名。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" }
     ];
 
-    // ===== Firebase 實時雙向監聽通訊機制 =====
-    if (dbRef) {
-      dbRef.child("meta").on("value", snapshot => {
-        const val = snapshot.val() || { memberCount: 16, missionCount: 2, unityRate: 100 };
-        document.getElementById('hudMemberCount').innerHTML = `${val.memberCount} <span class="text-xs text-slate-400">核心</span>`;
-        document.getElementById('hudMissionCount').innerHTML = `0${val.missionCount} <span class="text-xs text-slate-400">編組</span>`;
-        document.getElementById('hudUnityRate').innerHTML = `${val.unityRate}<span class="text-xs">%</span>`;
-        document.getElementById('statMemberCount').innerText = val.memberCount;
-        document.getElementById('statMissionCount').innerText = val.missionCount;
-        document.getElementById('statUnityRate').innerText = val.unityRate;
-      });
-
-      dbRef.child("notices").on("value", snapshot => {
-        if(snapshot.exists()) { cloudNotices = Object.values(snapshot.val()); }
-        switchTab(currentActiveTab);
-      });
-
-      dbRef.child("messages").on("value", snapshot => {
-        const list = [];
-        snapshot.forEach(child => { list.unshift(child.val()); });
-        const lA = document.getElementById('latestMessages');
-        if(lA) {
-          lA.innerHTML = list.map(m => `
-            <div class="family-card p-3.5 border-l-4 border-indigo-600 mb-1.5 bg-white text-left shadow-sm">
-              <div class="flex justify-between items-center mb-0.5">
-                <span class="text-indigo-600 font-bold text-xs"><i class="fa-solid fa-user-tag mr-1"></i>${m.name}</span>
-                <span class="text-slate-300 text-[9px]">${m.date}</span>
-              </div>
-              <p class="text-slate-700 font-medium text-xs">${m.text}</p>
-            </div>
-          `).join('');
-        }
-      });
-
-      dbRef.child("details").on("value", snapshot => { if(snapshot.exists()) cloudDb = snapshot.val(); });
-    }
-
-    function postMsg() {
-      const nEl = document.getElementById('guestName'); const mEl = document.getElementById('guestMsg');
-      if (!nEl || !mEl) return; const n = nEl.value.trim(); const m = mEl.value.trim();
-      if (!n || !m) { alert("請填寫名字與祝福心語！"); return; }
-      const now = new Date(); const timeStr = `${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`;
-      
-      if (dbRef) {
-        dbRef.child("messages").push({ name: n, text: m, date: timeStr });
-      }
-      nEl.value = ''; mEl.value = '';
-    }
-
+    // ===== 三欄分頁標籤動態切換渲染引擎 =====
     function switchTab(tabId) {
       currentActiveTab = tabId;
       const container = document.getElementById('noticeDisplayWrapper');
       if (!container) return;
 
+      // 1. 處理按鈕樣式切換
       const tabIds = ['tab-latest', 'tab-system', 'tab-camp'];
       tabIds.forEach(id => {
         const btn = document.getElementById(`btn-${id}`);
-        if (btn) btn.className = id === tabId ? "flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all bg-white text-indigo-600 shadow-sm" : "flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all text-slate-500";
+        if (!btn) return;
+        if (id === tabId) {
+          btn.className = "flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 bg-white text-indigo-600 shadow-sm flex items-center justify-center gap-1.5";
+        } else {
+          btn.className = "flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-800 flex items-center justify-center gap-1.5";
+        }
       });
 
-      const filtered = cloudNotices.filter(n => n.tabGroup === tabId);
-      container.innerHTML = filtered.length ? filtered.map(n => `
-        <div class="family-card p-4 sm:p-5 cursor-pointer border hover:border-indigo-200 transition-all flex flex-col justify-center bg-white text-left" onclick="openInteractiveModal('${n.id}')">
-          <div class="flex flex-wrap gap-2 items-center mb-2">
-            <span class="${n.color} text-white text-[8px] sm:text-[9px] font-bold px-2.5 py-0.5 rounded-full">${n.tag}</span>
-            <span class="text-slate-400 text-[9px] sm:text-[10px] tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+      // 2. 過濾對應的公告內容
+      const filteredNotices = notices.filter(n => n.tabGroup === tabId);
+      container.innerHTML = '';
+
+      if (filteredNotices.length === 0) {
+        container.innerHTML = `<div class="text-slate-400 border border-dashed rounded-2xl py-12 text-xs text-center bg-white">該分區當前暫無公告訊息</div>`;
+        return;
+      }
+
+      // 3. 渲染輸出卡片
+      filteredNotices.forEach(n => {
+        if (n.hasImage) {
+          container.innerHTML += `
+            <div class="family-card overflow-hidden border border-slate-200/80 hover:border-indigo-300 transition-all flex flex-col sm:flex-row cursor-pointer bg-white" onclick="openInteractiveModal('${n.id}')">
+              <div class="relative w-full sm:w-44 h-32 bg-slate-900 overflow-hidden shrink-0">
+                <img src="${n.imageSrc}" class="w-full h-full object-cover object-top" alt="海報">
+                <div class="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-slate-950/40 to-transparent"></div>
+              </div>
+              <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between text-left">
+                <div>
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="bg-red-600 text-white text-[8px] font-bold px-2.5 py-0.5 rounded-full">${n.tag}</span>
+                    <span class="text-slate-400 text-[9px] sm:text-[10px] tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+                  </div>
+                  <h3 class="text-sm sm:text-base font-bold text-slate-800 mb-1">${n.title}</h3>
+                  <p class="text-slate-500 text-xs font-medium leading-relaxed">${n.content}</p>
+                </div>
+                <div class="text-[9px] font-mono font-bold text-indigo-600 mt-2 flex items-center gap-1">
+                  <i class="fa-solid fa-expand"></i> 點擊即刻查看詳細海報與簡章 HUD 儀表板
+                </div>
+              </div>
+            </div>`;
+        } else {
+          container.innerHTML += `
+            <div class="family-card p-4 sm:p-5 cursor-pointer border hover:border-indigo-200 transition-all flex flex-col justify-center bg-white text-left" onclick="openInteractiveModal('${n.id}')">
+              <div class="flex flex-wrap gap-2 items-center mb-2">
+                <span class="${n.color} text-white text-[8px] sm:text-[9px] font-bold px-2.5 py-0.5 rounded-full">${n.tag}</span>
+                <span class="text-slate-400 text-[9px] sm:text-[10px] tracking-tight tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold mb-1 text-slate-800">${n.title}</h3>
+              <p class="text-slate-500 text-xs font-medium leading-relaxed">${n.content}</p>
+            </div>`;
+        }
+      });
+    }
+
+    // 初始化核心數據並載入消息總覽彈窗
+    function initNotices() {
+      switchTab('tab-latest'); // 預設開啟最新公告分頁
+      
+      const modalList = document.getElementById('modalNoticeList');
+      if (modalList) {
+        modalList.innerHTML = '';
+        notices.forEach(n => {
+          modalList.innerHTML += `
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-left cursor-pointer hover:bg-slate-100 transition-all flex justify-between items-center gap-3" onclick="closeHistoryModal(); openInteractiveModal('${n.id}')">
+              <div class="flex-1 min-w-0">
+                <div class="flex justify-between items-center mb-1.5">
+                  <span class="${n.color} text-white text-[8px] font-bold px-2 py-0.5 rounded-full">${n.tag}</span>
+                  <span class="text-slate-400 text-[9px] tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-xs sm:text-sm mb-0.5 truncate">${n.title}</h4>
+                <p class="text-slate-500 text-xs font-medium truncate">${n.content}</p>
+              </div>
+              ${n.hasImage ? `<img src="${n.imageSrc}" class="w-10 h-10 object-cover rounded-lg border bg-slate-200 shrink-0">` : ''}
+            </div>`;
+        });
+      }
+    }
+
+    function showSurprise() { 
+      const qs = ["呂家向心力，永遠是我們最堅強的後盾。", "意料之外的相遇，正是生活最美的彩蛋。", "家人的陪伴，是歲月裡最暖、最珍貴的禮物。","凝聚才智與愛，共築呂氏家族的榮耀願景。"]; 
+      const target = document.getElementById('surpriseText'); const modal = document.getElementById('surpriseModal');
+      if(target && modal) { target.innerText = qs[Math.floor(Math.random() * qs.length)]; modal.classList.remove('hidden'); }
+    }
+    function closeSurprise() { document.getElementById('surpriseModal').classList.add('hidden'); }
+
+    let msgs = [];
+    function postMsg() {
+      const nEl = document.getElementById('guestName'); const mEl = document.getElementById('guestMsg');
+      if (!nEl || !mEl) return; const n = nEl.value.trim(); const m = mEl.value.trim();
+      if (!n || !m) { alert("請填寫名字與祝福心語！"); return; }
+      const now = new Date(); const timeStr = `${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`;
+      msgs.unshift({ name: n, text: m, date: timeStr }); renderMsgs(); nEl.value = ''; mEl.value = '';
+    }
+
+    function renderMsgs() {
+      const lA = document.getElementById('latestMessages'); const hA = document.getElementById('historyMessages'); const btn = document.getElementById('historyBtnContainer');
+      if (!lA) return; lA.innerHTML = ''; if (hA) hA.innerHTML = '';
+      msgs.forEach((m, i) => {
+        const card = `<div class="family-card p-3.5 border-l-4 border-indigo-600 mb-1.5 bg-white text-left shadow-sm"><div class="flex justify-between items-center mb-0.5"><span class="text-indigo-600 font-bold text-xs"><i class="fa-solid fa-user-tag mr-1"></i>${m.name}</span><span class="text-slate-300 text-[9px]">${m.date}</span></div><p class="text-slate-700 font-medium text-xs">${m.text}</p></div>`;
+        if (i < 3) lA.innerHTML += card; else if (hA) hA.innerHTML += card;
+      });
+      if (msgs.length > 3 && btn) btn.classList.remove('hidden');
+    }
+    function toggleHistory() { document.getElementById('historyMessages').classList.toggle('hidden'); }
+
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const category = document.getElementById('contactCategory').value;
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if(!name || !phone || !category || !message) {
+        alert("請確認所有欄位皆已填寫完整！");
+        return;
+      }
+
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden font-sans border border-slate-100">
+          <div class="bg-emerald-500 text-white px-5 py-4 flex flex-col items-center justify-center text-center">
+            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-2 text-2xl shadow-inner animate-bounce">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-base font-black">表單傳送成功</h3>
+            <p class="text-[9px] opacity-80 tracking-widest font-mono mt-0.5">DATA SENT TO MANAGEMENT CHANNEL</p>
           </div>
-          <h3 class="text-sm sm:text-base font-bold mb-1 text-slate-800">${n.title}</h3>
-          <p class="text-slate-500 text-xs font-medium leading-relaxed">${n.content}</p>
-        </div>
-      `).join('') : `<div class="text-slate-400 border border-dashed rounded-2xl py-12 text-xs text-center bg-white">該分區當前暫無公告訊息</div>`;
+          <div class="p-5 text-left text-xs space-y-2 text-slate-600">
+            <p class="font-bold text-slate-800"><i class="fa-solid fa-paper-plane text-indigo-500 mr-1"></i>窗口基地已接收反饋：</p>
+            <div class="bg-slate-50 border rounded-xl p-3 space-y-1 font-medium">
+              <p><span class="text-slate-400">諮詢人：</span>${name}</p>
+              <p><span class="text-slate-400">類別：</span>${category}</p>
+              <p><span class="text-slate-400">流派序號：</span><span class="text-emerald-600 font-mono">#LU-${Math.floor(1000 + Math.random() * 9000)}</span></p>
+            </div>
+            <p class="text-[11px] leading-relaxed pt-2 text-slate-400 font-medium">感謝您的建言！本單位聯絡窗口（呂佳寯）將根據服務注意事項，於2-3日內向您 ${phone} 進行聯繫處理。</p>
+            <button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700 shadow-sm transition-all mt-4 block text-center">確認並返回網頁</button>
+          </div>
+        </div>`;
+      
+      document.getElementById('interactiveModal').classList.remove('hidden');
+      document.getElementById('contactForm').reset();
+    }
+
+    function updateWeather() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const month = now.getMonth() + 1;
+      const date = now.getDate();
+      const weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      const dayName = weekDays[now.getDay()];
+
+      const w = [
+        { c: '板橋', t: 28, i: 'fa-sun', cl: 'text-sky-600' },
+        { c: '臺中', t: 30, i: 'fa-cloud-sun', cl: 'text-emerald-600' },
+        { c: '平鎮', t: 27, i: 'fa-cloud', cl: 'text-orange-600' }
+      ];
+      
+      if (document.getElementById('weatherSyncText')) {
+        document.getElementById('weatherSyncText').innerText = `同步時間 ${hours}:${minutes}`;
+      }
+      if (document.getElementById('currentDate')) {
+        document.getElementById('currentDate').innerText = `${month}月${date}日`;
+      }
+      if (document.getElementById('currentDay')) {
+        document.getElementById('currentDay').innerText = dayName;
+      }
+      if (document.getElementById('mainTemp')) {
+        document.getElementById('mainTemp').innerText = `${w[0].t}°`;
+      }
+      if (document.getElementById('weatherGrid')) {
+        document.getElementById('weatherGrid').innerHTML = w.map(x => `
+          <div class="text-center">
+            <p class="text-[10px] sm:text-xs text-slate-500 mb-0.5 font-medium">${x.c}</p>
+            <p class="text-base sm:text-xl font-bold ${x.cl} tech-num mb-0.5">${x.t}°</p>
+            <i class="fa-solid ${x.i} ${x.cl} text-xs sm:text-sm"></i>
+          </div>
+        `).join('');
+      }
     }
 
     function openInteractiveModal(k) {
-      const d = cloudDb[k] || localDb[k]; if(!d) return;
+      const d = db[k]; if(!d) return;
       const modalContent = document.getElementById('modalContent');
 
-      let modalIconHtml = ''; let headerBgTheme = 'bg-indigo-600';
-      if (k === 'loc1') { modalIconHtml = `<img src="New_Taipei_City_Government_Logo.svg.png" class="w-12 h-12 object-contain mx-auto">`; headerBgTheme = 'bg-indigo-600'; }
-      else if (k === 'loc2') { modalIconHtml = `<img src="Flag_of_Taichung_City_2025.svg.png" class="w-12 h-12 object-contain mx-auto">`; headerBgTheme = 'bg-emerald-600'; }
-      else if (k === 'loc3') { modalIconHtml = `<img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-12 h-12 object-contain mx-auto">`; headerBgTheme = 'bg-orange-500'; }
+      if (d.type === "member") {
+        const tagsHtml = d.tags.map(iconClass => `<div class="w-7 h-7 rounded-full bg-slate-900/80 backdrop-blur-md flex items-center justify-center text-[11px] border border-white/10"><i class="fa-solid ${iconClass} ${d.theme}"></i></div>`).join('');
+        const avatarHtml = d.isImg 
+          ? `<img src="${d.bgImg}" class="w-full h-full object-cover object-center" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600'">`
+          : `<div class="w-full h-full flex items-center justify-center text-slate-600 bg-slate-950"><i class="fa-solid ${d.tags[0]} text-5xl"></i></div>`;
 
-      modalContent.innerHTML = `
-        <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden border">
-          <div class="h-24 flex items-center justify-center ${headerBgTheme} opacity-90 relative">
-            <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-md mt-16 border-4 border-white overflow-hidden p-1.5">${modalIconHtml}</div>
-            <button onclick="closeInteractiveModal()" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-black/20 flex items-center justify-center text-white"><i class="fa-solid fa-xmark text-xs"></i></button>
-          </div>
-          <div class="px-5 pb-6 pt-12 text-center">
-            <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-1">${d.title}</h3>
-            <p class="text-indigo-600 text-xs tracking-widest mb-4 font-bold uppercase">${d.sub}</p>
-            <div class="bg-slate-50 rounded-xl p-5 text-left border border-slate-100 space-y-3">
-              <div><span class="text-xs text-indigo-500 block mb-0.5 uppercase font-bold">${d.l1}</span><p class="text-base sm:text-lg text-slate-800 font-extrabold">${d.i1}</p></div>
-              <div class="border-t border-slate-200/60 pt-2"><span class="text-xs text-indigo-500 block mb-0.5 uppercase font-bold">${d.l2}</span><p class="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">${d.i2}</p></div>
+        modalContent.innerHTML = `
+          <div class="bg-[#161923] text-white rounded-[24px] overflow-hidden shadow-2xl border border-slate-800 font-sans tracking-wide relative">
+            <div class="relative h-[250px] sm:h-[280px] bg-slate-900 flex items-center justify-center overflow-hidden">
+              ${avatarHtml}
+              <div class="absolute top-3 left-3 flex gap-1">${tagsHtml}</div>
+              <button onclick="closeInteractiveModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-900/60 backdrop-blur-md flex items-center justify-center text-white hover:text-red-400 border border-white/10"><i class="fa-solid fa-xmark text-sm"></i></button>
             </div>
-            <button onclick="closeInteractiveModal()" class="mt-5 w-full py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm">關閉視窗</button>
-          </div>
-        </div>`;
+            <div class="p-5 bg-[#161923]">
+              <div class="flex justify-between items-start mb-3.5">
+                <div>
+                  <h3 class="text-xl font-black tracking-tight text-white">${d.name}</h3>
+                  <p class="text-slate-400 text-[10px] mt-0.5 font-medium">職稱：${d.alias}</p>
+                </div>
+                <div class="bg-slate-900/60 border border-indigo-500/20 px-2.5 py-1 rounded-lg text-center shadow-inner"><span class="font-mono text-pink-500 font-bold text-xs tracking-tighter">${d.number}</span></div>
+              </div>
+              <div class="border-t border-dashed border-slate-800 my-3"></div>
+              <div class="mb-4 flex items-start gap-2.5"><span class="text-slate-500 text-[10px] uppercase font-bold tracking-wider shrink-0 mt-0.5">任務格言</span><p class="text-pink-500 text-xs font-bold tracking-wide">${d.range}</p></div>
+              <div class="grid grid-cols-2 gap-px bg-slate-800 rounded-xl overflow-hidden border border-slate-800">
+                <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">職能 TYPE</span><p class="text-xs font-black text-white">${d.role}</p></div>
+                <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">專長 SKILL</span><p class="text-xs font-black text-white">${d.skill}</p></div>
+                <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">星座 GROUP</span><p class="text-xs font-black text-white">${d.sign}</p></div>
+                <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">出生年月日 YEAR</span><p class="text-xs font-bold font-mono text-white tracking-tight">${d.dob}</p></div>
+              </div>
+              <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-5 -mx-5 -mb-5"></div>
+            </div>
+          </div>`;
+      } else if (d.type === "notice_detail") {
+        modalContent.innerHTML = `
+          <div class="bg-white rounded-[24px] w-full max-w-lg shadow-2xl overflow-hidden border border-slate-100 font-sans">
+            <div class="bg-slate-50 px-4 sm:px-6 py-3 border-b border-slate-100 flex justify-between items-center">
+              <div class="flex items-center gap-1.5 overflow-hidden mr-2">
+                <span class="${d.color} text-white text-[8px] font-bold px-2 py-0.5 rounded-full shrink-0">${d.tag}</span>
+                <h3 class="text-xs sm:text-sm font-black text-slate-800 truncate">${d.title}</h3>
+              </div>
+              <button onclick="closeInteractiveModal()" class="w-6 h-6 rounded-full bg-slate-200/50 flex items-center justify-center text-slate-400 hover:bg-slate-200 transition-all shrink-0"><i class="fa-solid fa-xmark text-xs"></i></button>
+            </div>
+            <div class="p-4 sm:p-6 text-center max-h-[80vh] overflow-y-auto custom-scrollbar">${d.content}<div class="mt-4 space-y-2">${d.linkHtml ? d.linkHtml : ''}<button onclick="closeInteractiveModal()" class="w-full py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-all">確認並關閉</button></div></div>
+          </div>`;
+      } else {
+        let modalIconHtml = '';
+        let headerBgTheme = 'bg-indigo-600';
+        
+        if (k === 'loc1') {
+          modalIconHtml = `<img src="New_Taipei_City_Government_Logo.svg.png" class="w-12 h-12 object-contain mx-auto">`;
+          headerBgTheme = 'bg-indigo-600';
+        } else if (k === 'loc2') {
+          modalIconHtml = `<img src="Flag_of_Taichung_City_2025.svg.png" class="w-12 h-12 object-contain mx-auto">`;
+          headerBgTheme = 'bg-emerald-600';
+        } else if (k === 'loc3') {
+          modalIconHtml = `<img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-12 h-12 object-contain mx-auto">`;
+          headerBgTheme = 'bg-orange-500';
+        }
+
+        modalContent.innerHTML = `
+          <div class="bg-white rounded-[24px] w-full shadow-2xl overflow-hidden border">
+            <div class="h-24 flex items-center justify-center ${headerBgTheme} opacity-90 relative">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-md mt-16 border-4 border-white overflow-hidden p-1.5">
+                ${modalIconHtml}
+              </div>
+              <button onclick="closeInteractiveModal()" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-black/20 flex items-center justify-center text-white hover:bg-black/40"><i class="fa-solid fa-xmark text-xs"></i></button>
+            </div>
+            <div class="px-5 pb-6 pt-12 text-center">
+              <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-1">${d.title}</h3>
+              <p class="text-indigo-600 text-xs tracking-widest mb-4 font-bold uppercase">${d.sub}</p>
+              <div class="bg-slate-50 rounded-xl p-5 text-left border border-slate-100 space-y-3">
+                <div>
+                  <span class="text-xs text-indigo-500 block mb-0.5 uppercase font-bold tracking-wider">${d.l1}</span>
+                  <p class="text-base sm:text-lg text-slate-800 font-extrabold">${d.i1}</p>
+                </div>
+                <div class="border-t border-slate-200/60 pt-2">
+                  <span class="text-xs text-indigo-500 block mb-0.5 uppercase font-bold tracking-wider">${d.l2}</span>
+                  <p class="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">${d.i2}</p>
+                </div>
+              </div>
+              <button onclick="closeInteractiveModal()" class="mt-5 w-full py-3 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-sm text-sm tracking-wide">關閉視窗</button>
+            </div>
+          </div>`;
+      }
       document.getElementById('interactiveModal').classList.remove('hidden');
     }
 
     function closeInteractiveModal() { document.getElementById('interactiveModal').classList.add('hidden'); }
-    
-    function updateWeather() {
-      const now = new Date();
-      const w = [{ c: '板橋', t: 28, i: 'fa-sun', cl: 'text-sky-600' }, { c: '臺中', t: 30, i: 'fa-cloud-sun', cl: 'text-emerald-600' }, { c: '平鎮', t: 27, i: 'fa-cloud', cl: 'text-orange-600' }];
-      document.getElementById('weatherSyncText').innerText = `同步時間 ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
-      document.getElementById('currentDate').innerText = `${now.getMonth() + 1}月${now.getDate()}日`;
-      document.getElementById('mainTemp').innerText = `${w[0].t}°`;
-      document.getElementById('weatherGrid').innerHTML = w.map(x => `<div class="text-center"><p class="text-xs text-slate-500 mb-0.5">${x.c}</p><p class="text-base font-bold ${x.cl} tech-num">${x.t}°</p><i class="fa-solid ${x.i} ${x.cl} text-xs"></i></div>`).join('');
-    }
+    function openHistoryModal() { document.getElementById('historyModal').classList.remove('hidden'); }
+    function closeHistoryModal() { document.getElementById('historyModal').classList.add('hidden'); }
 
     window.onload = () => {
-      document.body.style.overflow = 'hidden'; updateWeather(); setInterval(updateWeather, 30000);
-      if(!dbRef) switchTab('tab-latest');
+      document.body.style.overflow = 'hidden'; 
+      updateWeather(); renderMsgs(); initNotices();
+      setInterval(updateWeather, 30000);
+
+      document.querySelectorAll('.progress-bar-fill').forEach(b => b.style.width = b.getAttribute('data-target-width'));
+      document.querySelectorAll('.counter').forEach(c => c.innerText = c.getAttribute('data-target'));
     };
-    const btt = document.getElementById('backToTop');
-    window.onscroll = () => { if(window.scrollY > 300) btt.classList.add('show'); else btt.classList.remove('show'); };
-    btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const btt = document.getElementById('backToTop'); const sBtn = document.getElementById('surpriseBtn'); const walkway = document.getElementById('floatingWalkway');
+    
+    function triggerScrollChecks() {
+      if (isWelcomeActive) return; 
+      const scrollPos = window.scrollY || document.documentElement.scrollTop;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (scrollPos > 300) { if(btt) btt.classList.add('show'); if(sBtn) sBtn.classList.add('show'); } 
+      else { if(btt) btt.classList.remove('show'); if(sBtn) sBtn.classList.remove('show'); }
+
+      if(walkway) {
+        if (totalHeight - scrollPos < 80) { walkway.style.opacity = '0'; walkway.style.transform = 'translateY(15px)'; walkway.style.pointerEvents = 'none'; } 
+        else { walkway.style.opacity = '1'; walkway.style.transform = 'translateY(0)'; walkway.style.pointerEvents = 'auto'; }
+      }
+    }
+
+    window.onscroll = triggerScrollChecks;
+    if(btt) btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   </script>
 </body>
 </html>
