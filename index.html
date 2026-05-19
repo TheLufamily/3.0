@@ -14,7 +14,7 @@
     
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
     
-    /* 隱藏滾動條專用樣式 (導覽列與輕量容器使用) */
+    /* 隱藏滾動條專用樣式 */
     .scrollbar-none::-webkit-scrollbar { display: none; }
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -152,6 +152,15 @@
     .walk-bounce { animation: bodyBounce 0.6s ease-in-out infinite alternate; }
     .bike-lean { animation: bikeVibrate 0.3s linear infinite alternate; }
     .dog-wag { animation: dogWaggle 0.4s ease-in-out infinite alternate; }
+
+    /* ===== 全民國防雷達掃描動畫專用 ===== */
+    .radar-sweep { position: relative; overflow: hidden; }
+    .radar-sweep::after {
+      content: ''; position: absolute; inset: 0;
+      background: conic-gradient(from 0deg, rgba(0, 242, 254, 0.15) 0deg, transparent 90deg, transparent 360deg);
+      border-radius: 50%; pointer-events: none; animation: radarScan 4s linear infinite;
+    }
+    @keyframes radarScan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   </style>
 </head>
 
@@ -191,6 +200,7 @@
       </div>
       <div class="flex items-center gap-3 md:gap-5 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-slate-500 font-bold overflow-x-auto whitespace-nowrap scrollbar-none py-1.5 flex-1 justify-start sm:justify-end">
         <a href="#home" class="hover:text-indigo-600 transition-all px-0.5">首頁</a>
+        <a href="#defense" class="text-cyan-600 font-black hover:text-cyan-700 border-b-2 border-cyan-400 px-0.5"><i class="fa-solid fa-shield-halved mr-1"></i>國防專區</a>
         <a href="#events" class="hover:text-indigo-600 transition-all px-0.5">活動</a>
         <a href="#notice" class="hover:text-indigo-600 transition-all px-0.5">公告</a>
         <a href="#members" class="hover:text-indigo-600 transition-all px-0.5">幹部</a>
@@ -235,27 +245,130 @@
     </div>
   </section>
 
-  <section id="stats-section" class="py-6 md:py-12 modern-stats-bg text-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative">
-      <div class="stat-item text-center">
-        <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Member Count</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="16">0</span></div>
-        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">成員總數</p>
+  <section id="defense" class="py-10 md:py-20 bg-[#0a0c14] text-white overflow-hidden relative">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,242,254,0.1),transparent_50%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 relative">
+      
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-800 pb-6 mb-8 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono uppercase tracking-[0.2em] mb-2">
+            <i class="fa-solid fa-circle-dot animate-pulse"></i> Tactical Operation Control
+          </div>
+          <h2 class="text-2xl md:text-4xl font-black tracking-tight text-white flex items-center gap-3">
+            <i class="fa-solid fa-shield-halved text-cyan-400"></i> 全民國防教育核心專區
+          </h2>
+        </div>
+        <div class="text-left md:text-right font-mono text-[10px] text-slate-500 space-y-0.5">
+          <p>核心維運代號：<span class="text-cyan-400">DEF-CORE-V3.0</span></p>
+          <p>國防大數據對接通道：<span class="text-emerald-400 font-bold">SECURE CONNECTIONS</span></p>
+        </div>
       </div>
-      <div class="stat-item text-center border-l border-white/5 md:border-l-0">
-        <div class="text-emerald-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Active Missions</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5 text-emerald-400"><span class="counter" data-target="2">0</span></div>
-        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">累計執行活動</p>
-      </div>
-      <div class="stat-item text-center border-l border-white/5">
-        <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Core Bases</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="3">0</span></div>
-        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">區域分支</p>
-      </div>
-      <div class="stat-item text-center border-l border-white/5">
-        <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Unity Rate</div>
-        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="100">0</span><span class="text-xs md:text-lg ml-0.5">%</span></div>
-        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">家族向心力</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div class="bg-[#121624] border border-slate-800 rounded-3xl overflow-hidden p-4 flex flex-col justify-between h-full group transition-all duration-300 hover:border-cyan-500/30">
+            <div>
+              <span class="text-[9px] font-mono text-cyan-400 font-bold tracking-widest block mb-2"><i class="fa-solid fa-scroll mr-1"></i>OFFICIAL POSTER // 招訓發布</span>
+              <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 aspect-[4/3] sm:aspect-video lg:aspect-[4/5] mb-4">
+                <img src="701465836_1422120123276913_1195652567231001211_n (1).jpg" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt="115年暑期戰鬥營海報">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              </div>
+              <h3 class="text-base font-black text-white mb-1.5">115年全民國防教育暑期戰鬥營</h3>
+              <p class="text-xs text-slate-400 leading-relaxed font-medium mb-4">涵蓋本外島各大精銳兵種營隊（包括無人機、傘訓、大漢、鐵衛營等共18個梯次營隊）。</p>
+            </div>
+            <button onclick="openInteractiveModal('notice_camp')" class="w-full py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-white font-bold text-xs tracking-widest uppercase border border-cyan-500/40 transition-all duration-300 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-expand text-[10px]"></i> 開啟 HUD 戰術排班詳情
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col gap-4">
+          <div class="bg-[#121624] border border-slate-800 rounded-2xl p-4 font-mono text-[11px] text-slate-400 space-y-2.5">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-1">
+              <span class="text-white font-bold text-xs"><i class="fa-solid fa-network-wired text-cyan-400 mr-1"></i>系統管道流監控</span>
+              <span class="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-1.5 py-0.5 rounded">ONLINE</span>
+            </div>
+            <div class="flex justify-between"><span>網絡頻寬阻抗值</span><span class="text-white font-bold">52 ms (±3)</span></div>
+            <div class="flex justify-between"><span>封包加密通道協定</span><span class="text-cyan-400 font-bold">SHA-256 / AES</span></div>
+            <div class="flex justify-between"><span>中央伺服數據同步</span><span class="text-emerald-400 font-bold">SUCCESS (100%)</span></div>
+            <div class="pt-1.5 border-t border-slate-800">
+              <div class="flex justify-between mb-1 text-[10px]"><span>招訓報名配額安全水位</span><span class="text-amber-400 font-bold">87%</span></div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden"><div class="h-full bg-amber-400 progress-bar-fill" data-target-width="87%"></div></div>
+            </div>
+          </div>
+
+          <div class="bg-[#121624] border border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-cyan-500/30 radar-sweep shrink-0 bg-slate-950 flex items-center justify-center">
+              <i class="fa-solid fa-crosshairs text-cyan-400/40 text-sm"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-mono text-slate-500 block mb-0.5">RADAR SCANNING</span>
+              <h4 class="font-bold text-white text-xs sm:text-sm truncate">北平防空識別圈對接監控</h4>
+              <p class="text-[10px] text-slate-400 font-mono mt-0.5 leading-tight text-emerald-400"><i class="fa-solid fa-signature mr-1"></i>訊號正常，無異常數據溢出</p>
+            </div>
+          </div>
+
+          <div class="bg-[#121624] border border-slate-800 rounded-2xl p-4 flex-1 flex flex-col justify-between">
+            <div class="space-y-2 text-xs">
+              <span class="text-[9px] font-mono text-pink-500 font-bold block mb-1 uppercase tracking-wider"><i class="fa-solid fa-calendar-check mr-1"></i>Schedule // 作戰期程</span>
+              <div class="bg-slate-900/50 p-2 rounded-xl border border-slate-800 flex gap-3 items-center">
+                <div class="text-center font-mono tracking-tighter shrink-0"><span class="block text-[14px] font-black text-cyan-400 leading-none">05.25</span><span class="text-[8px] text-slate-500 uppercase">MAY</span></div>
+                <div class="border-l border-slate-800 pl-2.5"><p class="font-bold text-white text-[11px] sm:text-xs">網路甄選報名開跑</p><p class="text-[10px] text-slate-400 font-mono">12:00起登入系統管道搶名額</p></div>
+              </div>
+              <div class="bg-slate-900/50 p-2 rounded-xl border border-slate-800 flex gap-3 items-center">
+                <div class="text-center font-mono tracking-tighter shrink-0"><span class="block text-[14px] font-black text-white leading-none">06.16</span><span class="text-[8px] text-slate-500 uppercase">JUN</span></div>
+                <div class="border-l border-slate-800 pl-2.5"><p class="font-bold text-white text-[11px] sm:text-xs">電腦化抽籤錄點公告</p><p class="text-[10px] text-slate-400 font-mono">中午 12:00 公開錄取序號</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 flex flex-col justify-between">
+          <div class="bg-[#121624] border border-slate-800 rounded-3xl p-5 flex flex-col justify-between h-full">
+            <div>
+              <span class="text-[9px] font-mono text-slate-500 font-bold tracking-widest block mb-3 uppercase">Officer Medals // 核心軍事成就</span>
+              <div class="space-y-3.5">
+                
+                <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                  <div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-sm shrink-0 shadow-inner">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-black text-white">憲兵鐵衛受訓紀念勳章</h4>
+                    <p class="text-[10px] text-slate-400 mt-0.5">新北五股兵力整備訓練營結訓</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                  <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-sm shrink-0 shadow-inner">
+                    <i class="fa-solid fa-jet-fighter"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-black text-white">阿帕契特戰突擊營榮譽</h4>
+                    <p class="text-[10px] text-slate-400 mt-0.5">三軍聯合特種作戰實兵模擬通關</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                  <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-sm shrink-0 shadow-inner">
+                    <i class="fa-solid fa-user-shield"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-black text-white">精神戰力政戰文宣特專</h4>
+                    <p class="text-[10px] text-slate-400 mt-0.5">管理窗口行政及大眾政教宣導業務</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <div class="pt-4 border-t border-slate-800 mt-4 text-center font-mono text-[9px] text-slate-500">
+              <i class="fa-solid fa-key mr-1 text-cyan-500"></i>全民國防教育安全防護通道已就緒
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -293,16 +406,6 @@
   <section id="notice" class="py-8 md:py-20 bg-slate-50/50">
     <div class="max-w-7xl mx-auto px-4">
       
-      <div id="quickUpdateInfo" class="mb-8 px-4 py-2.5 bg-white border border-slate-200/60 rounded-2xl flex items-center justify-between text-slate-500 text-[10px] sm:text-[11px] font-medium tracking-wide shadow-sm transition-all duration-300">
-        <div class="flex items-center gap-2">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span>
-          <span><i class="fa-solid fa-clock-rotate-left text-indigo-500 mr-1"></i>系統核心管道公告數據流分選完成。點擊各數據組件解鎖 HUD 詳情。</span>
-        </div>
-        <button onclick="document.getElementById('quickUpdateInfo').style.opacity='0'; setTimeout(()=>document.getElementById('quickUpdateInfo').remove(), 300)" class="text-slate-300 hover:text-slate-500 p-1">
-          <i class="fa-solid fa-xmark text-xs"></i>
-        </button>
-      </div>
-
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch mb-12">
         
         <div class="flex flex-col h-full">
@@ -655,7 +758,7 @@
 
     try { AOS.init({ duration: 800, once: true, disable: 'mobile' }); } catch (e) { console.log('AOS skipped'); }
 
-    // HUD 彈窗與數據流核心資料庫
+    // HUD 彈窗詳細資料庫
     const db = {
       member1: { 
         type: "member", name: "呂陳英妹", alias: "最強總指揮官", number: "#幹部", 
@@ -739,20 +842,20 @@
       },
       notice2: {
         type: "notice_detail", title: "資訊網 3.0 核心分流維護報告", tag: "系統維護", color: "bg-orange-500",
-        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網維護團隊全面導入國防教育核心數據流，修復影像鏈結並部署雙欄儀表板網格。</p></div>`,
+        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs"><i class="fa-solid fa-gears mr-1"></i>系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5 leading-relaxed">呂氏資訊網維護團隊全面開闢獨立國防專區、導入雷達掃描與軍事徽章勳章牆模組。</p></div>`,
         linkHtml: `<a href="#notice" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block"><i class="fa-solid fa-rotate-left mr-1"></i>返回公告分區體驗</a>`
       }
     };
 
-    // 分流資料陣列，group 對應重要公告或系統維護
+    // 公告資料庫陣列
     const notices = [
       { id: "notice_hongcui", group: "important", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice1", group: "important", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice_camp", group: "system", tag: "活動通知", title: "115年暑期戰鬥營 報名管道對接", content: "外島、航空科技、鐵衛等多項精銳營隊，25日中午12時起全面開放網路報名。配額有限先報先錄取。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" },
-      { id: "notice2", group: "system", tag: "系統維護", title: "呂氏資訊網核心分流升級成功", content: "維護完成！導入圖文混排組件、HUD彈窗大圖檢視，健全數據看板穩定度。", date: "2026/05/14", color: "bg-orange-500" }
+      { id: "notice_camp", group: "system", tag: "活動通知", title: "115年暑期戰鬥營 全線對接發布", content: "外島、憲兵鐵衛、航空科技等多項營隊，25日中午12時起全面開放網路報名。配額上限實施中。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" },
+      { id: "notice2", group: "system", tag: "系統維護", title: "全民國防專區部署完成通知", content: "維護完畢！獨立軍事HUD控制台、學員與政戰徽章資料庫上線，優化雙分流公告框架。", date: "2026/05/20", color: "bg-orange-500" }
     ];
 
-    // ===== 雙區分流暨儀表板大圖動態渲染邏輯 =====
+    // ===== 雙區公告渲染引擎 =====
     function initNotices() {
       const impContainer = document.getElementById('importantNoticeContainer');
       const sysContainer = document.getElementById('systemNoticeContainer');
@@ -766,11 +869,10 @@
       notices.forEach(n => {
         let cardHtml = '';
 
-        // 如果是帶有儀表板海報圖片的系統營隊公告，使用高階圖文儀表板卡片
         if (n.hasImage) {
           cardHtml = `
             <div class="family-card overflow-hidden border border-slate-200/80 hover:border-indigo-300 transition-all flex flex-col cursor-pointer bg-white" onclick="openInteractiveModal('${n.id}')">
-              <div class="relative w-full h-[140px] sm:h-[180px] bg-slate-900 overflow-hidden shrink-0 group">
+              <div class="relative w-full h-[140px] sm:h-[160px] bg-slate-900 overflow-hidden shrink-0 group">
                 <img src="${n.imageSrc}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" alt="戰鬥營海報">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                 <span class="absolute top-3 left-3 bg-red-600 text-white text-[8px] font-black px-2.5 py-0.5 rounded-full font-mono tracking-widest"><i class="fa-solid fa-jet-fighter mr-1"></i>MILITARY_CAMP</span>
@@ -781,18 +883,17 @@
               </div>
               <div class="p-4 sm:p-5 text-left">
                 <div class="flex items-center justify-between text-slate-400 text-[9px] font-mono mb-2 border-b border-dashed pb-2">
-                  <span>配額調度：先報名先錄取</span>
+                  <span>配額調度：限額抽籤制</span>
                   <span class="tech-num"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
                 </div>
                 <p class="text-slate-500 text-xs font-medium leading-relaxed mb-3 truncate-2-lines">${n.content}</p>
                 <div class="grid grid-cols-2 gap-2 text-center text-[10px] font-mono">
-                  <div class="bg-slate-50 border rounded-lg py-1.5 font-bold text-slate-600"><i class="fa-solid fa-calendar-day mr-1 text-indigo-500"></i>5/25 12:00 開搶</div>
+                  <div class="bg-slate-50 border rounded-lg py-1.5 font-bold text-slate-600"><i class="fa-solid fa-calendar-day mr-1 text-cyan-500"></i>5/25 12:00 開搶</div>
                   <div class="bg-indigo-50/50 border border-indigo-100 text-indigo-600 rounded-lg py-1.5 font-bold"><i class="fa-solid fa-expand mr-1"></i>點擊解鎖 HUD 大圖</div>
                 </div>
               </div>
             </div>`;
         } else {
-          // 一般公告卡片範本
           cardHtml = `
             <div class="family-card p-4 sm:p-5 cursor-pointer border hover:border-indigo-200 transition-all flex flex-col justify-center flex-1 bg-white" onclick="openInteractiveModal('${n.id}')">
               <div class="flex flex-wrap gap-2 items-center mb-2">
@@ -804,14 +905,12 @@
             </div>`;
         }
 
-        // 分流派送
         if (n.group === "important") {
           impContainer.innerHTML += cardHtml;
         } else if (n.group === "system") {
           sysContainer.innerHTML += cardHtml;
         }
 
-        // 歷史彈窗列表
         if (modalList) {
           modalList.innerHTML += `
             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-left cursor-pointer hover:bg-slate-100 transition-all flex justify-between items-center gap-3" onclick="closeHistoryModal(); openInteractiveModal('${n.id}')">
