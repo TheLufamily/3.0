@@ -85,12 +85,6 @@
       .family-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(99, 102, 241, 0.08); }
     }
     
-    .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.6); border-radius: 24px; transition: all 0.3s ease; }
-    @media (min-width: 768px) {
-      .glass-card { border-radius: 40px; }
-      .glass-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(0,0,0,0.06); }
-    }
-    
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .modern-stats-bg { background: radial-gradient(circle at center, #1e293b 0%, #020617 100%); }
     .tech-num { font-family: 'Orbitron', sans-serif; text-shadow: 0 0 10px rgba(99, 102, 241, 0.4); }
@@ -173,7 +167,7 @@
       </div>
       <div class="flex items-center gap-3 md:gap-5 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-slate-500 font-bold overflow-x-auto whitespace-nowrap scrollbar-none py-1.5 flex-1 justify-end">
         <a href="#home" class="hover:text-indigo-600 transition-all">首頁</a>
-        <a href="#crypto-query" class="hover:text-indigo-600 transition-all text-pink-600 font-black"><i class="fa-solid fa-id-card-clip mr-1"></i>成員考核解鎖</a>
+        <a href="#crypto-query" class="hover:text-indigo-600 transition-all text-pink-600 font-black"><i class="fa-solid fa-id-card-clip mr-1"></i>個人考核查詢</a>
         <a href="#notice" class="hover:text-indigo-600 transition-all">公告</a>
         <a href="#location" class="hover:text-indigo-600 transition-all">分支</a>
         <a href="#guestbook" class="hover:text-indigo-600 transition-all">留言</a>
@@ -186,7 +180,7 @@
       <div class="text-center lg:text-left">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold mb-3 border border-indigo-100 uppercase tracking-widest">正式啟用 2026</div>
         <h2 class="text-2xl sm:text-4xl md:text-6xl font-black leading-tight text-slate-800 mb-3 md:mb-6">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
-        <p class="italic text-slate-400 text-sm md:text-lg mb-6">「3.0 獨立個人績效安全考核端」</p>
+        <p class="italic text-slate-400 text-sm md:text-lg mb-6">「3.0 個人績效安全考核端」</p>
       </div>
       <div class="relative w-full">
         <div class="family-card overflow-hidden border">
@@ -243,7 +237,7 @@
     <div class="max-w-4xl mx-auto px-4">
       <div class="text-center mb-8 md:mb-12">
         <h2 class="text-xl md:text-3xl font-black text-[#00f2fe] tracking-tight flex items-center justify-center gap-2 font-sans">
-          <i class="fa-solid fa-id-card-clip text-pink-500"></i> 個人年度安全考核查詢終端
+          <i class="fa-solid fa-id-card-clip text-pink-500"></i> 個人年度考核獨立查詢終端
         </h2>
         <p class="text-slate-400 text-[10px] sm:text-xs uppercase font-bold tracking-widest mt-1">SECURE INDIVIDUAL EVALUATION SYSTEM</p>
         <div class="w-16 h-1 bg-[#00f2fe] mx-auto mt-3 rounded-full"></div>
@@ -255,13 +249,13 @@
         
         <label class="block text-slate-400 text-xs font-bold tracking-wider mb-2.5 text-left"><i class="fa-solid fa-fingerprint mr-1.5 text-[#00f2fe]"></i>請輸入個人專屬考核密碼：</label>
         <div class="flex gap-2.5">
-          <input type="password" id="cryptoToken" placeholder="請輸入安全授權代碼..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-[#00f2fe] text-white text-sm tracking-widest font-bold font-sans">
+          <input type="password" id="cryptoToken" placeholder="請輸入專屬密碼..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-[#00f2fe] text-white text-sm tracking-widest font-bold font-sans">
           <button onclick="executeSecureQuery()" class="bg-[#00f2fe] text-slate-950 font-bold font-sans px-5 py-3 rounded-xl hover:bg-cyan-400 transition-all text-sm tracking-wide shrink-0 shadow-[0_0_15px_rgba(0,242,254,0.3)]">
-            授權驗證
+            查詢考核
           </button>
         </div>
         <div class="text-[9px] text-slate-500 mt-2.5 text-left font-sans space-y-1 bg-slate-900/40 p-2 rounded-xl border border-slate-800 leading-normal">
-          <p>🔒 系統提示：全體16位幹部均具備獨立密碼，驗證成功後將調閱個人專屬考核戰術報告。</p>
+          <p>🔒 本終端採用高強度獨立連線防護，不同密碼將精準解鎖不同人員之績效考核數據。</p>
         </div>
       </div>
 
@@ -339,6 +333,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
   <script>
+    // 🔔 【最核心步驟】：請將下方金鑰物件，完整替換成你在 Firebase 拿到的連線代碼！
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "lu-family-3.firebaseapp.com",
@@ -381,7 +376,7 @@
       { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "家庭分布專區·縣市徽章模組部署完畢", content: "成功引入新北市徽、桃園市徽、臺中市徽高畫質幾何組件，全面優化區域卡片視覺完整度。", date: "2026/05/20", color: "bg-orange-500" }
     ];
 
-    // ===== ⚙️ 多密碼 16 人獨立考核矩陣匹配模組 =====
+    // ===== ⚙️ 多密碼個人考核安全分流處理模組 =====
     function executeSecureQuery() {
       const token = document.getElementById('cryptoToken').value.trim();
       const displayZone = document.getElementById('secureResultDisplay');
@@ -392,108 +387,94 @@
       displayZone.style.opacity = '0';
       displayZone.style.transform = 'scale(0.95)';
 
-      // 考核數據核心生成引擎
-      const buildCard = (name, role, score, text, detail) => `
-        <div class="bg-slate-950 rounded-2xl border border-indigo-500/50 p-5 md:p-6 text-left relative">
-          <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
-          <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
-          <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm mb-3">
-            <i class="fa-solid fa-key text-[#00f2fe] animate-pulse"></i> 授權認證成功：${name}（${role}）考核報告
-          </div>
-          <div class="space-y-3 text-xs text-slate-300 font-sans">
-            <div class="p-3 bg-indigo-950/20 border border-indigo-900/50 rounded-xl leading-relaxed">
-              <p class="font-bold text-white mb-1"><i class="fa-solid fa-star text-amber-400 mr-1"></i>年度績效總評：${score}</p>
-              <p class="text-slate-400 leading-relaxed">${text}</p>
-            </div>
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
-              <strong class="text-[#00f2fe] block mb-1"><i class="fa-solid fa-list-check mr-1"></i>當前基地交辦事項：</strong>
-              <p class="leading-relaxed text-slate-300">${detail}</p>
-            </div>
-          </div>
-        </div>`;
-
       setTimeout(() => {
-        switch(token) {
-          case "舉名": // 防誤觸
-          case "妹555":
-            displayZone.innerHTML = buildCard("呂陳英妹", "家庭長", "卓越特優 (A++)", "身為呂氏家庭靈魂核心與最高精神領袖，具備無與倫比的家族感召力。在大型家族慶典決策中展現高超智慧，帶領家族和睦團結，為維持全網100%向心力之首要功臣。", "引領家族文化傳承、穩定後方核心、持續落實家族和睦共融核心價值。訓詞提示：「雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。」");
-            break;
-          case "功能": 
-          case " Jules ":
-          case "密碼":
-          case "寯202":
-            displayZone.innerHTML = buildCard("呂佳寯", "行政管理官", "卓越特優 (A+)", "主導資訊網3.0架構升級、Firebase實時推播矩陣部署，並精準融合社會局據點大數據。於行政管轄、文宣設計、攝影紀錄及里民反饋業務中展現硬核專業，後勤整備效率極高。", "1. 持續維護獨立安全查詢終端連線狀態。<br>2. 啟動下季度中秋烤肉專案之公務預算前期審查。<br>3. 提醒成員於 2026/06/01 前完成所得稅申報。");
-            break;
-          case "芯821":
-            displayZone.innerHTML = buildCard("呂佳芯", "分隊長", "優等特出 (A)", "受行政管理部委任第一線分隊長職務，在組織向心力凝聚與青年世代溝通中表現優異。積極參與各項慶典協調，群眾自適應反應效率高，組織協調能力極佳。", "積極協同美術與後勤組件，強化跨區域（板橋、臺中、平鎮）家族成員之情感鏈結，全面優化分隊反應效率。");
-            break;
-          case "福777":
-            displayZone.innerHTML = buildCard("呂幸福", "核心後勤組長", "優等 (A)", "負責管理基地的物資維保與後勤供應鏈，確保各分部分部裝備完美到位，物資申請與調配通路暢通，表現優異。", "加強與各分支（臺中、平鎮）後勤人員之連線，提早儲備下半年大型家族慶典所需戰略物資。");
-            break;
-          case "綺111":
-            displayZone.innerHTML = buildCard("吳孟綺", "財務稽核官", "優等 (A)", "精準控管家族各項活動預算，於宏翠里回饋金及稅務作業提示中把關嚴密，確保經費每一筆皆透明、合規、高效。", "密切審查即將到來的家族聚餐經費表單，並協助成員對接國稅局電子申報通道。");
-            break;
-          case "享123":
-            displayZone.innerHTML = buildCard("呂理享", "高級戰略顧問", "優等 (A)", "憑藉豐富決策經驗，於家族重大發展、區域據點融合等方向提供關鍵戰略建言，穩定組織內部核心架構。", "持續提供行政管理基地長青決策諮詢，輔助青年幹部推動現代化資訊管理。");
-            break;
-          case "幸001":
-            displayZone.innerHTML = buildCard("阮氏紅幸", "家園守護官", "優等 (A)", "積極推動家庭內部的情感守護與生活美化，具備高度關懷熱忱，為跨區域情感融合做出顯著貢獻。", "協同分隊長，優化跨部家庭日常照護與交流網絡，建構溫馨和睦之核心家園。");
-            break;
-          case "梅666":
-            displayZone.innerHTML = buildCard("呂寶梅", "文化宣傳官", "優等 (A)", "日常大小活動紀錄與文宣影像保存工作落實徹底，用影像生動紀錄家庭點滴，成效顯著。", "與美術設計組對接，持續美化3.0平台歷史相簿與母親節回顧影片之影像庫。");
-            break;
-          case "緹999":
-            displayZone.innerHTML = buildCard("劉沛緹", "外部聯絡官", "優等 (A)", "負責對外公務聯絡與里民關係經營，溝通協調能力強，成功提升行政管理基地之地方服務公信力。", "針對里民公務反饋表單進行第一線對接，確保服務反饋在2-3日內處理完畢。");
-            break;
-          case "豪888":
-            displayZone.innerHTML = buildCard("劉宗豪", "機動突擊隊長", "優等 (A)", "機動性極強，於家族物資快速運補、突發後勤任務中反應迅速，確保供應鏈永不中斷。", "維持機動組高效率運轉狀態，隨時準備支援跨縣市分部據點之緊急運補。");
-            break;
-          case "輝321":
-            displayZone.innerHTML = buildCard("于國輝", "技術支援官", "優等 (A)", "保障板橋總部及各分支機構之水電、機電與網絡基礎設施安全，技術紮實，維安防護嚴密。", "定期巡檢核心基地之電力與智慧硬體設備，防範網絡與硬體連線中斷隱患。");
-            break;
-          case "祥520":
-            displayZone.innerHTML = buildCard("于子祥", "行動先鋒官", "優等 (A)", "展現青年世代卓越之行動力與活力，積極參與並協助大型戰鬥營、暑期活動之宣導推廣。", "積極參與全民國防教育及青年活動培訓，隨時準備投入夏季重點營隊項目。");
-            break;
-          case "珠889":
-            displayZone.innerHTML = buildCard("呂寶珠", "內部監察官", "優等 (A)", "嚴格監督家族內部傳統禮節與核心價值之延續，對向心力與紀律之維持具備高度督導成效。", "持續追蹤成員日常凝聚力指標，發揮內部監察之關鍵反饋機能。");
-            break;
-          case "華711":
-            displayZone.innerHTML = buildCard("陳凱華", "後勤支援官", "優等 (A)", "默默耕耘，確保日常基礎物資源源不絕，對板橋總部後勤體系提供穩固基石。", "協助核心後勤組長，優化民生物資補給線路，提升整體後勤行政容錯率。");
-            break;
-          case "汝101":
-            displayZone.innerHTML = buildCard("劉羿汝", "美術設計官", "優等 (A)", "負責資訊網各類幾何幾何組件、縣市徽章模組之美化與視覺流暢度優化，美學功底深厚。", "協同行政管理官，持續進行網頁HUD科技儀表板之動態視覺微調與升級。");
-            break;
-          case "廷991":
-            displayZone.innerHTML = buildCard("陳俊廷", "安全防衛官", "優等 (A)", "維護資訊平台底層網絡安全，防範外部惡意封包探測，確保留言板數據不受污染。", "持續強化Firebase實時通信規則安全性，保護呂氏家族內部隱私通道。");
-            break;
-          case "admin999":
-            displayZone.innerHTML = `
-              <div class="bg-slate-950 rounded-2xl border border-red-500/50 p-5 md:p-6 text-left relative">
-                <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
-                <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
-                <div class="flex items-center gap-2 text-red-400 font-bold text-sm mb-3">
-                  <i class="fa-solid fa-unlock text-red-500 animate-pulse"></i> HIGH-LEVEL GRANTED: 最高行政考核總覽終端
+        // 1. 呂陳英妹考核解鎖 (妹555)
+        if (token === "妹555") {
+          displayZone.innerHTML = `
+            <div class="bg-slate-950 rounded-2xl border border-indigo-500/50 p-5 md:p-6 text-left relative">
+              <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
+              <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
+              <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm mb-3">
+                <i class="fa-solid fa-crown text-amber-400 animate-pulse"></i> 核心權限驗證：家庭長 · 呂陳英妹 考核報告
+              </div>
+              <div class="space-y-3 text-xs text-slate-300 font-sans">
+                <div class="p-3 bg-indigo-950/20 border border-indigo-900/50 rounded-xl leading-relaxed">
+                  <p class="font-bold text-white mb-1"><i class="fa-solid fa-star text-amber-400 mr-1"></i>年度績效總評：卓越特優（A++）</p>
+                  <p class="text-slate-400">身為呂氏家庭精神支柱與最高總指揮官，具備無與倫比的家族號召力。在年度慶典、大聚餐決策及跨區域溝通協調中展現卓越決斷力，向心力維持100%之首要功臣。</p>
                 </div>
-                <div class="space-y-2 text-xs text-slate-300 font-sans">
-                  <p class="font-mono text-[10px] text-slate-500">SYSTEM_TOTAL_EVALUATION: 16位全核心在線</p>
-                  <div class="p-3 bg-red-950/20 border border-red-900/50 rounded-xl leading-relaxed max-h-[200px] overflow-y-auto custom-scrollbar">
-                    <strong class="text-white block mb-1"><i class="fa-solid fa-chart-line text-emerald-400 mr-1"></i>核心幹部考核覆核總覽：</strong>
-                    👑 <strong>呂陳英妹</strong>：總評 A++ (精神領袖)<br>
-                    ⚡ <strong>呂佳寯</strong>：總評 A+ (核心運維)<br>
-                    ✨ <strong>呂佳芯</strong>：總評 A (分隊向心)<br>
-                    📦 <strong>呂幸福</strong>：總評 A (後勤組長)<br>
-                    💰 <strong>吳孟綺</strong>：總評 A (財務稽核)<br>
-                    🤝 <strong>全體其餘11位核心成員</strong>：總評 皆為優等(A)，全體在編，狀態卓越。
-                  </div>
-                  <p class="text-[11px] leading-relaxed text-slate-400 mt-2">📊 請管理窗口持續落實隱私屏障，確保大數據通道安全運行。</p>
+                <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
+                  <strong class="text-[#00f2fe] block mb-1"><i class="fa-solid fa-bolt mr-1"></i>核心職掌與交辦訓詞：</strong>
+                  引領家族和睦、推動共融關懷。訓詞提示：「雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。」
                 </div>
-              </div>`;
-            break;
-          default:
-            displayZone.innerHTML = `
-              <div class="bg-red-950/40 rounded-2xl border border-red-500/30 p-4 text-center text-red-400 text-xs font-bold">
-                <i class="fa-solid fa-triangle-exclamation mr-1.5 animate-bounce"></i> 驗證失敗：密碼錯誤或無讀取權限。SECURITY ACCESS DENIED.
-              </div>`;
+              </div>
+            </div>`;
+        // 2. 呂佳寯考核解鎖 (寯202)
+        } else if (token === "寯202") {
+          displayZone.innerHTML = `
+            <div class="bg-slate-950 rounded-2xl border border-emerald-500/50 p-5 md:p-6 text-left relative">
+              <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
+              <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
+              <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-3">
+                <i class="fa-solid fa-shield-halved text-emerald-500"></i> 核心權限驗證：行政管理官 · 呂佳寯 考核報告
+              </div>
+              <div class="space-y-3 text-xs text-slate-300 font-sans">
+                <div class="p-3 bg-emerald-950/20 border border-emerald-900/50 rounded-xl leading-relaxed">
+                  <p class="font-bold text-white mb-1"><i class="fa-solid fa-star text-amber-400 mr-1"></i>年度績效總評：特優卓越（A+）</p>
+                  <p class="text-slate-400">全權承攬網頁3.0系統架構、Firebase實時雲端網絡布署及官方數據共融對接。精準執行政戰文宣、聯絡窗口接洽及里民公務反饋維運，之後勤整備效率極高，專業技能無懈可擊。</p>
+                </div>
+                <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
+                  <strong class="text-[#00f2fe] block mb-1"><i class="fa-solid fa-list-check mr-1"></i>當前執行戰術任務：</strong>
+                  1. 維護獨立密碼安全終端之代碼健全。<br>
+                  2. 確保跨縣市（板橋、臺中、平鎮）實時推播通道暢通。<br>
+                  3. 隨時提示家庭成員於 2026/06/01 前完成所得稅申報。
+                </div>
+              </div>
+            </div>`;
+        // 3. 呂佳芯考核解鎖 (芯821)
+        } else if (token === "芯821") {
+          displayZone.innerHTML = `
+            <div class="bg-slate-950 rounded-2xl border border-pink-500/50 p-5 md:p-6 text-left relative">
+              <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
+              <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
+              <div class="flex items-center gap-2 text-pink-400 font-bold text-sm mb-3">
+                <i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> 核心權限驗證：分隊長 · 呂佳芯 考核報告
+              </div>
+              <div class="space-y-3 text-xs text-slate-300 font-sans">
+                <div class="p-3 bg-pink-950/20 border border-pink-900/50 rounded-xl leading-relaxed">
+                  <p class="font-bold text-white mb-1"><i class="fa-solid fa-star text-amber-400 mr-1"></i>年度績效總評：優等特出（A）</p>
+                  <p class="text-slate-400">受政戰行政部指派選任分隊長，在第一線執行家族情感連結與向心力凝聚。各項家族大型活動宣導表現亮眼，群眾溝通與活躍度極高，完美維持組織內部的高度融洽與穩定。</p>
+                </div>
+                <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
+                  <strong class="text-[#00f2fe] block mb-1"><i class="fa-solid fa-heart mr-1"></i>分隊核心指令：</strong>
+                  積極協同美術與後勤編組，強化跨區家族成員之日常動態鏈結，全面提升分隊自適應反應效率。
+                </div>
+              </div>
+            </div>`;
+        // 4. 最高管理權限解鎖 (admin999)
+        } else if (token === "admin999") {
+          displayZone.innerHTML = `
+            <div class="bg-slate-950 rounded-2xl border border-red-500/50 p-5 md:p-6 text-left relative">
+              <div class="hud-corner hc-tl"></div><div class="hud-corner hc-tr"></div>
+              <div class="hud-corner hc-bl"></div><div class="hud-corner hc-br"></div>
+              <div class="flex items-center gap-2 text-red-400 font-bold text-sm mb-3">
+                <i class="fa-solid fa-unlock text-red-500 animate-pulse"></i> HIGH-LEVEL GRANTED: 最高行政考核總覽終端
+              </div>
+              <div class="space-y-2 text-xs text-slate-300 font-sans">
+                <p class="font-mono text-[10px] text-slate-500">SYSTEM_TOTAL_EVALUATION: ACTIVE</p>
+                <div class="p-3 bg-red-950/20 border border-red-900/50 rounded-xl leading-relaxed">
+                  <strong class="text-white block mb-1"><i class="fa-solid fa-chart-line text-emerald-400 mr-1"></i>全體幹部考核覆核完畢：</strong>
+                  👑 <strong>家庭長（呂陳英妹）</strong>：精神核心，總評 A++<br>
+                  ⚡ <strong>行政管理（呂佳寯）</strong>：核心維運，總評 A+<br>
+                  ✨ <strong>分隊長（呂佳芯）</strong>：向心凝聚，總評 A
+                </div>
+                <p class="text-[11px] leading-relaxed text-slate-400 mt-2">📊 請各級幹部持續遵循注意事項，引導家庭大數據通道平穩運行。</p>
+              </div>
+            </div>`;
+        } else {
+          displayZone.innerHTML = `
+            <div class="bg-red-950/40 rounded-2xl border border-red-500/30 p-4 text-center text-red-400 text-xs font-bold">
+              <i class="fa-solid fa-triangle-exclamation mr-1.5 animate-bounce"></i> 驗證失敗：密碼錯誤或無讀取權限。SECURITY ACCESS DENIED.
+            </div>`;
         }
         
         displayZone.classList.remove('hidden');
