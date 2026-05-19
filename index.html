@@ -735,6 +735,27 @@
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。" },
       
+      notice_hanta: {
+    type: "notice_detail", 
+    title: "【重要健康公告】預防漢他病毒：落實防鼠與清潔", 
+    tag: "健康防護", 
+    color: "bg-emerald-600",
+    content: `
+      <div class="space-y-4 text-left text-xs sm:text-sm text-slate-700">
+        <p class="font-bold text-slate-800">落實「防鼠三不」措施：</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>不讓鼠來：</strong>修補紗窗，封閉鼠洞與縫隙。</li>
+          <li><strong>不讓鼠住：</strong>清理雜物，保持環境整潔。</li>
+          <li><strong>不讓鼠吃：</strong>食物廚餘密封，餐具盡速清洗。</li>
+        </ul>
+        <div class="border-t border-dashed my-2 pt-2"></div>
+        <p class="font-bold text-slate-800">發現鼠類排泄物清潔三步驟：</p>
+        <p>1. <strong>準備：</strong>戴口罩與手套，開窗保持通風。</p>
+        <p>2. <strong>消毒：</strong>污染處潑灑1:9稀釋漂白水，靜待5分鐘。</p>
+        <p>3. <strong>清理：</strong>以紙巾或抹布擦拭並密封丟棄（<strong>嚴禁直接使用掃把或吸塵器</strong>）。</p>
+      </div>`,
+    linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-500">— 呂氏家庭參謀本部提醒您 —</div>`
+  },
       notice_camp: {
         type: "notice_detail", title: "115年暑期戰鬥營 官方海報與簡章規範", tag: "活動通知", color: "bg-red-500",
         content: `
@@ -790,6 +811,7 @@
 
     // 公告總資料庫 (分類：最新公告、系統公告、活動公告)
     const notices = [
+      { id: "notice_hanta", tabGroup: "tab-latest", tag: "健康防護", title: "預防漢他病毒：環境清潔指引", content: "鼠類排泄物為傳染源，請落實防鼠三不措施，並使用正確步驟清潔環境，切勿使用掃把。", date: "2026/05/20", color: "bg-emerald-600" },
       { id: "notice_hongcui", tabGroup: "tab-latest", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice1", tabGroup: "tab-latest", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "家庭分布專區·縣市徽章模組部署完畢", content: "成功引入新北市徽、桃園市徽、臺中市徽高畫質幾何組件，全面優化區域卡片視覺完整度。", date: "2026/05/20", color: "bg-orange-500" },
