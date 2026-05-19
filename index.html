@@ -517,7 +517,7 @@
                 <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider font-mono">Management Window</p>
               </div>
             </div>
-            <p class="text-slate-500 text-xs leading-relaxed mb-4">本聯絡窗口—<strong>由呂佳寯 政戰幹部</strong>負責全權維運與業務接洽。若您有活動提案、權限調取或里民反饋，請不吝聯絡本基地窗口。</p>
+            <p class="text-slate-500 text-xs leading-relaxed mb-4">本網路由呂氏核心管理層——<strong>窗口管理團隊</strong>負責全權維運與業務接洽。若您有活動提案、權限調取或里民反饋，請不吝聯絡本基地窗口。</p>
             <div class="space-y-2.5 text-xs">
               <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-user-tie text-indigo-500 w-4 text-center"></i>核心聯絡：管理窗口 (呂佳寯)</div>
               <div class="flex items-center gap-2 text-slate-600 font-medium"><i class="fa-solid fa-envelope text-indigo-500 w-4 text-center"></i>公務信箱：<span class="font-mono text-slate-700">設置中</span></div>
@@ -531,7 +531,7 @@
               <h3>服務注意事項</h3>
             </div>
             <ul class="text-[11px] md:text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium leading-relaxed">
-              <li>送出表單後，本聯絡負責人會盡快回覆問題。</li>
+              <li>送出表單後，系統核心管道將即時派發代辦單至幹部後台。</li>
               <li>公務反饋預計於 <strong class="text-indigo-600">2-3日內</strong> 由專人回信或電話致電答覆。</li>
               <li>請務必填寫正確的稱呼與電話號碼，以免造成數據失聯。</li>
               <li>本表單資料受內部高度隱私加密通道保護，絕不外洩。</li>
@@ -649,7 +649,7 @@
       member1: { 
         type: "member", name: "呂陳英妹", alias: "最強總指揮官", number: "#幹部", 
         range: "雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。",
-        role: "領導", skill: "秘密", sign: "秘密", dob: "秘密", 
+        role: "領導", skill: "秘密", sign: "秘密", dob: "1949 / 05 / 07", 
         isImg: true, src: "呂陳英妹.jpg", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-utensils"], bgImg: "呂陳英妹.jpg"
       },
       member2: { 
@@ -659,20 +659,20 @@
       },
       member3: { 
         type: "member", name: "呂佳芯", alias: "分隊長", number: "幹部", 
-        range: "突然被政戰幹部派選為分隊長！",
+        range: "突然被政戰幹部派選為分隊長！今天也是充滿活力的一天✨",
         role: "領導", skill: "凝聚向心力", sign: "獅子座", dob: "2005 / 08 / 21", 
         isImg: true, src: "1709717928_2KZnL.png", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"], bgImg: "1709717928_2KZnL.png"
       },
       member4: { 
-        type: "member", name: "後勤員", alias: "後勤員", number: "#後勤", 
-        range: "確保各項物資及裝備完美到位！",
-        role: "後勤", skill: "物資整備", sign: "未公開", dob: "2026", 
+        type: "member", name: "後勤員", alias: "物資保障組主要調度人員", number: "#後勤", 
+        range: "確保每一次家族大聚會的設備、餐飲與物資完美到位！",
+        role: "後勤", skill: "物資統籌 / 現場營運支援", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-blue-400", tags: ["fa-boxes-packing", "fa-truck-ramp-box", "fa-clipboard-list"], bgImg: ""
       },
       member5: { 
-        type: "member", name: "美術員", alias: "美術員", number: "#美術", 
-        range: "負責記錄下各項大小活動✨",
-        role: "創意美術", skill: "用影像說話", sign: "未公開", dob: "2026", 
+        type: "member", name: "美術員", alias: "創意視覺組核心設計師", number: "#美術", 
+        range: "用創意色彩與精緻排版，記錄下呂氏家庭最精彩的每一瞬間✨",
+        role: "創意美術", skill: "平面視覺 / 家族紀念影片包裝", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-purple-400", tags: ["fa-palette", "fa-pen-nib", "fa-bezier-curve"], bgImg: ""
       },
 
@@ -680,26 +680,6 @@
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。", theme: "bg-emerald-600", icon: "fa-tree" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。", theme: "bg-orange-500", icon: "fa-plane-up" },
       
-      notice_hongcui: {
-        type: "notice_detail", title: "115年暑期戰鬥營 即將開始報名啦！", tag: "活動通知", color: "bg-red-500",
-        content: `
-          <div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm">
-            <p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、招訓對象：</p>
-            <p class="text-red-700 leading-relaxed pl-3">具中華民國國籍，且不得持有中國大陸地區「居民身分證」、「定居證」或「護照」，並填妥切結書以供查驗。除「科學體驗營」外，須為年滿15足歲國中應屆畢業生至未滿32歲在學學生。科學體驗營招收國中在學學生。</p>
-          </div>
-          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3">
-            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、發放資訊與應備文件：</p>
-            <p class="text-slate-600 pl-1">1. 數位化捷豹戰鬥營｜新竹湖口 無人機潛能探索戰鬥營｜臺南白河 迷彩職人戰鬥營｜屏東萬巒 全方位戰士戰鬥營｜臺中烏日 花蓮山海探索戰鬥營｜花蓮市 金門戰鬥營｜金門金湖 馬祖戰鬥營｜連江南竿 澎湖戰鬥營｜澎湖馬公 傘訓戰鬥營｜屏東市 海軍勇士挑戰營｜高雄左營 航空戰鬥營｜高雄岡山 航空科技戰鬥營｜高雄岡山 憲兵鐵衛戰鬥營｜新北五股 國防科技實作研習營｜桃園大溪 新聞研習營｜臺北北投 醫學暨戰傷救護研習營｜臺北內湖 科學體驗營｜高雄鳳山。</p>
-            <p class="text-slate-600 pl-1">2. 請領取人（戶長）攜帶：<strong class="text-slate-900 font-bold">身分證及印章</strong>供核對。</p>
-            <div class="border-t border-dashed border-slate-200 my-1.5 pt-1.5">
-              <p class="font-bold text-amber-600"><i class="fa-solid fa-location-dot mr-1"></i>今年營隊：</p>
-              <p class="text-slate-700 font-medium pl-1">宏翠里里辦公室（板橋區長江路一段156巷9弄5號1樓）</p>
-              <p class="text-slate-600 pl-1 mt-0.5 font-semibold text-indigo-600">📣 報名時間115年5月25日1200時起至6月15日1700時止</p>
-              <p class="text-slate-600 pl-1 font-semibold text-indigo-600">📣 錄取公告時間115年6月16日1200時</p>
-            </div>
-          </div>`,
-        linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-400">— 全民國防教育專頁 —</div>`
-      },
       notice_hongcui: {
         type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
         content: `
@@ -733,7 +713,6 @@
     };
 
     const notices = [
-      { id: "notice_hongcui", tag: "活動通知", title: "115年暑期戰鬥營 即將開始報名啦！", content: "招訓對象具中華民國國籍，且不得持有中國大陸地區「居民身分證」、「定居證」或「護照」，並填妥切結書以供查驗。除「科學體驗營」外，須為年滿15足歲國中應屆畢業生至未滿32歲在學學生。科學體驗營招收國中在學學生。", date: "2026/05/20", color: "bg-red-500" },
       { id: "notice_hongcui", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice1", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
       { id: "notice2", tag: "系統維護", title: "呂氏資訊網升級 3.0 正式上線", content: "核心架構優化，升級氣象三宮格、HUD彈窗與響應式流暢度。", date: "2026/05/14", color: "bg-orange-500" }
