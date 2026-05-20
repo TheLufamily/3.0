@@ -725,28 +725,6 @@
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。" },
       
-     notice_perf_system: {
-    type: "notice_detail",
-    title: "115年度個人考績查詢作業",
-    tag: "年度作業",
-    color: "bg-cyan-600",
-    content: `
-        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-700 shadow-inner mb-4">
-            <p class="text-white text-xs leading-relaxed mb-4">
-                <i class="fa-solid fa-circle-info text-cyan-400 mr-2"></i> 年度期中考績將於 <strong class="text-cyan-300">5/30</strong> 正式解鎖。<br>
-                <br>
-                輸入您的個人授權碼即可存取您的績效矩陣。管理員請使用最高權限碼進入。
-            </p>
-            <input type="password" id="modalAuthCode" placeholder="請輸入授權碼" 
-                   class="w-full p-3 bg-slate-800 rounded-lg text-white border border-slate-600 focus:border-cyan-500 outline-none mb-3 text-sm">
-            <button onclick="checkModalPerformance()" 
-                    class="w-full py-2.5 bg-cyan-600 text-white font-bold rounded-lg text-sm hover:bg-cyan-500 transition-all">
-                執行查詢
-            </button>
-            <div id="modalResult" class="mt-4 p-3 bg-slate-950 rounded-lg text-xs hidden border border-slate-700"></div>
-        </div>`,
-    linkHtml: `<button onclick="closeInteractiveModal()" class="w-full py-2.5 bg-slate-100 text-slate-600 font-bold rounded-xl text-xs hover:bg-slate-200 transition-all">關閉視窗</button>`
-}
       notice_hanta: {
         type: "notice_detail", 
         title: "【重要健康公告】預防漢他病毒指南", 
