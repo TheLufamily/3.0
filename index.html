@@ -264,34 +264,38 @@
   </section>
 
   <section id="notice" class="py-8 md:py-20 bg-slate-50/50">
-    <div class="max-w-4xl mx-auto px-4">
-      
-      <div class="text-center mb-8 relative">
-  <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] text-indigo-400 font-mono tracking-widest uppercase opacity-70">
-    <i class="fa-solid fa-satellite-dish mr-1"></i>System_Broadcast_Node_v3.0
-  </div>
-  <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight flex items-center justify-center gap-3">
-    <span class="text-indigo-600"><i class="fa-solid fa-terminal"></i></span> 公告訊息戰情中心
-  </h2>
-  <div class="flex items-center justify-center gap-2 mt-3">
-    <div class="h-[1px] w-12 bg-slate-300"></div>
-    <div class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></div>
-    <div class="h-[1px] w-12 bg-slate-300"></div>
-  </div>
-</div>
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <div class="text-center mb-8 relative">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] text-indigo-400 font-mono tracking-widest uppercase opacity-70">
+        <i class="fa-solid fa-satellite-dish mr-1"></i>System_Broadcast_Node_v3.0
+      </div>
+      <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight flex items-center justify-center gap-3">
+        <span class="text-indigo-600"><i class="fa-solid fa-terminal"></i></span> 公告訊息戰情中心
+      </h2>
+      <div class="flex items-center justify-center gap-2 mt-3">
+        <div class="h-[1px] w-12 bg-slate-300"></div>
+        <div class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></div>
+        <div class="h-[1px] w-12 bg-slate-300"></div>
+      </div>
+    </div>
 
-<div class="flex justify-center p-1.5 bg-slate-900 rounded-2xl mb-8 max-w-lg mx-auto border border-slate-700 font-bold shadow-2xl">
-  <button onclick="switchTab('tab-latest')" id="btn-tab-latest" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 bg-indigo-600 text-white shadow-lg shadow-indigo-900/50 flex items-center justify-center gap-2 border border-indigo-500">
-    <i class="fa-solid fa-bolt text-[10px]"></i> 即時快訊
-  </button>
-  <button onclick="switchTab('tab-system')" id="btn-tab-system" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-400 hover:text-white flex items-center justify-center gap-2">
-    <i class="fa-solid fa-network-wired text-[10px]"></i> 系統運作
-  </button>
-  <button onclick="switchTab('tab-camp')" id="btn-tab-camp" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-400 hover:text-white flex items-center justify-center gap-2">
-    <i class="fa-solid fa-flag text-[10px]"></i> 作戰任務
-  </button>
-</div>
+    <div class="flex justify-center p-1.5 bg-slate-900 rounded-2xl mb-8 max-w-lg mx-auto border border-slate-700 font-bold shadow-2xl">
+      <button onclick="switchTab('tab-latest')" id="btn-tab-latest" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 bg-indigo-600 text-white shadow-lg flex items-center justify-center gap-2 border border-indigo-500">
+        <i class="fa-solid fa-bolt text-[10px]"></i> 即時快訊
+      </button>
+      <button onclick="switchTab('tab-system')" id="btn-tab-system" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-400 hover:text-white flex items-center justify-center gap-2">
+        <i class="fa-solid fa-network-wired text-[10px]"></i> 系統運作
+      </button>
+      <button onclick="switchTab('tab-camp')" id="btn-tab-camp" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-400 hover:text-white flex items-center justify-center gap-2">
+        <i class="fa-solid fa-flag text-[10px]"></i> 作戰任務
+      </button>
+    </div>
 
+    <div id="noticeDisplayWrapper" class="space-y-4 min-h-[160px] transition-all duration-300">
+      </div>
+  </div>
+</section>
       <div id="noticeDisplayWrapper" class="space-y-4 min-h-[160px] transition-all duration-300">
         </div>
 
@@ -609,77 +613,59 @@
       loc2: { type: "location", title: "臺中北區、中區", sub: "第一分支", l1: "人員情況", i1: "6 名", l2: "特色", i2: "分布於北區、中區、為本單位第二人數及分布多單位。" },
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。" },
       
-         notice3: {
-        type: "notice_detail", title: "115年度年度考績查詢'", tag: "重要通知", color: "bg-red-500",
-        content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs">截止日倒數：</p><p class="text-red-700 text-xs 	mt-0.5 leading-relaxed">查詢時間為 2026/05/31，部分同仁會提早。</p></div>`,
-        linkHtml: `<a href="https://thelufamily.github.io/PA/" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 	transition-all block">前往查詢</a>`
-      },
-	notice_hanta: {
-        type: "notice_detail", 
-        title: "【重要健康公告】預防漢他病毒指南", 
-        tag: "健康防護", 
-        color: "bg-emerald-600",
-        content: `
-          <div class="space-y-4">
-            <div class="rounded-xl overflow-hidden border border-slate-100 shadow-sm">
-              <img src="hanta_01.jpg" class="w-full h-auto object-contain" alt="遇鼠小叮嚀">
-            </div>
-            <div class="rounded-xl overflow-hidden border border-slate-100 shadow-sm">
-              <img src="hanta_02.jpg" class="w-full h-auto object-contain" alt="防鼠三不與清潔指南">
-            </div>
-          </div>
-          <div class="mt-4 p-4 bg-emerald-50 rounded-xl text-left text-xs text-emerald-800 font-bold border border-emerald-100">
-            <i class="fa-solid fa-shield-virus mr-1"></i> 落實防鼠三不：不讓鼠來、不讓鼠住、不讓鼠吃。發現排泄物請使用 1:9 稀釋漂白水消毒，嚴禁使用掃把揚塵。
-          </div>`,
-        linkHtml: `<div class="w-full text-center text-xs font-bold py-2 text-slate-400">— 呂氏家庭參謀本部提醒您 —</div>`
-      },
-      notice_hongcui: {
-        type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
-        content: `
-          <div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm">
-            <p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、發放對象：</p>
-            <p class="text-red-700 leading-relaxed pl-3">設籍於宏翠里，且以115年1月1日為基準日，設籍滿4年以上之戶。</p>
-          </div>
-          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3">
-            <p class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>二、現場領取地點：</p>
-            <p class="text-slate-700 font-medium pl-1">宏翠里里辦公室（長江路一段156巷9弄5號1樓）</p>
-            <p class="text-slate-600 pl-1 font-semibold text-indigo-600">📣 時間：5月30、31日及6月6、7日 09:00-16:00</p>
-          </div>`,
-        linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-400">— 宏翠里 里辦公室 里長敬上 —</div>`
-      },
-      notice_camp: {
-        type: "notice_detail", title: "115年暑期戰鬥營 官方海報與簡章規範", tag: "活動通知", color: "bg-red-500",
-        content: `
-          <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 bg-slate-950 shadow-md">
-            <img src="701465836_1422120123276913_1195652567231001211_n (1).jpg" class="w-full h-auto object-contain mx-auto" alt="115年暑期戰鬥營海報">
-          </div>
-          <div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3 font-medium">
-            <p class="font-bold text-slate-800"><i class="fa-solid fa-calendar-days mr-1"></i>網路報名：</p>
-            <p class="text-slate-600 pl-1 text-indigo-600">115年5月25日 1200時 起至 6月15日 1700時 止</p>
-          </div>`,
-        linkHtml: `<a href="https://aode.mnd.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>前往全民國防教育全球資訊網</a>`
-      },
-      notice1: {
-        type: "notice_detail", title: "114年度所得稅申報作業提示", tag: "重要通知", color: "bg-red-500",
-        content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs">截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">申報期限截止日為 2026/06/01。</p></div>`,
-        linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block">前往申報繳稅服務網</a>`
-      },
-      notice2: {
-        type: "notice_detail", title: "資訊網 3.0 縣市徽整合報告", tag: "系統維護", color: "bg-orange-500",
-        content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs">系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5">縣市徽融合完畢，優化分區圖表視覺。</p></div>`,
-        linkHtml: `<a href="#notice" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block">返回公告分區</a>`
-      }
-    };
+    <script>
+  // 1. 合併後的資料庫 (請確保這裡的 key 與 notices 陣列中的 id 一致)
+  const db = {
+    notice3: { 
+      type: "notice_detail", title: "115年度年度考績查詢", tag: "重要通知", color: "bg-red-500",
+      content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs">截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">查詢時間為 2026/05/31，部分同仁會提早。</p></div>`,
+      linkHtml: `<a href="https://thelufamily.github.io/PA/" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block">前往查詢</a>`
+    },
+    notice_hanta: { 
+      type: "notice_detail", title: "【重要健康公告】預防漢他病毒指南", tag: "健康防護", color: "bg-emerald-600",
+      content: `<div class="mt-4 p-4 bg-emerald-50 rounded-xl text-left text-xs text-emerald-800 font-bold border border-emerald-100"><i class="fa-solid fa-shield-virus mr-1"></i> 落實防鼠三不：不讓鼠來、不讓鼠住、不讓鼠吃。發現排泄物請使用 1:9 稀釋漂白水消毒，嚴禁使用掃把揚塵。</div>`,
+      linkHtml: `<div class="w-full text-center text-xs font-bold py-2 text-slate-400">— 呂氏家庭參謀本部提醒您 —</div>`
+    },
+    notice_hongcui: { 
+      type: "notice_detail", title: "宏翠里回饋金現金領取通知", tag: "重要通知", color: "bg-red-500",
+      content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left text-xs sm:text-sm"><p class="text-red-800 font-bold mb-0.5"><i class="fa-solid fa-users mr-1"></i>一、發放對象：</p><p class="text-red-700 leading-relaxed pl-3">設籍於宏翠里，且以115年1月1日為基準日，設籍滿4年以上之戶。</p></div>`,
+      linkHtml: `<div class="w-full text-center text-xs font-bold py-1.5 text-slate-400">— 宏翠里 里辦公室 里長敬上 —</div>`
+    },
+    notice_camp: { 
+      type: "notice_detail", title: "115年暑期戰鬥營 官方海報與簡章規範", tag: "活動通知", color: "bg-red-500",
+      content: `<div class="bg-slate-50 border rounded-xl p-3 text-left text-xs sm:text-sm space-y-2 mb-3 font-medium"><p class="font-bold text-slate-800"><i class="fa-solid fa-calendar-days mr-1"></i>網路報名：</p><p class="text-slate-600 pl-1 text-indigo-600">115年5月25日 1200時 起至 6月15日 1700時 止</p></div>`,
+      linkHtml: `<a href="https://aode.mnd.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block">前往全民國防教育全球資訊網</a>`
+    },
+    notice1: { 
+      type: "notice_detail", title: "114年度所得稅申報作業提示", tag: "重要通知", color: "bg-red-500",
+      content: `<div class="bg-red-50 border-l-4 border-red-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-red-800 font-bold text-xs">截止日倒數：</p><p class="text-red-700 text-xs mt-0.5 leading-relaxed">申報期限截止日為 2026/06/01。</p></div>`,
+      linkHtml: `<a href="https://www.etax.nat.gov.tw" target="_blank" class="w-full py-2.5 bg-red-600 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-red-700 transition-all block">前往申報繳稅服務網</a>`
+    },
+    notice2: { 
+      type: "notice_detail", title: "資訊網 3.0 縣市徽整合報告", tag: "系統維護", color: "bg-orange-500",
+      content: `<div class="bg-blue-50 border-l-4 border-blue-500 p-3 mb-3 rounded-r-xl text-left"><p class="text-blue-800 font-bold text-xs">系統核心版本資訊：</p><p class="text-blue-700 text-xs mt-0.5">縣市徽融合完畢，優化分區圖表視覺。</p></div>`,
+      linkHtml: `<a href="#notice" onclick="closeInteractiveModal()" class="w-full py-2.5 bg-orange-500 text-white rounded-xl font-bold text-center text-xs shadow-sm hover:bg-orange-600 transition-all block">返回公告分區</a>`
+    }
+  };
 
-    const notices = [
- 	{ id: "notice3", tabGroup: "tab-latest", tag: "重要通知", title: "114年度考績查詢", content: "請於 2026/05/31 查詢，部分人員提早。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice_hanta", tabGroup: "tab-latest", tag: "健康防護", title: "預防漢他病毒：落實防鼠三不措施", content: "鼠類排泄物為主要傳染源，請勿直接掃地，落實防鼠三不措施保護家人健康。", date: "2026/05/20", color: "bg-emerald-600", hasImage: true, imageSrc: "hanta_01.jpg" },
-      { id: "notice_hongcui", tabGroup: "tab-latest", tag: "重要通知", title: "宏翠里 115年回饋金發放公告", content: "發放對象為設籍滿4年以上之里民戶，第一波現場領取將於5月30、31日開跑。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice1", tabGroup: "tab-latest", tag: "重要通知", title: "114年度所得稅申報作業提示", content: "請家庭成員於 2026/06/01 前抽空完成申報作業。", date: "2026/05/15", color: "bg-red-500" },
-      { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "家庭分布專區·縣市徽章模組部署完畢", content: "成功引入新北市徽、桃園市徽、臺中市徽高畫質幾何組件。", date: "2026/05/20", color: "bg-orange-500" },
-      { id: "notice_camp", tabGroup: "tab-camp", tag: "活動通知", title: "115年暑期戰鬥營 全線招生對接", content: "25日中午 12 時起全面開放網路報名。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" }
-    ];
+  const notices = [
+    { id: "notice3", tabGroup: "tab-latest", tag: "重要通知", title: "115年度考績查詢", content: "查詢截止日倒數中...", date: "2026/05/15", color: "bg-red-500" },
+    { id: "notice_hanta", tabGroup: "tab-latest", tag: "健康防護", title: "預防漢他病毒", content: "落實防鼠三不措施，保護家人健康。", date: "2026/05/20", color: "bg-emerald-600", hasImage: true, imageSrc: "hanta_01.jpg" },
+    { id: "notice_hongcui", tabGroup: "tab-latest", tag: "重要通知", title: "宏翠里回饋金發放", content: "請查看領取時間與地點。", date: "2026/05/15", color: "bg-red-500" },
+    { id: "notice1", tabGroup: "tab-latest", tag: "重要通知", title: "所得稅申報提示", content: "請於 2026/06/01 前完成。", date: "2026/05/15", color: "bg-red-500" },
+    { id: "notice2", tabGroup: "tab-system", tag: "系統維護", title: "資訊網 3.0 縣市徽整合", content: "已完成各分區圖表模組部署。", date: "2026/05/20", color: "bg-orange-500" },
+    { id: "notice_camp", tabGroup: "tab-camp", tag: "活動通知", title: "115年暑期戰鬥營", content: "網路報名系統已全面開放。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" }
+  ];
 
+  // 2. 修改 window.onload，確保頁面一進去就呼叫 switchTab
+  window.onload = () => {
+    updateWeather();
+    renderMsgs();
+    initNotices(); // 初始化 modal 列表
+    switchTab('tab-latest'); // <--- 關鍵：強制直接執行一次顯示最新公告
+    setInterval(updateWeather, 30000);
+  };
+</script>
     function switchTab(tabId) {
       currentActiveTab = tabId;
       const container = document.getElementById('noticeDisplayWrapper');
