@@ -614,7 +614,6 @@
       loc3: { type: "location", title: "桃園平鎮", sub: "第二分支", l1: "人員情況", i1: "3 名", l2: "特色", i2: "交通樞紐，有公車及機場捷運。" },
       
     <script>
-  // 1. 合併後的資料庫 (請確保這裡的 key 與 notices 陣列中的 id 一致)
   const db = {
     notice3: { 
       type: "notice_detail", title: "115年度年度考績查詢", tag: "重要通知", color: "bg-red-500",
@@ -657,13 +656,6 @@
     { id: "notice_camp", tabGroup: "tab-camp", tag: "活動通知", title: "115年暑期戰鬥營", content: "網路報名系統已全面開放。", date: "2026/05/20", color: "bg-red-500", hasImage: true, imageSrc: "701465836_1422120123276913_1195652567231001211_n (1).jpg" }
   ];
 
-  // 2. 修改 window.onload，確保頁面一進去就呼叫 switchTab
-  window.onload = () => {
-    updateWeather();
-    renderMsgs();
-    initNotices(); // 初始化 modal 列表
-    switchTab('tab-latest'); // <--- 關鍵：強制直接執行一次顯示最新公告
-    setInterval(updateWeather, 30000);
   };
 </script>
     function switchTab(tabId) {
