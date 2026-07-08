@@ -220,8 +220,6 @@
         <a href="#events" class="hover:text-indigo-600 transition-all px-0.5">活動</a>
         <a href="#members" class="hover:text-indigo-600 transition-all px-0.5">幹部</a>
         <a href="#location" class="hover:text-indigo-600 transition-all px-0.5">分支</a>
-        <a href="#guestbook" class="hover:text-indigo-600 transition-all px-0.5">留言</a>
-        <a href="#contact" class="hover:text-indigo-600 transition-all px-0.5">聯絡</a>
       </div>
       <button onclick="openHistoryModal()" class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm hover:bg-indigo-100 relative shrink-0" title="開啟消息中心">
         <i class="fa-solid fa-bell text-sm"></i>
@@ -571,21 +569,21 @@
 
     const db = {
       member1: { 
-        type: "member", name: "呂陳英妹", alias: "最強總指揮官", number: "#幹部", 
+        type: "member", name: "呂陳英妹", alias: "最強核心", number: "#幹部", 
         range: "雖然我是家裡核心，但還是會聽取大家意見，成為被尊重的人。",
         role: "領導", skill: "秘密", sign: "秘密", dob: "秘密", 
         isImg: true, src: "呂陳英妹.jpg", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-utensils"], bgImg: "呂陳英妹.jpg"
       },
       member2: { 
-        type: "member", name: "呂佳寯", alias: "政戰幹部兼任行政管理", number: "#幹部", range: "政戰才是我的專業，行政業務是支援",
-        role: "政戰、行政", skill: "文宣、攝影", sign: "金牛座", dob: "2002/05/01",
+        type: "member", name: "呂佳寯", alias: "專業幕僚", number: "#幹部", range: "政戰是我的專業",
+        role: "政戰", skill: "文宣、攝影", sign: "金牛座", dob: "2002/05/01",
         isImg: true, src: "110417006.jpg", theme: "text-emerald-400", tags: ["fa-file-invoice", "fa-shield-halved", "fa-code"], bgImg: "110417006.jpg"
       },
       member3: { 
-        type: "member", name: "呂佳芯", alias: "分隊長", number: "幹部", 
+        type: "member", name: "懸缺", alias: "分隊長", number: "幹部", 
         range: "突然被政戰幹部派選為分隊長！",
-        role: "領導", skill: "凝聚向心力", sign: "獅子座", dob: "2005 / 08 / 21", 
-        isImg: true, src: "1709717928_2KZnL.png", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"], bgImg: "1709717928_2KZnL.png"
+        role: "領導", skill: "凝聚向心力", sign: "", dob: "", 
+        isImg: true, src: "", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"], bgImg: ""
       },
       member4: { 
         type: "member", name: "後勤員", alias: "後勤員", number: "#後勤", 
@@ -594,9 +592,9 @@
         isImg: false, theme: "text-blue-400", tags: ["fa-boxes-packing", "fa-truck-ramp-box", "fa-clipboard-list"], bgImg: ""
       },
       member5: { 
-        type: "member", name: "美術員", alias: "美術員", number: "#美術", 
-        range: "負責記錄下各項大小活動✨",
-        role: "創意美術", skill: "用影像說話", sign: "未公開", dob: "2026", 
+        type: "member", name: "呂佳芯", alias: "美術員", number: "#美術", 
+        range: "負責文宣及創意發想設計",
+        role: "創意美術", skill: "用影像說話", sign: "未公開", dob: "秘密", 
         isImg: false, theme: "text-purple-400", tags: ["fa-palette", "fa-pen-nib", "fa-bezier-curve"], bgImg: ""
       },
 
@@ -834,6 +832,8 @@
               <div class="grid grid-cols-2 gap-px bg-slate-800 rounded-xl overflow-hidden border border-slate-800">
                 <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">職能 TYPE</span><p class="text-xs font-black text-white">${d.role}</p></div>
                 <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">專長 SKILL</span><p class="text-xs font-black text-white">${d.skill}</p></div>
+				<div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">職能 sign</span><p class="text-xs font-black text-white">${d.sign}</p></div>
+                <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">專長 dob</span><p class="text-xs font-black text-white">${d.dob}</p></div>
               </div>
               <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-5 -mx-5 -mb-5"></div>
             </div>
