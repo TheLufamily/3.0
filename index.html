@@ -237,9 +237,53 @@
         <h2 class="text-2xl sm:text-4xl md:text-6xl font-black leading-tight text-slate-800 mb-3 md:mb-6">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
         <p class="italic text-slate-400 text-sm md:text-lg mb-2 mb-6">「3.0 正式啟用」</p>
       </div>
+      <div class="relative w-full">
+        <div class="family-card overflow-hidden border">
+          <div class="p-4 sm:p-6 md:p-12">
+            <div class="flex justify-between items-center mb-6 md:mb-8 gap-4 text-left">
+              <div>
+                <p class="text-slate-400 text-[9px] sm:text-[10px] mb-1" id="weatherSyncText">數據同步中...</p>
+                <div class="flex items-center gap-3 md:gap-4">
+                  <span class="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-800 tech-num" id="mainTemp">--°</span>
+                  <div>
+                    <p class="text-sm sm:text-base md:text-2xl font-bold text-slate-800" id="currentDate">--月--日</p>
+                    <p class="text-[10px] sm:text-xs md:text-sm font-bold text-indigo-600" id="currentDay">--</p>
+                  </div>
+                </div>
+              </div>
+              <i class="fa-solid fa-cloud-sun text-4xl sm:text-5xl md:text-6xl text-orange-400 animate-bounce"></i>
+            </div>
+            <div class="grid grid-cols-3 gap-2 border-t border-slate-100 pt-4 md:pt-10 text-center" id="weatherGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-
+  <section id="stats-section" class="py-6 md:py-12 modern-stats-bg text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative">
+      <div class="stat-item text-center">
+        <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Member Count</div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="16">0</span></div>
+        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">成員總數</p>
+      </div>
+      <div class="stat-item text-center border-l border-white/5 md:border-l-0">
+        <div class="text-emerald-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Active Missions</div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5 text-emerald-400"><span class="counter" data-target="2">0</span></div>
+        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">累計執行活動</p>
+      </div>
+      <div class="stat-item text-center border-l border-white/5">
+        <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Core Bases</div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="3">0</span></div>
+        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">區域分支</p>
+      </div>
+      <div class="stat-item text-center border-l border-white/5">
+        <div class="text-indigo-400 text-[9px] mb-1 tracking-widest opacity-60 uppercase">Unity Rate</div>
+        <div class="text-xl md:text-4xl font-bold tech-num mb-0.5"><span class="counter" data-target="100">0</span><span class="text-xs md:text-lg ml-0.5">%</span></div>
+        <p class="text-[10px] md:text-xs text-slate-400 tracking-widest">家族向心力</p>
+      </div>
+    </div>
+  </section>
 
   <section id="notice" class="py-8 md:py-20 bg-slate-50/50">
     <div class="max-w-4xl mx-auto px-4">
@@ -373,10 +417,10 @@
               <h3 class="text-lg font-bold text-white">呂佳寯</h3>
               <span class="font-mono text-[9px] text-pink-500 border border-pink-500/20 px-1.5 py-0.5 rounded bg-pink-500/5">#幹部</span>
             </div>
-            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">行政與政教業務</p>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">行政及政教業務</p>
           </div>
           <div>
-            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-emerald-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">政戰主管</div></div>
+            <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-emerald-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">行政管理</div></div>
             <div class="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mt-5 -mx-5 -mb-6"></div>
           </div>
         </div>
@@ -387,10 +431,10 @@
               <img src="1709717928_2KZnL.png" class="w-full h-full object-cover bg-white" onerror="this.src='https://via.placeholder.com/150'">
             </div>
             <div class="flex justify-center items-center gap-2 mb-1">
-              <h3 class="text-lg font-bold text-white">政戰主管兼任</h3>
+              <h3 class="text-lg font-bold text-white">呂佳芯</h3>
               <span class="font-mono text-[9px] text-pink-500 border border-pink-500/20 px-1.5 py-0.5 rounded bg-pink-500/5">#幹部</span>
             </div>
-            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">負責支援主管行政庶務</p>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">凝聚向心力</p>
           </div>
           <div>
             <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-pink-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">分隊長</div></div>
@@ -407,7 +451,7 @@
               <h3 class="text-lg font-bold text-white">吉米的爸爸</h3>
               <span class="font-mono text-[9px] text-blue-400 border border-blue-400/20 px-1.5 py-0.5 rounded bg-blue-500/5">#後勤</span>
             </div>
-            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">小小工程師</p>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center"小小工程師</p>
           </div>
           <div>
             <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-blue-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">後勤員</div></div>
@@ -421,10 +465,10 @@
               <i class="fa-solid fa-palette text-2xl md:text-3xl"></i>
             </div>
             <div class="flex justify-center items-center gap-2 mb-1">
-              <h3 class="text-lg font-bold text-white">呂佳芯</h3>
+              <h3 class="text-lg font-bold text-white">美術員</h3>
               <span class="font-mono text-[9px] text-purple-400 border border-purple-400/20 px-1.5 py-0.5 rounded bg-purple-500/5">#美術</span>
             </div>
-            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">視覺/文創設計</p>
+            <p class="text-slate-400 text-[11px] font-medium mb-4 text-center">視覺設計 / 家族影像美化</p>
           </div>
           <div>
             <div class="text-center"><div class="inline-block bg-slate-900 border border-slate-800 text-purple-400 text-[10px] sm:text-[11px] px-3.5 py-1 rounded-full font-bold">美術員</div></div>
@@ -654,20 +698,20 @@
         isImg: true, src: "呂陳英妹.jpg", theme: "text-indigo-400", tags: ["fa-crown", "fa-heart", "fa-utensils"], bgImg: "呂陳英妹.jpg"
       },
       member2: { 
-        type: "member", name: "呂佳寯", alias: "政戰幹部", number: "#幹部", range: "政戰才是我的專業，行政業務是支援",
-        role: "政戰", skill: "文宣、攝影", sign: "金牛座", dob: "2002/05/01",
+        type: "member", name: "呂佳寯", alias: "政戰幹部兼任行政管理", number: "#幹部", range: "政戰才是我的專業，行政業務是支援",
+        role: "政戰、行政", skill: "文宣、攝影", sign: "金牛座", dob: "2002/05/01",
         isImg: true, src: "110417006.jpg", theme: "text-emerald-400", tags: ["fa-file-invoice", "fa-shield-halved", "fa-code"], bgImg: "110417006.jpg"
       },
       member3: { 
-        type: "member", name: "懸缺", alias: "分隊長", number: "幹部", 
-        range: "負責支援主管行政庶務",
-        role: "領導", skill: "凝聚向心力", sign: "懸缺", dob: "懸缺", 
+        type: "member", name: "呂佳芯", alias: "分隊長", number: "幹部", 
+        range: "突然被政戰幹部派選為分隊長！",
+        role: "領導", skill: "凝聚向心力", sign: "獅子座", dob: "2005 / 08 / 21", 
         isImg: true, src: "1709717928_2KZnL.png", theme: "text-pink-400", tags: ["fa-wand-magic-sparkles", "fa-face-smile", "fa-music"], bgImg: "1709717928_2KZnL.png"
       },
       member4: { 
         type: "member", name: "後勤員", alias: "後勤員", number: "#後勤", 
         range: "負責維保家裡大大小小工程",
-        role: "後勤", skill: "維保", sign: "未公開", dob: "秘密", 
+        role: "後勤", skill: "維保", sign: "未公開", dob: "2026", 
         isImg: false, theme: "text-blue-400", tags: ["fa-boxes-packing", "fa-truck-ramp-box", "fa-clipboard-list"], bgImg: ""
       },
       member5: { 
@@ -865,7 +909,28 @@
         </div>`;
       document.getElementById('interactiveModal').classList.remove('hidden');
       document.getElementById('contactForm').reset();
-   
+    }
+
+    function updateWeather() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, '0');
+      const m = now.getMinutes().toString().padStart(2, '0');
+      const mo = now.getMonth() + 1;
+      const d = now.getDate();
+      const weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      const dayName = weekDays[now.getDay()];
+      const w = [{ c: '板橋', t: 28, i: 'fa-sun', cl: 'text-sky-600' },{ c: '臺中', t: 30, i: 'fa-cloud-sun', cl: 'text-emerald-600' },{ c: '平鎮', t: 27, i: 'fa-cloud', cl: 'text-orange-600' }];
+      if (document.getElementById('weatherSyncText')) document.getElementById('weatherSyncText').innerText = `同步時間 ${h}:${m}`;
+      if (document.getElementById('currentDate')) document.getElementById('currentDate').innerText = `${mo}月${d}日`;
+      if (document.getElementById('currentDay')) document.getElementById('currentDay').innerText = dayName;
+      if (document.getElementById('mainTemp')) document.getElementById('mainTemp').innerText = `${w[0].t}°`;
+      if (document.getElementById('weatherGrid')) document.getElementById('weatherGrid').innerHTML = w.map(x => `
+          <div class="text-center">
+            <p class="text-[10px] sm:text-xs text-slate-500 mb-0.5 font-medium">${x.c}</p>
+            <p class="text-base sm:text-xl font-bold ${x.cl} tech-num mb-0.5">${x.t}°</p>
+            <i class="fa-solid ${x.i} ${x.cl} text-xs sm:text-sm"></i>
+          </div>`).join('');
+    }
 
     function openInteractiveModal(k) {
       const d = db[k]; if(!d) return;
@@ -890,8 +955,6 @@
               <div class="grid grid-cols-2 gap-px bg-slate-800 rounded-xl overflow-hidden border border-slate-800">
                 <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">職能 TYPE</span><p class="text-xs font-black text-white">${d.role}</p></div>
                 <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">專長 SKILL</span><p class="text-xs font-black text-white">${d.skill}</p></div>
-				<div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">職能 sign</span><p class="text-xs font-black text-white">${d.sign}</p></div>
-                <div class="bg-[#1c1f2c] p-3 text-center"><span class="text-[9px] text-slate-500 font-bold block mb-0.5">專長 dob</span><p class="text-xs font-black text-white">${d.dob}</p></div>
               </div>
               <div class="h-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full mt-5 -mx-5 -mb-5"></div>
             </div>
