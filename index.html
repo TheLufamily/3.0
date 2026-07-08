@@ -266,24 +266,31 @@
   <section id="notice" class="py-8 md:py-20 bg-slate-50/50">
     <div class="max-w-4xl mx-auto px-4">
       
-      <div class="text-center mb-6 md:mb-10">
-        <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight flex items-center justify-center gap-2">
-          <i class="fa-solid fa-bullhorn text-indigo-600"></i> 公告訊息中心
-        </h2>
-        <div class="w-12 h-1 bg-indigo-600 mx-auto mt-2 rounded-full"></div>
-      </div>
+      <div class="text-center mb-8 relative">
+  <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] text-indigo-400 font-mono tracking-widest uppercase opacity-70">
+    <i class="fa-solid fa-satellite-dish mr-1"></i>System_Broadcast_Node_v3.0
+  </div>
+  <h2 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight flex items-center justify-center gap-3">
+    <span class="text-indigo-600"><i class="fa-solid fa-terminal"></i></span> 公告訊息戰情中心
+  </h2>
+  <div class="flex items-center justify-center gap-2 mt-3">
+    <div class="h-[1px] w-12 bg-slate-300"></div>
+    <div class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></div>
+    <div class="h-[1px] w-12 bg-slate-300"></div>
+  </div>
+</div>
 
-      <div class="flex justify-center p-1 bg-slate-200/60 rounded-2xl mb-6 max-w-md mx-auto border border-slate-200 font-bold">
-        <button onclick="switchTab('tab-latest')" id="btn-tab-latest" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 bg-white text-indigo-600 shadow-sm flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-newspaper text-[11px]"></i>最新公告
-        </button>
-        <button onclick="switchTab('tab-system')" id="btn-tab-system" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-800 flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-gears text-[11px]"></i>系統公告
-        </button>
-        <button onclick="switchTab('tab-camp')" id="btn-tab-camp" class="flex-1 py-2.5 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-800 flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-jet-fighter text-[11px]"></i>活動公告
-        </button>
-      </div>
+<div class="flex justify-center p-1.5 bg-slate-900 rounded-2xl mb-8 max-w-lg mx-auto border border-slate-700 font-bold shadow-2xl">
+  <button onclick="switchTab('tab-latest')" id="btn-tab-latest" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 bg-indigo-600 text-white shadow-lg shadow-indigo-900/50 flex items-center justify-center gap-2 border border-indigo-500">
+    <i class="fa-solid fa-bolt text-[10px]"></i> 即時快訊
+  </button>
+  <button onclick="switchTab('tab-system')" id="btn-tab-system" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-400 hover:text-white flex items-center justify-center gap-2">
+    <i class="fa-solid fa-network-wired text-[10px]"></i> 系統運作
+  </button>
+  <button onclick="switchTab('tab-camp')" id="btn-tab-camp" class="flex-1 py-3 text-xs sm:text-sm rounded-xl transition-all duration-300 text-slate-400 hover:text-white flex items-center justify-center gap-2">
+    <i class="fa-solid fa-flag text-[10px]"></i> 作戰任務
+  </button>
+</div>
 
       <div id="noticeDisplayWrapper" class="space-y-4 min-h-[160px] transition-all duration-300">
         </div>
