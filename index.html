@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>呂氏家庭生活資訊網 3.0</title>
 
+  <!-- 引入 Tailwind CSS 與相關資源 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=400;500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; }
+    
+    /* 核心響應式工具類 */
     .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.5); }
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
@@ -19,15 +22,14 @@
     
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    
     #backToTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    video { border-radius: 1.5rem; width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* 跑馬燈動畫 */
+    @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-50%, 0); } }
+    .animate-marquee { display: inline-block; animation: marquee 20s linear infinite; }
   </style>
 </head>
-
-<body class="text-slate-700">
 
 <body class="text-slate-700">
 
