@@ -177,72 +177,68 @@
     </div>
   </section>
 
-<div id="scrollContainer" class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 cursor-grab select-none">
-  
-  <!-- 同仁 1：呂陳英妹 -->
-  <div onclick="openMemberModal('member1')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-indigo-200 transition-all cursor-pointer">
-    <div class="text-center">
-      <div class="text-4xl mb-3">👵</div>
-      <h3 class="text-xl font-black text-slate-800">呂陳英妹</h3>
-      <p class="text-indigo-600 font-bold text-xs mt-1">主管 (家庭長)</p>
-      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-x-1">
-        <span>✨ 天蠍座</span> <span>|</span> <span>🎂 11/05</span>
-      </div>
+<section id="members" class="py-24 bg-white overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-black text-slate-800">核心幕僚團隊</h2>
+      <p class="text-slate-400 text-xs font-bold mt-2 italic">可按住滑鼠左鍵左右拖曳</p>
     </div>
-  </div>
+    
+    <div id="scrollContainer" class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 cursor-grab select-none">
+      
+      <!-- 呂陳英妹 -->
+      <div onclick="openMemberModal('member1')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-indigo-200 transition-all cursor-pointer">
+        <div class="text-center">
+          <div class="text-4xl mb-3">👵</div>
+          <h3 class="text-xl font-black text-slate-800">呂陳英妹</h3>
+          <p class="text-indigo-600 font-bold text-xs mt-1">主管 (家庭長)</p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">✨ 天蠍座 | 🎂 11/05</div>
+        </div>
+      </div>
 
-  <!-- 同仁 2：呂佳寯 -->
-  <div onclick="openMemberModal('member2')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-emerald-200 transition-all cursor-pointer">
-    <div class="text-center">
-      <div class="text-4xl mb-3">👨‍💼</div>
-      <h3 class="text-xl font-black text-slate-800">呂佳寯</h3>
-      <p class="text-emerald-600 font-bold text-xs mt-1">政戰主管</p>
-      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-x-1">
-        <span>🦁 獅子座</span> <span>|</span> <span>🎂 08/15</span>
+      <!-- 呂佳寯 -->
+      <div onclick="openMemberModal('member2')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-emerald-200 transition-all cursor-pointer">
+        <div class="text-center">
+          <div class="text-4xl mb-3">👨‍💼</div>
+          <h3 class="text-xl font-black text-slate-800">呂佳寯</h3>
+          <p class="text-emerald-600 font-bold text-xs mt-1">政戰主管</p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">🦁 獅子座 | 🎂 08/15</div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- 同仁 3：呂佳芯 -->
-  <div onclick="openMemberModal('member3')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-pink-200 transition-all cursor-pointer">
-    <div class="text-center">
-      <div class="text-4xl mb-3">👩‍🎤</div>
-      <h3 class="text-xl font-black text-slate-800">呂佳芯</h3>
-      <p class="text-pink-600 font-bold text-xs mt-1">分隊長</p>
-      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-x-1">
-        <span>🐰 雙魚座</span> <span>|</span> <span>🎂 02/28</span>
+      <!-- 呂佳芯 -->
+      <div onclick="openMemberModal('member3')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-pink-200 transition-all cursor-pointer">
+        <div class="text-center">
+          <div class="text-4xl mb-3">👩‍🎤</div>
+          <h3 class="text-xl font-black text-slate-800">呂佳芯</h3>
+          <p class="text-pink-600 font-bold text-xs mt-1">分隊長</p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">🐰 雙魚座 | 🎂 02/28</div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- 同仁 4：後勤員 -->
-  <div onclick="openMemberModal('member4')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-blue-200 transition-all cursor-pointer">
-    <div class="text-center">
-      <div class="text-4xl mb-3">📦</div>
-      <h3 class="text-xl font-black text-slate-800">後勤員</h3>
-      <p class="text-blue-600 font-bold text-xs mt-1">物資後勤支援</p>
-      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-x-1">
-        <span>⚖️ 天秤座</span> <span>|</span> <span>🎂 10/10</span>
+      <!-- 後勤員 -->
+      <div onclick="openMemberModal('member4')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-blue-200 transition-all cursor-pointer">
+        <div class="text-center">
+          <div class="text-4xl mb-3">📦</div>
+          <h3 class="text-xl font-black text-slate-800">後勤員</h3>
+          <p class="text-blue-600 font-bold text-xs mt-1">維保支援</p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">⚖️ 天秤座 | 🎂 10/10</div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- 同仁 5：美術員 -->
-  <div onclick="openMemberModal('member5')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-purple-200 transition-all cursor-pointer">
-    <div class="text-center">
-      <div class="text-4xl mb-3">🎨</div>
-      <h3 class="text-xl font-black text-slate-800">美術員</h3>
-      <p class="text-purple-600 font-bold text-xs mt-1">視覺形象設計</p>
-      <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-x-1">
-        <span>🦀 巨蟹座</span> <span>|</span> <span>🎂 07/04</span>
+      <!-- 美術員 -->
+      <div onclick="openMemberModal('member5')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-purple-200 transition-all cursor-pointer">
+        <div class="text-center">
+          <div class="text-4xl mb-3">🎨</div>
+          <h3 class="text-xl font-black text-slate-800">美術員</h3>
+          <p class="text-purple-600 font-bold text-xs mt-1">視覺形象設計</p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">🦀 巨蟹座 | 🎂 07/04</div>
+        </div>
       </div>
-    </div>
-  </div>
-  
-</div>
       
     </div>
   </div>
+</section>
 </section>
 
 <script charset="UTF-8">
