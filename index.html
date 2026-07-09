@@ -29,6 +29,31 @@
 
 <body class="text-slate-700">
 
+<body class="text-slate-700">
+
+  <div class="w-full bg-red-600 text-white py-2 overflow-hidden whitespace-nowrap">
+    <div class="inline-block animate-marquee font-black text-sm tracking-widest">
+      <span>⚠️ 緊急防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/10 (四) 停班停課。請家族成員做好防颱準備，減少外出。</span>
+      <span class="mx-10">|</span>
+      <span>⚠️ 緊急防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/10 (四) 停班停課。請家族成員做好防颱準備，減少外出。</span>
+    </div>
+  </div>
+
+  <nav class="bg-white/80 ...">
+    ...
+  </nav>
+
+  <style>
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50%, 0); }
+    }
+    .animate-marquee {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+  </style>
+
   <!-- 導覽列 -->
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -80,15 +105,6 @@
           <h2 class="text-3xl font-black text-slate-800">最新公告</h2>
         </div>
         
-             <div class="space-y-6" id="noticeListContainer">
-          <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice1')">
-            <div class="flex justify-between mb-4">
-              <span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>
-              <span class="text-xs font-bold text-slate-400 italic">2026-07-09</span>
-            </div>
-            <h3 class="text-xl font-black text-slate-800">明天2626/07/10因應巴威颱風，新北市宣布停班停課</h3>
-          </div>
-        
         <div class="space-y-6" id="noticeListContainer">
           <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice1')">
             <div class="flex justify-between mb-4">
@@ -104,6 +120,14 @@
               <span class="text-xs font-bold text-slate-400 italic">2026-05-15</span>
             </div>
             <h3 class="text-xl font-black text-slate-800">114年度所得稅申報</h3>
+          </div>
+
+          <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice3')">
+            <div class="flex justify-between mb-4">
+              <span class="bg-emerald-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">活動調查</span>
+              <span class="text-xs font-bold text-slate-400 italic">2026-05-01</span>
+            </div>
+            <h3 class="text-xl font-black text-slate-800">端午節連假聚餐意願調查</h3>
           </div>
 
           <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice4')">
@@ -322,16 +346,15 @@
       <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
         <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice1'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
-          <h4 class="font-black text-slate-800 text-lg">明天新北市因應巴威颱風來襲，宣布停班停課</h4>
-        </div>
-      <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice1'); closeHistoryModal();">
-          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
           <h4 class="font-black text-slate-800 text-lg">近期本網站會進行更新</h4>
         </div>
         <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice2'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-black uppercase">公告</span><span class="text-xs font-bold text-slate-400 italic">2026-05-15</span></div>
           <h4 class="font-black text-slate-800 text-lg">114年度所得稅開始申報</h4>
+        </div>
+        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice3'); closeHistoryModal();">
+          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-600 text-[10px] font-black uppercase">活動</span><span class="text-xs font-bold text-slate-400 italic">2026-05-01</span></div>
+          <h4 class="font-black text-slate-800 text-lg">端午節連假聚餐意願調查</h4>
         </div>
         <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice4'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-slate-200 text-slate-600 text-[10px] font-black uppercase">維護</span><span class="text-xs font-bold text-slate-400 italic">2026-04-10</span></div>
@@ -420,10 +443,9 @@
     AOS.init({ duration: 1000, once: true });
 
     const noticeData = {
-      notice1: { title: "明天新北市因應巴威颱風來襲，宣布停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "因巴威颱風來襲，市府宣布2026/07/10停班停課" },
-      notice2: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。" },
-      notice3: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。" },
-      notice4: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。" }
+      notice1: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。" },
+      notice2: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。" },
+      notice3: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。" }
     };
 
     function initNoticeList() {
