@@ -181,13 +181,11 @@
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-12" data-aos="fade-up">
       <h2 class="text-4xl font-black text-slate-800">核心幕僚團隊</h2>
-      <p class="text-slate-400 text-xs font-bold mt-2">
-        <i class="fa-solid fa-arrows-left-right animate-pulse mr-1"></i> 點擊並左右拖曳查看更多
-      </p>
+      <p class="text-slate-400 text-xs font-bold mt-2"><i class="fa-solid fa-arrows-left-right animate-pulse mr-1"></i> 點擊並左右拖曳查看更多</p>
       <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-3 rounded-full"></div>
     </div>
     
-    <div id="scrollContainer" class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 hide-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none">
+    <div id="scrollContainer" class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 hide-scrollbar snap-x snap-mandatory lg:w-full cursor-grab active:cursor-grabbing select-none">
       
       <div onclick="openMemberModal('member1')" class="snap-center shrink-0 w-[280px] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-indigo-200">
         <div class="w-20 h-20 rounded-3xl bg-indigo-50 flex items-center justify-center text-indigo-500 text-3xl mb-4 mx-auto group-hover:bg-indigo-100 transition-all"><i class="fa-solid fa-crown"></i></div>
@@ -232,7 +230,7 @@
   </div>
 </section>
 
-<script>
+  <script>
   const slider = document.getElementById('scrollContainer');
   let isDown = false;
   let startX;
@@ -259,7 +257,7 @@
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; 
+    const walk = (x - startX) * 2; // 調整此數字可改變拖曳速度
     slider.scrollLeft = scrollLeft - walk;
   });
 </script>
