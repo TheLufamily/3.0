@@ -1,31 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>呂氏家庭生活資訊網 3.0</title>
 
-  <!-- 引入 Tailwind CSS 與相關資源 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
-    body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; scroll-behavior: smooth; }
-    
-    /* 核心響應式工具類 */
+    body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; }
     .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.5); }
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
     .hover-float:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12); }
-    
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-    
-    #backToTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    
-    /* 跑馬燈動畫 */
     @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-50%, 0); } }
     .animate-marquee { display: inline-block; animation: marquee 20s linear infinite; }
   </style>
@@ -33,6 +23,7 @@
 
 <body class="text-slate-700">
 
+  <!-- 1. 緊急公告 -->
   <div class="w-full bg-red-600 text-white py-2 overflow-hidden whitespace-nowrap">
     <div class="inline-block animate-marquee font-black text-sm tracking-widest">
       <span>⚠️ 緊急防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/10 (四) 停班停課。請家族成員做好防颱準備，減少外出。</span>
@@ -41,41 +32,42 @@
     </div>
   </div>
 
-  <nav class="bg-white/80 ...">
-    ...
-  </nav>
-
-  <style>
-    @keyframes marquee {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-50%, 0); }
-    }
-    .animate-marquee {
-      display: inline-block;
-      animation: marquee 20s linear infinite;
-    }
-  </style>
-
-  <!-- 導覽列 -->
+  <!-- 2. 導覽列 (響應式) -->
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
-        <div>
-          <h1 class="font-bold text-lg text-slate-800 leading-tight">呂氏家庭資訊網<span class="text-indigo-600 text-sm ml-1">3.0</span></h1>
-          <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Family Hub</p>
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
+        <h1 class="font-bold text-lg text-slate-800">呂氏家庭資訊網</h1>
       </div>
-      <div class="hidden md:flex items-center gap-6 text-sm font-bold">
-        <a href="#home" class="text-slate-500 hover:text-indigo-600 transition-colors">首頁</a>
-        <a href="#notice" class="text-slate-500 hover:text-indigo-600 transition-colors">最新消息</a>
-        <a href="#leadership" class="text-slate-500 hover:text-indigo-600 transition-colors">團隊陣容</a>
-        <a href="#role-definitions" class="text-slate-500 hover:text-indigo-600 transition-colors">團隊介紹</a>
-        <a href="#location" class="text-slate-500 hover:text-indigo-600 transition-colors">關於我們</a>
-        <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-md font-black">
+
+      <!-- 手機漢堡按鈕 -->
+      <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden text-2xl text-slate-700">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- 電腦選單 -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-500">
+        <a href="#home" class="hover:text-indigo-600">首頁</a>
+        <a href="#notice" class="hover:text-indigo-600">最新消息</a>
+        <a href="#leadership" class="hover:text-indigo-600">團隊陣容</a>
+        <a href="#role-definitions" class="hover:text-indigo-600">團隊介紹</a>
+        <a href="#location" class="hover:text-indigo-600">關於我們</a>
+     <button onclick="openHistoryModal()" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-black text-sm">
           <i class="fa-solid fa-bullhorn"></i> 歷史消息
         </button>
       </div>
+    </div>
+
+    <!-- 手機下拉選單 -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 p-6 flex flex-col gap-4 text-center font-bold text-slate-700">
+      <a href="#home" onclick="document.getElementById('mobileMenu').classList.add('hidden')">首頁</a>
+      <a href="#notice" onclick="document.getElementById('mobileMenu').classList.add('hidden')">最新消息</a>
+      <a href="#leadership" onclick="document.getElementById('mobileMenu').classList.add('hidden')">團隊陣容</a>
+      <a href="#role-definitions" onclick="document.getElementById('mobileMenu').classList.add('hidden')">團隊介紹</a>
+      <a href="#location" onclick="document.getElementById('mobileMenu').classList.add('hidden')">關於我們</a>
+      <button onclick="openHistoryModal()" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-black text-sm">
+          <i class="fa-solid fa-bullhorn"></i> 歷史消息
+        </button>
     </div>
   </nav>
 
