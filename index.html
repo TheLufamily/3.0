@@ -33,41 +33,38 @@
   </div>
 
   <!-- 2. 導覽列 (響應式) -->
-  <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+<nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
         <h1 class="font-bold text-lg text-slate-800">呂氏家庭資訊網</h1>
       </div>
 
-      <!-- 手機漢堡按鈕 -->
       <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden text-2xl text-slate-700">
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- 電腦選單 -->
       <div class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-500">
         <a href="#home" class="hover:text-indigo-600">首頁</a>
         <a href="#notice" class="hover:text-indigo-600">最新消息</a>
         <a href="#leadership" class="hover:text-indigo-600">團隊陣容</a>
         <a href="#role-definitions" class="hover:text-indigo-600">團隊介紹</a>
         <a href="#location" class="hover:text-indigo-600">關於我們</a>
-     <button onclick="openHistoryModal()" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-black text-sm">
+        <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-black text-sm">
           <i class="fa-solid fa-bullhorn"></i> 歷史消息
         </button>
       </div>
     </div>
 
-    <!-- 手機下拉選單 -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 p-6 flex flex-col gap-4 text-center font-bold text-slate-700">
       <a href="#home" onclick="document.getElementById('mobileMenu').classList.add('hidden')">首頁</a>
       <a href="#notice" onclick="document.getElementById('mobileMenu').classList.add('hidden')">最新消息</a>
       <a href="#leadership" onclick="document.getElementById('mobileMenu').classList.add('hidden')">團隊陣容</a>
       <a href="#role-definitions" onclick="document.getElementById('mobileMenu').classList.add('hidden')">團隊介紹</a>
       <a href="#location" onclick="document.getElementById('mobileMenu').classList.add('hidden')">關於我們</a>
-      <button onclick="openHistoryModal()" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-black text-sm">
-          <i class="fa-solid fa-bullhorn"></i> 歷史消息
-        </button>
+      <button onclick="openHistoryModal(); document.getElementById('mobileMenu').classList.add('hidden');" class="mx-auto flex items-center gap-2 px-4 py-3 rounded-xl bg-indigo-600 text-white font-black text-sm w-full justify-center">
+        <i class="fa-solid fa-bullhorn"></i> 歷史消息
+      </button>
     </div>
   </nav>
 
