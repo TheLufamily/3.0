@@ -143,7 +143,7 @@
   
   <!-- 新增的總標題 -->
   <div class="text-center mb-10">
-    <h1 class="text-3xl font-bold text-slate-900 mb-2">團隊陣容</h1>
+    <h1 class="text-4xl font-bold text-slate-900 mb-2">團隊陣容</h1> <!-- 標題從 3xl 改為 4xl -->
     <div class="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
   </div>
 
@@ -152,40 +152,42 @@
       <span class="w-1 h-6 bg-indigo-600 mr-3 rounded-full"></span>主管群
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div onclick="showDetail('主管(家庭長)', '為團隊最高決策與核心目標，負責行政之最終審核。')" class="bg-white p-4 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all flex items-center gap-4">
-        <div class="text-3xl">👵</div>
-        <div><h3 class="font-bold text-slate-800">呂陳英妹</h3><p class="text-indigo-600 text-sm">主管(家庭長)</p></div>
+      <div onclick="showDetail('主管(家庭長)', '為團隊最高決策與核心目標，負責行政之最終審核。')" 
+           class="bg-white p-8 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all flex flex-col items-center justify-center text-center">
+        <h3 class="font-bold text-slate-800 text-lg">呂陳英妹</h3>
+        <p class="text-indigo-600 text-base font-medium mt-1">主管(家庭長)</p>
       </div>
-      <div onclick="showDetail('政戰主管', '負責內部的溝通協調、督導、士氣維護及新聞公關。')" class="bg-white p-4 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all flex items-center gap-4">
-        <div class="text-3xl">👨‍💼</div>
-        <div><h3 class="font-bold text-slate-800">呂佳寯</h3><p class="text-emerald-600 text-sm">政戰主管</p></div>
+      <div onclick="showDetail('政戰主管', '負責內部的溝通協調、督導、士氣維護及新聞公關。')" 
+           class="bg-white p-8 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all flex flex-col items-center justify-center text-center">
+        <h3 class="font-bold text-slate-800 text-lg">呂佳寯</h3>
+        <p class="text-emerald-600 text-base font-medium mt-1">政戰主管</p>
       </div>
-      <div onclick="showDetail('參事', '負責單位內部各項行政庶務')" class="bg-white p-4 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all flex items-center gap-4">
-        <div class="text-3xl">⚖️</div>
-        <div><h3 class="font-bold text-slate-800">懸缺</h3><p class="text-amber-600 text-sm">參事</p></div>
+      <div onclick="showDetail('參事', '負責單位內部各項行政庶務')" 
+           class="bg-white p-8 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all flex flex-col items-center justify-center text-center">
+        <h3 class="font-bold text-slate-800 text-lg">懸缺</h3>
+        <p class="text-amber-600 text-base font-medium mt-1">參事</p>
       </div>
     </div>
   </section>
-
   <section id="staff">
     <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
       <span class="w-1 h-6 bg-slate-400 mr-3 rounded-full"></span>幕僚群
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div onclick="showDetail('吉米的爸爸', '負責組織內各項硬體設施的維護與保養，提供即時的技術支援，確保現場運作無障礙，是技術維保的核心關鍵。')" 
-           class="bg-white p-4 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all hover:border-blue-400">
-        <h3 class="font-bold text-slate-800">吉米的爸爸</h3>
-        <p class="text-blue-600 text-sm">維保支援</p>
+      <div onclick="showDetail('後勤員', '負責單位營產改善施工管理。')" 
+           class="bg-white p-6 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all hover:border-blue-400">
+        <h3 class="font-bold text-slate-800 text-lg">吉米的爸爸</h3>
+        <p class="text-blue-600 text-base font-medium">後勤員</p>
       </div>
-      <div onclick="showDetail('呂佳芯', '專責單位內部視覺形象設計與規劃')" 
-           class="bg-white p-4 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all hover:border-purple-400">
-        <h3 class="font-bold text-slate-800">呂佳芯</h3>
-        <p class="text-purple-600 text-sm">視覺形象設計</p>
+      <div onclick="showDetail('美術員', '專責單位內部視覺形象設計與規劃')" 
+           class="bg-white p-6 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all hover:border-purple-400">
+        <h3 class="font-bold text-slate-800 text-lg">呂佳芯</h3>
+        <p class="text-purple-600 text-base font-medium">美術員</p>
       </div>
       <div onclick="showDetail('分支長', '負責管理及督導所屬駐地單位')" 
-           class="bg-white p-4 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all hover:border-orange-400">
-        <h3 class="font-bold text-slate-800">分支長</h3>
-        <p class="text-orange-600 text-sm">管理及督導</p>
+           class="bg-white p-6 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all hover:border-orange-400">
+        <h3 class="font-bold text-slate-800 text-lg">分支長</h3>
+        <p class="text-orange-600 text-base font-medium">管理及督導</p>
       </div>
     </div>
   </section>
@@ -222,7 +224,7 @@
     <h2 class="text-2xl font-black text-slate-800 mb-8 text-center">組織分工說明</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
-      <div onclick="showDetail('行政核心', '負責組織的總體決策、經營方向與內部秩序督導。\n\n• 家庭長 (呂陳英妹)：掌管最高決策與核心目標。\n• 政戰主管 (呂佳寯)：負責組織內部溝通協調、程序督導及士氣維護。\n• 參事：負責內部各項行政庶務。')" 
+      <div onclick="showDetail('行政核心', '負責組織的總體決策、經營方向與內部秩序督導。\n\n• 家庭長：掌管最高決策與核心目標。\n• 政戰主管：內部溝通協調、程序督導及士氣維護。\n• 參事：負責內部各項行政庶務。')" 
            class="p-8 bg-white rounded-3xl border border-indigo-100 shadow-sm cursor-pointer hover:shadow-lg transition-all hover:bg-indigo-50">
         <h3 class="text-xl font-black text-indigo-900 mb-4 flex items-center">
           <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">I</span>
@@ -231,7 +233,7 @@
         <p class="text-indigo-800 text-sm">點擊查看行政核心詳細分工 →</p>
       </div>
 
-      <div onclick="showDetail('執行幕僚', '負責具體業務的技術支援與專案落實。\n\n• 維保支援 (吉米的爸爸)：負責實務運作之硬體維護與技術支援。\n• 視覺形象設計 (呂佳芯)：負責組織視覺識別與設計規劃。')" 
+      <div onclick="showDetail('執行幕僚', '負責具體業務的技術支援與專案落實。\n\n• 維保支援：負責營產改善施工管理。\n• 視覺形象設計：負責組織視覺識別與設計規劃。')" 
            class="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm cursor-pointer hover:shadow-lg transition-all hover:bg-slate-50">
         <h3 class="text-xl font-black text-slate-800 mb-4 flex items-center">
           <span class="bg-slate-800 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">II</span>
@@ -260,49 +262,45 @@
     document.getElementById('detailModal').classList.add('hidden');
   }
 </script>
-  <!-- 4. 家族足跡分佈 -->
-  <section id="location" class="py-24 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-4xl font-black text-slate-800">家族足跡分佈</h2>
-        <p class="text-slate-400 text-xs font-bold mt-2">💡 點擊下方區塊，查看地方主管、分支及詳細人數</p>
-        <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+ <!-- 4. 家族足跡分佈 -->
+<section id="location" class="py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-black text-slate-800">家族足跡分佈</h2>
+      <p class="text-slate-400 text-xs font-bold mt-2">各據點成員分佈概況</p>
+      <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-blue-500 shadow-sm">
+        <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
+          <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
+        </div>
+        <h3 class="text-2xl font-black text-slate-800">新北板橋</h3>
+        <p class="text-blue-600 font-bold text-lg mt-2">核心據點(總部)</p>
+        <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 7 名成員</div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <!-- 新北市 -->
-        <div onclick="openLocationModal('loc1')" class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-blue-500 shadow-sm" data-aos="fade-up">
-          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
-            <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">新北板橋</h3>
-          <p class="text-blue-600 font-bold text-lg mt-2">核心據點(總部)</p>
-          <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 7 名成員</div>
-        </div>
 
-        <!-- 臺中市 -->
-        <div onclick="openLocationModal('loc2')" class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-orange-500 shadow-sm" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
-            <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">臺中北區、中區</h3>
-          <p class="text-orange-600 font-bold text-lg mt-2">第一分支</p>
-          <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 6 名成員</div>
+      <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-orange-500 shadow-sm">
+        <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
+          <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
         </div>
+        <h3 class="text-2xl font-black text-slate-800">臺中北區、中區</h3>
+        <p class="text-orange-600 font-bold text-lg mt-2">第一分支</p>
+        <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 6 名成員</div>
+      </div>
 
-        <!-- 桃園市 -->
-        <div onclick="openLocationModal('loc3')" class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-emerald-500 shadow-sm" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
-            <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">桃園平鎮</h3>
-          <p class="text-emerald-600 font-bold text-lg mt-2">第二分支</p>
-          <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 3 名成員</div>
+      <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-emerald-500 shadow-sm">
+        <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
+          <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
         </div>
+        <h3 class="text-2xl font-black text-slate-800">桃園平鎮</h3>
+        <p class="text-emerald-600 font-bold text-lg mt-2">第二分支</p>
+        <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 3 名成員</div>
       </div>
     </div>
-  </section>
-
-  <!-- Modals 區塊略（保持不變）... -->
+  </div>
+</section>  <!-- Modals 區塊略（保持不變）... -->
   <!-- [這裡留存你原始所有的 modal 結構如 historyModal、noticeDetailModal、memberModal、locationModal、backToTop 按鈕與 footer] -->
   <div id="historyModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeHistoryModal()">
     <div id="historyModalContainer" class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300" onclick="event.stopPropagation()">
@@ -532,26 +530,7 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    function updateDashboard() {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const date = String(now.getDate()).padStart(2, '0');
-      const dayNames = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-      const dayName = dayNames[now.getDay()];
-      
-      document.getElementById('dayNumber').innerText = date;
-      document.getElementById('monthYear').innerText = `${year}年 ${month}月`;
-      document.getElementById('currentDateText').innerText = `今天環境：${dayName}`;
-      
-      const birthdayMap = {
-        "01": "暫無壽星", "02": "暫無壽星", "03": "暫無壽星", "04": "暫無壽星",
-        "05": "呂佳芯 🎂", "06": "暫無壽星", "07": "呂佳寯 🎂", "08": "暫無壽星",
-        "09": "呂陳英妹 🎂", "10": "暫無壽星", "11": "暫無壽星", "12": "暫無壽星"
-      };
-      document.getElementById('birthdayName').innerText = birthdayMap[month] || "暫無壽星";
-    }
-
+    
     function startCountdown() {
       const targetDate = new Date("Sep 25, 2026 18:00:00").getTime();
       function updateTimer() {
