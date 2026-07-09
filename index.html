@@ -217,40 +217,6 @@
   </div>
 </section>
 
-
-
-  <script>
-  const slider = document.getElementById('scrollContainer');
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('cursor-grabbing');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
-
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('cursor-grabbing');
-  });
-
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('cursor-grabbing');
-  });
-
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // 調整此數字可改變拖曳速度
-    slider.scrollLeft = scrollLeft - walk;
-  });
-</script>
-
   <!-- 4. 家族足跡分佈 -->
   <section id="location" class="py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-6">
