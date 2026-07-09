@@ -65,12 +65,11 @@
         </div>
       </div>
       <div class="hidden md:flex items-center gap-6 text-sm font-bold">
-        <a href="#home" class="text-slate-500 hover:text-indigo-600 transition-colors">首頁</a>
-        <a href="#notice" class="text-slate-500 hover:text-indigo-600 transition-colors">動態看板 / 活動進度</a>
+        <a href="#home" class="text-slate-500 hover:text-indigo-600 transition-colors">消息發布</a>
         <a href="#members" class="text-slate-500 hover:text-indigo-600 transition-colors">幕僚團隊</a>
         <a href="#location" class="text-slate-500 hover:text-indigo-600 transition-colors">足跡分佈</a>
         <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-md font-black">
-          <i class="fa-solid fa-bullhorn"></i> 消息中心
+          <i class="fa-solid fa-bullhorn"></i> 歷史消息
         </button>
       </div>
     </div>
@@ -85,7 +84,7 @@
           System Online 2026
         </div>
         <h2 class="text-6xl font-black leading-tight text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
-        <p class="mt-8 text-lg text-slate-500 max-w-md font-medium">呂氏家族 16 位成員的專屬空間，紀錄平凡日子裡的每一份暖心回顧。</p>
+        <p class="mt-8 text-lg text-slate-500 max-w-md font-medium"></p>
       </div>
       <div class="relative flex justify-center" data-aos="fade-left">
         <div class="glass-card rounded-[40px] p-12 shadow-2xl border-white text-center hover-float">
@@ -97,104 +96,48 @@
     </div>
   </section>
 
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
-      <!-- 左欄：最新公告 -->
-      <div>
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-bullhorn text-xl"></i></div>
-          <h2 class="text-3xl font-black text-slate-800">最新公告</h2>
-        </div>
-        
-        <div class="space-y-6" id="noticeListContainer">
-          <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice1')">
-            <div class="flex justify-between mb-4">
-              <span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>
-              <span class="text-xs font-bold text-slate-400 italic">2026-07-09</span>
-            </div>
-            <h3 class="text-xl font-black text-slate-800">近期本網站會進行更新</h3>
-          </div>
-          
-          <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice2')">
-            <div class="flex justify-between mb-4">
-              <span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>
-              <span class="text-xs font-bold text-slate-400 italic">2026-05-15</span>
-            </div>
-            <h3 class="text-xl font-black text-slate-800">114年度所得稅申報</h3>
-          </div>
-
-          
-
-          <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer" onclick="openNoticeModal('notice4')">
-            <div class="flex justify-between mb-4">
-              <span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span>
-              <span class="text-xs font-bold text-slate-400 italic">2026-04-10</span>
-            </div>
-            <h3 class="text-xl font-black text-slate-800">伺服器例行維護通知</h3>
-          </div>
-
-          <button id="goToHistoryModalBtn" onclick="openHistoryModal()" class="w-full py-4 rounded-3xl bg-indigo-600 text-white font-black hover:bg-indigo-700 transition-all text-sm flex items-center justify-center gap-2 shadow-md hidden">
-            查看更多訊息 (進入消息中心) <i class="fa-solid fa-arrow-right-to-bracket"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- 右欄：活動進度與活動回顧整合區 -->
-      <div data-aos="fade-left">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-list-check text-xl"></i></div>
-          <h2 class="text-3xl font-black text-slate-800">活動進度</h2>
-        </div>
-        
-        <!-- 主要進度卡片 -->
-        <div class="bg-white rounded-[40px] p-10 border border-slate-100 shadow-sm space-y-8">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-5">
-              <div class="w-4 h-4 rounded-full bg-slate-300"></div>
-              <p class="text-lg font-black text-slate-800">母親節晚宴</p>
-            </div>
-            <span class="text-slate-400 font-bold text-sm px-3 py-1 bg-slate-50 rounded-full">已結束</span>
-          </div>
-          
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-5">
-              <div class="w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-50"></div>
-              <p class="text-lg font-black text-slate-800 italic">中秋家族烤肉</p>
-            </div>
-            <span class="text-indigo-500 font-bold text-sm px-3 py-1 bg-indigo-50 rounded-full">規劃中</span>
-          </div>
-
-          <!-- 分隔線與回顧內容 -->
-          <div class="border-t border-slate-100 pt-8 mt-6">
-            <div class="flex items-center gap-2 mb-6">
-              <i class="fa-solid fa-photo-film text-pink-500 text-lg"></i>
-              <h4 class="text-xl font-black text-slate-800">歷史活動精選回顧</h4>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <!-- 照片回顧 -->
-              <div class="group cursor-pointer">
-                <div class="rounded-2xl overflow-hidden shadow-md border-4 border-slate-50 transition-transform group-hover:scale-[1.02]">
-                  <img src="S__23732244.jpg" class="w-full h-auto object-cover" alt="家族合照">
-                </div>
-                <p class="mt-2 text-center text-xs font-bold text-slate-400 italic">2026 母親節家族合照</p>
-              </div>
-
-              <!-- 影片回顧 -->
-              <div>
-                <div class="rounded-2xl overflow-hidden shadow-md border-4 border-slate-50">
-                  <video controls poster="video_poster.jpg" class="!rounded-xl">
-                    <source src="母親節MV.mp4" type="video/mp4">
-                  </video>
-                </div>
-                <p class="mt-2 text-center text-xs font-bold text-slate-400 italic">溫馨活動紀錄剪輯影片</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+<!-- 調整為全寬佈局 -->
+<section id="notice" class="py-20 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6"> <!-- 縮小寬度讓閱讀更聚焦 -->
+    
+    <div class="flex items-center gap-4 mb-12">
+      <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-bullhorn text-xl"></i></div>
+      <h2 class="text-4xl font-black text-slate-800">家族消息中心</h2>
     </div>
-  </section>
+    
+    <!-- 這裡將公告列表撐開，設定空間更大 -->
+    <div class="space-y-6" id="noticeListContainer">
+      
+      <!-- 公告卡片樣式優化 -->
+      <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" onclick="openNoticeModal('notice1')">
+        <div class="flex justify-between items-center mb-4">
+          <span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>
+          <span class="text-xs font-bold text-slate-400 italic">2026-07-09</span>
+        </div>
+        <h3 class="text-2xl font-black text-slate-800">近期本網站會進行更新</h3>
+      </div>
+      
+      <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" onclick="openNoticeModal('notice2')">
+        <div class="flex justify-between items-center mb-4">
+          <span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>
+          <span class="text-xs font-bold text-slate-400 italic">2026-05-15</span>
+        </div>
+        <h3 class="text-2xl font-black text-slate-800">114年度所得稅申報</h3>
+      </div>
+
+      <div class="notice-item bg-white rounded-[40px] p-8 hover-float border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" onclick="openNoticeModal('notice4')">
+        <div class="flex justify-between items-center mb-4">
+          <span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span>
+          <span class="text-xs font-bold text-slate-400 italic">2026-04-10</span>
+        </div>
+        <h3 class="text-2xl font-black text-slate-800">伺服器例行維護通知</h3>
+      </div>
+
+      <!-- 您可以持續增加更多公告，這裡會自動變成一個長清單 -->
+      
+    </div>
+  </div>
+</section>
 
 <section id="members" class="py-24 bg-white overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
