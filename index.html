@@ -18,27 +18,26 @@
     .hover-float:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12); }
     @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-50%, 0); } }
     .animate-marquee { display: inline-block; animation: marquee 20s linear infinite; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
   </style>
 </head>
 
 <body class="text-slate-700">
 
-  <!-- 1. 緊急公告 -->
   <div class="w-full bg-red-600 text-white py-2 overflow-hidden whitespace-nowrap">
     <div class="inline-block animate-marquee font-black text-sm tracking-widest">
-      <span>⚠️ 緊急防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/10 (四) 停班停課。請家族成員做好防颱準備，減少外出。</span>
-      <span class="mx-10">|</span>
       <span>⚠️ 緊急防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/10 (四) 停班停課。請家族成員做好防颱準備，減少外出。</span>
     </div>
   </div>
 
-  <!-- 2. 導覽列 (響應式) -->
-<nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+  <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
+      
+      <a href="#home" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
         <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
         <h1 class="font-bold text-lg text-slate-800">呂氏家庭資訊網</h1>
-      </div>
+      </a>
 
       <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden text-2xl text-slate-700">
         <i class="fa-solid fa-bars"></i>
@@ -67,7 +66,6 @@
       </button>
     </div>
   </nav>
-
   <!-- 1. 首頁區 -->
   <section id="home" class="py-20 flex items-center">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
