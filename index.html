@@ -177,69 +177,63 @@
     </div>
   </section>
 
-<section id="members" class="py-24 bg-white overflow-hidden">
+  <section id="members" class="py-24 bg-white overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-12">
       <h2 class="text-4xl font-black text-slate-800">核心幕僚團隊</h2>
-      <p class="text-slate-400 text-xs font-bold mt-2 italic">可按住滑鼠左鍵左右拖曳</p>
+      <p class="text-slate-400 text-xs font-bold mt-2 italic">可按住滑鼠左鍵或觸控拖曳</p>
     </div>
     
     <div id="scrollContainer" class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 cursor-grab select-none">
       
       <!-- 呂陳英妹 -->
-      <div onclick="openMemberModal('member1')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-indigo-200 transition-all cursor-pointer">
-        <div class="text-center">
-          <div class="text-4xl mb-3">👵</div>
-          <h3 class="text-xl font-black text-slate-800">呂陳英妹</h3>
-          <p class="text-indigo-600 font-bold text-xs mt-1">主管 (家庭長)</p>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">更新中/div>
+      <div onclick="openMemberModal('member1')" class="shrink-0 w-[280px] flex items-center gap-4 glass-card rounded-[25px] p-6 border border-slate-100 hover:border-indigo-200 transition-all cursor-pointer">
+        <div class="text-4xl">👵</div>
+        <div>
+          <h3 class="font-black text-slate-800">呂陳英妹</h3>
+          <p class="text-indigo-600 font-bold text-xs">主管 (家庭長)</p>
         </div>
       </div>
 
       <!-- 呂佳寯 -->
-      <div onclick="openMemberModal('member2')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-emerald-200 transition-all cursor-pointer">
-        <div class="text-center">
-          <div class="text-4xl mb-3">👨‍💼</div>
-          <h3 class="text-xl font-black text-slate-800">呂佳寯</h3>
-          <p class="text-emerald-600 font-bold text-xs mt-1">政戰主管</p>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">更新中</div>
+      <div onclick="openMemberModal('member2')" class="shrink-0 w-[280px] flex items-center gap-4 glass-card rounded-[25px] p-6 border border-slate-100 hover:border-emerald-200 transition-all cursor-pointer">
+        <div class="text-4xl">👨‍💼</div>
+        <div>
+          <h3 class="font-black text-slate-800">呂佳寯</h3>
+          <p class="text-emerald-600 font-bold text-xs">政戰主管</p>
         </div>
       </div>
 
-      <!-- 呂佳芯 -->
-      <div onclick="openMemberModal('member3')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-pink-200 transition-all cursor-pointer">
-        <div class="text-center">
-          <div class="text-4xl mb-3">👩‍🎤</div>
-          <h3 class="text-xl font-black text-slate-800">政戰主管兼任</h3>
-          <p class="text-pink-600 font-bold text-xs mt-1">分隊長</p>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">更新中</div>
+      <!-- 呂佳芯 (分隊長) -->
+      <div onclick="openMemberModal('member3')" class="shrink-0 w-[280px] flex items-center gap-4 glass-card rounded-[25px] p-6 border border-slate-100 hover:border-pink-200 transition-all cursor-pointer">
+        <div class="text-4xl">👩‍🎤</div>
+        <div>
+          <h3 class="font-black text-slate-800">呂佳芯</h3>
+          <p class="text-pink-600 font-bold text-xs">分隊長</p>
         </div>
       </div>
 
-      <!-- 後勤員 -->
-      <div onclick="openMemberModal('member4')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-blue-200 transition-all cursor-pointer">
-        <div class="text-center">
-          <div class="text-4xl mb-3">📦</div>
-          <h3 class="text-xl font-black text-slate-800">吉米的爸爸</h3>
-          <p class="text-blue-600 font-bold text-xs mt-1">維保支援</p>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">更新中</div>
+      <!-- 吉米的爸爸 -->
+      <div onclick="openMemberModal('member4')" class="shrink-0 w-[280px] flex items-center gap-4 glass-card rounded-[25px] p-6 border border-slate-100 hover:border-blue-200 transition-all cursor-pointer">
+        <div class="text-4xl">📦</div>
+        <div>
+          <h3 class="font-black text-slate-800">吉米的爸爸</h3>
+          <p class="text-blue-600 font-bold text-xs">維保支援</p>
         </div>
       </div>
 
-      <!-- 美術員 -->
-      <div onclick="openMemberModal('member5')" class="shrink-0 w-[280px] glass-card rounded-[35px] p-8 border border-slate-100 hover:border-purple-200 transition-all cursor-pointer">
-        <div class="text-center">
-          <div class="text-4xl mb-3">🎨</div>
-          <h3 class="text-xl font-black text-slate-800">呂佳芯</h3>
-          <p class="text-purple-600 font-bold text-xs mt-1">視覺形象設計</p>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold">更新中</div>
+      <!-- 呂佳芯 (視覺設計) -->
+      <div onclick="openMemberModal('member5')" class="shrink-0 w-[280px] flex items-center gap-4 glass-card rounded-[25px] p-6 border border-slate-100 hover:border-purple-200 transition-all cursor-pointer">
+        <div class="text-4xl">🎨</div>
+        <div>
+          <h3 class="font-black text-slate-800">呂佳芯</h3>
+          <p class="text-purple-600 font-bold text-xs">視覺形象設計</p>
         </div>
       </div>
       
     </div>
   </div>
 </section>
-
 <script charset="UTF-8">
   (function() {
     const slider = document.getElementById('scrollContainer');
