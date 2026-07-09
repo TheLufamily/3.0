@@ -177,63 +177,92 @@
     </div>
   </section>
 
-  <!-- 3. 幕僚團隊 -->
-  <section id="members" class="py-24 bg-white overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-4xl font-black text-slate-800">核心幕僚團隊</h2>
-        <p class="text-slate-400 text-xs font-bold mt-2"><i class="fa-solid fa-arrows-left-right animate-pulse mr-1"></i> 負責對內事務、組織目標直接執行關係單位</p>
-        <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-3 rounded-full"></div>
+<section id="members" class="py-24 bg-white overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-black text-slate-800">核心幕僚團隊</h2>
+      <p class="text-slate-400 text-xs font-bold mt-2">
+        <i class="fa-solid fa-arrows-left-right animate-pulse mr-1"></i> 點擊並左右拖曳查看更多
+      </p>
+      <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-3 rounded-full"></div>
+    </div>
+    
+    <div id="scrollContainer" class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 hide-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none">
+      
+      <div onclick="openMemberModal('member1')" class="snap-center shrink-0 w-[280px] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-indigo-200">
+        <div class="w-20 h-20 rounded-3xl bg-indigo-50 flex items-center justify-center text-indigo-500 text-3xl mb-4 mx-auto group-hover:bg-indigo-100 transition-all"><i class="fa-solid fa-crown"></i></div>
+        <div class="text-center">
+          <h3 class="text-xl font-black text-slate-800">呂陳英妹</h3>
+          <p class="text-indigo-600 font-bold text-xs mt-1">主管(家庭長)</p>
+        </div>
       </div>
       
-      <div class="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 hide-scrollbar snap-x snap-mandatory lg:w-full">
-        <!-- 核心 1 -->
-        <div onclick="openMemberModal('member1')" class="snap-center shrink-0 w-[calc(100%-16px)] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-indigo-200">
-          <div class="w-20 h-20 rounded-3xl bg-indigo-50 flex items-center justify-center text-indigo-500 text-3xl mb-4 mx-auto group-hover:bg-indigo-100 transition-all"><i class="fa-solid fa-crown"></i></div>
-          <div class="text-center">
-            <h3 class="text-xl font-black text-slate-800">呂陳英妹</h3>
-            <p class="text-indigo-600 font-bold text-xs mt-1">主管(家庭長)</p>
-          </div>
+      <div onclick="openMemberModal('member2')" class="snap-center shrink-0 w-[280px] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-emerald-200">
+        <div class="w-20 h-20 rounded-3xl bg-emerald-50 mb-4 overflow-hidden shadow-md mx-auto border-4 border-white"><img src="110417006.jpg" class="w-full h-full object-cover" alt="呂佳寯"></div>
+        <div class="text-center">
+          <h3 class="text-xl font-black text-slate-800">呂佳寯</h3>
+          <p class="text-emerald-600 font-bold text-xs mt-1">政戰主管</p>
         </div>
-        
-        <!-- 核心 2 -->
-        <div onclick="openMemberModal('member2')" class="snap-center shrink-0 w-[calc(100%-16px)] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-emerald-200">
-          <div class="w-20 h-20 rounded-3xl bg-emerald-50 mb-4 overflow-hidden shadow-md mx-auto border-4 border-white"><img src="110417006.jpg" class="w-full h-full object-cover" alt="呂佳寯"></div>
-          <div class="text-center">
-            <h3 class="text-xl font-black text-slate-800">呂佳寯</h3>
-            <p class="text-emerald-600 font-bold text-xs mt-1">政戰主管</p>
-          </div>
+      </div>
+      
+      <div onclick="openMemberModal('member3')" class="snap-center shrink-0 w-[280px] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-pink-200">
+        <div class="w-20 h-20 rounded-3xl bg-pink-50 flex items-center justify-center text-pink-500 text-3xl mb-4 mx-auto group-hover:bg-pink-100 transition-all"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="text-center">
+          <h3 class="text-xl font-black text-slate-800">呂佳芯</h3>
+          <p class="text-pink-600 font-bold text-xs mt-1">分隊長</p>
         </div>
-        
-        <!-- 核心 3 -->
-        <div onclick="openMemberModal('member3')" class="snap-center shrink-0 w-[calc(100%-16px)] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-pink-200">
-          <div class="w-20 h-20 rounded-3xl bg-pink-50 flex items-center justify-center text-pink-500 text-3xl mb-4 mx-auto group-hover:bg-pink-100 transition-all"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-          <div class="text-center">
-            <h3 class="text-xl font-black text-slate-800">呂佳芯</h3>
-            <p class="text-pink-600 font-bold text-xs mt-1">分隊長</p>
-          </div>
-        </div>
+      </div>
 
-        <!-- 新成員 4 -->
-        <div onclick="openMemberModal('member4')" class="snap-center shrink-0 w-[calc(100%-16px)] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-blue-200">
-          <div class="w-20 h-20 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-500 text-3xl mb-4 mx-auto group-hover:bg-blue-100 transition-all"><i class="fa-solid fa-truck-ramp-box"></i></div>
-          <div class="text-center">
-            <h3 class="text-xl font-black text-slate-800">後勤員</h3>
-            <p class="text-blue-600 font-bold text-xs mt-1">物資後勤支援</p>
-          </div>
+      <div onclick="openMemberModal('member4')" class="snap-center shrink-0 w-[280px] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-blue-200">
+        <div class="w-20 h-20 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-500 text-3xl mb-4 mx-auto group-hover:bg-blue-100 transition-all"><i class="fa-solid fa-truck-ramp-box"></i></div>
+        <div class="text-center">
+          <h3 class="text-xl font-black text-slate-800">後勤員</h3>
+          <p class="text-blue-600 font-bold text-xs mt-1">物資後勤支援</p>
         </div>
+      </div>
 
-        <!-- 新成員 5 -->
-        <div onclick="openMemberModal('member5')" class="snap-center shrink-0 w-[calc(100%-16px)] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-purple-200">
-          <div class="w-20 h-20 rounded-3xl bg-purple-50 flex items-center justify-center text-purple-500 text-3xl mb-4 mx-auto group-hover:bg-purple-100 transition-all"><i class="fa-solid fa-palette"></i></div>
-          <div class="text-center">
-            <h3 class="text-xl font-black text-slate-800">美術員</h3>
-            <p class="text-purple-600 font-bold text-xs mt-1">視覺形象設計</p>
-          </div>
+      <div onclick="openMemberModal('member5')" class="snap-center shrink-0 w-[280px] glass-card rounded-[35px] p-8 hover-float group border-2 border-transparent hover:border-purple-200">
+        <div class="w-20 h-20 rounded-3xl bg-purple-50 flex items-center justify-center text-purple-500 text-3xl mb-4 mx-auto group-hover:bg-purple-100 transition-all"><i class="fa-solid fa-palette"></i></div>
+        <div class="text-center">
+          <h3 class="text-xl font-black text-slate-800">美術員</h3>
+          <p class="text-purple-600 font-bold text-xs mt-1">視覺形象設計</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById('scrollContainer');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('cursor-grabbing');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('cursor-grabbing');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('cursor-grabbing');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; 
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>
 
   <!-- 4. 家族足跡分佈 -->
   <section id="location" class="py-24 bg-slate-50">
