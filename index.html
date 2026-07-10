@@ -27,7 +27,7 @@
 
   <div class="w-full bg-red-600 text-white py-2 overflow-hidden whitespace-nowrap">
     <div class="inline-block animate-marquee font-black text-sm tracking-widest">
-      <span>⚠️ 防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/11 停班停課。請家族成員做好防颱準備，減少外出。</span>
+      <span>⚠️ 緊急防災訊息：因巴威颱風來襲，新北市政府宣布 2026/07/10 (四) 停班停課。請家族成員做好防颱準備，減少外出。</span>
     </div>
   </div>
 
@@ -108,22 +108,17 @@
       <div class="space-y-6" id="noticeListContainer" style="min-height: 450px;">
         <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="important" onclick="openNoticeModal('notice1')">
           <div class="flex justify-between items-center mb-4"><span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span><span class="text-xs font-bold text-slate-400 italic">2026-07-10</span></div>
-          <h3 class="text-2xl font-black text-slate-800">因巴威颱風來襲，北部地區宣布明日7/11停班停課</h3>
-        </div>
-      <div class="space-y-6" id="noticeListContainer" style="min-height: 450px;">
-        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="important" onclick="openNoticeModal('notice2')">
-          <div class="flex justify-between items-center mb-4"><span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span><span class="text-xs font-bold text-slate-400 italic">2026-07-10</span></div>
           <h3 class="text-2xl font-black text-slate-800">因應巴威颱風來襲，北部地區宣布7/10停班停課</h3>
         </div>
-        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="important" onclick="openNoticeModal('notice3')">
+        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="important" onclick="openNoticeModal('notice2')">
           <div class="flex justify-between items-center mb-4"><span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
           <h3 class="text-2xl font-black text-slate-800">近期本網站會進行更新</h3>
         </div>
-        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="general" onclick="openNoticeModal('notice4')">
+        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="general" onclick="openNoticeModal('notice3')">
           <div class="flex justify-between items-center mb-4"><span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span><span class="text-xs font-bold text-slate-400 italic">2026-05-15</span></div>
           <h3 class="text-2xl font-black text-slate-800">114年度所得稅申報</h3>
         </div>
-        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="system" onclick="openNoticeModal('notice5')">
+        <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="system" onclick="openNoticeModal('notice4')">
           <div class="flex justify-between items-center mb-4"><span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span><span class="text-xs font-bold text-slate-400 italic">2026-04-10</span></div>
           <h3 class="text-2xl font-black text-slate-800">伺服器例行維護通知</h3>
         </div>
@@ -253,28 +248,23 @@
         <h3 class="text-2xl font-black text-slate-800">消息中心</h3>
         <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-all"><i class="fa-solid fa-xmark"></i></button>
       </div>
-          <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice1'); closeHistoryModal();">
-          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-10</span></div>
-          <h4 class="font-black text-slate-800 text-lg">因巴威颱風來襲，北部地區宣布明日7/11停班停課</h4>
-        </div>
         <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice2'); closeHistoryModal();">
+        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice1'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
           <h4 class="font-black text-slate-800 text-lg">因應巴威颱風來襲，北部地區宣布7/10停班停課</h4>
         </div>
       <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice3'); closeHistoryModal();">
+        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice2'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
           <h4 class="font-black text-slate-800 text-lg">近期本網站會進行更新</h4>
         </div>
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice4'); closeHistoryModal();">
+        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice3'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-black uppercase">公告</span><span class="text-xs font-bold text-slate-400 italic">2026-05-15</span></div>
           <h4 class="font-black text-slate-800 text-lg">114年度所得稅開始申報</h4>
         </div>
 
         </div>
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice5'); closeHistoryModal();">
+        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice4'); closeHistoryModal();">
           <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-slate-200 text-slate-600 text-[10px] font-black uppercase">維護</span><span class="text-xs font-bold text-slate-400 italic">2026-04-10</span></div>
           <h4 class="font-black text-slate-800 text-lg">伺服器例行維護通知</h4>
         </div>
@@ -361,11 +351,10 @@
     AOS.init({ duration: 1000, once: true });
 
     const noticeData = {
-      notice1: { title: "因巴威颱風來襲，北部地區宣布7/11停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-010", content: "請各位同仁做好防颱措施" },
-      notice2: { title: "因應巴威颱風來襲，北部地區宣布7/10停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "請各位同仁做好防颱措施" },
-      notice3: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。" },
-      notice4: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。" },
-      notice5: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。" }
+      notice1: { title: "因應巴威颱風來襲，北部地區宣布7/10停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "請各位同仁做好防颱措施" },
+      notice2: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。" },
+      notice3: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。" },
+      notice4: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。" }
     };
 
     function initNoticeList() {
