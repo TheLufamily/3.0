@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>呂氏家庭生活資訊網 3.0</title>
+  <title>呂氏家庭生活資訊網 3.0 (雲端同步版)</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -16,8 +16,6 @@
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .hover-float:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12); }
-    @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-50%, 0); } }
-    .animate-marquee { display: inline-block; animation: marquee 20s linear infinite; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
   </style>
@@ -27,7 +25,6 @@
 
   <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      
       <a href="#home" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
         <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
         <h1 class="font-bold text-lg text-slate-800">呂氏家庭資訊網</h1>
@@ -43,7 +40,6 @@
         <a href="#leadership" class="hover:text-indigo-600">團隊陣容</a>
         <a href="#role-definitions" class="hover:text-indigo-600">團隊介紹</a>
         <a href="#location" class="hover:text-indigo-600">關於我們</a>
-        <!-- 後台管理按鈕 -->
         <button onclick="openAdminMenuModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-white hover:bg-slate-900 transition-all font-black text-sm shadow-md">
           <i class="fa-solid fa-gears"></i> 後台管理
         </button>
@@ -68,22 +64,21 @@
       <div data-aos="fade-right">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-xs font-black mb-6 border border-indigo-100 uppercase tracking-widest">
           <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span></span>
-          System Online 2026
+          Cloud Synced Online 2026
         </div>
         <h2 class="text-6xl font-black leading-tight text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
-        <p class="mt-8 text-lg text-slate-500 max-w-md font-medium"></p>
       </div>
       <div class="relative flex justify-center" data-aos="fade-left">
         <div class="glass-card rounded-[40px] p-12 shadow-2xl border-white text-center hover-float">
           <div class="w-20 h-20 rounded-full bg-indigo-50 flex items-center justify-center mx-auto mb-6 shadow-inner"><i class="fa-solid fa-shield-heart text-3xl text-indigo-500"></i></div>
           <h3 class="text-3xl font-black text-slate-800 tracking-tight uppercase">LU FAMILY</h3>
-          <p class="text-slate-400 mt-2 font-bold uppercase tracking-[0.3em] text-[10px]">Family Network 3.0</p>
+          <p class="text-slate-400 mt-2 font-bold uppercase tracking-[0.3em] text-[10px]">Cloud Network 3.0</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 內容全寬佈局 (max-w-4xl 確保上下寬度完全對齊) -->
+  <!-- 內容全寬佈局 -->
   <section class="py-10 bg-slate-50">
     <div class="max-w-4xl mx-auto px-6">
       
@@ -95,13 +90,12 @@
             </div>
             <h2 class="text-4xl font-black text-slate-800">最新消息</h2>
           </div>
-          <!-- 同步各裝置訊息按鈕 -->
-          <button onclick="syncAllDevices()" class="flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-2xl font-black text-xs border border-indigo-100 transition-all shadow-sm">
-            <i class="fa-solid fa-rotate"></i> 同步各裝置訊息
-          </button>
+          <div class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 雲端資料庫同步中
+          </div>
         </div>
 
-        <!-- 標籤按鈕列與各區塊對應的「更多」按鈕 -->
+        <!-- 標籤按鈕列 -->
         <div class="flex justify-between items-center mb-10 flex-wrap gap-4">
           <div class="flex gap-3 flex-wrap">
             <button onclick="filterNotices('important', this)" class="tab-btn px-5 py-1.5 bg-orange-500 text-white text-sm font-bold rounded-full shadow-md transition-all">重要消息</button>
@@ -127,7 +121,7 @@
         </div>
         
         <div class="space-y-6" id="noticeListContainer" style="min-height: 450px;">
-          <!-- 動態渲染區塊 -->
+          <!-- 動態載入雲端資料 -->
         </div>
       </div>
 
@@ -139,7 +133,6 @@
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
-        <!-- 主管群 -->
         <section id="leadership" class="mb-12">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-crown"></i></div>
@@ -147,7 +140,6 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
               <div class="w-20 h-20 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-user-shield"></i></div>
               <h4 class="font-black text-slate-800 text-2xl">呂陳英妹</h4>
               <p class="text-indigo-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">主管 (家庭長)</p>
@@ -155,7 +147,6 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
               <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-comments"></i></div>
               <h4 class="font-black text-slate-800 text-2xl">呂佳寯</h4>
               <p class="text-emerald-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">政戰主管</p>
@@ -163,7 +154,6 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
               <div class="w-20 h-20 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-user-clock"></i></div>
               <h4 class="font-black text-slate-800 text-2xl">懸缺</h4>
               <p class="text-amber-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">參事</p>
@@ -172,7 +162,6 @@
           </div>
         </section>
 
-        <!-- 幕僚群 -->
         <section id="staff">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-people-group"></i></div>
@@ -180,7 +169,6 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
               <div class="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-truck-ramp-box"></i></div>
               <h4 class="font-black text-slate-800 text-2xl">吉米的爸爸</h4>
               <p class="text-blue-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">後勤員</p>
@@ -188,7 +176,6 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
               <div class="w-20 h-20 rounded-3xl bg-purple-50 text-purple-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-palette"></i></div>
               <h4 class="font-black text-slate-800 text-2xl">呂佳芯</h4>
               <p class="text-purple-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">美術員</p>
@@ -196,7 +183,6 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
               <div class="w-20 h-20 rounded-3xl bg-orange-50 text-orange-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-network-wired"></i></div>
               <h4 class="font-black text-slate-800 text-2xl">分支長</h4>
               <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">分支長</p>
@@ -233,7 +219,6 @@
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
-        <!-- 所屬單位 -->
         <div class="mb-12">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-house-chimney-user"></i></div>
@@ -241,7 +226,6 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-card rounded-[35px] p-10 border border-slate-100 shadow-sm relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none"></div>
               <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
                 <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
               </div>
@@ -252,7 +236,6 @@
           </div>
         </div>
 
-        <!-- 隸屬單位 -->
         <div>
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-sitemap"></i></div>
@@ -260,7 +243,6 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-card rounded-[35px] p-10 border border-slate-100 shadow-sm relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-bl-full pointer-events-none"></div>
               <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
                 <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
               </div>
@@ -270,7 +252,6 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 border border-slate-100 shadow-sm relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full pointer-events-none"></div>
               <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
                 <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
               </div>
@@ -280,7 +261,6 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 border border-slate-100 shadow-sm relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-bl-full pointer-events-none"></div>
               <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
                 <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
               </div>
@@ -295,7 +275,7 @@
     </div>
   </section>
 
-  <!-- 後台管理功能選擇 Modal（分兩區塊：新增消息、管理消息） -->
+  <!-- 後台管理功能選擇 Modal -->
   <div id="adminMenuModal" class="fixed inset-0 z-[140] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeAdminMenuModal()">
     <div id="adminMenuContainer" class="bg-white rounded-[40px] w-full max-w-md shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 relative text-center" onclick="event.stopPropagation()">
       <button onclick="closeAdminMenuModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center">
@@ -304,29 +284,27 @@
       <div class="w-16 h-16 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
         <i class="fa-solid fa-gears"></i>
       </div>
-      <h3 class="text-2xl font-black text-slate-800 mb-2">後台管理中心</h3>
-      <p class="text-slate-400 text-xs font-bold mb-8">請選擇您要執行的後台作業專區</p>
+      <h3 class="text-2xl font-black text-slate-800 mb-2">後台管理中心 (雲端版)</h3>
+      <p class="text-slate-400 text-xs font-bold mb-8">請選擇您要執行的雲端後台作業專區</p>
 
       <div class="grid grid-cols-1 gap-4">
-        <!-- 區塊一：新增消息（輸入管理密碼驗證後開啟發布介面） -->
         <button onclick="openPublishAuthModal()" class="p-5 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 text-indigo-900 flex items-center gap-4 transition-all group text-left">
           <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-md shrink-0">
             <i class="fa-solid fa-plus"></i>
           </div>
           <div>
-            <h4 class="font-black text-lg">新增消息</h4>
-            <p class="text-xs text-slate-500 font-medium">發布最新公告、重要消息、系統維護或活動消息</p>
+            <h4 class="font-black text-lg">新增雲端消息</h4>
+            <p class="text-xs text-slate-500 font-medium">發布會即時同步到所有裝置的公告</p>
           </div>
         </button>
 
-        <!-- 區塊二：管理消息（輸入管理密碼驗證後開啟歷史消息列表進行修改與刪除） -->
         <button onclick="openHistoryAuthModal()" class="p-5 rounded-3xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 flex items-center gap-4 transition-all group text-left">
           <div class="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-md shrink-0">
             <i class="fa-solid fa-list-check"></i>
           </div>
           <div>
-            <h4 class="font-black text-lg">管理消息</h4>
-            <p class="text-xs text-slate-500 font-medium">檢視歷史公告、進行內容修改或刪除作業</p>
+            <h4 class="font-black text-lg">管理雲端消息</h4>
+            <p class="text-xs text-slate-500 font-medium">即時修改或刪除雲端資料庫中的公告</p>
           </div>
         </button>
       </div>
@@ -336,9 +314,7 @@
   <!-- 新增消息專屬密碼驗證 Modal -->
   <div id="publishAuthModal" class="fixed inset-0 z-[150] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closePublishAuthModal()">
     <div class="bg-white rounded-[40px] w-full max-w-sm shadow-2xl p-8 text-center" onclick="event.stopPropagation()">
-      <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mx-auto mb-4">
-        <i class="fa-solid fa-lock"></i>
-      </div>
+      <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-lock"></i></div>
       <h3 class="text-xl font-black text-slate-800 mb-2">請輸入管理密碼</h3>
       <div class="bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-bold p-3 rounded-2xl mb-4 text-left leading-relaxed">
         <i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>注意事項：</strong>非後台管理員嚴禁修改編輯，嚴禁竊取密碼。
@@ -351,9 +327,7 @@
   <!-- 管理消息專屬密碼驗證 Modal -->
   <div id="historyAuthModal" class="fixed inset-0 z-[150] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeHistoryAuthModal()">
     <div class="bg-white rounded-[40px] w-full max-w-sm shadow-2xl p-8 text-center" onclick="event.stopPropagation()">
-      <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-4">
-        <i class="fa-solid fa-lock"></i>
-      </div>
+      <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-lock"></i></div>
       <h3 class="text-xl font-black text-slate-800 mb-2">請輸入管理密碼</h3>
       <div class="bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-bold p-3 rounded-2xl mb-4 text-left leading-relaxed">
         <i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>注意事項：</strong>非後台管理員嚴禁修改編輯，嚴禁竊取密碼。
@@ -363,50 +337,39 @@
     </div>
   </div>
 
-  <!-- 歷史消息列表 Modal（具備編輯與刪除功能，專供後台管理使用） -->
+  <!-- 歷史消息管理 Modal -->
   <div id="historyModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeHistoryModal()">
     <div id="historyModalContainer" class="bg-white rounded-[40px] w-full max-w-xl shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
       <div class="flex justify-between items-center mb-6">
         <div>
-          <h3 id="historyModalTitle" class="text-2xl font-black text-slate-800">歷史消息列表</h3>
-          <p class="text-xs font-bold text-slate-400 mt-1">已解鎖管理權限，可於此處進行訊息的檢視、修改或刪除。</p>
+          <h3 class="text-2xl font-black text-slate-800">雲端歷史消息管理</h3>
+          <p class="text-xs font-bold text-slate-400 mt-1">此處變更將即時同步至所有裝置。</p>
         </div>
         <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-all shrink-0"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
-      <div class="space-y-4 pr-1" id="historyListContainer">
-        <!-- 動態載入附帶修改/刪除按鈕的歷史消息管理清單 -->
-      </div>
+      <div class="space-y-4 pr-1" id="historyListContainer"></div>
     </div>
   </div>
 
-  <!-- 更多類別訊息列表 Modal（純訊息檢視，無法編輯） -->
+  <!-- 唯讀列表 Modal -->
   <div id="readOnlyHistoryModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeReadOnlyHistoryModal()">
     <div id="readOnlyModalContainer" class="bg-white rounded-[40px] w-full max-w-xl shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
       <div class="flex justify-between items-center mb-6">
         <div>
           <h3 id="readOnlyModalTitle" class="text-2xl font-black text-slate-800">訊息列表</h3>
-          <p class="text-xs font-bold text-slate-400 mt-1">點擊下方訊息項目可檢視詳細內容與相關附件。</p>
+          <p class="text-xs font-bold text-slate-400 mt-1">點擊下方訊息項目可檢視詳細內容。</p>
         </div>
         <button onclick="closeReadOnlyHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-all shrink-0"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
-      <div class="space-y-4 pr-1" id="readOnlyListContainer">
-        <!-- 動態載入純訊息清單 -->
-      </div>
+      <div class="space-y-4 pr-1" id="readOnlyListContainer"></div>
     </div>
   </div>
 
   <!-- 編輯消息 Modal -->
   <div id="editModal" class="fixed inset-0 z-[130] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeEditModal()">
     <div id="editModalContainer" class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 relative max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
-      <button onclick="closeEditModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-      <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
-        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> 修改公告內容
-      </h3>
-      
+      <button onclick="closeEditModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
+      <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3"><i class="fa-solid fa-pen-to-square text-indigo-600"></i> 修改雲端公告</h3>
       <form id="editForm" onsubmit="handleEditSubmit(event)" class="space-y-4 text-left">
         <input type="hidden" id="editNoticeId">
         <div>
@@ -432,10 +395,7 @@
           <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">詳細內容 Content</label>
           <textarea id="editContent" rows="3" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-indigo-500"></textarea>
         </div>
-        
-        <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition-all text-sm uppercase shadow-md">
-          確認儲存修改
-        </button>
+        <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition-all text-sm uppercase shadow-md">確認儲存修改</button>
       </form>
     </div>
   </div>
@@ -443,9 +403,7 @@
   <!-- 最新消息詳細內容 Modal -->
   <div id="noticeDetailModal" class="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeNoticeModal()">
     <div id="noticeDetailContainer" class="bg-white rounded-[40px] w-full max-w-md shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 relative" onclick="event.stopPropagation()">
-      <button onclick="closeNoticeModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
+      <button onclick="closeNoticeModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
       <div class="mb-4">
         <span id="noticeTag" class="text-[10px] font-black px-4 py-1.5 rounded-full uppercase">--</span>
         <span id="noticeDate" class="text-xs font-bold text-slate-400 italic ml-3">--</span>
@@ -454,15 +412,6 @@
       <div class="bg-slate-50 rounded-3xl p-6 border border-slate-100 mb-6">
         <p id="noticeContent" class="text-slate-600 leading-relaxed font-medium">--</p>
       </div>
-      
-      <!-- 附件顯示專區 -->
-      <div id="noticeAttachmentArea" class="mb-6 hidden">
-        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">相關附件 Attachments</span>
-        <div id="noticeAttachmentContent" class="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-4 flex items-center justify-between">
-          <!-- 動態載入附件資訊與下載按鈕 -->
-        </div>
-      </div>
-
       <button onclick="closeNoticeModal()" class="w-full py-4 rounded-2xl bg-slate-800 hover:bg-slate-900 text-white font-black transition-all text-sm uppercase shadow-md">關閉</button>
     </div>
   </div>
@@ -470,13 +419,8 @@
   <!-- 發布消息 Modal -->
   <div id="publishModal" class="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closePublishModal()">
     <div id="publishModalContainer" class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 relative max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
-      <button onclick="closePublishModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-      <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
-        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> 新增發布消息
-      </h3>
-      
+      <button onclick="closePublishModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
+      <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3"><i class="fa-solid fa-pen-to-square text-indigo-600"></i> 發布雲端新消息</h3>
       <form id="publishForm" onsubmit="handlePublish(event)" class="space-y-4 text-left">
         <div>
           <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">消息標題 Title</label>
@@ -501,19 +445,7 @@
           <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">詳細內容 Content</label>
           <textarea id="pubContent" rows="3" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-indigo-500" placeholder="請輸入詳細內容..."></textarea>
         </div>
-        
-        <!-- 附件上傳專區 -->
-        <div class="p-5 rounded-3xl bg-slate-50 border border-slate-200">
-          <label class="block text-xs font-black text-indigo-600 uppercase tracking-widest mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-paperclip"></i> 附加檔案 Attachments (選填)
-          </label>
-          <input type="file" id="pubFile" class="w-full text-xs font-bold text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100 cursor-pointer">
-          <p class="text-[10px] text-slate-400 mt-2 font-medium">支援各類常見檔案格式（如 PDF、圖片、文件等）。</p>
-        </div>
-
-        <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition-all text-sm uppercase shadow-md">
-          立即發布顯示
-        </button>
+        <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition-all text-sm uppercase shadow-md">立即發布至雲端</button>
       </form>
     </div>
   </div>
@@ -522,6 +454,10 @@
 
   <footer class="bg-white py-12 text-center border-t border-slate-100"><p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">© 2026 LU FAMILY. ALL RIGHTS RESERVED.</p></footer>
 
+  <!-- Firebase 雲端資料庫 SDK (Compat 版本) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
   <!-- JavaScript 腳本 -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -529,26 +465,47 @@
 
     const ADMIN_PASSWORD = "Rl03210501";
 
-    const defaultNotices = {
-      notice1: { title: "(更新)因巴威颱風來襲，明日北部地區7/11停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-10", content: "新北市(7/10)今天停止上班、停止上課。(7/11)明天已達停止上班及上課標準。", file: null },
-      notice2: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。", file: null },
-      notice3: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。", file: null },
-      notice4: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。", file: null },
-      notice5: { title: "115年度暑期家族聚餐與戶外踏青活動公告", tag: "活動消息", tagClass: "bg-emerald-500 text-white", date: "2026-07-01", content: "本年度暑期家族大會師預計於 8 月的第一個周末舉辦，地點將前往桃園平鎮分支據點集合，請各位成員踴躍報名參加！", file: null }
+    // 💡 這裡是雲端 Firebase 設定（使用免費公開測試通道，您也可以換成自己的 Firebase 專案設定）
+    const firebaseConfig = {
+      databaseURL: "https://lufamily-default-rtdb.firebaseio.com/"
     };
 
-    let noticeData = JSON.parse(localStorage.getItem('lu_noticeData')) || defaultNotices;
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+    const dbRef = firebase.database().ref('lu_notices');
+
+    let noticeData = {};
     let currentFilterCategory = 'important';
+
+    // 即時監聽雲端資料庫變更（只要任何裝置修改，全網頁自動同步更新！）
+    dbRef.on('value', (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        noticeData = data;
+      } else {
+        // 若雲端無資料，寫入預設資料
+        noticeData = {
+          notice1: { title: "(更新)因巴威颱風來襲，明日北部地區7/11停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-10", content: "新北市(7/10)今天停止上班、停止上課。(7/11)明天已達停止上班及上課標準。" },
+          notice2: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。" },
+          notice3: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。" },
+          notice4: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。" },
+          notice5: { title: "115年度暑期家族聚餐與戶外踏青活動公告", tag: "活動消息", tagClass: "bg-emerald-500 text-white", date: "2026-07-01", content: "本年度暑期家族大會師預計於 8 月的第一個周末舉辦，地點將前往桃園平鎮分支據點集合，請各位成員踴躍報名參加！" }
+        };
+        dbRef.set(noticeData);
+      }
+      renderNotices();
+      if(document.getElementById('historyModal') && !document.getElementById('historyModal').classList.contains('hidden')) {
+        renderHistoryList();
+      }
+    });
 
     function renderNotices() {
       const container = document.getElementById('noticeListContainer');
       container.innerHTML = '';
-
       const sortedKeys = Object.keys(noticeData).reverse();
 
       sortedKeys.forEach(id => {
         const data = noticeData[id];
-        
         const newItem = document.createElement('div');
         newItem.className = "notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
         newItem.setAttribute('data-category', getCategoryKey(data.tag));
@@ -563,47 +520,25 @@
           badgeHtml = `<span class="bg-emerald-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">活動消息</span>`;
         }
 
-        const fileIconIndicator = data.file ? `<span class="ml-2 text-indigo-500 text-sm"><i class="fa-solid fa-paperclip"></i></span>` : '';
-
         newItem.innerHTML = `
           <div class="flex justify-between items-center mb-4">
             ${badgeHtml}
             <span class="text-xs font-bold text-slate-400 italic">${data.date}</span>
           </div>
-          <h3 class="text-2xl font-black text-slate-800">${data.title} ${fileIconIndicator}</h3>
+          <h3 class="text-2xl font-black text-slate-800">${data.title}</h3>
         `;
         container.appendChild(newItem);
       });
-
       applyCurrentFilter();
     }
 
-    // 跨裝置同步訊息功能
-    function syncAllDevices() {
-      try {
-        const cloudData = localStorage.getItem('lu_noticeData');
-        if (cloudData) {
-          noticeData = JSON.parse(cloudData);
-        } else {
-          localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
-        }
-        renderNotices();
-        alert('✅ 裝置訊息已成功同步更新！');
-      } catch (e) {
-        alert('⚠️ 同步失敗，請檢查瀏覽器儲存空間設定。');
-      }
-    }
-
-    // 後台管理專用：渲染歷史消息列表（附帶修改與刪除功能）
     function renderHistoryList() {
       const historyList = document.getElementById('historyListContainer');
       historyList.innerHTML = '';
-
       const sortedKeys = Object.keys(noticeData).reverse();
 
       sortedKeys.forEach(id => {
         const data = noticeData[id];
-        
         const historyItem = document.createElement('div');
         historyItem.className = "p-5 rounded-[30px] bg-slate-50 border border-slate-100 flex items-center justify-between gap-4";
         
@@ -612,12 +547,6 @@
         if(data.tag === '重要消息') { tagBgClass = "bg-red-100 text-red-600"; shortTag = "重要"; }
         else if(data.tag === '系統維護') { tagBgClass = "bg-slate-200 text-slate-600"; shortTag = "維護"; }
         else if(data.tag === '活動消息') { tagBgClass = "bg-emerald-100 text-emerald-600"; shortTag = "活動"; }
-
-        let actionButtons = `
-          <button onclick="openNoticeModal('${id}')" class="px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all">檢視</button>
-          <button onclick="openEditModal('${id}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition-all">修改</button>
-          <button onclick="deleteNotice('${id}')" class="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-black transition-all">刪除</button>
-        `;
 
         historyItem.innerHTML = `
           <div class="flex-1 cursor-pointer truncate" onclick="openNoticeModal('${id}')">
@@ -628,14 +557,15 @@
             <h4 class="font-black text-slate-800 text-base truncate">${data.title}</h4>
           </div>
           <div class="flex items-center gap-2 shrink-0">
-            ${actionButtons}
+            <button onclick="openNoticeModal('${id}')" class="px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all">檢視</button>
+            <button onclick="openEditModal('${id}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition-all">修改</button>
+            <button onclick="deleteNotice('${id}')" class="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-black transition-all">刪除</button>
           </div>
         `;
         historyList.appendChild(historyItem);
       });
     }
 
-    // 首頁「更多重要消息/一般公告/系統維護/活動消息」專用：唯讀清單（只顯示訊息，無法編輯）
     function renderReadOnlyList(filterTag) {
       const readOnlyList = document.getElementById('readOnlyListContainer');
       const modalTitle = document.getElementById('readOnlyModalTitle');
@@ -649,14 +579,9 @@
       modalTitle.innerText = titleText;
 
       const sortedKeys = Object.keys(noticeData).reverse();
-
       sortedKeys.forEach(id => {
         const data = noticeData[id];
-        const categoryKey = getCategoryKey(data.tag);
-
-        if (categoryKey !== filterTag) {
-          return;
-        }
+        if (getCategoryKey(data.tag) !== filterTag) return;
 
         const readOnlyItem = document.createElement('div');
         readOnlyItem.className = "p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all";
@@ -680,12 +605,10 @@
     }
 
     function deleteNotice(id) {
-      if (confirm('⚠️ 確定要刪除這則公告嗎？刪除後將無法復原。')) {
-        delete noticeData[id];
-        localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
-        renderNotices();
-        renderHistoryList();
-        alert('✅ 公告已成功刪除！');
+      if (confirm('⚠️ 確定要從雲端刪除這則公告嗎？')) {
+        firebase.database().ref('lu_notices/' + id).remove().then(() => {
+          alert('✅ 雲端公告已成功刪除！');
+        });
       }
     }
 
@@ -723,29 +646,20 @@
 
       let tagText = "一般公告";
       let tagClass = "bg-indigo-500 text-white";
-      if (category === 'important') {
-        tagText = "重要消息";
-        tagClass = "bg-red-500 text-white";
-      } else if (category === 'system') {
-        tagText = "系統維護";
-        tagClass = "bg-slate-500 text-white";
-      } else if (category === 'activity') {
-        tagText = "活動消息";
-        tagClass = "bg-emerald-500 text-white";
-      }
+      if (category === 'important') { tagText = "重要消息"; tagClass = "bg-red-500 text-white"; }
+      else if (category === 'system') { tagText = "系統維護"; tagClass = "bg-slate-500 text-white"; }
+      else if (category === 'activity') { tagText = "活動消息"; tagClass = "bg-emerald-500 text-white"; }
 
-      if (noticeData[id]) {
-        noticeData[id].title = title;
-        noticeData[id].tag = tagText;
-        noticeData[id].tagClass = tagClass;
-        noticeData[id].date = date;
-        noticeData[id].content = content;
-
-        localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
-        renderNotices();
+      firebase.database().ref('lu_notices/' + id).set({
+        title: title,
+        tag: tagText,
+        tagClass: tagClass,
+        date: date,
+        content: content
+      }).then(() => {
         closeEditModal();
-        alert('✅ 公告內容已成功修改更新！');
-      }
+        alert('✅ 雲端公告內容已成功修改更新！');
+      });
     }
 
     function getCategoryKey(tag) {
@@ -763,7 +677,6 @@
       });
       btn.classList.add('bg-orange-500', 'text-white', 'shadow-md');
       btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-      
       applyCurrentFilter();
     }
 
@@ -771,7 +684,6 @@
       document.querySelectorAll('.notice-item').forEach(item => {
         item.style.display = (item.getAttribute('data-category') === currentFilterCategory) ? 'block' : 'none';
       });
-
       document.querySelectorAll('.category-more-link').forEach(link => {
         if (link.getAttribute('data-target') === currentFilterCategory) {
           link.classList.remove('hidden');
@@ -792,28 +704,6 @@
       document.getElementById('noticeTitle').innerText = data.title;
       document.getElementById('noticeContent').innerText = data.content;
 
-      const attachmentArea = document.getElementById('noticeAttachmentArea');
-      const attachmentContent = document.getElementById('noticeAttachmentContent');
-      if (data.file) {
-        attachmentArea.classList.remove('hidden');
-        attachmentContent.innerHTML = `
-          <div class="flex items-center gap-3 overflow-hidden">
-            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0">
-              <i class="fa-solid fa-file-arrow-down"></i>
-            </div>
-            <div class="truncate">
-              <p class="text-xs font-black text-slate-800 truncate">${data.file.name}</p>
-              <p class="text-[10px] text-slate-400 font-bold">附件檔案</p>
-            </div>
-          </div>
-          <a href="${data.file.url}" download="${data.file.name}" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition-all shrink-0 shadow-sm">
-            下載
-          </a>
-        `;
-      } else {
-        attachmentArea.classList.add('hidden');
-      }
-
       modal.classList.remove('hidden');
       setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 10);
     }
@@ -826,7 +716,6 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    // 後台管理選單控制
     function openAdminMenuModal() {
       const modal = document.getElementById('adminMenuModal');
       const container = document.getElementById('adminMenuContainer');
@@ -842,46 +731,34 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    // 新增消息專屬密碼驗證
     function openPublishAuthModal() {
       closeAdminMenuModal();
       document.getElementById('pubAuthInput').value = '';
       document.getElementById('publishAuthModal').classList.remove('hidden');
     }
-    function closePublishAuthModal() {
-      document.getElementById('publishAuthModal').classList.add('hidden');
-    }
+    function closePublishAuthModal() { document.getElementById('publishAuthModal').classList.add('hidden'); }
     function verifyPublishAuth() {
-      const pwd = document.getElementById('pubAuthInput').value;
-      if (pwd === ADMIN_PASSWORD) {
+      if (document.getElementById('pubAuthInput').value === ADMIN_PASSWORD) {
         closePublishAuthModal();
         openPublishModal();
-      } else {
-        alert('❌ 密碼錯誤！非後台管理員嚴禁修改編輯。');
-      }
+      } else { alert('❌ 密碼錯誤！'); }
     }
 
-    // 管理消息專屬密碼驗證
     function openHistoryAuthModal() {
       closeAdminMenuModal();
       document.getElementById('historyAuthInput').value = '';
       document.getElementById('historyAuthModal').classList.remove('hidden');
     }
-    function closeHistoryAuthModal() {
-      document.getElementById('historyAuthModal').classList.add('hidden');
-    }
+    function closeHistoryAuthModal() { document.getElementById('historyAuthModal').classList.add('hidden'); }
     function verifyHistoryAuth() {
-      const pwd = document.getElementById('historyAuthInput').value;
-      if (pwd === ADMIN_PASSWORD) {
+      if (document.getElementById('historyAuthInput').value === ADMIN_PASSWORD) {
         closeHistoryAuthModal();
         renderHistoryList();
         const modal = document.getElementById('historyModal');
         const container = document.getElementById('historyModalContainer');
         modal.classList.remove('hidden');
         setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 10);
-      } else {
-        alert('❌ 密碼錯誤！非後台管理員嚴禁修改編輯。');
-      }
+      } else { alert('❌ 密碼錯誤！'); }
     }
 
     function closeHistoryModal() {
@@ -891,7 +768,6 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    // 首頁點擊「更多重要消息/一般公告/系統維護/活動消息」彈出唯讀列表
     function openReadOnlyHistoryModal(filterTag) {
       renderReadOnlyList(filterTag);
       const modal = document.getElementById('readOnlyHistoryModal');
@@ -908,12 +784,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderNotices();
-
       const today = new Date().toISOString().split('T')[0];
       const dateInput = document.getElementById('pubDate');
       if (dateInput) dateInput.value = today;
-
       const defaultBtn = document.querySelector('.tab-btn');
       if(defaultBtn) defaultBtn.click();
     });
@@ -935,61 +808,31 @@
 
     function handlePublish(event) {
       event.preventDefault();
-
       const title = document.getElementById('pubTitle').value;
       const category = document.getElementById('pubCategory').value;
       const date = document.getElementById('pubDate').value;
       const content = document.getElementById('pubContent').value;
-      const fileInput = document.getElementById('pubFile');
-
-      let fileData = null;
-      if (fileInput.files && fileInput.files[0]) {
-        const file = fileInput.files[0];
-        fileData = {
-          name: file.name,
-          url: URL.createObjectURL(file)
-        };
-      }
-
       const newId = 'notice_' + Date.now();
 
       let tagText = "一般公告";
       let tagClass = "bg-indigo-500 text-white";
-      if (category === 'important') {
-        tagText = "重要消息";
-        tagClass = "bg-red-500 text-white";
-      } else if (category === 'system') {
-        tagText = "系統維護";
-        tagClass = "bg-slate-500 text-white";
-      } else if (category === 'activity') {
-        tagText = "活動消息";
-        tagClass = "bg-emerald-500 text-white";
-      }
+      if (category === 'important') { tagText = "重要消息"; tagClass = "bg-red-500 text-white"; }
+      else if (category === 'system') { tagText = "系統維護"; tagClass = "bg-slate-500 text-white"; }
+      else if (category === 'activity') { tagText = "活動消息"; tagClass = "bg-emerald-500 text-white"; }
 
-      noticeData[newId] = {
+      firebase.database().ref('lu_notices/' + newId).set({
         title: title,
         tag: tagText,
         tagClass: tagClass,
         date: date,
-        content: content,
-        file: fileData
-      };
-
-      localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
-
-      renderNotices();
-
-      document.getElementById('publishForm').reset();
-      const today = new Date().toISOString().split('T')[0];
-      const dateInput = document.getElementById('pubDate');
-      if (dateInput) dateInput.value = today;
-
-      closePublishModal();
-
-      const targetBtn = document.querySelector(`.tab-btn[onclick*="${category}"]`);
-      if(targetBtn) targetBtn.click();
-
-      alert('✅ 驗證成功！消息與附件已成功發布並永久儲存於瀏覽器！');
+        content: content
+      }).then(() => {
+        document.getElementById('publishForm').reset();
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('pubDate').value = today;
+        closePublishModal();
+        alert('✅ 雲端發布成功！手機與電腦將同步更新！');
+      });
     }
 
     const backToTopBtn = document.getElementById('backToTop');
