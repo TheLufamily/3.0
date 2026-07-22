@@ -47,7 +47,7 @@
           <i class="fa-solid fa-plus"></i> 發布消息
         </button>
         <button onclick="openHistoryModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-black text-sm">
-          <i class="fa-solid fa-bullhorn"></i> 歷史消息
+          <i class="fa-solid fa-bullhorn"></i> 歷史與管理消息
         </button>
       </div>
     </div>
@@ -62,7 +62,7 @@
         <i class="fa-solid fa-plus"></i> 發布消息
       </button>
       <button onclick="openHistoryModal(); document.getElementById('mobileMenu').classList.add('hidden');" class="mx-auto flex items-center gap-2 px-4 py-3 rounded-xl bg-indigo-600 text-white font-black text-sm w-full justify-center">
-        <i class="fa-solid fa-bullhorn"></i> 歷史消息
+        <i class="fa-solid fa-bullhorn"></i> 歷史與管理消息
       </button>
     </div>
   </nav>
@@ -88,7 +88,7 @@
     </div>
   </section>
 
-  <!-- 內容全寬佈局 -->
+  <!-- 內容全寬佈局 (max-w-4xl 確保上下寬度完全對齊) -->
   <section class="py-10 bg-slate-50">
     <div class="max-w-4xl mx-auto px-6">
       
@@ -107,50 +107,92 @@
         </div>
         
         <div class="space-y-6" id="noticeListContainer" style="min-height: 450px;">
-          <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="important" onclick="openNoticeModal('notice1')">
-            <div class="flex justify-between items-center mb-4"><span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span><span class="text-xs font-bold text-slate-400 italic">2026-07-10</span></div>
-            <h3 class="text-2xl font-black text-slate-800">(更新)因巴威颱風來襲，明日北部地區7/11停班停課</h3>
-          </div>
-          <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="important" onclick="openNoticeModal('notice2')">
-            <div class="flex justify-between items-center mb-4"><span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
-            <h3 class="text-2xl font-black text-slate-800">近期本網站會進行更新</h3>
-          </div>
-          <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="general" onclick="openNoticeModal('notice3')">
-            <div class="flex justify-between items-center mb-4"><span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span><span class="text-xs font-bold text-slate-400 italic">2026-05-15</span></div>
-            <h3 class="text-2xl font-black text-slate-800">114年度所得稅申報</h3>
-          </div>
-          <div class="notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all" data-category="system" onclick="openNoticeModal('notice4')">
-            <div class="flex justify-between items-center mb-4"><span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span><span class="text-xs font-bold text-slate-400 italic">2026-04-10</span></div>
-            <h3 class="text-2xl font-black text-slate-800">伺服器例行維護通知</h3>
-          </div>
+          <!-- 動態渲染區塊 -->
         </div>
       </div>
 
-      <div id="team-section" class="mb-10 text-center">
-        <h1 class="text-4xl font-bold text-slate-900 mb-2">團隊陣容</h1>
-        <div class="w-16 h-1 bg-indigo-600 mx-auto rounded-full mb-10"></div>
+      <!-- 團隊陣容區 -->
+      <div id="team-section" class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-black text-slate-800">團隊陣容</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2">核心決策與執行幕僚</p>
+          <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
         
-        <section id="leadership" class="mb-8 text-left">
-          <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="w-1 h-6 bg-indigo-600 mr-3 rounded-full"></span>主管群</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div onclick="showDetail('主管(家庭長)', '為團隊最高決策與核心目標，負責行政之最終審核。')" class="bg-white p-8 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all text-center"><h3 class="font-bold text-slate-800 text-lg">呂陳英妹</h3><p class="text-indigo-600 font-medium mt-1">主管(家庭長)</p></div>
-            <div onclick="showDetail('政戰主管', '負責內部的溝通協調、督導、士氣維護及新聞公關。')" class="bg-white p-8 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all text-center"><h3 class="font-bold text-slate-800 text-lg">呂佳寯</h3><p class="text-emerald-600 font-medium mt-1">政戰主管</p></div>
-            <div onclick="showDetail('參事', '負責單位內部各項行政庶務')" class="bg-white p-8 border border-slate-200 rounded-xl cursor-pointer hover:shadow-md transition-all text-center"><h3 class="font-bold text-slate-800 text-lg">懸缺</h3><p class="text-amber-600 font-medium mt-1">參事</p></div>
+        <!-- 主管群 -->
+        <section id="leadership" class="mb-12">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-crown"></i></div>
+            <h3 class="text-3xl font-black text-slate-800">主管群</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="showDetail('主管(家庭長)', '為團隊最高決策與核心目標，負責行政之最終審核。')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-user-shield"></i></div>
+              <h4 class="font-black text-slate-800 text-2xl">呂陳英妹</h4>
+              <p class="text-indigo-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">主管 (家庭長)</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">團隊最高決策與核心目標，負責行政之最終審核。</p>
+            </div>
+
+            <div onclick="showDetail('政戰主管', '負責內部的溝通協調、督導、士氣維護及新聞公關。')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-comments"></i></div>
+              <h4 class="font-black text-slate-800 text-2xl">呂佳寯</h4>
+              <p class="text-emerald-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">政戰主管</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">負責內部的溝通協調、督導、士氣維護及新聞公關。</p>
+            </div>
+
+            <div onclick="showDetail('參事', '負責單位內部各項行政庶務')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-user-clock"></i></div>
+              <h4 class="font-black text-slate-800 text-2xl">懸缺</h4>
+              <p class="text-amber-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">參事</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">負責單位內部各項行政庶務與相關程序協辦。</p>
+            </div>
           </div>
         </section>
 
-        <section id="staff" class="text-left">
-          <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="w-1 h-6 bg-slate-400 mr-3 rounded-full"></span>幕僚群</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div onclick="showDetail('後勤員', '負責單位營產改善施工管理。')" class="bg-white p-6 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all"><h3 class="font-bold text-slate-800 text-lg">吉米的爸爸</h3><p class="text-blue-600 font-medium">後勤員</p></div>
-            <div onclick="showDetail('美術員', '專責單位內部視覺形象設計與規劃')" class="bg-white p-6 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all"><h3 class="font-bold text-slate-800 text-lg">呂佳芯</h3><p class="text-purple-600 font-medium">美術員</p></div>
-            <div onclick="showDetail('分支長', '負責管理及督導所屬駐地單位')" class="bg-white p-6 border border-slate-200 rounded-xl text-center cursor-pointer hover:shadow-md transition-all"><h3 class="font-bold text-slate-800 text-lg">分支長</h3><p class="text-orange-600 font-medium">管理及督導</p></div>
+        <!-- 幕僚群 -->
+        <section id="staff">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-people-group"></i></div>
+            <h3 class="text-3xl font-black text-slate-800">幕僚群</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="showDetail('後勤員', '負責單位營產改善施工管理。')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-truck-ramp-box"></i></div>
+              <h4 class="font-black text-slate-800 text-2xl">吉米的爸爸</h4>
+              <p class="text-blue-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">後勤員</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">負責單位營產改善施工管理與各項硬體維護。</p>
+            </div>
+
+            <div onclick="showDetail('美術員', '專責單位內部視覺形象設計與規劃')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-purple-50 text-purple-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-palette"></i></div>
+              <h4 class="font-black text-slate-800 text-2xl">呂佳芯</h4>
+              <p class="text-purple-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">美術員</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">專責單位內部視覺形象設計與各項美感規劃。</p>
+            </div>
+
+            <div onclick="showDetail('分支長', '負責管理及督導所屬駐地單位')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-orange-50 text-orange-600 flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-network-wired"></i></div>
+              <h4 class="font-black text-slate-800 text-2xl">分支長</h4>
+              <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">分支長</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">負責管理及督導所屬駐地各項分支單位運作。</p>
+            </div>
           </div>
         </section>
       </div>
 
-      <section id="role-definitions">
-        <h2 class="text-2xl font-black text-slate-800 mb-6 text-center">組織分工說明</h2>
+      <!-- 組織分工說明區 (已調整至團隊陣容下方) -->
+      <section id="role-definitions" class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-black text-slate-800">組織分工說明</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2">核心架構與任務範疇定義</p>
+          <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div onclick="showDetail('行政核心', '負責組織的總體決策、經營方向與內部秩序督導。\n\n• 家庭長：掌管最高決策與核心目標。\n• 政戰主管：內部溝通協調、程序督導及士氣維護。\n• 參事：負責內部各項行政庶務。')" 
                class="p-8 bg-white rounded-3xl border border-indigo-100 shadow-sm cursor-pointer hover:shadow-lg transition-all hover:bg-indigo-50">
@@ -164,6 +206,64 @@
           </div>
         </div>
       </section>
+
+      <!-- 家族足跡分佈區 -->
+      <div id="location" class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-black text-slate-800">家族足跡分佈</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2">各據點成員分佈與層級架構概況</p>
+          <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <!-- 所屬單位 -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-house-chimney-user"></i></div>
+            <h3 class="text-3xl font-black text-slate-800">所屬單位</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="openLocationModal('loc1')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
+                <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl">新北板橋</h4>
+              <p class="text-blue-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">所屬單位 (總部)</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">總部核心據點，共 7 名成員常駐管理。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 隸屬單位 -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-sitemap"></i></div>
+            <h3 class="text-3xl font-black text-slate-800">隸屬單位</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="openLocationModal('loc2')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
+                <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl">臺中北、中區</h4>
+              <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">隸屬單位 (第一分支)</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">第一分支駐地，共 6 名成員分佈營運。</p>
+            </div>
+
+            <div onclick="openLocationModal('loc3')" class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100">
+                <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl">桃園平鎮</h4>
+              <p class="text-emerald-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4">隸屬單位 (第二分支)</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed">第二分支駐地，共 3 名成員分佈營運。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -176,71 +276,74 @@
     </div>
   </div>
 
-  <!-- 4. 家族足跡分佈 -->
-  <section id="location" class="py-24 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black text-slate-800">家族足跡分佈</h2>
-        <p class="text-slate-400 text-xs font-bold mt-2">各據點成員分佈概況</p>
-        <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+  <!-- 歷史與管理消息 Modal（支援密碼驗證後直接進行「修改」與「刪除」） -->
+  <div id="historyModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeHistoryModal()">
+    <div id="historyModalContainer" class="bg-white rounded-[40px] w-full max-w-xl shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h3 class="text-2xl font-black text-slate-800">歷史與管理消息中心</h3>
+          <p class="text-xs font-bold text-slate-400 mt-1">可於此處檢視所有歷史公告，並透過管理密碼進行修改或刪除。</p>
+        </div>
+        <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-all shrink-0"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-blue-500 shadow-sm" onclick="openLocationModal('loc1')">
-          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
-            <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">新北板橋</h3>
-          <p class="text-blue-600 font-bold text-lg mt-2">核心據點(總部)</p>
-          <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 7 名成員</div>
-        </div>
 
-        <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-orange-500 shadow-sm" onclick="openLocationModal('loc2')">
-          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
-            <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">臺中北、中區</h3>
-          <p class="text-orange-600 font-bold text-lg mt-2">第一分支</p>
-          <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 6 名成員</div>
+      <!-- 管理權限解鎖區 -->
+      <div id="adminAuthBox" class="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-800">
+          <i class="fa-solid fa-lock"></i>
+          <span></span>
         </div>
+        <div class="flex items-center gap-2">
+          <input type="password" id="historyAdminPwd" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-white border border-amber-200 focus:outline-none w-24" placeholder="輸入密碼">
+          <button onclick="unlockAdminMode()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-black transition-all">解鎖</button>
+        </div>
+      </div>
 
-        <div class="glass-card rounded-[40px] p-10 hover-float border-b-4 border-emerald-500 shadow-sm" onclick="openLocationModal('loc3')">
-          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm">
-            <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
-          </div>
-          <h3 class="text-2xl font-black text-slate-800">桃園平鎮</h3>
-          <p class="text-emerald-600 font-bold text-lg mt-2">第二分支</p>
-          <div class="mt-6 pt-6 border-t border-slate-100 text-slate-400 text-sm font-bold">共 3 名成員</div>
-        </div>
+      <div class="space-y-4 pr-1" id="historyListContainer">
+        <!-- 動態載入歷史消息管理清單 -->
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- 歷史消息 Modal -->
-  <div id="historyModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeHistoryModal()">
-    <div id="historyModalContainer" class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300" onclick="event.stopPropagation()">
-      <div class="flex justify-between items-center mb-6">
-        <h3 class="text-2xl font-black text-slate-800">消息中心</h3>
-        <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-all"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="space-y-6 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice1'); closeHistoryModal();">
-          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-10</span></div>
-          <h4 class="font-black text-slate-800 text-lg">(更新)因巴威颱風來襲，明日北部地區7/11停班停課</h4>
+  <!-- 編輯消息 Modal -->
+  <div id="editModal" class="fixed inset-0 z-[130] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closeEditModal()">
+    <div id="editModalContainer" class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 relative max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
+      <button onclick="closeEditModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+        <i class="fa-solid fa-pen-to-square text-indigo-600"></i> 修改公告內容
+      </h3>
+      
+      <form id="editForm" onsubmit="handleEditSubmit(event)" class="space-y-4 text-left">
+        <input type="hidden" id="editNoticeId">
+        <div>
+          <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">消息標題 Title</label>
+          <input type="text" id="editTitle" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-indigo-500">
         </div>
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice2'); closeHistoryModal();">
-          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-red-100 text-red-600 text-[10px] font-black uppercase">重要</span><span class="text-xs font-bold text-slate-400 italic">2026-07-09</span></div>
-          <h4 class="font-black text-slate-800 text-lg">近期本網站會進行更新</h4>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">消息類別 Category</label>
+            <select id="editCategory" class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-indigo-500">
+              <option value="important">重要消息</option>
+              <option value="general">一般公告</option>
+              <option value="system">系統維護</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">發布日期 Date</label>
+            <input type="date" id="editDate" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-indigo-500">
+          </div>
         </div>
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice3'); closeHistoryModal();">
-          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-black uppercase">公告</span><span class="text-xs font-bold text-slate-400 italic">2026-05-15</span></div>
-          <h4 class="font-black text-slate-800 text-lg">114年度所得稅申報</h4>
+        <div>
+          <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">詳細內容 Content</label>
+          <textarea id="editContent" rows="3" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-indigo-500"></textarea>
         </div>
-        <div class="p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all" onclick="openNoticeModal('notice4'); closeHistoryModal();">
-          <div class="flex items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full bg-slate-200 text-slate-600 text-[10px] font-black uppercase">維護</span><span class="text-xs font-bold text-slate-400 italic">2026-04-10</span></div>
-          <h4 class="font-black text-slate-800 text-lg">伺服器例行維護通知</h4>
-        </div>
-      </div>
+        
+        <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition-all text-sm uppercase shadow-md">
+          確認儲存修改
+        </button>
+      </form>
     </div>
   </div>
 
@@ -271,7 +374,7 @@
     </div>
   </div>
 
-  <!-- 發布消息 Modal（包含管理密碼保護） -->
+  <!-- 發布消息 Modal（包含管理密碼保護與附件上傳） -->
   <div id="publishModal" class="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden" onclick="closePublishModal()">
     <div id="publishModalContainer" class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 transition-all scale-95 opacity-0 duration-300 relative max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
       <button onclick="closePublishModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 transition-all flex items-center justify-center">
@@ -320,7 +423,7 @@
             <i class="fa-solid fa-lock"></i> 後台管理密碼 Admin Password
           </label>
           <input type="password" id="pubPassword" required class="w-full px-5 py-3 rounded-2xl bg-white border border-amber-200 font-bold text-slate-700 focus:outline-none focus:border-amber-500" placeholder="請輸入發布密碼...">
-          <p class="text-[10px] text-amber-600/80 mt-2 font-medium"><code class="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-amber-800"></code>（可於程式碼中自行修改）。</p>
+          <p class="text-[10px] text-amber-600/80 mt-2 font-medium">提示：預設發布密碼為 <code class="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-amber-800">1234</code>。</p>
         </div>
 
         <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition-all text-sm uppercase shadow-md">
@@ -376,12 +479,174 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    const noticeData = {
+    const defaultNotices = {
       notice1: { title: "(更新)因巴威颱風來襲，明日北部地區7/11停班停課", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-10", content: "新北市(7/10)今天停止上班、停止上課。(7/11)明天已達停止上班及上課標準。", file: null },
       notice2: { title: "近期本網站會進行更新", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-09", content: "為了提供家族成員更順暢的瀏覽體驗，系統將於近期全面升級至 3.5 版本。", file: null },
       notice3: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。", file: null },
       notice4: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。", file: null }
     };
+
+    let noticeData = JSON.parse(localStorage.getItem('lu_noticeData')) || defaultNotices;
+    let isAdminUnlocked = false;
+
+    function renderNotices() {
+      const container = document.getElementById('noticeListContainer');
+      const historyList = document.getElementById('historyListContainer');
+      
+      container.innerHTML = '';
+      historyList.innerHTML = '';
+
+      const sortedKeys = Object.keys(noticeData).reverse();
+
+      sortedKeys.forEach(id => {
+        const data = noticeData[id];
+        
+        // 1. 首頁列表渲染
+        const newItem = document.createElement('div');
+        newItem.className = "notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
+        newItem.setAttribute('data-category', getCategoryKey(data.tag));
+        newItem.setAttribute('onclick', `openNoticeModal('${id}')`);
+        
+        let badgeHtml = `<span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>`;
+        if(data.tag === '重要消息') {
+          badgeHtml = `<span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>`;
+        } else if(data.tag === '系統維護') {
+          badgeHtml = `<span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span>`;
+        }
+
+        const fileIconIndicator = data.file ? `<span class="ml-2 text-indigo-500 text-sm"><i class="fa-solid fa-paperclip"></i></span>` : '';
+
+        newItem.innerHTML = `
+          <div class="flex justify-between items-center mb-4">
+            ${badgeHtml}
+            <span class="text-xs font-bold text-slate-400 italic">${data.date}</span>
+          </div>
+          <h3 class="text-2xl font-black text-slate-800">${data.title} ${fileIconIndicator}</h3>
+        `;
+        container.appendChild(newItem);
+
+        // 2. 歷史與管理清單渲染
+        const historyItem = document.createElement('div');
+        historyItem.className = "p-5 rounded-[30px] bg-slate-50 border border-slate-100 flex items-center justify-between gap-4";
+        
+        let tagBgClass = "bg-indigo-100 text-indigo-600";
+        let shortTag = "公告";
+        if(data.tag === '重要消息') { tagBgClass = "bg-red-100 text-red-600"; shortTag = "重要"; }
+        else if(data.tag === '系統維護') { tagBgClass = "bg-slate-200 text-slate-600"; shortTag = "維護"; }
+
+        let actionButtons = `
+          <button onclick="openNoticeModal('${id}'); closeHistoryModal();" class="px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all">檢視</button>
+        `;
+
+        if (isAdminUnlocked) {
+          actionButtons += `
+            <button onclick="openEditModal('${id}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition-all">修改</button>
+            <button onclick="deleteNotice('${id}')" class="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-black transition-all">刪除</button>
+          `;
+        }
+
+        historyItem.innerHTML = `
+          <div class="flex-1 cursor-pointer truncate" onclick="openNoticeModal('${id}'); closeHistoryModal();">
+            <div class="flex items-center gap-3 mb-1">
+              <span class="px-2.5 py-0.5 rounded-full ${tagBgClass} text-[10px] font-black uppercase">${shortTag}</span>
+              <span class="text-xs font-bold text-slate-400 italic">${data.date}</span>
+            </div>
+            <h4 class="font-black text-slate-800 text-base truncate">${data.title}</h4>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            ${actionButtons}
+          </div>
+        `;
+        historyList.appendChild(historyItem);
+      });
+    }
+
+    function unlockAdminMode() {
+      const pwd = document.getElementById('historyAdminPwd').value;
+      if (pwd === "Rl03210501") {
+        isAdminUnlocked = true;
+        document.getElementById('adminAuthBox').innerHTML = `
+          <div class="flex items-center gap-2 text-xs font-bold text-emerald-700">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>已成功解鎖管理權限（可直接修改與刪除公告）</span>
+          </div>
+        `;
+        renderNotices();
+      } else {
+        alert('❌ 密碼錯誤！');
+      }
+    }
+
+    function deleteNotice(id) {
+      if (confirm('⚠️ 確定要刪除這則公告嗎？刪除後將無法復原。')) {
+        delete noticeData[id];
+        localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
+        renderNotices();
+        alert('✅ 公告已成功刪除！');
+      }
+    }
+
+    function openEditModal(id) {
+      const data = noticeData[id];
+      if (!data) return;
+      document.getElementById('editNoticeId').value = id;
+      document.getElementById('editTitle').value = data.title;
+      document.getElementById('editCategory').value = getCategoryKey(data.tag);
+      document.getElementById('editDate').value = data.date;
+      document.getElementById('editContent').value = data.content;
+
+      closeHistoryModal();
+      const modal = document.getElementById('editModal');
+      const container = document.getElementById('editModalContainer');
+      modal.classList.remove('hidden');
+      setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 10);
+    }
+
+    function closeEditModal() {
+      const modal = document.getElementById('editModal');
+      const container = document.getElementById('editModalContainer');
+      container.classList.remove('scale-100', 'opacity-100');
+      container.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function handleEditSubmit(event) {
+      event.preventDefault();
+      const id = document.getElementById('editNoticeId').value;
+      const title = document.getElementById('editTitle').value;
+      const category = document.getElementById('editCategory').value;
+      const date = document.getElementById('editDate').value;
+      const content = document.getElementById('editContent').value;
+
+      let tagText = "一般公告";
+      let tagClass = "bg-indigo-500 text-white";
+      if (category === 'important') {
+        tagText = "重要消息";
+        tagClass = "bg-red-500 text-white";
+      } else if (category === 'system') {
+        tagText = "系統維護";
+        tagClass = "bg-slate-500 text-white";
+      }
+
+      if (noticeData[id]) {
+        noticeData[id].title = title;
+        noticeData[id].tag = tagText;
+        noticeData[id].tagClass = tagClass;
+        noticeData[id].date = date;
+        noticeData[id].content = content;
+
+        localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
+        renderNotices();
+        closeEditModal();
+        alert('✅ 公告內容已成功修改更新！');
+      }
+    }
+
+    function getCategoryKey(tag) {
+      if (tag === '重要消息') return 'important';
+      if (tag === '系統維護') return 'system';
+      return 'general';
+    }
 
     function filterNotices(category, btn) {
       document.querySelectorAll('.tab-btn').forEach(b => {
@@ -464,6 +729,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      renderNotices();
+
       const today = new Date().toISOString().split('T')[0];
       const dateInput = document.getElementById('pubDate');
       if (dateInput) dateInput.value = today;
@@ -490,8 +757,7 @@
     function handlePublish(event) {
       event.preventDefault();
 
-      // 設定你的後台管理密碼（可自行在這邊修改密碼字串）
-      const ADMIN_PASSWORD = "Rl03210501"; 
+      const ADMIN_PASSWORD = "1234"; 
       const inputPassword = document.getElementById('pubPassword').value;
 
       if (inputPassword !== ADMIN_PASSWORD) {
@@ -535,49 +801,11 @@
         file: fileData
       };
 
-      const container = document.getElementById('noticeListContainer');
-      const newItem = document.createElement('div');
-      newItem.className = "notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
-      newItem.setAttribute('data-category', category);
-      newItem.setAttribute('onclick', `openNoticeModal('${newId}')`);
-      
-      let badgeHtml = `<span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>`;
-      if(category === 'important') {
-        badgeHtml = `<span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>`;
-      } else if(category === 'system') {
-        badgeHtml = `<span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span>`;
-      }
+      localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
 
-      const fileIconIndicator = fileData ? `<span class="ml-2 text-indigo-500 text-sm"><i class="fa-solid fa-paperclip"></i></span>` : '';
-
-      newItem.innerHTML = `
-        <div class="flex justify-between items-center mb-4">
-          ${badgeHtml}
-          <span class="text-xs font-bold text-slate-400 italic">${date}</span>
-        </div>
-        <h3 class="text-2xl font-black text-slate-800">${title} ${fileIconIndicator}</h3>
-      `;
-
-      container.insertBefore(newItem, container.firstChild);
-
-      const historyList = document.querySelector('#historyModal .space-y-6');
-      if (historyList) {
-        const historyItem = document.createElement('div');
-        historyItem.className = "p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all";
-        historyItem.setAttribute('onclick', `openNoticeModal('${newId}'); closeHistoryModal();`);
-        historyItem.innerHTML = `
-          <div class="flex items-center gap-3 mb-3">
-            <span class="px-3 py-1 rounded-full ${category==='important'?'bg-red-100 text-red-600':category==='system'?'bg-slate-200 text-slate-600':'bg-indigo-100 text-indigo-600'} text-[10px] font-black uppercase">${tagText}</span>
-            <span class="text-xs font-bold text-slate-400 italic">${date}</span>
-          </div>
-          <h4 class="font-black text-slate-800 text-lg">${title}</h4>
-        `;
-        historyList.insertBefore(historyItem, historyList.firstChild);
-      }
+      renderNotices();
 
       document.getElementById('publishForm').reset();
-      
-      // 重設完表單後把預設日期帶回來
       const today = new Date().toISOString().split('T')[0];
       const dateInput = document.getElementById('pubDate');
       if (dateInput) dateInput.value = today;
@@ -587,13 +815,13 @@
       const targetBtn = document.querySelector(`.tab-btn[onclick*="${category}"]`);
       if(targetBtn) targetBtn.click();
 
-      alert('✅ 驗證成功！消息與附件已成功發布並顯示於網頁！');
+      alert('✅ 驗證成功！消息與附件已成功發布並永久儲存於瀏覽器！');
     }
 
     const locationData = {
-      loc1: { area: "新北板橋", branch: "核心據點 (總部)", branchClass: "bg-blue-100 text-blue-700", leader: "尚未指定 (委任管理)", count: "7 名", type: "資料更新中", note: "資料更新中", logo: "New_Taipei_City_Government_Logo.svg.png" },
-      loc2: { area: "臺中北區、中區", branch: "第一分支", branchClass: "bg-orange-100 text-orange-700", leader: "尚未指定 (委任管理)", count: "6 名", type: "資料更新中", note: "資料更新中", logo: "Flag_of_Taichung_City_2025.svg.png" },
-      loc3: { area: "桃園平鎮", branch: "第二分支", branchClass: "bg-emerald-100 text-emerald-700", leader: "尚未指定 (委任管理)", count: "3 名", type: "資料更新中", note: "資料更新中", logo: "599e598c-68dd-405c-97a7-62d776b0ffb2.png" }
+      loc1: { area: "新北板橋", branch: "所屬單位 (總部)", branchClass: "bg-blue-100 text-blue-700", leader: "尚未指定 (委任管理)", count: "7 名", type: "核心總部", note: "總部核心據點，共 7 名成員常駐管理。", logo: "New_Taipei_City_Government_Logo.svg.png" },
+      loc2: { area: "臺中北區、中區", branch: "隸屬單位 (第一分支)", branchClass: "bg-orange-100 text-orange-700", leader: "尚未指定 (委任管理)", count: "6 名", type: "第一分支", note: "第一分支駐地，共 6 名成員分佈營運。", logo: "Flag_of_Taichung_City_2025.svg.png" },
+      loc3: { area: "桃園平鎮", branch: "隸屬單位 (第二分支)", branchClass: "bg-emerald-100 text-emerald-700", leader: "尚未指定 (委任管理)", count: "3 名", type: "第二分支", note: "第二分支駐地，共 3 名成員分佈營運。", logo: "599e598c-68dd-405c-97a7-62d776b0ffb2.png" }
     };
 
     function openLocationModal(id) {
