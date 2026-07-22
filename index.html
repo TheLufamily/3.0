@@ -308,26 +308,37 @@
       <h3 class="text-2xl font-black text-slate-800 mb-2">後台管理中心</h3>
       <p class="text-slate-400 text-xs font-bold mb-6">請選擇您要執行的後台作業專區</p>
 
-      <div class="grid grid-cols-1 gap-4 mb-6">
+      <div class="grid grid-cols-1 gap-4 mb-4">
         <!-- 區塊一：新增消息 -->
-        <button onclick="openPublishAuthModal()" class="p-5 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 text-indigo-900 flex items-center gap-4 transition-all group text-left">
+        <button onclick="openPublishAuthModal()" class="p-4 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 text-indigo-900 flex items-center gap-4 transition-all group text-left">
           <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-md shrink-0">
             <i class="fa-solid fa-plus"></i>
           </div>
           <div>
-            <h4 class="font-black text-lg">新增消息</h4>
-            <p class="text-xs text-slate-500 font-medium">發布最新公告、重要消息、系統維護或活動消息</p>
+            <h4 class="font-black text-base">新增消息</h4>
+            <p class="text-xs text-slate-500 font-medium">發布最新公告、重要消息</p>
           </div>
         </button>
 
         <!-- 區塊二：管理消息 -->
-        <button onclick="openHistoryAuthModal()" class="p-5 rounded-3xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 flex items-center gap-4 transition-all group text-left">
+        <button onclick="openHistoryAuthModal()" class="p-4 rounded-3xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 flex items-center gap-4 transition-all group text-left">
           <div class="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-md shrink-0">
             <i class="fa-solid fa-list-check"></i>
           </div>
           <div>
-            <h4 class="font-black text-lg">管理消息</h4>
-            <p class="text-xs text-slate-500 font-medium">檢視歷史公告、進行內容修改或刪除作業</p>
+            <h4 class="font-black text-base">管理消息</h4>
+            <p class="text-xs text-slate-500 font-medium">檢視歷史公告、修改或刪除</p>
+          </div>
+        </button>
+
+        <!-- 區塊三：一鍵匯出更新網頁檔案 -->
+        <button onclick="exportUpdatedHtmlFile()" class="p-4 rounded-3xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 text-emerald-900 flex items-center gap-4 transition-all group text-left">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-md shrink-0">
+            <i class="fa-solid fa-file-arrow-down"></i>
+          </div>
+          <div>
+            <h4 class="font-black text-base">匯出最新網頁檔案</h4>
+            <p class="text-xs text-emerald-600 font-medium">將最新修改打包下載以同步至其他裝置</p>
           </div>
         </button>
       </div>
@@ -535,7 +546,8 @@
       notice3: { title: "114年度所得稅申報", tag: "一般公告", tagClass: "bg-indigo-500 text-white", date: "2026-05-15", content: "114 年度個人所得稅申報即日起開始。請大家提早利用手機報稅方式進行申報。", file: null },
       notice4: { title: "伺服器例行維護通知", tag: "系統維護", tagClass: "bg-slate-500 text-white", date: "2026-04-10", content: "本網站預計於 4/15 凌晨進行伺服器維護，期間將無法連線及瀏覽。", file: null },
       notice5: { title: "115年度暑期家族聚餐與戶外踏青活動公告", tag: "活動消息", tagClass: "bg-emerald-500 text-white", date: "2026-07-01", content: "本年度暑期家族大會師預計於 8 月的第一個周末舉辦，地點將前往桃園平鎮分支據點集合，請各位成員踴躍報名參加！", file: null },
-      notice6: { title: "115年度下半年家庭重點工作規劃與執行指導", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-22", content: "為確保下半年各項家庭事務順利推展，請各據點（新北板橋總部、臺中中區分支、臺中北區分支、桃園平鎮分支）依既定綱要落實執行，並請各分支長加強督導考核。", file: null }
+      notice6: { title: "115年度下半年家庭重點工作規劃與執行指導", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-22", content: "為確保下半年各項家庭事務順利推展，請各據點（新北板橋總部、臺中中區分支、臺中北區分支、桃園平鎮分支）依既定綱要落實執行，並請各分支長加強督導考核。", file: null },
+      notice7: { title: "2026城市韌性與防救災整備工作指導", tag: "重要消息", tagClass: "bg-red-500 text-white", date: "2026-07-22", content: "因應近期氣候變遷與複合型災害挑戰，各據點應落實2026城市韌性整備規範，加強防災設備盤點及人員應變演練，確保家族生活與安全無虞。", file: null }
     };
 
     let noticeData = JSON.parse(localStorage.getItem('lu_noticeData')) || defaultNotices;
@@ -955,7 +967,6 @@
       };
 
       localStorage.setItem('lu_noticeData', JSON.stringify(noticeData));
-
       renderNotices();
 
       document.getElementById('publishForm').reset();
@@ -968,7 +979,29 @@
       const targetBtn = document.querySelector(`.tab-btn[onclick*="${category}"]`);
       if(targetBtn) targetBtn.click();
 
-      alert('✅ 驗證成功！消息與附件已成功發布並更新！');
+      alert('✅ 訊息已成功發布！');
+    }
+
+    // 一鍵匯出包裝最新資料的網頁檔案
+    function exportUpdatedHtmlFile() {
+      const currentHtml = document.documentElement.outerHTML;
+      const updatedScriptTag = `<script>\n    const defaultNotices = ${JSON.stringify(noticeData, null, 4)};\n<\/script>`;
+      
+      // 取代原本的 defaultNotices 內容
+      let exportedContent = currentHtml.replace(/const defaultNotices = \{[\s\S]*?\};/, updatedScriptTag);
+
+      const blob = new Blob([exportedContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      alert('✅ 最新網頁檔案已成功打包下載！請用此檔案覆蓋舊檔案以同步至其他裝置。');
+      closeAdminMenuModal();
     }
 
     const backToTopBtn = document.getElementById('backToTop');
