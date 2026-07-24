@@ -82,6 +82,7 @@
   <section class="py-10 bg-slate-50">
     <div class="max-w-4xl mx-auto px-6">
       
+      <!-- 最新消息區 -->
       <div id="notice" class="mb-16">
         <div class="flex items-center justify-between gap-4 mb-6">
           <div class="flex items-center gap-4">
@@ -180,7 +181,7 @@
             </div>
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
-              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-purple-500/[0.30] textured translate-y-4">美</span></div>
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-purple-500/[0.30] translate-y-4">美</span></div>
               <div class="w-20 h-20 rounded-3xl bg-purple-50 text-purple-600 flex items-center justify-center text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-palette"></i></div>
               <h4 class="font-black text-slate-800 text-2xl relative z-10">呂佳芯</h4>
               <p class="text-purple-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">美術員</p>
@@ -216,6 +217,83 @@
           </div>
         </div>
       </section>
+
+      <!-- 單位介紹 各據點簡介 (已完整復原) -->
+      <div id="location" class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-black text-slate-800">單位介紹</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2"> 各據點簡介</p>
+          <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <!-- 所屬單位 -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-house-chimney-user"></i></div>
+            <h3 class="text-3xl font-black text-slate-800">所屬單位</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-blue-500/[0.30] translate-y-4">新</span></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
+                <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl relative z-10">新北板橋</h4>
+              <p class="text-blue-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">總部核心</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：7 名</p>
+            </div>
+
+            <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-indigo-500/[0.30] translate-y-4">本</span></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
+                <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl relative z-10">本部組</h4>
+              <p class="text-indigo-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">核心直屬</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：1 名</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 隸屬單位 -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-sitemap"></i></div>
+            <h3 class="text-3xl font-black text-slate-800">隸屬單位</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-orange-500/[0.30] translate-y-4">中</span></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
+                <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl relative z-10">臺中中區</h4>
+              <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">第一分支</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：3 名</p>
+            </div>
+
+            <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-amber-500/[0.30] translate-y-4">北</span></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
+                <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl relative z-10">臺中北區</h4>
+              <p class="text-amber-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">第二分支</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：3 名</p>
+            </div>
+
+            <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-emerald-500/[0.30] translate-y-4">平</span></div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
+                <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
+              </div>
+              <h4 class="font-black text-slate-800 text-2xl relative z-10">桃園平鎮</h4>
+              <p class="text-emerald-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">第三分支</p>
+              <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：3 名</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -325,7 +403,6 @@
     AOS.init({ duration: 1000, once: true });
 
     const ADMIN_PASSWORD = "Rl03210501";
-    // 🔗 已經串接好您的 Google 試算表 API 網址
     const API_URL = "https://script.google.com/macros/s/AKfycbxgQoMe3lfNQHsLeGvJuru_sWCtgtekUR4R-BWnHeAcflwVOTgI1NUUxw5RKjzj_dXhwg/exec";
 
     let noticeData = {};
