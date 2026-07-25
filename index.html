@@ -92,7 +92,7 @@
             <h2 class="text-4xl font-black text-slate-800">最新消息</h2>
           </div>
           <div class="text-xs font-bold text-slate-400 italic">
-            <i class="fa-solid fa-cloud-arrow-up mr-1 text-indigo-500"></i> 雲端試算表同步中
+            <i class="fa-solid fa-cloud-arrow-up mr-1 text-indigo-500"></i> 雲端試算表同步中 (每類最多顯示3則)
           </div>
         </div>
 
@@ -105,7 +105,7 @@
           </div>
           
           <div id="categoryMoreBtnContainer">
-            <button onclick="openReadOnlyHistoryModal('important')" class="category-more-link text-sm font-black text-indigo-600 hover:text-indigo-700 flex items-center gap-1.5 bg-indigo-50 px-4 py-2 rounded-full transition-all" data-target="important">
+            <button onclick="openReadOnlyHistoryModal('important')" class="category-more-link text-sm font-black text-indigo-600 hover:text-indigo-700 flex items-center gap-1.5 bg-indigo-50 px-4 py-2 rounded-full transition-all hidden" data-target="important">
               <span>更多重要消息</span> <i class="fa-solid fa-arrow-right"></i>
             </button>
             <button onclick="openReadOnlyHistoryModal('general')" class="category-more-link text-sm font-black text-indigo-600 hover:text-indigo-700 flex items-center gap-1.5 bg-indigo-50 px-4 py-2 rounded-full transition-all hidden" data-target="general">
@@ -218,15 +218,14 @@
         </div>
       </section>
 
-      <!-- 單位介紹 各據點簡介 (已完整復原) -->
+      <!-- 單位介紹 各據點簡介 -->
       <div id="location" class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-black text-slate-800">單位介紹</h2>
-          <p class="text-slate-400 text-sm font-bold mt-2"> 各據點簡介</p>
+          <h2 class="text-4xl font-black text-slate-800">單位介紹 各據點簡介</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2">各據點成員分佈與層級架構概況</p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
-        <!-- 所屬單位 -->
         <div class="mb-12">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-house-chimney-user"></i></div>
@@ -235,9 +234,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-blue-500/[0.30] translate-y-4">新</span></div>
-              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
-                <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
-              </div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10"><img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽"></div>
               <h4 class="font-black text-slate-800 text-2xl relative z-10">新北板橋</h4>
               <p class="text-blue-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">總部核心</p>
               <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：7 名</p>
@@ -245,9 +242,7 @@
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-indigo-500/[0.30] translate-y-4">本</span></div>
-              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
-                <img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽">
-              </div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10"><img src="New_Taipei_City_Government_Logo.svg.png" class="w-full h-full object-contain" alt="新北市徽"></div>
               <h4 class="font-black text-slate-800 text-2xl relative z-10">本部組</h4>
               <p class="text-indigo-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">核心直屬</p>
               <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：1 名</p>
@@ -255,7 +250,6 @@
           </div>
         </div>
 
-        <!-- 隸屬單位 -->
         <div>
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl font-black shadow-sm"><i class="fa-solid fa-sitemap"></i></div>
@@ -264,9 +258,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-orange-500/[0.30] translate-y-4">中</span></div>
-              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
-                <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
-              </div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10"><img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽"></div>
               <h4 class="font-black text-slate-800 text-2xl relative z-10">臺中中區</h4>
               <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">第一分支</p>
               <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：3 名</p>
@@ -274,9 +266,7 @@
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-amber-500/[0.30] translate-y-4">北</span></div>
-              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
-                <img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽">
-              </div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10"><img src="Flag_of_Taichung_City_2025.svg.png" class="w-full h-full object-contain" alt="臺中市徽"></div>
               <h4 class="font-black text-slate-800 text-2xl relative z-10">臺中北區</h4>
               <p class="text-amber-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">第二分支</p>
               <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：3 名</p>
@@ -284,9 +274,7 @@
 
             <div class="glass-card rounded-[35px] p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"><span class="text-[140px] font-black text-emerald-500/[0.30] translate-y-4">平</span></div>
-              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10">
-                <img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽">
-              </div>
+              <div class="w-20 h-20 rounded-3xl bg-white p-3 flex items-center justify-center text-3xl mb-6 shadow-inner border border-slate-100 relative z-10"><img src="599e598c-68dd-405c-97a7-62d776b0ffb2.png" class="w-full h-full object-contain" alt="桃園市徽"></div>
               <h4 class="font-black text-slate-800 text-2xl relative z-10">桃園平鎮</h4>
               <p class="text-emerald-600 font-bold text-sm uppercase tracking-widest mt-1 mb-4 relative z-10">第三分支</p>
               <p class="text-slate-500 text-base font-medium leading-relaxed relative z-10">設籍人數：3 名</p>
@@ -297,6 +285,11 @@
 
     </div>
   </section>
+
+  <!-- TOP 浮動按鈕 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all z-[100] pointer-events-none hover:bg-indigo-700">
+    <i class="fa-solid fa-chevron-up text-xl"></i>
+  </button>
 
   <!-- 後台管理選單 Modal -->
   <div id="adminMenuModal" class="fixed inset-0 z-[140] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden">
@@ -309,7 +302,7 @@
           <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl"><i class="fa-solid fa-plus"></i></div>
           <div><h4>新增消息</h4><p class="text-xs text-slate-500 font-medium">發布最新公告</p></div>
         </button>
-        <button onclick="openHistoryAuthModal()" class="p-4 rounded-3xl bg-slate-50 hover:bg-slate-100 border text-slate-800 flex items-center gap-4 text-left font-black">
+        <button onclick="openHistoryAuthModal()" class="p-4 rounded-3xl bg-slate-50 hover:bg-indigo-100 border text-slate-800 flex items-center gap-4 text-left font-black">
           <div class="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-xl"><i class="fa-solid fa-list-check"></i></div>
           <div><h4>管理消息</h4><p class="text-xs text-slate-500 font-medium">修改或刪除公告</p></div>
         </button>
@@ -348,7 +341,7 @@
     </div>
   </div>
 
-  <!-- 新增/修改發布表單 Modal -->
+  <!-- 新增/修改發布表單 Modal (支援最多10個附件) -->
   <div id="publishModal" class="fixed inset-0 z-[120] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-[40px] w-full max-w-lg shadow-2xl p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
       <button onclick="closePublishModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
@@ -371,6 +364,13 @@
           <div><label class="block text-xs font-black text-slate-400 mb-2">日期 Date</label><input type="date" id="pubDate" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border font-bold"></div>
         </div>
         <div><label class="block text-xs font-black text-slate-400 mb-2">詳細內容 Content</label><textarea id="pubContent" rows="3" required class="w-full px-5 py-3 rounded-2xl bg-slate-50 border font-bold"></textarea></div>
+        
+        <div>
+          <label class="block text-xs font-black text-indigo-600 mb-2"><i class="fa-solid fa-paperclip mr-1"></i> 相關附件 (最多可上傳 10 個)</label>
+          <input type="file" id="pubFiles" multiple class="w-full text-xs font-bold text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100 cursor-pointer">
+          <p class="text-[10px] text-slate-400 mt-1">您可以按住 Ctrl 或 Shift 複選多個檔案，上限 10 個。</p>
+        </div>
+
         <button type="submit" id="pubSubmitBtn" class="w-full py-4 rounded-2xl bg-indigo-600 text-white font-black uppercase shadow-md">立即發布</button>
       </form>
     </div>
@@ -378,11 +378,17 @@
 
   <!-- 詳細內容 Modal -->
   <div id="noticeDetailModal" class="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-[40px] w-full max-w-md shadow-2xl p-8 relative">
+    <div class="bg-white rounded-[40px] w-full max-w-md shadow-2xl p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
       <button onclick="closeNoticeModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       <div class="mb-4"><span id="noticeTag" class="text-[10px] font-black px-4 py-1.5 rounded-full uppercase">--</span><span id="noticeDate" class="text-xs font-bold text-slate-400 ml-3">--</span></div>
       <h3 id="noticeTitle" class="text-2xl font-black text-slate-800 mb-4">--</h3>
       <div class="bg-slate-50 rounded-3xl p-6 border mb-6"><p id="noticeContent" class="text-slate-600 font-medium">--</p></div>
+      
+      <div id="noticeAttachmentArea" class="mb-6 hidden">
+        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2"><i class="fa-solid fa-paperclip mr-1"></i> 附件列表 Attachments</span>
+        <div id="noticeAttachmentContent" class="space-y-2"></div>
+      </div>
+
       <button onclick="closeNoticeModal()" class="w-full py-4 rounded-2xl bg-slate-800 text-white font-black uppercase">關閉</button>
     </div>
   </div>
@@ -415,11 +421,19 @@
         noticeData = {};
         json.forEach(item => {
           if (item.id) {
+            let filesArr = [];
+            try {
+              if (item.files) {
+                filesArr = typeof item.files === 'string' ? JSON.parse(item.files) : item.files;
+              }
+            } catch(e) { filesArr = []; }
+
             noticeData[item.id] = {
               title: item.title,
               tag: item.tag,
               date: item.date,
-              content: item.content
+              content: item.content,
+              files: filesArr
             };
           }
         });
@@ -440,25 +454,46 @@
         return;
       }
 
-      keys.reverse().forEach(id => {
-        const data = noticeData[id];
-        const newItem = document.createElement('div');
-        newItem.className = "notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
-        newItem.setAttribute('data-category', getCategoryKey(data.tag));
-        newItem.setAttribute('onclick', `openNoticeModal('${id}')`);
-        
-        let badgeHtml = `<span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>`;
-        if(data.tag === '重要消息') badgeHtml = `<span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>`;
-        else if(data.tag === '系統維護') badgeHtml = `<span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span>`;
-        else if(data.tag === '活動消息') badgeHtml = `<span class="bg-emerald-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">活動消息</span>`;
+      const categoryMap = { important: '重要消息', general: '一般公告', system: '系統維護', activity: '活動消息' };
+      const targetTagName = categoryMap[currentFilterCategory];
 
-        newItem.innerHTML = `
-          <div class="flex justify-between items-center mb-4">${badgeHtml}<span class="text-xs font-bold text-slate-400 italic">${data.date}</span></div>
-          <h3 class="text-2xl font-black text-slate-800">${data.title}</h3>
-        `;
-        container.appendChild(newItem);
+      const filteredIds = keys.reverse().filter(id => noticeData[id].tag === targetTagName);
+      const displayIds = filteredIds.slice(0, 3); // 最多顯示 3 則
+
+      if (displayIds.length === 0) {
+        container.innerHTML = '<p class="text-center text-slate-400 font-bold py-10">此分類目前沒有公告。</p>';
+      } else {
+        displayIds.forEach(id => {
+          const data = noticeData[id];
+          const newItem = document.createElement('div');
+          newItem.className = "notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
+          newItem.setAttribute('onclick', `openNoticeModal('${id}')`);
+          
+          let badgeHtml = `<span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>`;
+          if(data.tag === '重要消息') badgeHtml = `<span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要消息</span>`;
+          else if(data.tag === '系統維護') badgeHtml = `<span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">系統維護</span>`;
+          else if(data.tag === '活動消息') badgeHtml = `<span class="bg-emerald-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">活動消息</span>`;
+
+          const fileIndicator = (data.files && data.files.length > 0) ? `<span class="ml-2 text-indigo-600 text-sm"><i class="fa-solid fa-paperclip"></i></span>` : '';
+
+          newItem.innerHTML = `
+            <div class="flex justify-between items-center mb-4">${badgeHtml}<span class="text-xs font-bold text-slate-400 italic">${data.date}</span></div>
+            <h3 class="text-2xl font-black text-slate-800">${data.title} ${fileIndicator}</h3>
+          `;
+          container.appendChild(newItem);
+        });
+      }
+
+      document.querySelectorAll('.category-more-link').forEach(link => {
+        const linkTarget = link.getAttribute('data-target');
+        if (linkTarget === currentFilterCategory) {
+          const totalCount = keys.filter(id => noticeData[id].tag === categoryMap[linkTarget]).length;
+          if (totalCount > 3) link.classList.remove('hidden');
+          else link.classList.add('hidden');
+        } else {
+          link.classList.add('hidden');
+        }
       });
-      applyCurrentFilter();
     }
 
     async function handlePublishSubmit(event) {
@@ -470,8 +505,31 @@
       const tag = document.getElementById('pubCategory').value;
       const date = document.getElementById('pubDate').value;
       const content = document.getElementById('pubContent').value;
+      const fileInput = document.getElementById('pubFiles');
 
-      let payload = editId ? { action: 'update', id: editId, title, tag, date, content } : { action: 'add', title, tag, date, content };
+      let filesArr = editId && noticeData[editId] ? noticeData[editId].files : [];
+      if (fileInput.files && fileInput.files.length > 0) {
+        const maxFiles = 10;
+        const uploadCount = Math.min(fileInput.files.length, maxFiles);
+        for (let i = 0; i < uploadCount; i++) {
+          const file = fileInput.files[i];
+          filesArr.push({
+            name: file.name,
+            url: URL.createObjectURL(file)
+          });
+        }
+        if (filesArr.length > maxFiles) {
+          filesArr = filesArr.slice(0, maxFiles);
+          alert('⚠️ 附件數量超過 10 個上限，僅保留前 10 個檔案。');
+        }
+      }
+
+      let payload = editId ? { 
+        action: 'update', id: editId, title, tag, date, content, files: JSON.stringify(filesArr) 
+      } : { 
+        action: 'add', title, tag, date, content, files: JSON.stringify(filesArr) 
+      };
+
       btn.innerText = editId ? "修改同步中..." : "發布同步中...";
       btn.disabled = true;
 
@@ -517,6 +575,7 @@
       document.getElementById('pubCategory').value = data.tag || '一般公告';
       document.getElementById('pubDate').value = data.date;
       document.getElementById('pubContent').value = data.content;
+      document.getElementById('pubFiles').value = '';
       
       document.getElementById('publishModalTitle').innerHTML = '<i class="fa-solid fa-pen-to-square text-indigo-600"></i> 修改公告內容';
       document.getElementById('pubSubmitBtn').innerText = "確認儲存修改";
@@ -538,17 +597,7 @@
       });
       btn.classList.add('bg-orange-500', 'text-white', 'shadow-md');
       btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-      applyCurrentFilter();
-    }
-
-    function applyCurrentFilter() {
-      document.querySelectorAll('.notice-item').forEach(item => {
-        item.style.display = (item.getAttribute('data-category') === currentFilterCategory) ? 'block' : 'none';
-      });
-      document.querySelectorAll('.category-more-link').forEach(link => {
-        if (link.getAttribute('data-target') === currentFilterCategory) link.classList.remove('hidden');
-        else link.classList.add('hidden');
-      });
+      renderNotices();
     }
 
     function openNoticeModal(id) {
@@ -563,6 +612,35 @@
       document.getElementById('noticeDate').innerText = data.date;
       document.getElementById('noticeTitle').innerText = data.title;
       document.getElementById('noticeContent').innerText = data.content;
+
+      const attachmentArea = document.getElementById('noticeAttachmentArea');
+      const attachmentContent = document.getElementById('noticeAttachmentContent');
+      attachmentContent.innerHTML = '';
+
+      if (data.files && data.files.length > 0) {
+        attachmentArea.classList.remove('hidden');
+        data.files.forEach((file, idx) => {
+          const fileRow = document.createElement('div');
+          fileRow.className = "bg-indigo-50/50 border border-indigo-100 rounded-2xl p-3 flex items-center justify-between gap-3";
+          fileRow.innerHTML = `
+            <div class="flex items-center gap-3 overflow-hidden">
+              <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 text-xs">
+                <i class="fa-solid fa-file-arrow-down"></i>
+              </div>
+              <div class="truncate">
+                <p class="text-xs font-black text-slate-800 truncate">${file.name || '附件 ' + (idx + 1)}</p>
+              </div>
+            </div>
+            <a href="${file.url}" download="${file.name || 'file_' + (idx + 1)}" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition-all shrink-0 shadow-sm">
+              下載
+            </a>
+          `;
+          attachmentContent.appendChild(fileRow);
+        });
+      } else {
+        attachmentArea.classList.add('hidden');
+      }
+
       document.getElementById('noticeDetailModal').classList.remove('hidden');
     }
     function closeNoticeModal() { document.getElementById('noticeDetailModal').classList.add('hidden'); }
@@ -608,9 +686,12 @@
       else if (filterTag === 'activity') titleText = "更多活動消息";
       modalTitle.innerText = titleText;
 
+      const categoryMap = { important: '重要消息', general: '一般公告', system: '系統維護', activity: '活動消息' };
+      const targetTagName = categoryMap[filterTag];
+
       Object.keys(noticeData).reverse().forEach(id => {
         const data = noticeData[id];
-        if (getCategoryKey(data.tag) !== filterTag) return;
+        if (data.tag !== targetTagName) return;
 
         const item = document.createElement('div');
         item.className = "p-6 rounded-[35px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all";
@@ -652,6 +733,21 @@
         historyList.appendChild(item);
       });
     }
+
+    // TOP 浮動按鈕滾動控制
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       fetchNoticesFromCloud();
