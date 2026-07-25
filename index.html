@@ -221,8 +221,8 @@
       <!-- 單位介紹 各據點簡介 -->
       <div id="location" class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-black text-slate-800">單位介紹 各據點簡介</h2>
-          <p class="text-slate-400 text-sm font-bold mt-2">各據點成員分佈與層級架構概況</p>
+          <h2 class="text-4xl font-black text-slate-800">單位介紹</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2"> 各據點簡介</p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
@@ -509,6 +509,15 @@
       });
     }
 
+    function readFileAsDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
+    }
+
     async function handlePublishSubmit(event) {
       event.preventDefault();
       const btn = document.getElementById('pubSubmitBtn');
@@ -524,17 +533,24 @@
       if (fileInput.files && fileInput.files.length > 0) {
         const maxFiles = 10;
         const uploadCount = Math.min(fileInput.files.length, maxFiles);
-        for (let i = 0; i < uploadCount; i++) {
-          const file = fileInput.files[i];
-          filesArr.push({
-            name: file.name,
-            type: file.type,
-            url: URL.createObjectURL(file)
-          });
-        }
-        if (filesArr.length > maxFiles) {
-          filesArr = filesArr.slice(0, maxFiles);
-          alert('⚠️ 附件數量超過 10 個上限，僅保留前 10 個檔案。');
+        btn.innerText = "正在處理附件...";
+        btn.disabled = true;
+        try {
+          for (let i = 0; i < uploadCount; i++) {
+            const file = fileInput.files[i];
+            const base64Url = await readFileAsDataURL(file);
+            filesArr.push({
+              name: file.name,
+              type: file.type,
+              url: base64Url
+            });
+          }
+          if (filesArr.length > maxFiles) {
+            filesArr = filesArr.slice(0, maxFiles);
+            alert('⚠️ 附件數量超過 10 個上限，僅保留前 10 個檔案。');
+          }
+        } catch (err) {
+          console.error("檔案讀取失敗", err);
         }
       }
 
@@ -637,10 +653,10 @@
           imageSliderArea.classList.remove('hidden');
           images.forEach((img, idx) => {
             const imgCard = document.createElement('div');
-            imgCard.className = "shrink-0 w-64 h-48 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 snap-center relative group shadow-sm";
+            imgCard.className = "shrink-0 w-64 h-48 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 snap-center relative group shadow-sm flex items-center justify-center";
             imgCard.innerHTML = `
               <img src="${img.url}" class="w-full h-full object-cover" alt="預覽圖">
-              <a href="${img.url}" target="_blank" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-slate-900/70 text-white text-[10px] font-black backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+              <a href="${img.url}" target="_blank" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-slate-900/75 text-white text-[10px] font-black backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                 檢視原圖
               </a>
             `;
