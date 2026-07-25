@@ -221,8 +221,8 @@
       <!-- 單位介紹 各據點簡介 -->
       <div id="location" class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-black text-slate-800">單位介紹 各據點簡介</h2>
-          <p class="text-slate-400 text-sm font-bold mt-2">各據點成員分佈與層級架構概況</p>
+          <h2 class="text-4xl font-black text-slate-800">單位介紹</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2"> 各據點簡介</p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
@@ -409,7 +409,8 @@
     AOS.init({ duration: 1000, once: true });
 
     const ADMIN_PASSWORD = "Rl03210501";
-    const API_URL = "https://script.google.com/macros/s/AKfycbxgQoMe3lfNQHsLeGvJuru_sWCtgtekUR4R-BWnHeAcflwVOTgI1NUUxw5RKjzj_dXhwg/exec";
+    // 🔗 已更新為最新的 Google Apps Script API 網址
+    const API_URL = "https://script.google.com/macros/s/AKfycbzfxvriTiZ6C-wv6pmaih5FWQyOt9KW1fDOHoiqi9ri0d8Y6du_GFgVQektyc400c-kBQ/exec";
 
     let noticeData = {};
     let currentFilterCategory = 'important';
@@ -467,6 +468,7 @@
           const data = noticeData[id];
           const newItem = document.createElement('div');
           newItem.className = "notice-item bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
+          newItem.setAttribute('data-category', getCategoryKey(data.tag));
           newItem.setAttribute('onclick', `openNoticeModal('${id}')`);
           
           let badgeHtml = `<span class="bg-indigo-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般公告</span>`;
