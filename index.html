@@ -185,21 +185,21 @@
             <h3 class="text-2xl sm:text-3xl font-black text-slate-800">主管群</h3>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div onclick="openMemberDetail('呂陳英妹', '主管 (家庭長)', '國小 / 國中畢業', '長期掌管家庭核心事務、歷任家庭最高決策與行政最終審核。')" class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group cursor-pointer hover:border-indigo-300 transition-all">
+            <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-user-shield"></i></div>
               <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">呂陳英妹</h4>
               <p class="text-indigo-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">主管 (家庭長)</p>
               <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">團隊最高決策與核心目標，負責行政之最終審核。</p>
             </div>
 
-            <div onclick="openMemberDetail('呂佳寯', '政戰主管', '大學 / 研究所畢業', '曾任各項家庭公關協調、內部溝通與士氣維護要職。')" class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group cursor-pointer hover:border-emerald-300 transition-all">
+            <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-comments"></i></div>
               <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">呂佳寯</h4>
               <p class="text-emerald-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">政戰主管</p>
               <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">負責內部的溝通協調、督導、士氣維護及新聞公關。</p>
             </div>
 
-            <div onclick="openMemberDetail('懸缺', '參事', '從缺', '從缺')" class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group cursor-pointer hover:border-amber-300 transition-all">
+            <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-user-clock"></i></div>
               <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">懸缺</h4>
               <p class="text-amber-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">參事</p>
@@ -375,21 +375,6 @@
   <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 sm:w-14 sm:h-14 bg-indigo-600 text-white rounded-2xl shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all z-[100] pointer-events-none hover:bg-indigo-700">
     <i class="fa-solid fa-chevron-up text-lg sm:text-xl"></i>
   </button>
-
-  <!-- 主管個人簡介 Modal -->
-  <div id="memberDetailModal" class="fixed inset-0 z-[130] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-[35px] sm:rounded-[40px] w-full max-w-sm shadow-2xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closeMemberDetail()" class="absolute top-5 right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4"><i class="fa-solid fa-user-tie"></i></div>
-      <h3 id="mName" class="text-xl sm:text-2xl font-black text-slate-800 mb-1 text-center">--</h3>
-      <p id="mTitle" class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-6 text-center">--</p>
-      <div class="space-y-4 text-left">
-        <div class="p-4 rounded-2xl bg-slate-50"><label class="text-[10px] font-black text-slate-400 block mb-1">最高學歷</label><p id="mEdu" class="font-bold text-slate-700 text-sm">--</p></div>
-        <div class="p-4 rounded-2xl bg-slate-50"><label class="text-[10px] font-black text-slate-400 block mb-1">職務經歷</label><p id="mExp" class="font-bold text-slate-700 text-sm leading-relaxed">--</p></div>
-      </div>
-      <button onclick="closeMemberDetail()" class="w-full mt-6 py-3.5 rounded-2xl bg-slate-800 text-white font-black text-sm uppercase">關閉</button>
-    </div>
-  </div>
 
   <!-- 後台管理選單 Modal -->
   <div id="adminMenuModal" class="fixed inset-0 z-[140] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm hidden">
@@ -660,7 +645,6 @@
               files: filesArr
             };
 
-            // 區分是榮譽榜還是最新消息 (可用 section 欄位或 tag 判斷)
             if (item.section === 'honor' || ['重要殊榮', '一般事蹟', '表揚紀錄', '競賽獲獎'].includes(item.tag)) {
               honorData[item.id] = obj;
             } else {
@@ -1240,15 +1224,6 @@
       }
     });
     backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-    function openMemberDetail(name, title, edu, exp) {
-      document.getElementById('mName').innerText = name;
-      document.getElementById('mTitle').innerText = title;
-      document.getElementById('mEdu').innerText = edu;
-      document.getElementById('mExp').innerText = exp;
-      document.getElementById('memberDetailModal').classList.remove('hidden');
-    }
-    function closeMemberDetail() { document.getElementById('memberDetailModal').classList.add('hidden'); }
 
     function openUnitModal(title, subtitle, countText, members) {
       document.getElementById('unitModalTitle').innerText = title;
