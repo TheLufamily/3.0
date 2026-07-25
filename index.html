@@ -28,7 +28,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
       <a href="#home" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
         <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
-        <h1 class="font-bold text-base sm:text-lg text-slate-800 truncate">呂氏家庭生活資訊網3.0</h1>
+        <h1 class="font-bold text-base sm:text-lg text-slate-800 truncate">呂氏家庭資訊網</h1>
       </a>
 
       <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden text-2xl text-slate-700 p-2 focus:outline-none">
@@ -177,6 +177,12 @@
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
+
+        <!-- 年份切換按鈕 -->
+        <div class="flex justify-center gap-3 mb-8">
+          <button onclick="switchTeamYear('25-26', this)" id="btnTeam2526" class="px-5 py-2 rounded-full bg-indigo-600 text-white font-black text-xs sm:text-sm shadow-md transition-all">25-26 幹部名單</button>
+          <button onclick="switchTeamYear('26-27', this)" id="btnTeam2627" class="px-5 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-black text-xs sm:text-sm hover:border-indigo-600 hover:text-indigo-600 transition-all">26-27 幹部名單</button>
+        </div>
         
         <!-- 主管群 -->
         <section id="leadership" class="mb-12">
@@ -194,9 +200,9 @@
 
             <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-comments"></i></div>
-              <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">呂佳寯</h4>
-              <p class="text-emerald-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">政戰主管</p>
-              <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">負責內部的溝通協調、督導、士氣維護及新聞公關。</p>
+              <h4 id="teamPoliticalName" class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">呂佳寯</h4>
+              <p id="teamPoliticalTitle" class="text-emerald-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">政戰主管</p>
+              <p id="teamPoliticalDesc" class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">負責內部的溝通協調、督導、士氣維護及新聞公關。</p>
             </div>
 
             <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
@@ -224,9 +230,9 @@
 
             <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-palette"></i></div>
-              <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">呂佳芯</h4>
-              <p class="text-purple-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">美術員</p>
-              <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">專責單位內部視覺形象設計與各項美感規劃。</p>
+              <h4 id="teamArtName" class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">呂佳芯</h4>
+              <p id="teamArtTitle" class="text-purple-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">美術員</p>
+              <p id="teamArtDesc" class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">專責單位內部視覺形象設計與各項美感規劃。</p>
             </div>
 
             <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
@@ -261,8 +267,8 @@
       <!-- 本單位重大活動介紹 -->
       <section id="unit-activities" class="mb-16">
         <div class="text-center mb-10">
-          <h2 class="text-3xl sm:text-4xl font-black text-slate-800">年度活動介紹</h2>
-          <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-800">本單位重大活動介紹</h2>
+          <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2">年度核心傳統與情感凝聚盛事</p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
@@ -612,6 +618,41 @@
     function formatDate(d) { if (!d) return ''; return String(d).includes('T') ? String(d).split('T')[0] : d; }
     let currentFilterCategory = 'important';
     let currentHonorCategory = 'important';
+
+    function switchTeamYear(year, btn) {
+      const btn25 = document.getElementById('btnTeam2526');
+      const btn26 = document.getElementById('btnTeam2627');
+      const pName = document.getElementById('teamPoliticalName');
+      const pTitle = document.getElementById('teamPoliticalTitle');
+      const pDesc = document.getElementById('teamPoliticalDesc');
+      const aName = document.getElementById('teamArtName');
+      const aTitle = document.getElementById('teamArtTitle');
+      const aDesc = document.getElementById('teamArtDesc');
+
+      if (year === '25-26') {
+        btn25.className = "px-5 py-2 rounded-full bg-indigo-600 text-white font-black text-xs sm:text-sm shadow-md transition-all";
+        btn26.className = "px-5 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-black text-xs sm:text-sm hover:border-indigo-600 hover:text-indigo-600 transition-all";
+        
+        pName.innerText = "呂佳寯";
+        pTitle.innerText = "政戰主管";
+        pDesc.innerText = "負責內部的溝通協調、督導、士氣維護及新聞公關。";
+
+        aName.innerText = "呂佳芯";
+        aTitle.innerText = "美術員";
+        aDesc.innerText = "專責單位內部視覺形象設計與各項美感規劃。";
+      } else {
+        btn26.className = "px-5 py-2 rounded-full bg-indigo-600 text-white font-black text-xs sm:text-sm shadow-md transition-all";
+        btn25.className = "px-5 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-black text-xs sm:text-sm hover:border-indigo-600 hover:text-indigo-600 transition-all";
+        
+        pName.innerText = "懸缺";
+        pTitle.innerText = "政戰主管";
+        pDesc.innerText = "負責內部的溝通協調、督導、士氣維護及新聞公關。";
+
+        aName.innerText = "懸缺";
+        aTitle.innerText = "美術員";
+        aDesc.innerText = "專責單位內部視覺形象設計與各項美感規劃。";
+      }
+    }
 
     function isImageFile(file) {
       const name = (file.name || '').toLowerCase();
