@@ -221,8 +221,8 @@
       <!-- 單位介紹 各據點簡介 -->
       <div id="location" class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-black text-slate-800">單位介紹</h2>
-          <p class="text-slate-400 text-sm font-bold mt-2"> 各據點簡介</p>
+          <h2 class="text-4xl font-black text-slate-800">單位介紹 各據點簡介</h2>
+          <p class="text-slate-400 text-sm font-bold mt-2">各據點成員分佈與層級架構概況</p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
@@ -509,12 +509,38 @@
       });
     }
 
-    function readFileAsDataURL(file) {
+    function compressAndReadFile(file) {
       return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
+        if (file.type && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              let width = img.width;
+              let height = img.height;
+              const maxWidth = 900;
+              if (width > maxWidth) {
+                height = Math.round((height * maxWidth) / width);
+                width = maxWidth;
+              }
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+              resolve(canvas.toDataURL('image/jpeg', 0.75));
+            };
+            img.onerror = () => reject(new Error('圖片載入失敗'));
+            img.src = e.target.result;
+          };
+          reader.onerror = error => reject(error);
+          reader.readAsDataURL(file);
+        } else {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+          reader.readAsDataURL(file);
+        }
       });
     }
 
@@ -533,12 +559,12 @@
       if (fileInput.files && fileInput.files.length > 0) {
         const maxFiles = 10;
         const uploadCount = Math.min(fileInput.files.length, maxFiles);
-        btn.innerText = "正在處理附件...";
+        btn.innerText = "正在處理並壓縮圖片...";
         btn.disabled = true;
         try {
           for (let i = 0; i < uploadCount; i++) {
             const file = fileInput.files[i];
-            const base64Url = await readFileAsDataURL(file);
+            const base64Url = await compressAndReadFile(file);
             filesArr.push({
               name: file.name,
               type: file.type,
