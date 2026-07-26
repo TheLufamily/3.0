@@ -292,7 +292,7 @@
                 <i class="fa-solid fa-sitemap"></i>
               </div>
               <div>
-                <h3 class="text-2xl sm:text-3xl font-black text-slate-800">組織架構圖</h3>
+                <h3 class="text-2xl sm:text-3xl font-black text-slate-800">組織架構</h3>
                 <p class="text-slate-400 text-xs sm:text-sm font-bold mt-0.5">點擊展開或收合呂氏家庭組織編制架構</p>
               </div>
             </div>
@@ -639,7 +639,7 @@
           <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-sm font-black shadow-md"><i class="fa-solid fa-shield-heart"></i></div>
           <div>
             <span class="text-[9px] sm:text-[10px] font-bold text-indigo-400 uppercase tracking-widest block">LU FAMILY OFFICIAL ANNOUNCEMENT</span>
-            <h4 class="text-sm sm:text-base font-black tracking-wide">呂氏家庭官方發布</h4>
+            <h4 class="text-sm sm:text-base font-black tracking-wide">呂氏家庭發布</h4>
           </div>
         </div>
         <button onclick="closeNoticeModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all"><i class="fa-solid fa-xmark"></i></button>
@@ -792,7 +792,7 @@
       bodyEl.innerHTML = '';
 
       if (type === 'notice') {
-        titleEl.innerText = "最新消息獨立專區";
+        titleEl.innerText = "最新消息";
         iconEl.innerHTML = '<i class="fa-solid fa-bullhorn text-white"></i>';
         
         let html = '<div class="space-y-4"><h3 class="text-xl font-black text-slate-800 mb-4">所有最新消息</h3>';
@@ -816,7 +816,7 @@
         bodyEl.innerHTML = html;
 
       } else if (type === 'honor') {
-        titleEl.innerText = "榮譽榜獨立專區";
+        titleEl.innerText = "榮譽榜";
         iconEl.innerHTML = '<i class="fa-solid fa-award text-white"></i>';
         
         let html = '<div class="space-y-4"><h3 class="text-xl font-black text-slate-800 mb-4">所有榮譽榜紀錄</h3>';
@@ -840,7 +840,7 @@
         bodyEl.innerHTML = html;
 
       } else if (type === 'team') {
-        titleEl.innerText = "團隊陣容獨立專區 (25-26、26-27幹部名單)";
+        titleEl.innerText = "團隊陣容(主管與幕僚群)";
         iconEl.innerHTML = '<i class="fa-solid fa-users text-white"></i>';
         bodyEl.innerHTML = `
           <div class="space-y-6">
@@ -861,7 +861,7 @@
           </div>`;
 
       } else if (type === 'org') {
-        titleEl.innerText = "組織架構圖";
+        titleEl.innerText = "組織架構";
         iconEl.innerHTML = '<i class="fa-solid fa-sitemap text-white"></i>';
         bodyEl.innerHTML = `
           <div class="space-y-4 text-center cursor-pointer" onclick="openOrgChartLightbox()">
@@ -870,11 +870,11 @@
           </div>`;
 
       } else if (type === 'role') {
-        titleEl.innerText = "團隊介紹獨立專區";
+        titleEl.innerText = "團隊介紹";
         iconEl.innerHTML = '<i class="fa-solid fa-briefcase text-white"></i>';
         bodyEl.innerHTML = `
           <div class="space-y-6">
-            <h3 class="text-xl font-black text-slate-800">業務職掌詳細說明</h3>
+            <h3 class="text-xl font-black text-slate-800">業務職掌</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="p-6 rounded-3xl bg-indigo-50 border border-indigo-100">
                 <h4 class="text-lg font-black text-indigo-900 mb-3">行政核心</h4>
@@ -888,11 +888,11 @@
           </div>`;
 
       } else if (type === 'unit') {
-        titleEl.innerText = "單位介紹獨立專區";
+        titleEl.innerText = "單位介紹";
         iconEl.innerHTML = '<i class="fa-solid fa-house-chimney-user text-white"></i>';
         bodyEl.innerHTML = `
           <div class="space-y-6">
-            <h3 class="text-xl font-black text-slate-800">所屬與隸屬單位架構簡介</h3>
+            <h3 class="text-xl font-black text-slate-800">所屬與隸屬單位簡介</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="p-5 rounded-3xl bg-white border shadow-sm">
                 <h4 class="font-black text-blue-600 text-base mb-1">新北板橋 (總部核心)</h4>
