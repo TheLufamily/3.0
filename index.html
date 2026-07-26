@@ -297,32 +297,11 @@
         </section>
       </div>
 
-      <!-- 組織架構圖展示區 (收合式) -->
-      <section id="org-chart-section" class="mb-16 scroll-mt-24">
+      <!-- 組織架構圖展示區 (已隱藏) -->
+      <section id="org-chart-section" class="mb-16 scroll-mt-24 hidden">
         <div class="glass-card rounded-[35px] p-6 sm:p-8 border border-slate-200 shadow-sm">
-          <button onclick="toggleOrgChart()" class="w-full flex items-center justify-between text-left focus:outline-none group">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg font-black shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                <i class="fa-solid fa-sitemap"></i>
-              </div>
-              <div>
-                <h3 class="text-2xl sm:text-3xl font-black text-slate-800">組織架構</h3>
-                <p class="text-slate-400 text-xs sm:text-sm font-bold mt-0.5">點擊展開或收合呂氏家庭組織編制架構</p>
-              </div>
-            </div>
-            <div id="orgChevron" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center transition-transform duration-300">
-              <i class="fa-solid fa-chevron-down text-sm"></i>
-            </div>
-          </button>
-
-          <!-- 預設隱藏的架構圖內容 -->
-          <div id="orgChartContent" class="hidden mt-6 pt-6 border-t border-slate-100 text-center animate-fadeIn">
-            <div class="overflow-x-auto custom-scrollbar pb-4 cursor-pointer" onclick="openOrgChartLightbox()">
-              <img id="orgChartImg" src="ChatGPT Image 2026年7月26日 下午04_07_45.png" alt="呂氏家庭組織架構圖" class="w-full max-w-4xl mx-auto rounded-2xl shadow-md border border-slate-100 bg-white object-contain hover:opacity-95 transition-opacity">
-            </div>
-            <p class="text-xs font-bold text-slate-400 mt-3">
-              <i class="fa-solid fa-magnifying-glass-plus mr-1 text-indigo-500"></i> 點擊圖片可放大檢視完整組織架構
-            </p>
+          <div class="hidden">
+            <img id="orgChartImg" src="ChatGPT Image 2026年7月26日 下午04_07_45.png" alt="呂氏家庭組織架構圖">
           </div>
         </div>
       </section>
@@ -760,14 +739,6 @@
       }
     }
 
-    // 組織架構圖收合與展開函數
-    function toggleOrgChart() {
-      const content = document.getElementById('orgChartContent');
-      const chevron = document.getElementById('orgChevron');
-      content.classList.toggle('hidden');
-      chevron.classList.toggle('rotate-180');
-    }
-
     // 組織架構圖直接點擊放大 Lightbox
     function openOrgChartLightbox() {
       const imgSrc = document.getElementById('orgChartImg').src;
@@ -884,7 +855,7 @@
                 <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-orange-600 text-lg mb-1">分支長</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">分支長</p><p class="text-slate-600 text-sm font-medium">負責管理及督導所屬駐地各項分支單位運作。</p></div>
               </div>
             </div>
-          `;
+          </div>`;
 
       } else if (type === 'org') {
         titleEl.innerText = "組織架構";
