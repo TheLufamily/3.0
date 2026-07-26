@@ -37,10 +37,42 @@
 
       <div class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-500">
         <a href="#home" class="hover:text-indigo-600 transition-colors">首頁</a>
-        <a href="#notice" class="hover:text-indigo-600 transition-colors">最新消息</a>
-        <a href="#honor" class="hover:text-indigo-600 transition-colors">榮譽榜</a>
-        <a href="#team-section" class="hover:text-indigo-600 transition-colors">團隊陣容</a>
-        <a href="#role-definitions" class="hover:text-indigo-600 transition-colors">團隊介紹</a>
+        
+        <!-- 最新消息下拉選單 -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-indigo-600 transition-colors py-2 focus:outline-none">
+            <span>最新消息</span>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="absolute top-full left-0 w-44 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+            <button onclick="openIndependentPage('notice')" class="w-full text-left flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black transition-all">
+              <i class="fa-solid fa-bullhorn text-orange-500"></i> 最新消息
+            </button>
+            <button onclick="openIndependentPage('honor')" class="w-full text-left flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black transition-all">
+              <i class="fa-solid fa-award text-amber-500"></i> 榮譽榜
+            </button>
+          </div>
+        </div>
+
+        <!-- 團隊陣容下拉選單 -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-indigo-600 transition-colors py-2 focus:outline-none">
+            <span>團隊陣容</span>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="absolute top-full left-0 w-44 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+            <button onclick="openIndependentPage('team')" class="w-full text-left flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black transition-all">
+              <i class="fa-solid fa-users text-indigo-600"></i> 團隊陣容
+            </button>
+            <button onclick="openIndependentPage('role')" class="w-full text-left flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black transition-all">
+              <i class="fa-solid fa-briefcase text-slate-600"></i> 團隊介紹
+            </button>
+            <button onclick="openIndependentPage('unit')" class="w-full text-left flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black transition-all">
+              <i class="fa-solid fa-house-chimney-user text-blue-600"></i> 單位介紹
+            </button>
+          </div>
+        </div>
+
         <a href="#location" class="hover:text-indigo-600 transition-colors">關於我們</a>
         <button onclick="openAdminMenuModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-white hover:bg-slate-900 transition-all font-black text-sm shadow-md">
           <i class="fa-solid fa-gears"></i> 後台管理
@@ -48,12 +80,14 @@
       </div>
     </div>
 
+    <!-- 手機版選單 -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 p-6 flex flex-col gap-4 text-center font-bold text-slate-700 shadow-xl">
       <a href="#home" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">首頁</a>
-      <a href="#notice" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">最新消息</a>
-      <a href="#honor" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">榮譽榜</a>
-      <a href="#team-section" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">團隊陣容</a>
-      <a href="#role-definitions" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">團隊介紹</a>
+      <button onclick="openIndependentPage('notice'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-indigo-600 font-bold">最新消息</button>
+      <button onclick="openIndependentPage('honor'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-amber-600 font-bold">榮譽榜</button>
+      <button onclick="openIndependentPage('team'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-indigo-600 font-bold">團隊陣容</button>
+      <button onclick="openIndependentPage('role'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-slate-700 font-bold">團隊介紹</button>
+      <button onclick="openIndependentPage('unit'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-blue-600 font-bold">單位介紹</button>
       <a href="#location" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">關於我們</a>
       <button onclick="openAdminMenuModal(); document.getElementById('mobileMenu').classList.add('hidden');" class="mx-auto flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 text-white font-black text-sm w-full justify-center shadow-md">
         <i class="fa-solid fa-gears"></i> 後台管理
@@ -85,7 +119,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full">
       
       <!-- 最新消息區 -->
-      <div id="notice" class="mb-16">
+      <div id="notice" class="mb-16 scroll-mt-24">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div class="flex items-center gap-3 sm:gap-4">
             <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shrink-0">
@@ -128,7 +162,7 @@
       </div>
 
       <!-- 榮譽榜區塊 -->
-      <div id="honor" class="mb-16">
+      <div id="honor" class="mb-16 scroll-mt-24">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div class="flex items-center gap-3 sm:gap-4">
             <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center shadow-lg shrink-0">
@@ -171,7 +205,7 @@
       </div>
 
       <!-- 團隊陣容區 -->
-      <div id="team-section" class="mb-16">
+      <div id="team-section" class="mb-16 scroll-mt-24">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">團隊陣容</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
@@ -207,7 +241,7 @@
 
             <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-slate-100 shadow-sm relative overflow-hidden group">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10"><i class="fa-solid fa-user-clock"></i></div>
-              <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">懸缺</h4>
+              <h4 id="teamAdvisorName" class="font-black text-slate-800 text-xl sm:text-2xl relative z-10">懸缺</h4>
               <p class="text-amber-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">參事</p>
               <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">負責單位內部各項行政庶務與相關程序協辦。</p>
             </div>
@@ -245,17 +279,17 @@
         </section>
       </div>
 
-      <!-- 組織分工說明區 -->
-      <section id="role-definitions" class="mb-16">
+      <!-- 團隊介紹 / 業務職掌區 -->
+      <section id="role-definitions" class="mb-16 scroll-mt-24">
         <div class="text-center mb-10">
-          <h2 class="text-3xl sm:text-4xl font-black text-slate-800">業務職掌</h2>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-800">團隊介紹</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-8 hover-float border border-indigo-100 shadow-sm relative overflow-hidden group">
             <h3 class="text-xl sm:text-2xl font-black text-indigo-900 mb-4 flex items-center"><span class="bg-indigo-600 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center mr-3 text-sm">I</span>行政核心</h3>
-            <p class="text-indigo-800 text-sm sm:text-base font-medium leading-relaxed">• 家庭長 : 掌管最高決策與核心目標。<br>• 政戰主管 : 內部溝通協調、程序督導及士氣維護。<br>• 參事 : 負責內部各項行政庶務。</p>
+            <p class="text-indigo-800 text-sm sm:text-base font-medium leading-relaxed">• 家庭長 : 掌管最高決策與核心目標。<br>• 政戰主管 : 內部溝通協調, 程序督導及士氣維護。<br>• 參事 : 負責內部各項行政庶務。</p>
           </div>
           <div class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-8 hover-float border border-slate-200 shadow-sm relative overflow-hidden group">
             <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4 flex items-center"><span class="bg-slate-800 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center mr-3 text-sm">II</span>執行幕僚</h3>
@@ -304,7 +338,7 @@
       </section>
 
       <!-- 單位介紹 各據點簡介 -->
-      <div id="location" class="mb-16">
+      <div id="location" class="mb-16 scroll-mt-24">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">單位介紹</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2">(點擊卡片查看詳細編制)</p>
@@ -377,7 +411,35 @@
     </div>
   </section>
 
-  <!-- 底部：聯絡我們與支持我們的力量 (與上方風格完全一致的標準排版) -->
+  <!-- 獨立彈出檢視頁面 Modal -->
+  <div id="independentPageModal" class="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-6 bg-slate-900/70 backdrop-blur-md hidden">
+    <div class="bg-white rounded-[35px] sm:rounded-[45px] w-full max-w-4xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col custom-scrollbar">
+      
+      <!-- Modal 標題列 -->
+      <div class="bg-slate-900 text-white px-6 sm:px-8 py-5 sm:py-6 flex items-center justify-between relative shrink-0">
+        <div class="flex items-center gap-3">
+          <div id="indModalIcon" class="w-10 h-10 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-base font-black shadow-md"><i class="fa-solid fa-folder-open"></i></div>
+          <div>
+            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block">LU FAMILY INDEPENDENT PAGE</span>
+            <h4 id="indModalTitle" class="text-base sm:text-lg font-black tracking-wide">獨立專區檢視</h4>
+          </div>
+        </div>
+        <button onclick="closeIndependentPage()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <!-- Modal 內容區 -->
+      <div id="indModalContentBody" class="p-6 sm:p-10 overflow-y-auto custom-scrollbar space-y-6 bg-slate-50/50 flex-grow">
+        <!-- 動態填入 -->
+      </div>
+
+      <!-- Modal 底部按鈕 -->
+      <div class="p-4 sm:p-6 bg-white border-t border-slate-100 shrink-0 text-center">
+        <button onclick="closeIndependentPage()" class="w-full py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-900 text-white font-black text-sm uppercase shadow-md transition-all">關閉視窗</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部：聯絡我們與支持我們的力量 -->
   <footer class="py-16 bg-slate-50 border-t border-slate-100">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
       
@@ -424,7 +486,7 @@
 
       <!-- 版權所有 -->
       <div class="pt-6 border-t border-slate-100 text-center text-xs font-bold text-slate-400">
-        版權製作 © 2026 呂氏家庭生活資訊網版權所有
+        版權製作 © 2026 呂氏家庭生活資訊網版權所有 • 本網使用 GitHub 製作
       </div>
 
     </div>
@@ -536,7 +598,7 @@
   </div>
 
   <!-- 詳細內容 Modal -->
-  <div id="noticeDetailModal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm hidden">
+  <div id="noticeDetailModal" class="fixed inset-0 z-[160] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-[28px] sm:rounded-[32px] w-full max-w-4xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col custom-scrollbar">
       <div class="bg-slate-900 text-white px-6 sm:px-8 py-5 sm:py-6 flex items-center justify-between relative shrink-0">
         <div class="flex items-center gap-3">
@@ -622,7 +684,7 @@
   </div>
 
   <!-- 圖片放大檢視 Lightbox Modal -->
-  <div id="imageLightboxModal" class="fixed inset-0 z-[160] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md hidden" onclick="closeImageLightbox()">
+  <div id="imageLightboxModal" class="fixed inset-0 z-[170] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md hidden" onclick="closeImageLightbox()">
     <div class="relative max-w-5xl max-h-[90vh] flex items-center justify-center w-full h-full" onclick="event.stopPropagation()">
       <button onclick="closeImageLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center text-xl transition-all shadow-lg"><i class="fa-solid fa-xmark"></i></button>
       <button onclick="prevLightboxImage()" class="absolute left-2 sm:left-4 z-20 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center text-lg sm:text-2xl transition-all shadow-lg backdrop-blur-sm"><i class="fa-solid fa-chevron-left"></i></button>
@@ -672,12 +734,184 @@
     let currentFilterCategory = 'important';
     let currentHonorCategory = 'important';
 
+    // 獨立專區彈出頁面控制函數
+    function openIndependentPage(type) {
+      const modal = document.getElementById('independentPageModal');
+      const titleEl = document.getElementById('indModalTitle');
+      const iconEl = document.getElementById('indModalIcon');
+      const bodyEl = document.getElementById('indModalContentBody');
+      bodyEl.innerHTML = '';
+
+      if (type === 'notice') {
+        titleEl.innerText = "最新消息獨立專區";
+        iconEl.innerHTML = '<i class="fa-solid fa-bullhorn text-white"></i>';
+        
+        let html = '<div class="space-y-4"><h3 class="text-xl font-black text-slate-800 mb-4">所有最新消息</h3>';
+        const keys = Object.keys(noticeData).sort((a, b) => new Date(noticeData[b].date) - new Date(noticeData[a].date));
+        if (keys.length === 0) {
+          html += '<p class="text-center text-slate-400 py-10 font-bold">目前沒有最新消息。</p>';
+        } else {
+          keys.forEach(id => {
+            const item = noticeData[id];
+            html += `
+              <div onclick="openNoticeModal('${id}')" class="p-5 rounded-3xl bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-md transition-all">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-[10px] font-black uppercase">${item.tag}</span>
+                  <span class="text-xs font-bold text-slate-400 italic">${formatDate(item.date)}</span>
+                </div>
+                <h4 class="font-black text-slate-800 text-base sm:text-lg">${item.title}</h4>
+              </div>`;
+          });
+        }
+        html += '</div>';
+        bodyEl.innerHTML = html;
+
+      } else if (type === 'honor') {
+        titleEl.innerText = "榮譽榜獨立專區";
+        iconEl.innerHTML = '<i class="fa-solid fa-award text-white"></i>';
+        
+        let html = '<div class="space-y-4"><h3 class="text-xl font-black text-slate-800 mb-4">所有榮譽榜紀錄</h3>';
+        const keys = Object.keys(honorData).sort((a, b) => new Date(honorData[b].date) - new Date(honorData[a].date));
+        if (keys.length === 0) {
+          html += '<p class="text-center text-slate-400 py-10 font-bold">目前沒有榮譽榜紀錄。</p>';
+        } else {
+          keys.forEach(id => {
+            const item = honorData[id];
+            html += `
+              <div onclick="openNoticeModal('${id}', true)" class="p-5 rounded-3xl bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-md transition-all">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] font-black uppercase">${item.tag}</span>
+                  <span class="text-xs font-bold text-slate-400 italic">${formatDate(item.date)}</span>
+                </div>
+                <h4 class="font-black text-slate-800 text-base sm:text-lg">${item.title}</h4>
+              </div>`;
+          });
+        }
+        html += '</div>';
+        bodyEl.innerHTML = html;
+
+      } else if (type === 'team') {
+        titleEl.innerText = "團隊陣容獨立專區 (25-26、26-27幹部名單)";
+        iconEl.innerHTML = '<i class="fa-solid fa-users text-white"></i>';
+        bodyEl.innerHTML = `
+          <div class="space-y-6">
+            <div class="flex justify-center gap-3 mb-4">
+              <button onclick="switchModalTeamYear('25-26')" id="modalBtn2526" class="px-4 py-2 rounded-full bg-indigo-600 text-white font-black text-xs shadow-md transition-all">25-26 幹部名單</button>
+              <button onclick="switchModalTeamYear('26-27')" id="modalBtn2627" class="px-4 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-black text-xs hover:border-indigo-600 transition-all">26-27 幹部名單</button>
+            </div>
+            <div id="modalTeamContentContainer">
+              <!-- 預設顯示 25-26 (包含主管、政戰、參事、後勤、美術、分支長) -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-indigo-600 text-lg mb-1">呂陳英妹</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">主管 (家庭長)</p><p class="text-slate-600 text-sm font-medium">團隊最高決策與核心目標，負責行政之最終審核。</p></div>
+                <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-emerald-600 text-lg mb-1">呂佳寯</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">政戰主管 (25-26)</p><p class="text-slate-600 text-sm font-medium">負責內部的溝通協調、督導、士氣維護及新聞公關。</p></div>
+                <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-amber-600 text-lg mb-1">懸缺</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">參事 (25-26)</p><p class="text-slate-600 text-sm font-medium">負責單位內部各項行政庶務與相關程序協辦。</p></div>
+                <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-blue-600 text-lg mb-1">吉米的爸爸</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">後勤員</p><p class="text-slate-600 text-sm font-medium">負責單位營產改善施工管理與各項硬體維護。</p></div>
+                <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-purple-600 text-lg mb-1">呂佳芯</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">美術員 (25-26)</p><p class="text-slate-600 text-sm font-medium">專責單位內部視覺形象設計與各項美感規劃。</p></div>
+                <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-orange-600 text-lg mb-1">分支長</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">分支長</p><p class="text-slate-600 text-sm font-medium">負責管理及督導所屬駐地各項分支單位運作。</p></div>
+              </div>
+            </div>
+          </div>`;
+
+      } else if (type === 'role') {
+        titleEl.innerText = "團隊介紹獨立專區";
+        iconEl.innerHTML = '<i class="fa-solid fa-briefcase text-white"></i>';
+        bodyEl.innerHTML = `
+          <div class="space-y-6">
+            <h3 class="text-xl font-black text-slate-800">業務職掌詳細說明</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-6 rounded-3xl bg-indigo-50 border border-indigo-100">
+                <h4 class="text-lg font-black text-indigo-900 mb-3">行政核心</h4>
+                <p class="text-indigo-800 text-sm font-medium leading-relaxed">• 家庭長 : 掌管最高決策與核心目標。<br>• 政戰主管 : 內部溝通協調、程序督導及士氣維護。<br>• 參事 : 負責內部各項行政庶務。</p>
+              </div>
+              <div class="p-6 rounded-3xl bg-white border border-slate-200">
+                <h4 class="text-lg font-black text-slate-800 mb-3">執行幕僚</h4>
+                <p class="text-slate-600 text-sm font-medium leading-relaxed">• 後勤員 : 負責營產改善施工管理。<br>• 美術員 : 專責單位內部視覺形象設計與規劃。<br>• 分支長 : 負責管理及督導所屬駐地單位。</p>
+              </div>
+            </div>
+          </div>`;
+
+      } else if (type === 'unit') {
+        titleEl.innerText = "單位介紹獨立專區";
+        iconEl.innerHTML = '<i class="fa-solid fa-house-chimney-user text-white"></i>';
+        bodyEl.innerHTML = `
+          <div class="space-y-6">
+            <h3 class="text-xl font-black text-slate-800">所屬與隸屬單位架構簡介</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-5 rounded-3xl bg-white border shadow-sm">
+                <h4 class="font-black text-blue-600 text-base mb-1">新北板橋 (總部核心)</h4>
+                <p class="text-xs text-slate-500 font-bold mb-2">設籍人數：7 名</p>
+                <p class="text-slate-600 text-sm font-medium">包含呂家庭長 (主管)、呂政戰主管與隊員 * 5。</p>
+              </div>
+              <div class="p-5 rounded-3xl bg-white border shadow-sm">
+                <h4 class="font-black text-indigo-600 text-base mb-1">本部組 (核心直屬)</h4>
+                <p class="text-xs text-slate-500 font-bold mb-2">設籍人數：1 名</p>
+                <p class="text-slate-600 text-sm font-medium">核心直屬同仁 * 1。</p>
+              </div>
+              <div class="p-5 rounded-3xl bg-white border shadow-sm">
+                <h4 class="font-black text-orange-600 text-base mb-1">臺中中區 (第一分支)</h4>
+                <p class="text-xs text-slate-500 font-bold mb-2">設籍人數：3 名</p>
+                <p class="text-slate-600 text-sm font-medium">分支長 * 1、隊員 * 2。</p>
+              </div>
+              <div class="p-5 rounded-3xl bg-white border shadow-sm">
+                <h4 class="font-black text-amber-600 text-base mb-1">臺中北區 (第二分支)</h4>
+                <p class="text-xs text-slate-500 font-bold mb-2">設籍人數：3 名</p>
+                <p class="text-slate-600 text-sm font-medium">分支長 * 1、隊員 * 2。</p>
+              </div>
+              <div class="p-5 rounded-3xl bg-white border shadow-sm md:col-span-2">
+                <h4 class="font-black text-emerald-600 text-base mb-1">桃園平鎮 (第三分支)</h4>
+                <p class="text-xs text-slate-500 font-bold mb-2">設籍人數：3 名</p>
+                <p class="text-slate-600 text-sm font-medium">分支長 * 1、隊員 * 2。</p>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function switchModalTeamYear(year) {
+      const b25 = document.getElementById('modalBtn2526');
+      const b26 = document.getElementById('modalBtn2627');
+      const container = document.getElementById('modalTeamContentContainer');
+
+      if (year === '25-26') {
+        b25.className = "px-4 py-2 rounded-full bg-indigo-600 text-white font-black text-xs shadow-md transition-all";
+        b26.className = "px-4 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-black text-xs hover:border-indigo-600 transition-all";
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-indigo-600 text-lg mb-1">呂陳英妹</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">主管 (家庭長)</p><p class="text-slate-600 text-sm font-medium">團隊最高決策與核心目標，負責行政之最終審核。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-emerald-600 text-lg mb-1">呂佳寯</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">政戰主管 (25-26)</p><p class="text-slate-600 text-sm font-medium">負責內部的溝通協調、督導、士氣維護及新聞公關。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-amber-600 text-lg mb-1">懸缺</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">參事 (25-26)</p><p class="text-slate-600 text-sm font-medium">負責單位內部各項行政庶務與相關程序協辦。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-blue-600 text-lg mb-1">吉米的爸爸</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">後勤員</p><p class="text-slate-600 text-sm font-medium">負責單位營產改善施工管理與各項硬體維護。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-purple-600 text-lg mb-1">呂佳芯</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">美術員 (25-26)</p><p class="text-slate-600 text-sm font-medium">專責單位內部視覺形象設計與各項美感規劃。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-orange-600 text-lg mb-1">分支長</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">分支長</p><p class="text-slate-600 text-sm font-medium">負責管理及督導所屬駐地各項分支單位運作。</p></div>
+          </div>`;
+      } else {
+        b26.className = "px-4 py-2 rounded-full bg-indigo-600 text-white font-black text-xs shadow-md transition-all";
+        b25.className = "px-4 py-2 rounded-full bg-white text-slate-600 border border-slate-200 font-black text-xs hover:border-indigo-600 transition-all";
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-indigo-600 text-lg mb-1">呂陳英妹</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">主管 (家庭長)</p><p class="text-slate-600 text-sm font-medium">團隊最高決策與核心目標，負責行政之最終審核。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-emerald-600 text-lg mb-1">懸缺</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">政戰主管 (26-27)</p><p class="text-slate-600 text-sm font-medium">負責內部的溝通協調、督導、士氣維護及新聞公關。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-amber-600 text-lg mb-1">懸缺</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">參事 (26-27)</p><p class="text-slate-600 text-sm font-medium">負責單位內部各項行政庶務與相關程序協辦。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-blue-600 text-lg mb-1">吉米的爸爸</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">後勤員</p><p class="text-slate-600 text-sm font-medium">負責單位營產改善施工管理與各項硬體維護。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-purple-600 text-lg mb-1">懸缺</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">美術員 (26-27)</p><p class="text-slate-600 text-sm font-medium">專責單位內部視覺形象設計與各項美感規劃。</p></div>
+            <div class="p-5 rounded-3xl bg-white border shadow-sm"><h4 class="font-black text-orange-600 text-lg mb-1">分支長</h4><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">分支長</p><p class="text-slate-600 text-sm font-medium">負責管理及督導所屬駐地各項分支單位運作。</p></div>
+          </div>`;
+      }
+    }
+
+    function closeIndependentPage() {
+      document.getElementById('independentPageModal').classList.add('hidden');
+    }
+
     function switchTeamYear(year, btn) {
       const btn25 = document.getElementById('btnTeam2526');
       const btn26 = document.getElementById('btnTeam2627');
       const pName = document.getElementById('teamPoliticalName');
       const pTitle = document.getElementById('teamPoliticalTitle');
       const pDesc = document.getElementById('teamPoliticalDesc');
+      const advisorName = document.getElementById('teamAdvisorName');
       const aName = document.getElementById('teamArtName');
       const aTitle = document.getElementById('teamArtTitle');
       const aDesc = document.getElementById('teamArtDesc');
@@ -690,6 +924,8 @@
         pTitle.innerText = "政戰主管";
         pDesc.innerText = "負責內部的溝通協調、督導、士氣維護及新聞公關。";
 
+        advisorName.innerText = "懸缺";
+
         aName.innerText = "呂佳芯";
         aTitle.innerText = "美術員";
         aDesc.innerText = "專責單位內部視覺形象設計與各項美感規劃。";
@@ -700,6 +936,8 @@
         pName.innerText = "懸缺";
         pTitle.innerText = "政戰主管";
         pDesc.innerText = "負責內部的溝通協調、督導、士氣維護及新聞公關。";
+
+        advisorName.innerText = "懸缺";
 
         aName.innerText = "懸缺";
         aTitle.innerText = "美術員";
