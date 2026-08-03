@@ -134,10 +134,10 @@
 
   <!-- 主要內容區 -->
   <section class="py-8 sm:py-10 bg-slate-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
       
       <!-- 最新消息區 -->
-      <div id="notice" class="mb-16 scroll-mt-24">
+      <div id="notice" class="mb-16 scroll-mt-24 max-w-4xl mx-auto">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div class="flex items-center gap-3 sm:gap-4">
             <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shrink-0">
@@ -179,51 +179,48 @@
         </div>
       </div>
 
-      <!-- 榮譽榜區塊 -->
-      <div id="honor" class="mb-16 scroll-mt-24">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-          <div class="flex items-center gap-3 sm:gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center shadow-lg shrink-0">
-              <i class="fa-solid fa-award text-xl"></i>
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-black text-slate-800">榮譽榜</h2>
-          </div>
-          <div class="text-xs font-bold text-slate-400 italic">
-            <i class="fa-solid fa-cloud-arrow-up mr-1 text-amber-500"></i> 家庭成就記錄 (每類最多3則)
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-          <div class="flex gap-2 sm:gap-3 flex-wrap w-full sm:w-auto">
-            <button onclick="filterHonors('important', this)" class="honor-tab-btn px-4 sm:px-5 py-1.5 bg-amber-500 text-white text-xs sm:text-sm font-bold rounded-full shadow-md transition-all">重要殊榮</button>
-            <button onclick="filterHonors('general', this)" class="honor-tab-btn px-4 sm:px-5 py-1.5 bg-white text-slate-600 border border-slate-200 text-xs sm:text-sm font-bold rounded-full hover:border-amber-500 hover:text-amber-500 transition-all">一般事蹟</button>
-            <button onclick="filterHonors('system', this)" class="honor-tab-btn px-4 sm:px-5 py-1.5 bg-white text-slate-600 border border-slate-200 text-xs sm:text-sm font-bold rounded-full hover:border-amber-500 hover:text-amber-500 transition-all">表揚紀錄</button>
-            <button onclick="filterHonors('activity', this)" class="honor-tab-btn px-4 sm:px-5 py-1.5 bg-white text-slate-600 border border-slate-200 text-xs sm:text-sm font-bold rounded-full hover:border-amber-500 hover:text-amber-500 transition-all">競賽獲獎</button>
-          </div>
+      <!-- 榮譽榜區塊 (無分類設計) -->
+      <div id="honor" class="mb-20 scroll-mt-24 pt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          <div id="honorMoreBtnContainer" class="w-full sm:w-auto text-right">
-            <button onclick="openHonorReadOnlyModal('important')" class="honor-more-link text-xs sm:text-sm font-black text-amber-600 hover:text-amber-700 flex items-center gap-1.5 bg-amber-50 px-4 py-2 rounded-full transition-all inline-flex" data-target="important">
-              <span>更多重要殊榮</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <button onclick="openHonorReadOnlyModal('general')" class="honor-more-link text-xs sm:text-sm font-black text-amber-600 hover:text-amber-700 flex items-center gap-1.5 bg-amber-50 px-4 py-2 rounded-full transition-all hidden inline-flex" data-target="general">
-              <span>更多一般事蹟</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <button onclick="openHonorReadOnlyModal('system')" class="honor-more-link text-xs sm:text-sm font-black text-amber-600 hover:text-amber-700 flex items-center gap-1.5 bg-amber-50 px-4 py-2 rounded-full transition-all hidden inline-flex" data-target="system">
-              <span>更多表揚紀錄</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <button onclick="openHonorReadOnlyModal('activity')" class="honor-more-link text-xs sm:text-sm font-black text-amber-600 hover:text-amber-700 flex items-center gap-1.5 bg-amber-50 px-4 py-2 rounded-full transition-all hidden inline-flex" data-target="activity">
-              <span>更多競賽獲獎</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
+          <!-- 左側標題與了解更多按鈕 -->
+          <div class="lg:col-span-3 flex flex-col justify-between self-stretch">
+            <div>
+              <h3 class="text-amber-600 font-bold text-sm tracking-wider mb-1">榮譽榜</h3>
+              <h2 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight uppercase">HONOR</h2>
+              <div class="w-12 h-1 bg-amber-500 rounded-full mt-3 mb-6"></div>
+            </div>
+
+            <div id="honorMoreBtnContainer" class="pt-4">
+              <button onclick="openHonorReadOnlyModal()" class="honor-more-link px-6 py-3.5 bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-2xl font-black text-xs flex items-center justify-between transition-all w-full shadow-sm">
+                <span>了解更多</span> <div class="w-7 h-7 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-arrow-right"></i></div>
+              </button>
+            </div>
           </div>
-        </div>
-        
-        <div class="space-y-6" id="honorListContainer" style="min-height: 350px;">
-          <div class="text-center py-20 text-slate-400 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2"></i> 正在載入榮譽榜...</div>
+
+          <!-- 右側滑動卡片與底部導航列 -->
+          <div class="lg:col-span-9 flex flex-col gap-6">
+            <div id="honorListContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto pb-4 custom-scrollbar snap-x" style="min-height: 380px;">
+              <div class="text-center py-20 text-slate-400 font-bold col-span-full"><i class="fa-solid fa-spinner fa-spin mr-2"></i> 正在載入榮譽榜...</div>
+            </div>
+
+            <!-- 底部進度條與左右切換按鈕 -->
+            <div class="flex items-center justify-between gap-6 pt-2">
+              <div class="flex-grow bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                <div id="honorScrollProgress" class="bg-amber-500 h-full w-1/3 transition-all duration-300"></div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <button onclick="scrollHonorContainer('left')" class="w-10 h-10 rounded-full bg-amber-600 hover:bg-amber-700 text-white flex items-center justify-center transition-all shadow-md"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+                <button onclick="scrollHonorContainer('right')" class="w-10 h-10 rounded-full bg-amber-600 hover:bg-amber-700 text-white flex items-center justify-center transition-all shadow-md"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <!-- 團隊陣容區 -->
-      <div id="team-section" class="mb-16 scroll-mt-24">
+      <div id="team-section" class="mb-16 scroll-mt-24 max-w-4xl mx-auto">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">團隊陣容</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
@@ -298,7 +295,7 @@
       </div>
 
       <!-- 團隊介紹 / 業務職掌區 -->
-      <section id="role-definitions" class="mb-16 scroll-mt-24">
+      <section id="role-definitions" class="mb-16 scroll-mt-24 max-w-4xl mx-auto">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">團隊介紹</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
@@ -317,7 +314,7 @@
       </section>
 
       <!-- 本單位重大活動介紹 -->
-      <section id="unit-activities" class="mb-16">
+      <section id="unit-activities" class="mb-16 max-w-4xl mx-auto">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">年度活動介紹</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2"></p>
@@ -356,7 +353,7 @@
       </section>
 
       <!-- 單位介紹 各據點簡介 -->
-      <div id="location" class="mb-16 scroll-mt-24">
+      <div id="location" class="mb-16 scroll-mt-24 max-w-4xl mx-auto">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">單位介紹</h2>
           <p class="text-slate-400 text-xs sm:text-sm font-bold mt-2">(點擊卡片查看詳細編制)</p>
@@ -720,24 +717,20 @@
       if (!badge || !dot || !text) return;
 
       if (hour >= 8 && hour < 17) {
-        // 服務中（綠燈）
         badge.className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-emerald-50 text-emerald-700 border border-emerald-200";
         dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
         text.innerText = "服務中";
       } else if (hour >= 17 && hour < 23) {
-        // 非服務時間，值班待命（澄燈）與備註
         badge.className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-amber-50 text-amber-700 border border-amber-200";
         dot.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
         text.innerText = "值班人員待命，有任何疑問可洽值班人員";
       } else {
-        // 其他非服務時間（紅燈）
         badge.className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-rose-50 text-rose-700 border border-rose-200";
         dot.className = "w-2.5 h-2.5 rounded-full bg-rose-500";
         text.innerText = "目前非服務時間";
       }
     }
 
-    // 組織架構圖直接點擊放大 Lightbox
     function openOrgChartLightbox() {
       const imgSrc = document.getElementById('orgChartImg').src;
       window._currentNoticeImages = [{ url: imgSrc, name: '組織架構圖' }];
@@ -776,9 +769,7 @@
 
     function formatDate(d) { if (!d) return ''; return String(d).includes('T') ? String(d).split('T')[0] : d; }
     let currentFilterCategory = 'important';
-    let currentHonorCategory = 'important';
 
-    // 獨立專區彈出頁面控制函數
     function openIndependentPage(type) {
       const modal = document.getElementById('independentPageModal');
       const titleEl = document.getElementById('indModalTitle');
@@ -1104,52 +1095,87 @@
       const keys = Object.keys(honorData);
       
       if (keys.length === 0) {
-        container.innerHTML = '<p class="text-center text-slate-400 font-bold py-10">目前沒有任何榮譽榜紀錄。</p>';
+        container.innerHTML = '<p class="text-center text-slate-400 font-bold py-10 col-span-full">目前沒有任何榮譽榜紀錄。</p>';
         return;
       }
 
-      const categoryMap = { important: '重要殊榮', general: '一般事蹟', system: '表揚紀錄', activity: '競賽獲獎' };
-      const targetTagName = categoryMap[currentHonorCategory];
-
-      const filteredIds = keys.sort((a, b) => {
+      // 直接依日期排序顯示所有榮譽榜紀錄，不做分類篩選
+      const sortedIds = keys.sort((a, b) => {
         return new Date(honorData[b].date) - new Date(honorData[a].date);
-      }).filter(id => honorData[id].tag === targetTagName);
+      });
 
-      const displayIds = filteredIds.slice(0, 3);
-
-      if (displayIds.length === 0) {
-        container.innerHTML = '<p class="text-center text-slate-400 font-bold py-10">此榮譽分類目前沒有紀錄。</p>';
+      if (sortedIds.length === 0) {
+        container.innerHTML = '<p class="text-center text-slate-400 font-bold py-10 col-span-full">目前沒有榮譽紀錄。</p>';
       } else {
-        displayIds.forEach(id => {
+        sortedIds.forEach(id => {
           const data = honorData[id];
           const newItem = document.createElement('div');
-          newItem.className = "honor-item bg-white rounded-[30px] sm:rounded-[40px] p-6 sm:p-8 border border-slate-100 shadow-sm cursor-pointer hover:shadow-lg transition-all";
+          newItem.className = "honor-item bg-white rounded-[28px] overflow-hidden border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all flex flex-col justify-between shrink-0 w-full sm:w-[320px] snap-start group";
           newItem.setAttribute('onclick', `openNoticeModal('${id}', true)`);
           
-          let badgeHtml = `<span class="bg-amber-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">一般事蹟</span>`;
-          if(data.tag === '重要殊榮') badgeHtml = `<span class="bg-red-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase animate-pulse">重要殊榮</span>`;
-          else if(data.tag === '表揚紀錄') badgeHtml = `<span class="bg-slate-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">表揚紀錄</span>`;
-          else if(data.tag === '競賽獲獎') badgeHtml = `<span class="bg-amber-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">競賽獲獎</span>`;
+          let badgeText = data.tag || "榮譽榜", badgeBg = "bg-amber-500";
+          if(data.tag === '重要殊榮') badgeBg = "bg-red-500 animate-pulse";
+          else if(data.tag === '表揚紀錄') badgeBg = "bg-slate-600";
+          else if(data.tag === '競賽獲獎') badgeBg = "bg-amber-600";
 
-          const fileIndicator = (data.files && data.files.length > 0) ? `<span class="ml-2 text-amber-600 text-sm"><i class="fa-solid fa-paperclip"></i></span>` : '';
+          // 尋找附件中的第一張圖片作為卡片封面，若無則使用預設圖
+          let coverImg = "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600";
+          if (data.files && data.files.length > 0) {
+            const foundImg = data.files.find(f => isImageFile(f));
+            if (foundImg) coverImg = foundImg.url;
+          }
+
+          const fileIndicator = (data.files && data.files.length > 0) ? `<span class="ml-2 text-amber-600 text-xs"><i class="fa-solid fa-paperclip"></i></span>` : '';
 
           newItem.innerHTML = `
-            <div class="flex justify-between items-center mb-3 sm:mb-4">${badgeHtml}<span class="text-xs font-bold text-slate-400 italic">${formatDate(data.date)}</span></div>
-            <h3 class="text-xl sm:text-2xl font-black text-slate-800 truncate">${data.title} ${fileIndicator}</h3>
+            <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-100">
+              <img src="${coverImg}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="榮譽預覽圖">
+              <div class="absolute bottom-3 left-3">
+                <span class="${badgeBg} text-white text-[10px] font-black px-3 py-1 rounded-full uppercase shadow-md">${badgeText}</span>
+              </div>
+            </div>
+            <div class="p-5 sm:p-6 flex flex-col justify-between flex-grow bg-white">
+              <div class="mb-3">
+                <span class="text-xs font-bold text-amber-600/80 italic block mb-1"><i class="fa-regular fa-calendar-days mr-1"></i> ${formatDate(data.date)}</span>
+                <h3 class="text-lg font-black text-slate-900 line-clamp-2 leading-snug">${data.title} ${fileIndicator}</h3>
+              </div>
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-amber-600 transition-colors">
+                <span>檢視完整內容</span>
+                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+              </div>
+            </div>
           `;
           container.appendChild(newItem);
         });
       }
-
-      document.querySelectorAll('.honor-more-link').forEach(link => {
-        const linkTarget = link.getAttribute('data-target');
-        if (linkTarget === currentHonorCategory) {
-          link.classList.remove('hidden');
-        } else {
-          link.classList.add('hidden');
-        }
-      });
+      updateHonorProgress();
     }
+
+    function scrollHonorContainer(direction) {
+      const container = document.getElementById('honorListContainer');
+      const scrollAmount = 340;
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+      setTimeout(updateHonorProgress, 300);
+    }
+
+    function updateHonorProgress() {
+      const container = document.getElementById('honorListContainer');
+      const progressBar = document.getElementById('honorScrollProgress');
+      if (!container || !progressBar) return;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) {
+        progressBar.style.width = '100%';
+        return;
+      }
+      const scrollPercent = (container.scrollLeft / maxScroll) * 100;
+      progressBar.style.width = Math.max(scrollPercent, 15) + '%';
+    }
+
+    document.getElementById('honorListContainer')?.addEventListener('scroll', updateHonorProgress);
 
     function filterNotices(category, btn) {
       currentFilterCategory = category;
@@ -1160,17 +1186,6 @@
       btn.classList.add('bg-orange-500', 'text-white', 'shadow-md');
       btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
       renderNotices();
-    }
-
-    function filterHonors(category, btn) {
-      currentHonorCategory = category;
-      document.querySelectorAll('.honor-tab-btn').forEach(b => {
-        b.classList.remove('bg-amber-500', 'text-white', 'shadow-md');
-        b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-      });
-      btn.classList.add('bg-amber-500', 'text-white', 'shadow-md');
-      btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-      renderHonors();
     }
 
     function compressAndReadFile(file) {
@@ -1449,7 +1464,6 @@
     }
 
     let _currentReadOnlyTag = 'important';
-    let _currentHonorReadOnlyTag = 'important';
     let _currentReadOnlyPage = 1;
     const _itemsPerPage = 10;
 
@@ -1514,33 +1528,23 @@
       document.getElementById('readOnlyHistoryModal').classList.remove('hidden');
     }
 
-    function openHonorReadOnlyModal(filterTag, page = 1) {
-      if (filterTag) _currentHonorReadOnlyTag = filterTag;
+    function openHonorReadOnlyModal(page = 1) {
       _currentReadOnlyPage = page;
 
       const readOnlyList = document.getElementById('readOnlyListContainer');
       const modalTitle = document.getElementById('readOnlyModalTitle');
       readOnlyList.innerHTML = '';
+      modalTitle.innerText = "更多榮譽榜紀錄";
 
-      let titleText = "榮譽榜列表";
-      if (_currentHonorReadOnlyTag === 'important') titleText = "更多重要殊榮";
-      else if (_currentHonorReadOnlyTag === 'general') titleText = "更多一般事蹟";
-      else if (_currentHonorReadOnlyTag === 'system') titleText = "更多表揚紀錄";
-      else if (_currentHonorReadOnlyTag === 'activity') titleText = "更多競賽獲獎";
-      modalTitle.innerText = titleText;
-
-      const categoryMap = { important: '重要殊榮', general: '一般事蹟', system: '表揚紀錄', activity: '競賽獲獎' };
-      const targetTagName = categoryMap[_currentHonorReadOnlyTag];
-
-      const allMatchingIds = Object.keys(honorData).sort((a, b) => new Date(honorData[b].date) - new Date(honorData[a].date)).filter(id => honorData[id].tag === targetTagName);
+      const allIds = Object.keys(honorData).sort((a, b) => new Date(honorData[b].date) - new Date(honorData[a].date));
       
-      const totalPages = Math.ceil(allMatchingIds.length / _itemsPerPage) || 1;
+      const totalPages = Math.ceil(allIds.length / _itemsPerPage) || 1;
       if (_currentReadOnlyPage > totalPages) _currentReadOnlyPage = totalPages;
       if (_currentReadOnlyPage < 1) _currentReadOnlyPage = 1;
 
       const startIndex = (_currentReadOnlyPage - 1) * _itemsPerPage;
       const endIndex = startIndex + _itemsPerPage;
-      const pageIds = allMatchingIds.slice(startIndex, endIndex);
+      const pageIds = allIds.slice(startIndex, endIndex);
 
       if (pageIds.length === 0) {
         readOnlyList.innerHTML = '<p class="text-center text-slate-400 font-bold py-10">目前沒有相關榮譽紀錄。</p>';
@@ -1554,14 +1558,9 @@
           item.className = "p-5 sm:p-6 rounded-[25px] sm:rounded-[30px] bg-slate-50 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-all";
           item.setAttribute('onclick', `openNoticeModal('${id}', true); closeReadOnlyHistoryModal();`);
           
-          let tagBgClass = "bg-amber-100 text-amber-600", shortTag = "事蹟";
-          if(data.tag === '重要殊榮') { tagBgClass = "bg-red-100 text-red-600"; shortTag = "殊榮"; }
-          else if(data.tag === '表揚紀錄') { tagBgClass = "bg-slate-200 text-slate-600"; shortTag = "表揚"; }
-          else if(data.tag === '競賽獲獎') { tagBgClass = "bg-amber-200 text-amber-700"; shortTag = "獲獎"; }
-
           item.innerHTML = `
             <div class="flex items-center gap-3 mb-2 sm:mb-3">
-              <span class="px-3 py-1 rounded-full ${tagBgClass} text-[10px] font-black uppercase">${shortTag}</span>
+              <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] font-black uppercase">${data.tag || '榮譽榜'}</span>
               <span class="text-xs font-bold text-slate-400 italic">${formatDate(data.date)}</span>
             </div>
             <h4 class="font-black text-slate-800 text-base sm:text-lg truncate">${data.title}</h4>
