@@ -738,10 +738,11 @@
 
     function formatDate(d) { if (!d) return ''; return String(d).includes('T') ? String(d).split('T')[0] : d; }
 
+    // 已移除三角驚嘆號，改用一般公告與佈告圖示
     function getCategoryIcon(tag) {
       switch (tag) {
-        case '重要消息': return '<i class="fa-solid fa-triangle-exclamation text-red-500 text-3xl"></i>';
-        case '一般公告': return '<i class="fa-solid fa-bullhorn text-orange-500 text-3xl"></i>';
+        case '重要消息': return '<i class="fa-solid fa-bullhorn text-red-500 text-3xl"></i>';
+        case '一般公告': return '<i class="fa-solid fa-clipboard-list text-orange-500 text-3xl"></i>';
         case '系統維護': return '<i class="fa-solid fa-screwdriver-wrench text-slate-500 text-3xl"></i>';
         case '活動消息': return '<i class="fa-solid fa-calendar-days text-emerald-500 text-3xl"></i>';
         case '重要殊榮': return '<i class="fa-solid fa-crown text-red-500 text-3xl"></i>';
@@ -1035,7 +1036,7 @@
           newItem.setAttribute('onclick', `openNoticeModal('${id}')`);
           
           let badgeBg = "bg-orange-500";
-          if(data.tag === '重要消息') badgeBg = "bg-red-500 animate-pulse";
+          if(data.tag === '重要消息') badgeBg = "bg-red-500";
           else if(data.tag === '系統維護') badgeBg = "bg-slate-600";
           else if(data.tag === '活動消息') badgeBg = "bg-emerald-600";
 
