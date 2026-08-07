@@ -15,13 +15,14 @@
     .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.6); }
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .hover-float:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(15, 23, 42, 0.12); }
-    /* 圖示動態浮動與脈動效果 */
-    @keyframes floatIcon {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-4px) scale(1.05); }
+    .hover-float:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15); }
+    /* 卡片浮動與呼吸燈動畫效果 */
+    @keyframes floatingCard {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
-    .animate-float-icon { animation: floatIcon 3s ease-in-out infinite; }
+    .animate-floating { animation: floatingCard 4s ease-in-out infinite; }
+    
     /* 隱藏原生捲動軸但保持滾動功能 */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -88,6 +89,9 @@
         <!-- 年度活動超連結 -->
         <a href="#unit-activities" class="hover:text-indigo-600 transition-colors py-2">年度活動</a>
 
+        <!-- 聯絡我們連結 -->
+        <a href="#contact" class="hover:text-indigo-600 transition-colors py-2 font-bold">聯絡我們</a>
+
         <button onclick="openAdminMenuModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-white hover:bg-slate-900 transition-all font-black text-sm shadow-md">
           <i class="fa-solid fa-gears"></i> 後台管理
         </button>
@@ -104,6 +108,7 @@
       <button onclick="openIndependentPage('role'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-slate-700 font-bold">業務職掌</button>
       <button onclick="openIndependentPage('unit'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-blue-600 font-bold">單位介紹</button>
       <a href="#unit-activities" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2 text-indigo-600 font-bold">年度活動</a>
+      <a href="#contact" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2 text-indigo-600 font-bold">聯絡我們</a>
       <button onclick="openAdminMenuModal(); document.getElementById('mobileMenu').classList.add('hidden');" class="mx-auto flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 text-white font-black text-sm w-full justify-center shadow-md">
         <i class="fa-solid fa-gears"></i> 後台管理
       </button>
@@ -235,85 +240,158 @@
         </div>
       </div>
 
-      <!-- 本單位重大活動介紹 (單排橫向滾動、浮動卡片、簡易標題) -->
-      <section id="unit-activities" class="mb-16 scroll-mt-24">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl sm:text-4xl font-black text-slate-800">年度活動介紹</h2>
-          <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
-        </div>
+      <!-- 本單位年度活動行銷月曆 (參考範本排版風格與圓形浮動視覺) -->
+      <section id="unit-activities" class="mb-20 scroll-mt-24 bg-gradient-to-b from-sky-50 to-blue-50/50 rounded-[40px] p-6 sm:p-12 border border-sky-100 shadow-xl relative overflow-hidden">
         
-        <div class="relative">
-          <div id="activitiesListContainer" class="grid grid-flow-col auto-cols-[minmax(240px,1fr)] gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x">
-            
-            <!-- 1月份 -->
-            <div class="glass-card rounded-[30px] p-6 shadow-md border border-red-100 hover-float shrink-0 snap-start flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0">
-                <i class="fa-solid fa-utensils"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-red-100 text-red-600 uppercase">1 月份</span>
-                <h4 class="font-black text-slate-800 text-lg mt-1">新年圍爐團聚</h4>
-              </div>
+        <!-- 裝飾標題列 -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+          <div>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-300/80 text-amber-900 text-xs font-black mb-3 shadow-sm uppercase tracking-wider">
+              <i class="fa-solid fa-calendar-star"></i> 提早準備家庭活動囉
             </div>
+            <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">年度活動月曆</h2>
+            <p class="text-slate-500 font-bold mt-2 text-sm sm:text-base">FAMILY ACTIVITY CALENDAR</p>
+          </div>
+          <div class="bg-white/80 backdrop-blur-md px-6 py-3 rounded-2xl border border-sky-200 shadow-sm flex items-center gap-3">
+            <span class="text-2xl sm:text-3xl font-black text-sky-600">01月-12月</span>
+            <span class="text-xs font-black text-slate-500 uppercase tracking-widest">家庭年度計劃</span>
+          </div>
+        </div>
 
-            <!-- 3月份 -->
-            <div class="glass-card rounded-[30px] p-6 shadow-md border border-pink-100 hover-float shrink-0 snap-start flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 0.3s;">
-                <i class="fa-solid fa-cake-candles"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-600 uppercase">3 月份</span>
-                <h4 class="font-black text-slate-800 text-lg mt-1">母親節慶祝</h4>
-              </div>
+        <!-- 圓形漂浮卡片網格區塊 (對應參考範本風格) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 items-center">
+          
+          <!-- 活動卡片 1：1月份 新年圍爐 -->
+          <div class="bg-white rounded-full w-full aspect-square max-w-[300px] mx-auto p-6 shadow-2xl border-4 border-white flex flex-col items-center justify-center text-center animate-floating hover-float relative group cursor-pointer" style="animation-delay: 0s;">
+            <div class="absolute -top-3 px-4 py-1 rounded-full bg-red-500 text-white font-black text-xs shadow-md uppercase">1 月份</div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-3xl sm:text-4xl mb-3 shadow-inner group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-utensils"></i>
             </div>
-
-            <!-- 8月份 -->
-            <div class="glass-card rounded-[30px] p-6 shadow-md border border-blue-100 hover-float shrink-0 snap-start flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 0.6s;">
-                <i class="fa-solid fa-medal"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-600 uppercase">8 月份</span>
-                <h4 class="font-black text-slate-800 text-lg mt-1">父親節慶祝</h4>
-              </div>
-            </div>
-
-            <!-- 9月份 -->
-            <div class="glass-card rounded-[30px] p-6 shadow-md border border-amber-100 hover-float shrink-0 snap-start flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 0.9s;">
-                <i class="fa-solid fa-fire-burner"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 uppercase">9 月份</span>
-                <h4 class="font-black text-slate-800 text-lg mt-1">中秋烤肉慶祝</h4>
-              </div>
-            </div>
-
-            <!-- 12月份 -->
-            <div class="glass-card rounded-[30px] p-6 shadow-md border border-emerald-100 hover-float shrink-0 snap-start flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 1.2s;">
-                <i class="fa-solid fa-gifts"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 uppercase">12 月份</span>
-                <h4 class="font-black text-slate-800 text-lg mt-1">聖誕節慶祝</h4>
-              </div>
-            </div>
-
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">新年圍爐團聚</h3>
+            <p class="text-xs font-bold text-slate-400">家族團圓迎新春</p>
           </div>
 
-          <!-- 左右滑動控制按鈕 -->
-          <div class="flex items-center justify-between gap-6 pt-4">
-            <div class="flex-grow bg-slate-200 h-1.5 rounded-full overflow-hidden">
-              <div id="activitiesScrollProgress" class="bg-indigo-600 h-full w-1/3 transition-all duration-300"></div>
+          <!-- 活動卡片 2：5月份 母親節慶祝 (置中浮動) -->
+          <div class="bg-white rounded-full w-full aspect-square max-w-[300px] mx-auto p-6 shadow-2xl border-4 border-white flex flex-col items-center justify-center text-center animate-floating hover-float relative group cursor-pointer" style="animation-delay: 1.3s;">
+            <div class="absolute -top-3 px-4 py-1 rounded-full bg-pink-500 text-white font-black text-xs shadow-md uppercase">3 月份</div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center text-3xl sm:text-4xl mb-3 shadow-inner group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-cake-candles"></i>
             </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <button onclick="scrollActivitiesContainer('left')" class="w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition-all shadow-md"><i class="fa-solid fa-chevron-left text-sm"></i></button>
-              <button onclick="scrollActivitiesContainer('right')" class="w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition-all shadow-md"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">母親節慶祝</h3>
+            <p class="text-xs font-bold text-slate-400">感恩母愛溫馨獻禮</p>
+          </div>
+
+          <!-- 活動卡片 3：8月份 父親節慶祝 -->
+          <div class="bg-white rounded-full w-full aspect-square max-w-[300px] mx-auto p-6 shadow-2xl border-4 border-white flex flex-col items-center justify-center text-center animate-floating hover-float relative group cursor-pointer" style="animation-delay: 2.6s;">
+            <div class="absolute -top-3 px-4 py-1 rounded-full bg-blue-500 text-white font-black text-xs shadow-md uppercase">8 月份</div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-3xl sm:text-4xl mb-3 shadow-inner group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-medal"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">父親節慶祝</h3>
+            <p class="text-xs font-bold text-slate-400">致敬父親辛勞付出</p>
+          </div>
+
+        </div>
+
+        <!-- 第二排：9月與12月活動 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-center max-w-2xl mx-auto mt-8 sm:mt-10">
+          
+          <!-- 活動卡片 4：9月份 中秋烤肉 -->
+          <div class="bg-white rounded-full w-full aspect-square max-w-[280px] mx-auto p-6 shadow-2xl border-4 border-white flex flex-col items-center justify-center text-center animate-floating hover-float relative group cursor-pointer" style="animation-delay: 1.8s;">
+            <div class="absolute -top-3 px-4 py-1 rounded-full bg-amber-500 text-white font-black text-xs shadow-md uppercase">9 月份</div>
+            <div class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-3xl mb-3 shadow-inner group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-fire-burner"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black text-slate-900 mb-1">中秋烤肉慶祝</h3>
+            <p class="text-xs font-bold text-slate-400">月圓人團圓烤肉趣</p>
+          </div>
+
+          <!-- 活動卡片 5：12月份 聖誕節 -->
+          <div class="bg-white rounded-full w-full aspect-square max-w-[280px] mx-auto p-6 shadow-2xl border-4 border-white flex flex-col items-center justify-center text-center animate-floating hover-float relative group cursor-pointer" style="animation-delay: 3.2s;">
+            <div class="absolute -top-3 px-4 py-1 rounded-full bg-emerald-500 text-white font-black text-xs shadow-md uppercase">12 月份</div>
+            <div class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-3 shadow-inner group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-gifts"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black text-slate-900 mb-1">聖誕節慶祝</h3>
+            <p class="text-xs font-bold text-slate-400">歡樂交換禮物派對</p>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-12">
+          <span class="text-xs font-bold text-sky-700 uppercase tracking-widest bg-white/60 px-6 py-2 rounded-full shadow-sm">
+            更多家庭活動資訊請洽家庭資訊網官網 • www.lufamily.org
+          </span>
+        </div>
+
+      </section>
+    </div>
+  </section>
+
+  <!-- 聯絡我們區塊 (參考圖片排版風格調整) -->
+  <section id="contact" class="py-16 bg-[#fdfbf7] border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="text-orange-600 font-bold text-sm tracking-wider uppercase block mb-1">聯絡我們</span>
+        <h2 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight uppercase">CONTACT US</h2>
+        <div class="w-16 h-1.5 bg-orange-500 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="space-y-8">
+        <!-- 核心服務 / 聯絡資訊方塊 1 -->
+        <div class="bg-white rounded-[32px] p-6 sm:p-8 shadow-xl border border-orange-100 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-2 bg-orange-600"></div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-headset"></i></div>
+            <h3 class="text-xl font-black text-slate-800">家庭服務 FAMILY SUPPORT</h3>
+          </div>
+          <p class="text-slate-600 text-sm font-medium mb-6 leading-relaxed">
+            如有任何家庭活動、日常事務、聚會或資訊網相關問題，歡迎隨時與我們的政戰主管聯繫，我們將竭誠為您服務！
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-orange-50/50 border border-orange-100/60 text-center">
+              <span class="text-xs font-bold text-slate-400 block mb-1"><i class="fa-solid fa-user-shield text-orange-600 mr-1"></i> 聯絡人</span>
+              <p class="text-base font-black text-slate-800">政戰主管</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-orange-50/50 border border-orange-100/60 text-center">
+              <span class="text-xs font-bold text-slate-400 block mb-1"><i class="fa-solid fa-envelope text-orange-600 mr-1"></i> 聯絡信箱</span>
+              <a href="mailto:lujiajun20020501@gmail.com" class="text-sm sm:text-base font-black text-indigo-600 hover:underline break-all">lujiajun20020501@gmail.com</a>
             </div>
           </div>
         </div>
-      </section>
+
+        <!-- 聯絡社群 / QR Code 方塊 2 -->
+        <div class="bg-white rounded-[32px] p-6 sm:p-8 shadow-xl border border-orange-100 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-2 bg-orange-600"></div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-qrcode"></i></div>
+            <h3 class="text-xl font-black text-slate-800">聯絡社群 SOCIAL COMMUNITY</h3>
+          </div>
+          <p class="text-slate-600 text-sm font-medium mb-6 leading-relaxed">
+            掃描下方 QR Code 加入我們的官方社群或私訊聯繫，快速掌握家庭最新動態！
+          </p>
+          <div class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-xs mx-auto shadow-inner">
+            <div class="w-44 h-44 rounded-xl overflow-hidden bg-white p-2 shadow-md flex items-center justify-center mb-3">
+              <img src="QrCode.jpg" alt="聯絡社群 QR Code" class="w-full h-full object-contain">
+            </div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">掃描加入社群</span>
+          </div>
+        </div>
+
+        <!-- 家庭資訊 / 備註方塊 3 -->
+        <div class="bg-white rounded-[32px] p-6 sm:p-8 shadow-xl border border-orange-100 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-2 bg-orange-600"></div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-house-chimney"></i></div>
+            <h3 class="text-xl font-black text-slate-800">家庭資訊 FAMILY OFFICE</h3>
+          </div>
+          <p class="text-slate-700 font-bold text-base mb-4">呂氏家庭生活資訊網</p>
+          <div class="p-4 rounded-2xl bg-orange-50/50 border border-orange-100/60 text-center">
+            <span class="text-xs font-bold text-slate-400 block mb-1"><i class="fa-solid fa-shield-heart text-orange-600 mr-1"></i> 網站版本</span>
+            <p class="text-base font-black text-slate-800">Ver 3.0 Cloud Sync</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -587,35 +665,6 @@
       carouselIndex++;
       updateCarousel(carouselIndex);
     }, 4000);
-
-    // ----------------------------------------------------
-    // 年度活動橫向捲動與進度條邏輯
-    // ----------------------------------------------------
-    function scrollActivitiesContainer(direction) {
-      const container = document.getElementById('activitiesListContainer');
-      const scrollAmount = 300;
-      if (direction === 'left') {
-        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-      setTimeout(updateActivitiesProgress, 300);
-    }
-
-    function updateActivitiesProgress() {
-      const container = document.getElementById('activitiesListContainer');
-      const progressBar = document.getElementById('activitiesScrollProgress');
-      if (!container || !progressBar) return;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      if (maxScroll <= 0) {
-        progressBar.style.width = '100%';
-        return;
-      }
-      const scrollPercent = (container.scrollLeft / maxScroll) * 100;
-      progressBar.style.width = Math.max(scrollPercent, 15) + '%';
-    }
-
-    document.getElementById('activitiesListContainer')?.addEventListener('scroll', updateActivitiesProgress);
 
     // ----------------------------------------------------
     // 互動與雲端串接功能
@@ -1434,7 +1483,6 @@
     document.addEventListener('DOMContentLoaded', () => { 
       fetchNoticesFromCloud(); 
       renderHomeTeamStaff('25-26');
-      updateActivitiesProgress();
     });
   </script>
 </body>
