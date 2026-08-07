@@ -12,14 +12,14 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
     body { font-family: "Noto Sans TC", sans-serif; background: #f8fafc; overflow-x: hidden; }
-    .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.5); }
+    .glass-card { backdrop-filter: blur(16px); background: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.6); }
     .gradient-text { background: linear-gradient(to right, #6366f1, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hover-float { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .hover-float:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(15, 23, 42, 0.12); }
+    .hover-float:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(15, 23, 42, 0.12); }
     /* 圖示動態浮動與脈動效果 */
     @keyframes floatIcon {
       0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-6px) scale(1.05); }
+      50% { transform: translateY(-4px) scale(1.05); }
     }
     .animate-float-icon { animation: floatIcon 3s ease-in-out infinite; }
     /* 隱藏原生捲動軸但保持滾動功能 */
@@ -235,48 +235,82 @@
         </div>
       </div>
 
-      <!-- 本單位重大活動介紹 -->
-      <section id="unit-activities" class="mb-16 max-w-4xl mx-auto scroll-mt-24">
+      <!-- 本單位重大活動介紹 (單排橫向滾動、浮動卡片、簡易標題) -->
+      <section id="unit-activities" class="mb-16 scroll-mt-24">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">年度活動介紹</h2>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div onclick="openUnitModal('新年圍爐團聚', '年度核心傳統', '全體動員', ['歲末迎新圍爐宴', '核心家庭成員大團圓', '凝聚向心力與傳承'])" class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-red-100 shadow-sm relative overflow-hidden group cursor-pointer hover:border-red-300 transition-all">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-red-50 text-red-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10 animate-float-icon">
-              <i class="fa-solid fa-utensils"></i>
+        <div class="relative">
+          <div id="activitiesListContainer" class="grid grid-flow-col auto-cols-[minmax(240px,1fr)] gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x">
+            
+            <!-- 1月份 -->
+            <div class="glass-card rounded-[30px] p-6 shadow-md border border-red-100 hover-float shrink-0 snap-start flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-red-100 text-red-600 uppercase">1 月份</span>
+                <h4 class="font-black text-slate-800 text-lg mt-1">新年圍爐團聚</h4>
+              </div>
             </div>
-            <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10 flex items-center justify-between">
-              <span>新年圍爐團聚</span>
-              <span class="text-[10px] sm:text-xs px-2.5 py-1 rounded-full bg-red-100 text-red-700 font-bold"><i class="fa-solid fa-circle-info mr-1"></i> 詳細</span>
-            </h4>
-            <p class="text-red-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">歲末迎新</p>
-            <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">象徵闔家團圓與新年新氣象，全體成員齊聚一堂共享豐盛饗宴。</p>
+
+            <!-- 3月份 -->
+            <div class="glass-card rounded-[30px] p-6 shadow-md border border-pink-100 hover-float shrink-0 snap-start flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 0.3s;">
+                <i class="fa-solid fa-cake-candles"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-600 uppercase">3 月份</span>
+                <h4 class="font-black text-slate-800 text-lg mt-1">母親節慶祝</h4>
+              </div>
+            </div>
+
+            <!-- 8月份 -->
+            <div class="glass-card rounded-[30px] p-6 shadow-md border border-blue-100 hover-float shrink-0 snap-start flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 0.6s;">
+                <i class="fa-solid fa-medal"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-600 uppercase">8 月份</span>
+                <h4 class="font-black text-slate-800 text-lg mt-1">父親節慶祝</h4>
+              </div>
+            </div>
+
+            <!-- 9月份 -->
+            <div class="glass-card rounded-[30px] p-6 shadow-md border border-amber-100 hover-float shrink-0 snap-start flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 0.9s;">
+                <i class="fa-solid fa-fire-burner"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 uppercase">9 月份</span>
+                <h4 class="font-black text-slate-800 text-lg mt-1">中秋烤肉慶祝</h4>
+              </div>
+            </div>
+
+            <!-- 12月份 -->
+            <div class="glass-card rounded-[30px] p-6 shadow-md border border-emerald-100 hover-float shrink-0 snap-start flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shadow-inner animate-float-icon shrink-0" style="animation-delay: 1.2s;">
+                <i class="fa-solid fa-gifts"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 uppercase">12 月份</span>
+                <h4 class="font-black text-slate-800 text-lg mt-1">聖誕節慶祝</h4>
+              </div>
+            </div>
+
           </div>
 
-          <div onclick="openUnitModal('母親節慶祝', '感恩溫馨盛事', '全體動員', ['向偉大母親致敬', '感恩獻禮與慰勞', '溫馨感性交流時光'])" class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-pink-100 shadow-sm relative overflow-hidden group cursor-pointer hover:border-pink-300 transition-all">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-pink-50 text-pink-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10 animate-float-icon" style="animation-delay: 0.5s;">
-              <i class="fa-solid fa-cake-candles"></i>
+          <!-- 左右滑動控制按鈕 -->
+          <div class="flex items-center justify-between gap-6 pt-4">
+            <div class="flex-grow bg-slate-200 h-1.5 rounded-full overflow-hidden">
+              <div id="activitiesScrollProgress" class="bg-indigo-600 h-full w-1/3 transition-all duration-300"></div>
             </div>
-            <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10 flex items-center justify-between">
-              <span>母親節慶祝</span>
-              <span class="text-[10px] sm:text-xs px-2.5 py-1 rounded-full bg-pink-100 text-pink-700 font-bold"><i class="fa-solid fa-circle-info mr-1"></i> 詳細</span>
-            </h4>
-            <p class="text-pink-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">感恩獻禮</p>
-            <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">慰勞主母與家庭女性成員的辛勞付出，透過蛋糕與聚餐表達最高敬意。</p>
-          </div>
-
-          <div onclick="openUnitModal('中秋烤肉慶祝', '秋節聯誼活動', '全體動員', ['戶外碳烤與美食分享', '賞月聯誼互動', '凝聚士氣與歡樂交流'])" class="glass-card rounded-[30px] sm:rounded-[35px] p-6 sm:p-10 hover-float border border-amber-100 shadow-sm relative overflow-hidden group cursor-pointer hover:border-amber-300 transition-all">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl sm:text-3xl mb-6 shadow-inner relative z-10 animate-float-icon" style="animation-delay: 1s;">
-              <i class="fa-solid fa-fire-burner"></i>
+            <div class="flex items-center gap-2 shrink-0">
+              <button onclick="scrollActivitiesContainer('left')" class="w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition-all shadow-md"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+              <button onclick="scrollActivitiesContainer('right')" class="w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition-all shadow-md"><i class="fa-solid fa-chevron-right text-sm"></i></button>
             </div>
-            <h4 class="font-black text-slate-800 text-xl sm:text-2xl relative z-10 flex items-center justify-between">
-              <span>中秋烤肉慶祝</span>
-              <span class="text-[10px] sm:text-xs px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 font-bold"><i class="fa-solid fa-circle-info mr-1"></i> 詳細</span>
-            </h4>
-            <p class="text-amber-600 font-bold text-xs sm:text-sm uppercase tracking-widest mt-1 mb-3 sm:mb-4 relative z-10">秋節聯誼</p>
-            <p class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed relative z-10">結合傳統節慶與戶外碳烤活動，促進各分支成員間的歡樂互動與情感。</p>
           </div>
         </div>
       </section>
@@ -503,23 +537,6 @@
     </div>
   </div>
 
-  <!-- 單位同仁編制詳細 Modal -->
-  <div id="unitDetailModal" class="fixed inset-0 z-[130] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-[35px] sm:rounded-[40px] w-full max-w-md shadow-2xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closeUnitModal()" class="absolute top-5 right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4"><i class="fa-solid fa-id-card"></i></div>
-      <h3 id="unitModalTitle" class="text-xl sm:text-2xl font-black text-slate-800 mb-1 text-center">--</h3>
-      <p id="unitModalSubtitle" class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-6 text-center">--</p>
-      
-      <div class="bg-slate-50 rounded-3xl p-5 border mb-6 text-left">
-        <span class="text-xs font-black text-slate-400 uppercase tracking-widest block mb-3"><i class="fa-solid fa-users mr-1"></i> 詳細資訊</span>
-        <div id="unitModalMembersList" class="space-y-2"></div>
-      </div>
-
-      <button onclick="closeUnitModal()" class="w-full py-3.5 rounded-2xl bg-slate-800 text-white font-black text-sm uppercase">關閉視窗</button>
-    </div>
-  </div>
-
   <!-- 圖片放大檢視 Lightbox Modal -->
   <div id="imageLightboxModal" class="fixed inset-0 z-[170] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md hidden" onclick="closeImageLightbox()">
     <div class="relative max-w-5xl max-h-[90vh] flex items-center justify-center w-full h-full" onclick="event.stopPropagation()">
@@ -570,6 +587,35 @@
       carouselIndex++;
       updateCarousel(carouselIndex);
     }, 4000);
+
+    // ----------------------------------------------------
+    // 年度活動橫向捲動與進度條邏輯
+    // ----------------------------------------------------
+    function scrollActivitiesContainer(direction) {
+      const container = document.getElementById('activitiesListContainer');
+      const scrollAmount = 300;
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+      setTimeout(updateActivitiesProgress, 300);
+    }
+
+    function updateActivitiesProgress() {
+      const container = document.getElementById('activitiesListContainer');
+      const progressBar = document.getElementById('activitiesScrollProgress');
+      if (!container || !progressBar) return;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) {
+        progressBar.style.width = '100%';
+        return;
+      }
+      const scrollPercent = (container.scrollLeft / maxScroll) * 100;
+      progressBar.style.width = Math.max(scrollPercent, 15) + '%';
+    }
+
+    document.getElementById('activitiesListContainer')?.addEventListener('scroll', updateActivitiesProgress);
 
     // ----------------------------------------------------
     // 互動與雲端串接功能
@@ -1385,33 +1431,10 @@
     });
     backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-    function openUnitModal(title, subtitle, countText, members) {
-      document.getElementById('unitModalTitle').innerText = title;
-      document.getElementById('unitModalSubtitle').innerText = subtitle + ' (' + countText + ')';
-      
-      const listContainer = document.getElementById('unitModalMembersList');
-      listContainer.innerHTML = '';
-      
-      members.forEach((m) => {
-        const row = document.createElement('div');
-        row.className = "flex items-center gap-3 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm";
-        let icon = '<i class="fa-solid fa-star text-indigo-500"></i>';
-        if (m.includes('圍爐') || m.includes('宴')) icon = '<i class="fa-solid fa-utensils text-red-500"></i>';
-        else if (m.includes('母親') || m.includes('獻禮')) icon = '<i class="fa-solid fa-cake-candles text-pink-500"></i>';
-        else if (m.includes('烤肉') || m.includes('碳烤')) icon = '<i class="fa-solid fa-fire-burner text-amber-500"></i>';
-        else if (m.includes('長')) icon = '<i class="fa-solid fa-crown text-amber-500"></i>';
-
-        row.innerHTML = `<div class="w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center shrink-0 text-sm">${icon}</div><span class="font-black text-slate-800 text-sm">${m}</span>`;
-        listContainer.appendChild(row);
-      });
-
-      document.getElementById('unitDetailModal').classList.remove('hidden');
-    }
-    function closeUnitModal() { document.getElementById('unitDetailModal').classList.add('hidden'); }
-
     document.addEventListener('DOMContentLoaded', () => { 
       fetchNoticesFromCloud(); 
       renderHomeTeamStaff('25-26');
+      updateActivitiesProgress();
     });
   </script>
 </body>
