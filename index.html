@@ -85,6 +85,9 @@
           </div>
         </div>
 
+        <!-- 年度活動超連結 -->
+        <a href="#unit-activities" class="hover:text-indigo-600 transition-colors py-2">年度活動</a>
+
         <button onclick="openAdminMenuModal()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-white hover:bg-slate-900 transition-all font-black text-sm shadow-md">
           <i class="fa-solid fa-gears"></i> 後台管理
         </button>
@@ -94,12 +97,13 @@
     <!-- 手機版選單 -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 p-6 flex flex-col gap-4 text-center font-bold text-slate-700 shadow-xl">
       <a href="#home" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2">首頁</a>
-      <button onclick="openIndependentPage('notice'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-indigo-600 font-bold">最新消息</button>
+      <button onclick="openIndependentPage('notice'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-orange-600 font-bold">最新消息</button>
       <button onclick="openIndependentPage('honor'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-amber-600 font-bold">榮譽榜</button>
       <button onclick="openIndependentPage('team'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-indigo-600 font-bold">隊職幹部</button>
       <button onclick="openIndependentPage('org'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-indigo-600 font-bold">組織架構</button>
       <button onclick="openIndependentPage('role'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-slate-700 font-bold">業務職掌</button>
       <button onclick="openIndependentPage('unit'); document.getElementById('mobileMenu').classList.add('hidden');" class="py-2 text-blue-600 font-bold">單位介紹</button>
+      <a href="#unit-activities" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="py-2 text-indigo-600 font-bold">年度活動</a>
       <button onclick="openAdminMenuModal(); document.getElementById('mobileMenu').classList.add('hidden');" class="mx-auto flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 text-white font-black text-sm w-full justify-center shadow-md">
         <i class="fa-solid fa-gears"></i> 後台管理
       </button>
@@ -113,18 +117,6 @@
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-xs font-black mb-6 border border-indigo-100 uppercase tracking-widest">
           <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span></span>
           Google Sheets Cloud Sync Online
-        </div>
-
-        <!-- 服務時間與即時燈號狀態區塊 -->
-        <div class="mb-6 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm inline-flex flex-col gap-2 text-left w-full max-w-sm">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-black text-slate-500 uppercase tracking-wider"><i class="fa-regular fa-clock mr-1 text-indigo-500"></i> 服務時間</span>
-            <div id="serviceStatusBadge" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-slate-100 text-slate-600">
-              <span id="serviceStatusDot" class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
-              <span id="serviceStatusText">狀態載入中...</span>
-            </div>
-          </div>
-          <p class="text-xs font-bold text-slate-700">每週一至週日：上午 08:00 - 下午 05:00（夜間待命：17:00 - 23:00）</p>
         </div>
 
         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-800">分享生活<br><span class="gradient-text">紀錄家庭日常</span></h2>
@@ -244,7 +236,7 @@
       </div>
 
       <!-- 本單位重大活動介紹 -->
-      <section id="unit-activities" class="mb-16 max-w-4xl mx-auto">
+      <section id="unit-activities" class="mb-16 max-w-4xl mx-auto scroll-mt-24">
         <div class="text-center mb-10">
           <h2 class="text-3xl sm:text-4xl font-black text-slate-800">年度活動介紹</h2>
           <div class="w-16 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
@@ -584,30 +576,6 @@
     // ----------------------------------------------------
     let _lightboxCurrentIndex = 0;
 
-    function updateServiceStatus() {
-      const now = new Date();
-      const hour = now.getHours();
-      const badge = document.getElementById('serviceStatusBadge');
-      const dot = document.getElementById('serviceStatusDot');
-      const text = document.getElementById('serviceStatusText');
-
-      if (!badge || !dot || !text) return;
-
-      if (hour >= 8 && hour < 17) {
-        badge.className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-emerald-50 text-emerald-700 border border-emerald-200";
-        dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
-        text.innerText = "服務中";
-      } else if (hour >= 17 && hour < 23) {
-        badge.className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-amber-50 text-amber-700 border border-amber-200";
-        dot.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
-        text.innerText = "值班人員待命，有任何疑問可洽值班人員";
-      } else {
-        badge.className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-sm bg-rose-50 text-rose-700 border border-rose-200";
-        dot.className = "w-2.5 h-2.5 rounded-full bg-rose-500";
-        text.innerText = "目前非服務時間";
-      }
-    }
-
     function openOrgChartLightbox() {
       const imgSrc = document.getElementById('orgChartImg')?.src || '';
       window._currentNoticeImages = [{ url: imgSrc, name: '組織架構圖' }];
@@ -738,7 +706,6 @@
 
     function formatDate(d) { if (!d) return ''; return String(d).includes('T') ? String(d).split('T')[0] : d; }
 
-    // 已移除三角驚嘆號，改用一般公告與佈告圖示
     function getCategoryIcon(tag) {
       switch (tag) {
         case '重要消息': return '<i class="fa-solid fa-bullhorn text-red-500 text-3xl"></i>';
@@ -753,7 +720,6 @@
       }
     }
 
-    // 獨立專區分頁檢視通用函數 (每頁 10 筆)
     function openIndependentPage(type, page = 1) {
       const modal = document.getElementById('independentPageModal');
       const titleEl = document.getElementById('indModalTitle');
@@ -793,7 +759,6 @@
         html += '</div>';
         bodyEl.innerHTML = html;
 
-        // 產生分頁按鈕 (1, 2, 3...)
         if (totalPages > 1) {
           for (let i = 1; i <= totalPages; i++) {
             const btn = document.createElement('button');
@@ -832,7 +797,6 @@
         html += '</div>';
         bodyEl.innerHTML = html;
 
-        // 產生分頁按鈕 (1, 2, 3...)
         if (totalPages > 1) {
           for (let i = 1; i <= totalPages; i++) {
             const btn = document.createElement('button');
@@ -1448,8 +1412,6 @@
     document.addEventListener('DOMContentLoaded', () => { 
       fetchNoticesFromCloud(); 
       renderHomeTeamStaff('25-26');
-      updateServiceStatus();
-      setInterval(updateServiceStatus, 60000);
     });
   </script>
 </body>
