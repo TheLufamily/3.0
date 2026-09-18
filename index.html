@@ -45,7 +45,7 @@
 
       <div class="flex items-center gap-4">
         <!-- 後台管理按鈕 -->
-        <button onclick="openAdminMenuModal()" class="text-slate-600 hover:text-indigo-600 transition-colors p-2 text-lg focus:outline-none bg-transparent border-0 shadow-none" title="後臺管理">
+        <button onclick="openAdminMenuModal()" class="text-slate-600 hover:text-indigo-600 transition-colors p-2 text-lg focus:outline-none bg-transparent border-0 shadow-none" title="後台管理中心">
           <i class="fa-solid fa-user"></i>
         </button>
 
@@ -98,31 +98,37 @@
     </div>
   </nav>
 
-  <!-- 首頁區 (仿照圖片風格：上方大型主視覺文字 + 下方純自動換圖全家福) -->
+  <!-- 首頁區 -->
   <section id="home" class="py-10 sm:py-14 flex items-center">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full flex flex-col items-center">
       
       <!-- 上方圖片化主視覺標題 -->
       <div data-aos="fade-down" class="text-center mb-8 w-full">
         <div class="inline-block px-8 py-3 rounded-3xl bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-orange-500/10 border border-slate-200 shadow-sm mb-3">
-          <span class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-wider gradient-text uppercase">呂氏家庭生活資訊網</span>
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-wider gradient-text uppercase">呂氏家庭生活資訊</span>
         </div>
         <p class="text-slate-500 font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">Lu Family Official Website & Daily Life Records</p>
       </div>
 
-      <!-- 下方純自動換圖展示區 (無按鈕、無法點選) -->
+      <!-- 下方純自動換圖展示區 (統一尺寸、不切圖、自動填滿邊框背景) -->
       <div class="w-full max-w-4xl" data-aos="fade-up">
         <div class="glass-card rounded-[30px] sm:rounded-[35px] p-2 sm:p-3 shadow-2xl border-white hover-float overflow-hidden relative">
           <div class="relative w-full h-[320px] sm:h-[450px] rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-900 flex items-center justify-center pointer-events-none select-none">
             
-            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center justify-center">
-              <img src="S__23732244.jpg" alt="呂氏家庭全家福 1" class="w-full h-full object-cover object-center pointer-events-none">
+            <!-- 每張圖片的外框帶有模糊背景處理，內部圖片完整呈現且大小一致 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center justify-center overflow-hidden">
+              <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('S__23732244.jpg');"></div>
+              <img src="S__23732244.jpg" alt="呂氏家庭全家福 1" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
             </div>
-            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center justify-center">
-              <img src="362511_0.jpg" alt="呂氏家庭全家福 2" class="w-full h-full object-cover object-center pointer-events-none">
+            
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center justify-center overflow-hidden">
+              <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('362511_0.jpg');"></div>
+              <img src="362511_0.jpg" alt="呂氏家庭全家福 2" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
             </div>
-            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center justify-center">
-              <img src="362512_0.jpg" alt="呂氏家庭全家福 3" class="w-full h-full object-cover object-center pointer-events-none">
+            
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center justify-center overflow-hidden">
+              <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('362512_0.jpg');"></div>
+              <img src="362512_0.jpg" alt="呂氏家庭全家福 3" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
             </div>
 
           </div>
@@ -320,15 +326,15 @@
     <div class="bg-white rounded-[35px] sm:rounded-[40px] w-full max-w-md shadow-2xl p-6 sm:p-8 text-center relative">
       <button onclick="closeAdminMenuModal()" class="absolute top-5 right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4"><i class="fa-solid fa-user"></i></div>
-      <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4">後臺管理</h3>
+      <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4">後台管理中心</h3>
       <div class="grid grid-cols-1 gap-3 sm:gap-4 mb-4">
         <button onclick="openPublishAuthModal()" class="p-4 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border text-indigo-900 flex items-center gap-4 text-left font-black transition-all">
           <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-user-plus"></i></div>
-          <div><h4 class="text-sm sm:text-base">新增</h4><p class="text-xs text-slate-500 font-medium">發布最新公告資訊</p></div>
+          <div><h4 class="text-sm sm:text-base">新增最新消息</h4><p class="text-xs text-slate-500 font-medium">發布最新公告資訊</p></div>
         </button>
         <button onclick="openHistoryAuthModal()" class="p-4 rounded-3xl bg-slate-50 hover:bg-indigo-100 border text-slate-800 flex items-center gap-4 text-left font-black transition-all">
           <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-user-pen"></i></div>
-          <div><h4 class="text-sm sm:text-base">編輯</h4><p class="text-xs text-slate-500 font-medium">修改或刪除公告</p></div>
+          <div><h4 class="text-sm sm:text-base">管理最新消息</h4><p class="text-xs text-slate-500 font-medium">修改或刪除公告</p></div>
         </button>
       </div>
       <button onclick="closeAdminMenuModal()" class="w-full py-3.5 rounded-2xl bg-slate-100 text-slate-600 font-black text-sm uppercase">關閉選單</button>
