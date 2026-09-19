@@ -53,7 +53,7 @@
       <!-- 電腦版導覽項目 -->
       <div class="hidden lg:flex items-center gap-6 font-bold text-sm text-slate-700 shrink-0">
         <a href="#home" class="hover:text-orange-600 transition-colors py-2">首頁 HOME</a>
-        <a href="https://thelufamily.github.io/PA/" target="_blank" class="hover:text-orange-600 transition-colors py-2">家庭活動FAMILY ACTIVITY</a>
+        <a href="https://thelufamily.github.io/PA/" target="_blank" class="hover:text-orange-600 transition-colors py-2">家庭活動 FAMILY ACTIVITY</a>
         <a href="#notice" class="hover:text-orange-600 transition-colors py-2">最新消息 NEWS</a>
         
         <!-- 關於我們 下拉選單 (橫式多欄佈局) -->
@@ -69,7 +69,7 @@
               <span class="text-sm font-bold text-slate-400">關於我們</span>
             </div>
 
-            <!-- 內容網格 (改為兩大分區) -->
+            <!-- 內容網格 -->
             <div class="grid grid-cols-2 gap-x-12 gap-y-8">
               
               <!-- 1. 隊職員與業務 -->
@@ -79,10 +79,10 @@
                   <span>隊職員與業務</span>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
-                  <button onclick="openIndependentPage('team')" class="group/item text-left p-3 rounded-2xl bg-slate-50 hover:bg-orange-50/60 border border-slate-100 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <a href="#team-staff" class="group/item text-left p-3 rounded-2xl bg-slate-50 hover:bg-orange-50/60 border border-slate-100 hover:border-orange-200 transition-all flex items-center justify-between">
                     <span class="text-xs font-black text-slate-700 group-hover/item:text-orange-600">隊職幹部</span>
                     <i class="fa-solid fa-arrow-right text-xs text-orange-400 opacity-0 group-hover/item:opacity-100 transform -translate-x-1 group-hover/item:translate-x-0 transition-all"></i>
-                  </button>
+                  </a>
                   <button onclick="openIndependentPage('role')" class="group/item text-left p-3 rounded-2xl bg-slate-50 hover:bg-orange-50/60 border border-slate-100 hover:border-orange-200 transition-all flex items-center justify-between">
                     <span class="text-xs font-black text-slate-700 group-hover/item:text-orange-600">業務職掌</span>
                     <i class="fa-solid fa-arrow-right text-xs text-orange-400 opacity-0 group-hover/item:opacity-100 transform -translate-x-1 group-hover/item:translate-x-0 transition-all"></i>
@@ -159,9 +159,9 @@
             <i id="mobileSubMenuIcon" class="fa-solid fa-plus text-xs text-orange-600 transition-transform"></i>
           </button>
           <div id="mobileSubMenu" class="hidden bg-slate-50 border-t border-slate-100 p-3 space-y-2">
-            <button onclick="toggleMobileMenu(); openIndependentPage('team')" class="w-full text-left px-5 py-3.5 rounded-xl bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-sm font-black flex items-center gap-3 transition-all">
+            <a href="#team-staff" onclick="toggleMobileMenu()" class="w-full text-left px-5 py-3.5 rounded-xl bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-sm font-black flex items-center gap-3 transition-all">
               <i class="fa-solid fa-users text-indigo-600 text-base"></i> 隊職幹部
-            </button>
+            </a>
             <button onclick="toggleMobileMenu(); openIndependentPage('role')" class="w-full text-left px-5 py-3.5 rounded-xl bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-sm font-black flex items-center gap-3 transition-all">
               <i class="fa-solid fa-briefcase text-slate-600 text-base"></i> 業務職掌
             </button>
@@ -212,8 +212,8 @@
           認識我們的願景、理念與成立初衷。<br>見證一個溫馨家庭日常紀錄與生活資訊的匯集點。
         </p>
 
-        <!-- 了解更多按鈕組 -->
-        <div class="inline-flex items-center rounded-2xl shadow-xl overflow-hidden bg-orange-50 hover:shadow-2xl transition-all cursor-pointer group border border-orange-200" onclick="openIndependentPage('sponsors')">
+        <!-- 了解更多按鈕組 (點擊開啟業務職掌) -->
+        <div class="inline-flex items-center rounded-2xl shadow-xl overflow-hidden bg-orange-50 hover:shadow-2xl transition-all cursor-pointer group border border-orange-200" onclick="openIndependentPage('role')">
           <div class="px-8 py-4 text-orange-600 font-black text-sm sm:text-base tracking-wide">
             了解更多
           </div>
@@ -267,7 +267,7 @@
         </div>
       </div>
 
-      <!-- 隊職幹部區塊 -->
+      <!-- 隊職幹部區塊 (了解更多點擊開啟業務職掌) -->
       <div id="team-staff" class="mb-16 scroll-mt-24 pt-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
@@ -279,7 +279,7 @@
             </div>
 
             <div class="pt-4">
-              <button onclick="openIndependentPage('team')" class="px-6 py-3.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-2xl font-black text-xs flex items-center justify-between transition-all w-full shadow-sm">
+              <button onclick="openIndependentPage('role')" class="px-6 py-3.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-2xl font-black text-xs flex items-center justify-between transition-all w-full shadow-sm">
                 <span>了解更多</span> <div class="w-7 h-7 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-arrow-right"></i></div>
               </button>
             </div>
@@ -676,8 +676,8 @@
       const staticPages = [
         { title: '首頁 / HOME', type: 'page', target: '#home', desc: '呂氏家庭生活資訊官方網站首頁' },
         { title: '最新消息 / NEWS', type: 'page', target: '#notice', desc: '查看家庭各項最新公告與資訊' },
-        { title: '隊職員 / TEAM STAFF', type: 'page', target: '#team-staff', desc: '查看隊職幹部介紹與職掌' },
-        { title: '關於我們：隊職幹部', type: 'modal', action: "openIndependentPage('team')", desc: '檢視各項幹部詳細介紹' },
+        { title: '隊職員 / TEAM STAFF', type: 'page', target: '#team-staff', desc: '查看現代隊職幹部介紹與職掌' },
+        { title: '關於我們：隊職幹部', type: 'page', target: '#team-staff', desc: '跳轉至首頁隊職幹部區塊' },
         { title: '關於我們：業務職掌', type: 'modal', action: "openIndependentPage('role')", desc: '檢視各項業務職掌說明' },
         { title: '關於我們：家族分布', type: 'modal', action: "openIndependentPage('unit')", desc: '檢視家族成員分布與所在地圖' },
         { title: '支持我們的力量 SPONSORS', type: 'modal', action: "openIndependentPage('sponsors')", desc: '了解網站改版初衷與贊助支援' },
@@ -940,27 +940,6 @@
             paginationEl.appendChild(btn);
           }
         }
-
-      } else if (type === 'team') {
-        titleEl.innerText = "隊職幹部介紹";
-        iconEl.innerHTML = '<i class="fa-solid fa-users text-white"></i>';
-        
-        let teamHtml = '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">';
-        teamStaffList.forEach(member => {
-          teamHtml += `
-            <div class="p-5 rounded-[24px] bg-white border border-slate-100 shadow-sm cursor-pointer hover:border-indigo-500 hover:shadow-xl transition-all flex flex-col justify-between group" onclick="openTeamMemberModal('${member.role}', '${member.desc}', '${member.link}')">
-              <div>
-                <h4 class="font-black text-slate-900 group-hover:text-indigo-600 text-lg sm:text-xl mb-1">${member.role}</h4>
-                <p class="text-slate-600 text-sm font-medium leading-relaxed">${member.desc}</p>
-              </div>
-              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black">
-                <span class="${member.link ? 'text-indigo-600' : 'text-slate-400'}">${member.link ? '專屬網頁連結' : '詳細資訊'}</span>
-                <i class="fa-solid fa-arrow-right text-slate-400 group-hover:translate-x-1 transition-transform"></i>
-              </div>
-            </div>`;
-        });
-        teamHtml += '</div>';
-        bodyEl.innerHTML = teamHtml;
 
       } else if (type === 'sponsors') {
         titleEl.innerText = "支持我們的力量 SPONSORS";
