@@ -38,18 +38,51 @@
   <!-- 導覽列 -->
   <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <a href="#home" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-house"></i></div>
-        <h1 class="font-bold text-base sm:text-lg text-slate-800 truncate">呂氏家庭生活資訊官方網站</h1>
-      </a>
+      <div class="flex items-center gap-3">
+        <a href="#home" class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg hover:opacity-85 transition-opacity"><i class="fa-solid fa-house"></i></a>
+        <a href="#home" class="font-bold text-base sm:text-lg text-slate-800 hover:text-indigo-600 transition-colors truncate">呂氏家庭生活資訊官方網站</a>
+      </div>
 
-      <div class="flex items-center gap-4">
-        <!-- 後台管理按鈕 -->
-        <button onclick="openAdminMenuModal()" class="text-slate-600 hover:text-indigo-600 transition-colors p-2 text-lg focus:outline-none bg-transparent border-0 shadow-none" title="後台管理中心">
+      <!-- 電腦版導覽項目 -->
+      <div class="hidden lg:flex items-center gap-6 font-bold text-sm text-slate-700">
+        <a href="#home" class="hover:text-orange-600 transition-colors py-2">首頁 HOME</a>
+        <a href="https://thelufamily.github.io/PA/" target="_blank" class="hover:text-orange-600 transition-colors py-2">家庭活動 Family activity</a>
+        <a href="#notice" class="hover:text-orange-600 transition-colors py-2">最新消息 NEWS</a>
+        
+        <!-- 關於我們 下拉選單 -->
+        <div class="relative group py-2">
+          <button class="flex items-center gap-1.5 hover:text-orange-600 transition-colors focus:outline-none">
+            <span>關於我們 ABOUT</span> <i class="fa-solid fa-plus text-xs transition-transform group-hover:rotate-45"></i>
+          </button>
+          <div class="absolute top-full left-0 w-52 bg-white rounded-2xl shadow-xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform translate-y-2 group-hover:translate-y-0 z-50 space-y-1">
+            <button onclick="openIndependentPage('team')" class="w-full text-left px-4 py-2.5 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-users text-indigo-600"></i> 隊職幹部
+            </button>
+            <button onclick="openIndependentPage('org')" class="w-full text-left px-4 py-2.5 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-sitemap text-indigo-600"></i> 組織架構
+            </button>
+            <button onclick="openIndependentPage('role')" class="w-full text-left px-4 py-2.5 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-briefcase text-slate-600"></i> 業務職掌
+            </button>
+            <button onclick="openIndependentPage('unit')" class="w-full text-left px-4 py-2.5 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-black flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-house-chimney-user text-blue-600"></i> 單位介紹
+            </button>
+          </div>
+        </div>
+
+        <a href="#contact" class="hover:text-orange-600 transition-colors py-2">聯絡我們 CONTACT</a>
+
+        <div class="flex items-center gap-4 border-l border-slate-200 pl-4 text-lg">
+          <button onclick="openAdminMenuModal()" class="hover:text-indigo-600 transition-colors focus:outline-none" title="後臺管理"><i class="fa-solid fa-user"></i></button>
+        </div>
+      </div>
+
+      <!-- 手機版右側按鈕群 -->
+      <div class="flex items-center gap-3 lg:hidden">
+        <button onclick="openAdminMenuModal()" class="text-slate-600 hover:text-indigo-600 transition-colors p-2 text-lg focus:outline-none bg-transparent border-0 shadow-none" title="後臺管理">
           <i class="fa-solid fa-user"></i>
         </button>
 
-        <!-- 漢堡選單按鈕 -->
         <button onclick="toggleMobileMenu()" class="text-2xl text-slate-700 p-2 focus:outline-none hover:text-indigo-600 transition-colors">
           <i id="mobileMenuIcon" class="fa-solid fa-bars"></i>
         </button>
@@ -57,18 +90,25 @@
     </div>
 
     <!-- 展開式漢堡清單 -->
-    <div id="mobileMenu" class="hidden bg-white border-t border-slate-100 shadow-2xl transition-all">
+    <div id="mobileMenu" class="hidden bg-white border-t border-slate-100 shadow-2xl transition-all lg:hidden">
       <div class="max-w-4xl mx-auto px-6 py-6 flex flex-col gap-3 bg-slate-50/80 border-b border-slate-100 font-bold text-base sm:text-lg">
+        
         <a href="#home" onclick="toggleMobileMenu()" class="px-5 py-4 rounded-2xl bg-white text-slate-800 shadow-sm border border-slate-200 flex items-center justify-between hover:border-indigo-500 transition-all">
           <span>首頁 <span class="text-xs text-indigo-600 font-normal ml-2">HOME</span></span>
           <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
         </a>
+
+        <a href="https://thelufamily.github.io/PA/" target="_blank" onclick="toggleMobileMenu()" class="px-5 py-4 rounded-2xl bg-white text-slate-800 shadow-sm border border-slate-200 flex items-center justify-between hover:border-orange-500 transition-all">
+          <span>家庭活動 <span class="text-xs text-indigo-600 font-normal ml-2">Family activity</span></span>
+          <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+        </a>
+
         <a href="#notice" onclick="toggleMobileMenu()" class="px-5 py-4 rounded-2xl bg-white text-slate-800 shadow-sm border border-slate-200 flex items-center justify-between hover:border-orange-500 transition-all">
           <span>最新消息 <span class="text-xs text-orange-600 font-normal ml-2">NEWS</span></span>
           <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
         </a>
 
-        <!-- 關於我們分層選項 -->
+        <!-- 關於我們 -->
         <div class="rounded-2xl bg-white shadow-sm border border-slate-200 overflow-hidden">
           <button onclick="toggleMobileSubMenu()" class="w-full px-5 py-4 text-slate-800 flex items-center justify-between focus:outline-none hover:bg-slate-50 transition-all">
             <span class="flex items-center gap-2">關於我們 <span class="text-xs text-orange-600 font-normal">ABOUT</span></span>
@@ -110,12 +150,11 @@
         <p class="text-slate-500 font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">Lu Family Official Website & Daily Life Records</p>
       </div>
 
-      <!-- 下方純自動換圖展示區 (統一尺寸、不切圖、自動填滿邊框背景) -->
+      <!-- 下方純自動換圖展示區 -->
       <div class="w-full max-w-4xl" data-aos="fade-up">
         <div class="glass-card rounded-[30px] sm:rounded-[35px] p-2 sm:p-3 shadow-2xl border-white hover-float overflow-hidden relative">
           <div class="relative w-full h-[320px] sm:h-[450px] rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-900 flex items-center justify-center pointer-events-none select-none">
             
-            <!-- 每張圖片的外框帶有模糊背景處理，內部圖片完整呈現且大小一致 -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center justify-center overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('S__23732244.jpg');"></div>
               <img src="S__23732244.jpg" alt="呂氏家庭全家福 1" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
@@ -326,15 +365,15 @@
     <div class="bg-white rounded-[35px] sm:rounded-[40px] w-full max-w-md shadow-2xl p-6 sm:p-8 text-center relative">
       <button onclick="closeAdminMenuModal()" class="absolute top-5 right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4"><i class="fa-solid fa-user"></i></div>
-      <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4">後台管理中心</h3>
+      <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4">後臺管理</h3>
       <div class="grid grid-cols-1 gap-3 sm:gap-4 mb-4">
         <button onclick="openPublishAuthModal()" class="p-4 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border text-indigo-900 flex items-center gap-4 text-left font-black transition-all">
           <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-user-plus"></i></div>
-          <div><h4 class="text-sm sm:text-base">新增最新消息</h4><p class="text-xs text-slate-500 font-medium">發布最新公告資訊</p></div>
+          <div><h4 class="text-sm sm:text-base">新增</h4><p class="text-xs text-slate-500 font-medium">發布公告</p></div>
         </button>
         <button onclick="openHistoryAuthModal()" class="p-4 rounded-3xl bg-slate-50 hover:bg-indigo-100 border text-slate-800 flex items-center gap-4 text-left font-black transition-all">
           <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-user-pen"></i></div>
-          <div><h4 class="text-sm sm:text-base">管理最新消息</h4><p class="text-xs text-slate-500 font-medium">修改或刪除公告</p></div>
+          <div><h4 class="text-sm sm:text-base">管理</h4><p class="text-xs text-slate-500 font-medium">修改或刪除</p></div>
         </button>
       </div>
       <button onclick="closeAdminMenuModal()" class="w-full py-3.5 rounded-2xl bg-slate-100 text-slate-600 font-black text-sm uppercase">關閉選單</button>
