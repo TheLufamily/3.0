@@ -1077,7 +1077,6 @@
           
           let badgeBg = "bg-orange-500";
           const mediaContent = `<img src="New Release.png" alt="訊息發布預覽" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`;
-          const fileIndicator = (data.files && data.files.length > 0) ? `<span class="ml-2 text-orange-600 text-xs"><i class="fa-solid fa-paperclip"></i></span>` : '';
 
           newItem.innerHTML = `
             <div class="relative w-full h-32 sm:h-36 overflow-hidden bg-slate-100 flex items-center justify-center">
@@ -1089,7 +1088,7 @@
             <div class="p-5 flex flex-col justify-between flex-grow bg-white">
               <div class="mb-3">
                 <span class="text-xs font-bold text-orange-600/80 italic block mb-1.5"><i class="fa-regular fa-calendar-days mr-1"></i> ${formatDate(data.date)}</span>
-                <h3 class="text-base font-black text-slate-900 line-clamp-2 leading-snug">${data.title} ${fileIndicator}</h3>
+                <h3 class="text-base font-black text-slate-900 line-clamp-2 leading-snug">${data.title}</h3>
               </div>
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-orange-600 transition-colors">
                 <span>檢視完整內容</span>
@@ -1398,3 +1397,4 @@
   </script>
 </body>
 </html>
+```[cite: 9]
