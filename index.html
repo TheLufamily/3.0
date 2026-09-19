@@ -46,7 +46,7 @@
       <!-- 電腦版導覽項目 -->
       <div class="hidden lg:flex items-center gap-6 font-bold text-sm text-slate-700">
         <a href="#home" class="hover:text-orange-600 transition-colors py-2">首頁 HOME</a>
-        <a href="https://thelufamily.github.io/PA/" target="_blank" class="hover:text-orange-600 transition-colors py-2">家庭活動 Family activity</a>
+        <a href="https://thelufamily.github.io/PA/" target="_blank" class="hover:text-orange-600 transition-colors py-2">家庭活動 FAMILY ACTIVITY</a>
         <a href="#notice" class="hover:text-orange-600 transition-colors py-2">最新消息 NEWS</a>
         
         <!-- 關於我們 下拉選單 (橫式多欄佈局) -->
@@ -65,7 +65,6 @@
             <!-- 內容網格 -->
             <div class="grid grid-cols-2 gap-x-12 gap-y-8">
               
-              <!-- 第一群組：選手與教練 / 隊職幹部 -->
               <div class="space-y-4">
                 <div class="flex items-center gap-2 text-orange-600 font-black text-sm tracking-wide">
                   <span class="w-1.5 h-4 bg-orange-600 rounded-full"></span>
@@ -83,7 +82,6 @@
                 </div>
               </div>
 
-              <!-- 第二群組：關於球隊 / 單位介紹與職掌 -->
               <div class="space-y-4">
                 <div class="flex items-center gap-2 text-orange-600 font-black text-sm tracking-wide">
                   <span class="w-1.5 h-4 bg-orange-600 rounded-full"></span>
@@ -108,13 +106,13 @@
         <a href="#contact" class="hover:text-orange-600 transition-colors py-2">聯絡我們 CONTACT</a>
 
         <div class="flex items-center gap-4 border-l border-slate-200 pl-4 text-lg">
-          <button onclick="openAdminMenuModal()" class="hover:text-indigo-600 transition-colors focus:outline-none" title="後台管理中心"><i class="fa-solid fa-user"></i></button>
+          <button onclick="openAdminMenuModal()" class="hover:text-indigo-600 transition-colors focus:outline-none" title="後台管理"><i class="fa-solid fa-user"></i></button>
         </div>
       </div>
 
       <!-- 手機版右側按鈕群 -->
       <div class="flex items-center gap-3 lg:hidden">
-        <button onclick="openAdminMenuModal()" class="text-slate-600 hover:text-indigo-600 transition-colors p-2 text-lg focus:outline-none bg-transparent border-0 shadow-none" title="後台管理中心">
+        <button onclick="openAdminMenuModal()" class="text-slate-600 hover:text-indigo-600 transition-colors p-2 text-lg focus:outline-none bg-transparent border-0 shadow-none" title="後台管理">
           <i class="fa-solid fa-user"></i>
         </button>
 
@@ -173,38 +171,41 @@
     </div>
   </nav>
 
-  <!-- 首頁區 -->
-  <section id="home" class="py-10 sm:py-14 flex items-center">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full flex flex-col items-center">
+  <!-- 首頁區 (移除裝飾圖片背景黑邊，改採透明或一致底色) -->
+  <section id="home" class="py-16 sm:py-24 flex items-center relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full relative">
       
-      <!-- 上方圖片化主視覺標題 -->
-      <div data-aos="fade-down" class="text-center mb-8 w-full">
-        <div class="inline-block px-8 py-3 rounded-3xl bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-orange-500/10 border border-slate-200 shadow-sm mb-3">
-          <span class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-wider gradient-text uppercase">呂氏家庭生活資訊網</span>
-        </div>
-        <p class="text-slate-500 font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">Lu Family Official Website & Daily Life Records</p>
+      <!-- 左上裝飾圖片 (移除黑邊背景) -->
+      <div class="hidden lg:block absolute -top-8 left-4 w-48 h-36 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-white transform -rotate-6 animate-pulse" data-aos="fade-right">
+        <img src="S__23732244.jpg" alt="裝飾照 1" class="w-full h-full object-contain">
       </div>
 
-      <!-- 下方純自動換圖展示區 -->
-      <div class="w-full max-w-4xl" data-aos="fade-up">
-        <div class="glass-card rounded-[30px] sm:rounded-[35px] p-2 sm:p-3 shadow-2xl border-white hover-float overflow-hidden relative">
-          <div class="relative w-full h-[320px] sm:h-[450px] rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-900 flex items-center justify-center pointer-events-none select-none">
-            
-            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center justify-center overflow-hidden">
-              <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('S__23732244.jpg');"></div>
-              <img src="S__23732244.jpg" alt="呂氏家庭全家福 1" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
-            </div>
-            
-            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center justify-center overflow-hidden">
-              <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('362511_0.jpg');"></div>
-              <img src="362511_0.jpg" alt="呂氏家庭全家福 2" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
-            </div>
-            
-            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center justify-center overflow-hidden">
-              <div class="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110" style="background-image: url('362512_0.jpg');"></div>
-              <img src="362512_0.jpg" alt="呂氏家庭全家福 3" class="relative max-w-full max-h-full object-contain object-center pointer-events-none z-10 shadow-lg">
-            </div>
+      <!-- 右側中段裝飾圖片 (移除黑邊背景) -->
+      <div class="hidden lg:block absolute top-12 right-4 w-52 h-68 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-white transform rotate-6" data-aos="fade-left">
+        <img src="362511_0.jpg" alt="裝飾照 2" class="w-full h-full object-contain">
+      </div>
 
+      <!-- 左下裝飾圖片 (移除黑邊背景) -->
+      <div class="hidden lg:block absolute bottom-[-50px] left-8 w-52 h-36 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-white transform rotate-3" data-aos="fade-up">
+        <img src="362512_0.jpg" alt="裝飾照 3" class="w-full h-full object-contain">
+      </div>
+
+      <!-- 中央主內容區 -->
+      <div class="text-center max-w-2xl mx-auto z-10 relative py-8" data-aos="zoom-in">
+        <span class="text-orange-600 font-black text-sm sm:text-base tracking-widest uppercase block mb-2">關於呂氏家庭</span>
+        <h1 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight uppercase mb-6 drop-shadow-sm">ABOUT LU FAMILY</h1>
+        
+        <p class="text-slate-600 font-medium text-sm sm:text-base leading-relaxed mb-8">
+          認識我們的願景、理念與成立初衷。<br>見證一個溫馨家庭日常紀錄與生活資訊的匯集點。
+        </p>
+
+        <!-- 了解更多按鈕組 (點擊開啟支持我們的力量說明) -->
+        <div class="inline-flex items-center rounded-2xl shadow-xl overflow-hidden bg-orange-50 hover:shadow-2xl transition-all cursor-pointer group border border-orange-200" onclick="openIndependentPage('sponsors')">
+          <div class="px-8 py-4 text-orange-600 font-black text-sm sm:text-base tracking-wide">
+            了解更多
+          </div>
+          <div class="bg-orange-600 text-white px-5 py-4 flex items-center justify-center group-hover:bg-orange-700 transition-colors">
+            <i class="fa-solid fa-arrow-up-right-from-square text-sm transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
           </div>
         </div>
       </div>
@@ -400,15 +401,15 @@
     <div class="bg-white rounded-[35px] sm:rounded-[40px] w-full max-w-md shadow-2xl p-6 sm:p-8 text-center relative">
       <button onclick="closeAdminMenuModal()" class="absolute top-5 right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4"><i class="fa-solid fa-user"></i></div>
-      <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4">後台管理中心</h3>
+      <h3 class="text-xl sm:text-2xl font-black text-slate-800 mb-4">後台管理</h3>
       <div class="grid grid-cols-1 gap-3 sm:gap-4 mb-4">
         <button onclick="openPublishAuthModal()" class="p-4 rounded-3xl bg-indigo-50 hover:bg-indigo-100 border text-indigo-900 flex items-center gap-4 text-left font-black transition-all">
           <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-user-plus"></i></div>
-          <div><h4 class="text-sm sm:text-base">新增最新消息</h4><p class="text-xs text-slate-500 font-medium">發布最新公告資訊</p></div>
+          <div><h4 class="text-sm sm:text-base">新增</h4><p class="text-xs text-slate-500 font-medium">發布公告</p></div>
         </button>
         <button onclick="openHistoryAuthModal()" class="p-4 rounded-3xl bg-slate-50 hover:bg-indigo-100 border text-slate-800 flex items-center gap-4 text-left font-black transition-all">
           <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-lg sm:text-xl shrink-0"><i class="fa-solid fa-user-pen"></i></div>
-          <div><h4 class="text-sm sm:text-base">管理最新消息</h4><p class="text-xs text-slate-500 font-medium">修改或刪除公告</p></div>
+          <div><h4 class="text-sm sm:text-base">管理</h4><p class="text-xs text-slate-500 font-medium">修改或刪除</p></div>
         </button>
       </div>
       <button onclick="closeAdminMenuModal()" class="w-full py-3.5 rounded-2xl bg-slate-100 text-slate-600 font-black text-sm uppercase">關閉選單</button>
@@ -439,7 +440,7 @@
   <div id="historyModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-[35px] sm:rounded-[40px] shadow-2xl p-6 sm:p-8 uniform-modal-container">
       <div class="flex justify-between items-center mb-6 shrink-0">
-        <h3 class="text-xl sm:text-2xl font-black text-slate-800">最新消息管理列表</h3>
+        <h3 class="text-xl sm:text-2xl font-black text-slate-800">最新消息</h3>
         <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-slate-100"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
@@ -462,7 +463,7 @@
     <div class="bg-white rounded-[35px] sm:rounded-[40px] shadow-2xl p-6 sm:p-8 relative uniform-modal-container">
       <div class="flex justify-between items-center mb-6 shrink-0">
         <h3 id="publishModalTitle" class="text-xl sm:text-2xl font-black text-slate-800 flex items-center gap-3">
-          <i class="fa-solid fa-pen-to-square text-indigo-600"></i> 新增發布內容
+          <i class="fa-solid fa-pen-to-square text-indigo-600"></i> 新增內容
         </h3>
         <button onclick="closePublishModal()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       </div>
@@ -592,25 +593,6 @@
         subIcon.className = "fa-solid fa-plus text-xs text-orange-600 transition-transform";
       }
     }
-
-    // 純自動換圖邏輯 (無按鈕、無法點選)
-    let carouselIndex = 0;
-    const carouselSlides = document.querySelectorAll('.carousel-slide');
-
-    function updateCarousel(index) {
-      if (!carouselSlides.length) return;
-      if (index >= carouselSlides.length) carouselIndex = 0;
-      if (index < 0) carouselIndex = carouselSlides.length - 1;
-
-      carouselSlides.forEach((slide, i) => {
-        slide.style.opacity = i === carouselIndex ? '1' : '0';
-      });
-    }
-
-    setInterval(() => {
-      carouselIndex++;
-      updateCarousel(carouselIndex);
-    }, 4000);
 
     let _lightboxCurrentIndex = 0;
 
@@ -806,6 +788,21 @@
         });
         teamHtml += '</div>';
         bodyEl.innerHTML = teamHtml;
+
+      } else if (type === 'sponsors') {
+        titleEl.innerText = "支持我們的力量 SPONSORS";
+        iconEl.innerHTML = '<i class="fa-solid fa-heart text-white"></i>';
+        bodyEl.innerHTML = `
+          <div class="space-y-6">
+            <div class="text-center pb-4 border-b border-slate-100">
+              <span class="text-xs font-black text-orange-600 uppercase tracking-widest block mb-1">SPONSORS</span>
+              <h3 class="text-2xl sm:text-3xl font-black text-slate-900">支持我們的力量</h3>
+            </div>
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm leading-relaxed text-slate-700 font-medium text-base sm:text-lg space-y-4">
+              <p>在呂氏家庭資訊網 3.0 全新改版的里程碑上，我們跨越了時間與空間的限制，用數位科技為家族築起一座更現代、更緊密的橋樑。</p>
+              <p>這座網站之所以能夠不斷進化，背後最關鍵的推動力，正是來自每一位家人對這個「家」的熱愛與凝聚。</p>
+            </div>
+          </div>`;
 
       } else if (type === 'org') {
         titleEl.innerText = "組織架構";
